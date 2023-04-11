@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.ShowCategorieController">
+   <children>
+      <Label layoutX="97.0" layoutY="105.0" text="Nom" />
+      <Label layoutX="96.0" layoutY="183.0" text="Image" />
+      <TextField fx:id="fxNomCategorie" editable="false" layoutX="208.0" layoutY="101.0" />
+      <TextField fx:id="fxImageCategorie" editable="false" layoutX="209.0" layoutY="179.0" />
+      <ImageView fx:id="fxImgeCateg" fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

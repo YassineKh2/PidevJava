@@ -32,6 +32,13 @@ public class Categorie {
         this.ImageCategorie = ImageCategorie;
     }
 
+    public Categorie(int id, String NomCategorie, String ImageCategorie,ArrayList<Article> Articles) {
+        this.id = id;
+        this.NomCategorie = NomCategorie;
+        this.Articles = Articles;
+        this.ImageCategorie = ImageCategorie;
+    }
+
     public int getId() {
         return id;
     }

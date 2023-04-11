@@ -58,8 +58,9 @@ public class Article {
         this.SaleNumberArticle = SaleNumberArticle;
     }
 
-    public Article(int id, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, int SaleNumberArticle, String Size, String Color) {
+    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, int SaleNumberArticle) {
         this.id = id;
+        this.idCategorie = idCategorie;
         this.NomArticle = NomArticle;
         this.PrixArticle = PrixArticle;
         this.QuantiteArticle = QuantiteArticle;
@@ -68,6 +69,10 @@ public class Article {
         this.RemisePourcentageArticle = RemisePourcentageArticle;
         this.SaleNumberArticle = SaleNumberArticle;
     }
+
+   
+
+    
 
     public int getId() {
         return id;
