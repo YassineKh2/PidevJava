@@ -5,18 +5,25 @@
 package pidev.gargabou.gui;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import pidev.gargabou.entites.Categorie;
 import pidev.gargabou.services.ServiceCategorie;
 import pidev.gargabou.utils.DataSource;
@@ -70,13 +77,26 @@ public class CategorieItemController implements Initializable {
 
     @FXML
     private void fxSupprimerCategorie(ActionEvent event) {
-        String idC = fxCategorieId.getText();
-        int idCateg  = Integer.parseInt(idC);
-        System.out.println(idCateg);
-        ServiceCategorie Sc = new ServiceCategorie();
-        Sc.supprimer(idCateg);
-        
-        
+        try {
+            String idC = fxCategorieId.getText();
+            int idCateg  = Integer.parseInt(idC);
+            System.out.println(idCateg);
+            ServiceCategorie Sc = new ServiceCategorie();
+            Sc.supprimer(idCateg);
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = loader.load(); // load the new FXML file
+            Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+            Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+            Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+            Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+            stage.setScene(scene); // set the new scene as the content of the stage
+            
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     
