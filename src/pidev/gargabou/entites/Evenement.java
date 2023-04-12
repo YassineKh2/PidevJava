@@ -33,12 +33,13 @@ public class Evenement {
     public Evenement() {
     }
 
-    public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement, String Imageevenement, int numberoflikes, String description, int PlacesRestantes) {
+    public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement,int idOrganisateur, String Imageevenement, int numberoflikes, String description, int PlacesRestantes) {
         this.NomEvenement = NomEvenement;
         this.DateEvenement = DateEvenement;
         this.NombreParticipantEvenement = NombreParticipantEvenement;
         this.PrixEvenement = PrixEvenement;
         this.TypeEvenement = TypeEvenement;
+         this.idOrganisateur = idOrganisateur;
         this.Imageevenement = Imageevenement;
         this.numberoflikes = numberoflikes;
         this.description = description;

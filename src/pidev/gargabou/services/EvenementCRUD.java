@@ -52,7 +52,41 @@ public class EvenementCRUD {
         }
     }
     
-    
+    public void updateEvenement(int id,Evenement E){
+        try {
+            java.util.Date javaDate = new java.util.Date();
+            java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
+            String requete = "UPDATE `evenement` SET `organisateur_id`=?,`nom_evenement`=?,`date_evenement`=?,`nombre_participant_evenement`=?,`prix_evenement`=?,`type_evenement`=?,`imageevenement`=?,`numberoflikes`=?,`description`=?,`places_restantes`=? WHERE id=?";
+            PreparedStatement pst = cnx2.prepareStatement(requete);
+            pst.setString(1,Integer.toString(E.getIdOrganisateur()));
+            pst.setString(2, E.getNomEvenement());
+            pst.setDate(3,mySQLDate);
+            pst.setString(4, Integer.toString(E.getNombreParticipantEvenement()));
+            pst.setString(5, Integer.toString(E.getPrixEvenement()));
+            pst.setString(6, E.getTypeEvenement());
+            
+            pst.setString(7, E.getImageevenement());
+            pst.setString(8, Integer.toString(E.getNumberoflikes()));
+            pst.setString(9, E.getDescription());
+            pst.setString(10, Integer.toString(E.getPlacesRestantes()));
+            pst.setString(11, Integer.toString(id));
+            pst.executeUpdate();
+            System.out.println("votre evenement est mis a jour");        
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public void supprimerEvenement (int id){
+        try {
+            String requete ="DELETE FROM evenement WHERE id = ?";
+            PreparedStatement pst = cnx2.prepareStatement(requete);
+            pst.setInt(1, id);
+            pst.executeUpdate();
+            System.out.println("evenment supprimé");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+            }
     
     
     

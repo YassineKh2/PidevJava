@@ -18,14 +18,16 @@ public class MainClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //MyConnection mc = new MyConnection();
-       // Date aujourdhui = new Date();
         EvenementCRUD pcd = new EvenementCRUD();
-         EvenementCRUD pcd2 = new EvenementCRUD();
-       // Evenement E1 =new Evenement("testevent",aujourdhui,20,30,"eventtesttype",5,2,"Back/images/events/64063c014cbaf.png",10,"javadescription",10);
-      //  pcd.ajouterEvenement(E1);
-        System.out.println(pcd.afficherEvenements());
-        System.out.println(pcd2.afficherEvenements());
+      //MyConnection mc = new MyConnection();
+        Date aujourdhui = new Date();
+               
+      //  Evenement E1 =new Evenement("testevent",aujourdhui,20,30,"eventtesttype",5,2,"Back/images/events/64063c014cbaf.png",10,"javadescription",10);
+     Evenement E2 =new Evenement("nommmm",aujourdhui,00,99,"mmmmmmmmm",2,"Back/images/events/64063c014cbaf.png",90,"jmmmmm",180);
+     //  pcd.ajouterEvenement(E1);
+      //  System.out.println(pcd.afficherEvenements());
+       // pcd.supprimerEvenement(1013);
+       pcd.updateEvenement(1012, E2);
     }
     
 }
