@@ -28,7 +28,7 @@ public class MainClass {
         ServiceArticles sa = new ServiceArticles();
         
         
-        //sp.ajouter(p1);
+        sp.ajouter(p1);
         //sp.supprimer(114);
         /*sp.ajouter(p1);
         sp.ajouter(p2);

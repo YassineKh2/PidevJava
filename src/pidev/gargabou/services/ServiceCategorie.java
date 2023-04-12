@@ -93,6 +93,37 @@ public class ServiceCategorie implements IService<Categorie> {
 
         return list;
     }
+    
+    public Categorie FindOne(int id ){
+        List<Categorie> list = new ArrayList<>();
+        try {
+            String req = "select * FROM `categorie` WHERE id = " + id;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next()){
+                // categ mréwel id = 4;
+                ServiceArticles sa = new ServiceArticles();
+                // sréwel pull ou .....
+                ArrayList<Article> Articles = (ArrayList<Article>) sa.getAll();
+                ArrayList<Article> NewArticles = new ArrayList<>();
+                //NewArticles fera8 
+                for(Article Arc : Articles){
+                    // arc seréwel idC = 3 // maryoul id categ = 4
+                    if(Arc.getIdCategorie() == rs.getInt(1))
+                    {
+                    
+                        NewArticles.add(Arc); 
+                    }
+                 }
 
+            Categorie Categ = new Categorie(rs.getInt(1), rs.getString("nom_categorie"), rs.getString(3),NewArticles);
+            list.add(Categ);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+       return list.get(0);
+    }
     
 }

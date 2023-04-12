@@ -62,9 +62,19 @@ public class CategorieItemController implements Initializable {
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                ModiferCategorieController ShowCateg = loader.getController();
+                ShowCateg.setNomCategorie(fxNomCategorie.getText());
+                ShowCateg.setIdCategorie(fxCategorieId.getText());
+                ShowCateg.setImageCategorie(fxImageCateogire.getImage());
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
                 stage.setScene(scene); // set the new scene as the content of the stage
+               
+                
+                
+            
+            
+                
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
