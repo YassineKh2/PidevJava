@@ -69,14 +69,18 @@ public class ServiceCategorie implements IService<Categorie> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
+                // categ mréwel id = 4;
                 ServiceArticles sa = new ServiceArticles();
+                // sréwel pull ou .....
                 ArrayList<Article> Articles = (ArrayList<Article>) sa.getAll();
                 ArrayList<Article> NewArticles = new ArrayList<>();
+                //NewArticles fera8 
                 for(Article Arc : Articles){
+                    // arc seréwel idC = 3 // maryoul id categ = 4
                     if(Arc.getIdCategorie() == rs.getInt(1))
                     {
                     
-                        NewArticles.add(Arc);
+                        NewArticles.add(Arc); 
                     }
                  }
                 

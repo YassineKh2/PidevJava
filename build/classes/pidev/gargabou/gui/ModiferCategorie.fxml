@@ -4,7 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -169,14 +169,9 @@
             <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Pane>
-      <ScrollPane layoutX="251.0" layoutY="182.0" prefHeight="406.0" prefWidth="810.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="182.0">
-         <content>
-            <VBox fx:id="pnl_scroll" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
-         </content>
-      </ScrollPane>
       <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
          <children>
-            <Label fx:id="lbl_currentprojects" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Les Categories" textFill="#171717">
+            <Label fx:id="lbl_currentprojects" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Current Projects(10)" textFill="#171717">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -184,7 +179,15 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <Label fx:id="lbl_pending" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Les articles" textFill="#171717">
+            <Label fx:id="lbl_pending" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Pending Projects(12)" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <Label fx:id="lbl_completed" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Completed Projects(2)" textFill="#171717">
                <font>
                   <Font size="13.0" />
                </font>
@@ -194,5 +197,7 @@
             </Label>
          </children>
       </HBox>
+      <TextField fx:id="fxNomCateogrie" layoutX="534.0" layoutY="244.0" />
+      <Label layoutX="350.0" layoutY="248.0" text="Nom categorie" />
    </children>
 </AnchorPane>

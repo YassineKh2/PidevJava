@@ -36,6 +36,8 @@ public class MainClass {
         sp.ajouter2(p4);*/
         
         ArrayList<Categorie> Categ = (ArrayList<Categorie>) sp.getAll();
+        
+        
         ArrayList<Article> Articles = (ArrayList<Article>) sa.getAll();
         
         System.out.println(Categ);

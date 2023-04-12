@@ -4,7 +4,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/tests/MainClass.java</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/gui/AddCategorieController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/services/ServiceCategorie.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/gui/CategorieItemController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/gui/AjouterCategorie.java</file>
@@ -16,7 +15,6 @@
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/entites/Formation.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/entites/Rating.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/utils/DataSource.java</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/gui/ShowAllCategoriesGuiController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/entites/ReactionPublication.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/entites/ColorArticle.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava/src/pidev/gargabou/entites/Organisateur.java</file>
