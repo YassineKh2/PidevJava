@@ -1,11 +1,8 @@
-package pidev.gargabou.gui;
-
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-
+package pidev.gargabou.gui;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
@@ -14,11 +11,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,35 +21,33 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import pidev.gargabou.entites.Categorie;
-import pidev.gargabou.services.ServiceCategorie;
+import pidev.gargabou.entites.Article;
+import pidev.gargabou.services.ServiceArticles;
 
 /**
+ * FXML Controller class
  *
- * @author oXCToo
+ * @author yassine
  */
-public class CategorieHomeController implements Initializable {
-    
-    
+public class ArticleHomeController implements Initializable {
+
     @FXML
     private VBox pnl_scroll;
     @FXML
-    private JFXButton fxAjouterCategorie;
+    private Label lbl_pending;
     @FXML
-    private Label lbl_currentprojects;
+    private JFXButton fxAjouterArticle;
     @FXML
-    private JFXButton fxGoToArticle;
-    
-    @FXML
-    private void handleButtonAction(MouseEvent event) {        
-       refreshNodes();
-    }
-    
+    private JFXButton fxGoToCateogrie;
+
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fxAjouterCategorie.setOnAction( event -> {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
+        fxGoToCateogrie.setOnAction( event -> {
+             try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -64,11 +57,10 @@ public class CategorieHomeController implements Initializable {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-               
         });
-        fxGoToArticle.setOnAction( event -> {
+        fxAjouterArticle.setOnAction( event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeArticle.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterArticle.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -80,34 +72,38 @@ public class CategorieHomeController implements Initializable {
             }
         });
         
-         refreshNodes();
+        refreshNodes();
     }    
-    
+
     private void refreshNodes()
     {
         pnl_scroll.getChildren().clear();
-        ServiceCategorie Sc = new ServiceCategorie();
+        ServiceArticles Sa = new ServiceArticles();
         
-        ArrayList<Categorie> Categories = (ArrayList) Sc.getAll();
+        ArrayList<Article> Articles = (ArrayList) Sa.getAll();
         
         System.out.println();
-        Node [] nodes = new  Node[Categories.size()];
+        Node [] nodes = new  Node[Articles.size()];
         
-        for(int i = 0; i<Categories.size(); i++)
+        for(int i = 0; i<Articles.size(); i++)
         {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("CategorieItem.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ArticleItem.fxml"));
                 Node node = (Node) loader.load();
-                CategorieItemController controller = loader.getController();
-                controller.setCategorie(Categories.get(i));
+                ArticleItemController controller = loader.getController();
+                controller.setArticle(Articles.get(i));
                 
                pnl_scroll.getChildren().add(node);
                 
             } catch (IOException ex) {
-                Logger.getLogger(CategorieHomeController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
             }
            
         }  
+    }
+
+    @FXML
+    private void handleButtonAction(MouseEvent event) {
     }
     
 }

@@ -125,5 +125,31 @@ public class ServiceCategorie implements IService<Categorie> {
         
        return list.get(0);
     }
+    public Categorie FindCategorieByName(String name) {
+    List<Categorie> list = new ArrayList<>();
+    try {
+        String req = "SELECT * FROM `categorie` WHERE nom_categorie = '" + name + "'";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        while (rs.next()) {
+            ServiceArticles sa = new ServiceArticles();
+            ArrayList<Article> articles = (ArrayList<Article>) sa.getAll();
+            ArrayList<Article> newArticles = new ArrayList<>();
+            for (Article arc : articles) {
+                if (arc.getIdCategorie() == rs.getInt(1)) {
+                    newArticles.add(arc); 
+                } 
+            }
+            Categorie categ = new Categorie(rs.getInt(1), rs.getString("nom_categorie"), rs.getString(3), newArticles);
+            list.add(categ);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    if (list.isEmpty()) {
+        return null;
+    }
+    return list.get(0);
+}
     
 }

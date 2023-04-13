@@ -203,5 +203,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
+      <Label layoutX="350.0" layoutY="362.0" text="Image" />
    </children>
 </AnchorPane>

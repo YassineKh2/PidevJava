@@ -20,7 +20,7 @@ public class Article {
     private int QuantiteArticle;
     private String ImageArticle;
     private String ArticleDiscription;
-    private int RemisePourcentageArticle;
+    private float RemisePourcentageArticle;
     //Relation $payments,$ratings,$colorArticles,$sizeArticles // many to many 
     private ArrayList<SizeArticle> SizeArticleTab;
     private ArrayList<ColorArticle> ColorArticleTab;
@@ -31,7 +31,7 @@ public class Article {
     public Article() {
     }
 
-    public Article(int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, int SaleNumberArticle) {
+    public Article(int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, int SaleNumberArticle) {
         this.idCategorie = idCategorie;
         this.NomArticle = NomArticle;
         this.PrixArticle = PrixArticle;
@@ -42,7 +42,7 @@ public class Article {
         this.SaleNumberArticle = SaleNumberArticle;
     }
 
-    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, ArrayList<SizeArticle> SizeArticleTab, ArrayList<ColorArticle> ColorArticleTab, ArrayList<Rating> RatingArticleTab, ArrayList<Payment> PaymentArticleTab, int SaleNumberArticle) {
+    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, ArrayList<SizeArticle> SizeArticleTab, ArrayList<ColorArticle> ColorArticleTab, ArrayList<Rating> RatingArticleTab, ArrayList<Payment> PaymentArticleTab, int SaleNumberArticle) {
         this.id = id;
         this.idCategorie = idCategorie;
         this.NomArticle = NomArticle;
@@ -58,7 +58,7 @@ public class Article {
         this.SaleNumberArticle = SaleNumberArticle;
     }
 
-    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, int SaleNumberArticle) {
+    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, int SaleNumberArticle) {
         this.id = id;
         this.idCategorie = idCategorie;
         this.NomArticle = NomArticle;
@@ -122,7 +122,7 @@ public class Article {
         this.ArticleDiscription = ArticleDiscription;
     }
 
-    public int getRemisePourcentageArticle() {
+    public float getRemisePourcentageArticle() {
         return RemisePourcentageArticle;
     }
 
@@ -195,7 +195,7 @@ public class Article {
         hash = 79 * hash + this.QuantiteArticle;
         hash = 79 * hash + Objects.hashCode(this.ImageArticle);
         hash = 79 * hash + Objects.hashCode(this.ArticleDiscription);
-        hash = 79 * hash + this.RemisePourcentageArticle;
+        hash = 79 * hash + Float.floatToIntBits(this.RemisePourcentageArticle);
         hash = 79 * hash + Objects.hashCode(this.SizeArticleTab);
         hash = 79 * hash + Objects.hashCode(this.ColorArticleTab);
         hash = 79 * hash + Objects.hashCode(this.RatingArticleTab);

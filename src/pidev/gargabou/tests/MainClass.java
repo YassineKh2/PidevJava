@@ -28,19 +28,21 @@ public class MainClass {
         ServiceArticles sa = new ServiceArticles();
         
         
-        sp.ajouter(p1);
+        //sp.ajouter(p1);
         //sp.supprimer(114);
         /*sp.ajouter(p1);
         sp.ajouter(p2);
         sp.ajouter2(p3);
         sp.ajouter2(p4);*/
         
+        //sa.ajouter(A);
+        
         ArrayList<Categorie> Categ = (ArrayList<Categorie>) sp.getAll();
         
         
         ArrayList<Article> Articles = (ArrayList<Article>) sa.getAll();
         
-        System.out.println(Categ);
+       // System.out.println(Categ);
         
         
         

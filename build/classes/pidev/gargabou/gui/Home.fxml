@@ -184,14 +184,7 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <Label fx:id="lbl_pending" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Les articles" textFill="#171717">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-            </Label>
+            <JFXButton fx:id="fxGoToArticle" text="Les Articles" />
          </children>
       </HBox>
    </children>

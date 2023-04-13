@@ -5,11 +5,14 @@
         <group>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieItemController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/services/ServiceCategorie.java</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/AddCategorieController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/AjouterCategorieController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieMain.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/HomeArticle.fxml</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieHomeController.java</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ShowCategorieController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ModiferCategorieController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/services/ServiceArticles.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ArticleItemController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ArticleHomeController.java</file>
         </group>
     </open-files>
 </project-private>

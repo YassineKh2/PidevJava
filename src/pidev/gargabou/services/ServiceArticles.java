@@ -25,7 +25,7 @@ public class ServiceArticles implements IService<Article>{
     
     @Override
     public void ajouter(Article p) {
-              String req = "INSERT INTO `article` (`categorie_id`, `nom_article`,`prix_article`,`quantite_article`,`image_article`be,`article_discription`,`remise_pourcentage_article`,`sale_number_article`) VALUES (?,?,?,?,?,?,?,?)";
+              String req = "INSERT INTO `article` (`categorie_id`, `nom_article`,`prix_article`,`quantite_article`,`image_article`,`article_discription`,`remise_pourcentage_article`,`sale_number_article`) VALUES (?,?,?,?,?,?,?,?)";
         try{    
             PreparedStatement ps = cnx.prepareStatement(req);
             
