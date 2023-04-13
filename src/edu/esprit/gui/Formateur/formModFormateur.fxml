@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="whole_form_scene" prefHeight="686.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.Formateur.FormModFormateurController">
+   <children>
+      <Pane layoutX="8.0" layoutY="10.0" prefHeight="145.0" prefWidth="600.0" styleClass="head-background">
+         <children>
+            <Label layoutX="224.0" layoutY="47.0" text="RehabRadar" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="100.0" text="Depuis 2022" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <stylesheets>
+            <URL value="@style.css" />
+            <URL value="@../style.css" />
+         </stylesheets>
+      </Pane>
+      <Pane layoutX="81.0" layoutY="54.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo-no-background.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </Pane>
+      <Label layoutX="100.0" layoutY="219.0" text="Nom Formateur" />
+      <Label layoutX="100.0" layoutY="267.0" />
+      <Label layoutX="102.0" layoutY="276.0" text="Prenom Formateur" />
+      <Label layoutX="99.0" layoutY="400.0" text="Image" />
+      <Label layoutX="104.0" layoutY="460.0" text="Sexe" />
+      <TextField fx:id="tx_nom_formateur" layoutX="234.0" layoutY="215.0" prefHeight="26.0" prefWidth="227.0" />
+      <JFXButton fx:id="btn_mod_formateur" layoutX="484.0" layoutY="173.0" prefHeight="26.0" prefWidth="118.0" text="Modifier">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-edit-property-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TextField fx:id="tx_image_fm" layoutX="234.0" layoutY="396.0" prefHeight="26.0" prefWidth="227.0" />
+      <TextField fx:id="tx_pn_formateur" layoutX="234.0" layoutY="271.0" prefHeight="26.0" prefWidth="227.0" />
+      <Label layoutX="102.0" layoutY="335.0" text="Email" />
+      <JFXTextArea fx:id="tx_email" layoutX="236.0" layoutY="325.0" prefHeight="37.0" prefWidth="259.0" />
+      <JFXRadioButton fx:id="tx_male" layoutX="236.0" layoutY="460.0" text="Masculin" />
+      <JFXRadioButton fx:id="tx_female" layoutX="384.0" layoutY="460.0" text="Feminin" />
+      <Label layoutX="99.0" layoutY="522.0" prefHeight="18.0" prefWidth="85.0" text="Num Telephone" />
+      <JFXTextArea fx:id="tx_num" layoutX="234.0" layoutY="512.0" prefHeight="37.0" prefWidth="208.0" />
+   </children>
+</AnchorPane>

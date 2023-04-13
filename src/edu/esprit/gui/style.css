@@ -1,0 +1,9 @@
+.head-background
+{
+    -fx-background-color: linear-gradient(to left,#795AF3 ,#3929E0);
+}
+.pane_module
+{
+    -fx-background-color: linear-gradient(to left,#a69bd0 ,#8479ff);
+    border-radius: 1px;
+}

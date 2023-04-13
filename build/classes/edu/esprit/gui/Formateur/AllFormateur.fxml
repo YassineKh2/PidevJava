@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="whole_formateur" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.Formateur.AllFormateurController">
+   <children>
+      <JFXButton fx:id="handle_form_ajout" buttonType="RAISED" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="128.0" ripplerFill="#dca5da" text="Ajouter">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-add-new-24.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="handle_form_mod" layoutX="153.0" layoutY="15.0" prefHeight="26.0" prefWidth="142.0" ripplerFill="#dca5da" text="Modifier">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-edit-property-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="handle_supprimer" layoutX="313.0" layoutY="14.0" prefHeight="26.0" prefWidth="166.0" ripplerFill="#dca5da" text="Supprimer">
+         <graphic>
+            <ImageView fitHeight="19.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-remove-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Separator layoutX="146.0" layoutY="15.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="1.0" />
+      <Separator layoutX="306.0" layoutY="15.0" orientation="VERTICAL" prefHeight="27.0" prefWidth="1.0" />
+      <JFXListView fx:id="list_formateur" layoutX="13.0" layoutY="65.0" prefHeight="400.0" prefWidth="813.0" />
+   </children>
+</AnchorPane>

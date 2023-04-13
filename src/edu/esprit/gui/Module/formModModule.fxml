@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="whole_form_scene" prefHeight="686.0" prefWidth="608.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.Module.FormModModuleController">
+   <children>
+      <Pane layoutX="8.0" layoutY="10.0" prefHeight="145.0" prefWidth="600.0" styleClass="head-background">
+         <children>
+            <Label layoutX="224.0" layoutY="47.0" text="RehabRadar" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="100.0" text="Depuis 2022" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+         <stylesheets>
+            <URL value="@style.css" />
+            <URL value="@../style.css" />
+         </stylesheets>
+      </Pane>
+      <Pane layoutX="81.0" layoutY="54.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo-no-background.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </Pane>
+      <Label layoutX="100.0" layoutY="219.0" text="Nom Module" />
+      <Label layoutX="100.0" layoutY="267.0" />
+      <Label layoutX="102.0" layoutY="285.0" text="Prerequis" />
+      <Label layoutX="102.0" layoutY="366.0" text="Duree" />
+      <JFXButton fx:id="btn_mod_module" layoutX="484.0" layoutY="173.0" prefHeight="26.0" prefWidth="118.0" text="Modifier">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-edit-property-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="108.0" layoutY="465.0" text="Contenue" />
+      <JFXTextArea fx:id="tx_contenue" layoutX="223.0" layoutY="465.0" prefHeight="98.0" prefWidth="357.0" />
+      <JFXTextArea fx:id="tx_duree" layoutX="253.0" layoutY="356.0" prefHeight="37.0" prefWidth="208.0" />
+      <JFXTextArea fx:id="tx_pre" layoutX="253.0" layoutY="275.0" prefHeight="37.0" prefWidth="208.0" />
+      <JFXTextArea fx:id="tx_nom_module" layoutX="253.0" layoutY="218.0" prefHeight="37.0" prefWidth="208.0" />
+      <MenuButton fx:id="values_formation" layoutX="224.0" layoutY="609.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="Nom Formation">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <Label layoutX="92.0" layoutY="613.0" text="Nom Formation" />
+   </children>
+</AnchorPane>
