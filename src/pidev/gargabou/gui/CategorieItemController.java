@@ -71,10 +71,6 @@ public class CategorieItemController implements Initializable {
                 stage.setScene(scene); // set the new scene as the content of the stage
                
                 
-                
-            
-            
-                
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }

@@ -58,14 +58,28 @@ public class ServiceArticles implements IService<Article>{
 
     @Override
     public void modifier(Article p) {
-        try {
-            String req = " UPDATE `article` SET `nom_article` ='" + p.getNomArticle()+ "', `categorie_id` = '" + p.getIdCategorie()+ "',`prix_article` ='" + p.getPrixArticle() + "',`quantite_article` = '"+ p.getQuantiteArticle() +"',`image_article` ='"+ p.getImageArticle() +"',`article_discription` ='"+p.getArticleDiscription()+"',`remise_pourcentage_article` ='"+p.getRemisePourcentageArticle()+"',`sale_number_article` = '"+p.getSaleNumberArticle()+"' WHERE `article`.`id` = " + p.getId();                                  
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Article updated !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }  
+      try (PreparedStatement pstmt = cnx.prepareStatement(
+    "UPDATE article SET nom_article=?, categorie_id=?, prix_article=?, quantite_article=?, image_article=?, article_discription=?, remise_pourcentage_article=?, sale_number_article=? WHERE id=?"
+)) {
+    pstmt.setString(1, p.getNomArticle());
+    pstmt.setInt(2, p.getIdCategorie());
+    pstmt.setDouble(3, p.getPrixArticle());
+    pstmt.setInt(4, p.getQuantiteArticle());
+    pstmt.setString(5, p.getImageArticle());
+    pstmt.setString(6, p.getArticleDiscription());
+    pstmt.setDouble(7, p.getRemisePourcentageArticle());
+    pstmt.setInt(8, p.getSaleNumberArticle());
+    pstmt.setInt(9, p.getId());
+    int rowsAffected = pstmt.executeUpdate();
+    if (rowsAffected > 0) {
+        System.out.println("Article updated successfully!");
+    } else {
+        System.out.println("Article with ID " + p.getId() + " not found!");
+    }
+} catch (SQLException ex) {
+    System.out.println("Error updating article: " + ex.getMessage());
+}
+
     }
 
     @Override

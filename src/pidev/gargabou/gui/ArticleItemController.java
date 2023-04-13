@@ -20,7 +20,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Article;
+import pidev.gargabou.entites.Categorie;
 import pidev.gargabou.services.ServiceArticles;
+import pidev.gargabou.services.ServiceCategorie;
 
 /**
  * FXML Controller class
@@ -47,6 +49,8 @@ public class ArticleItemController implements Initializable {
     private JFXButton fxSupprimerArticle;
     @FXML
     private JFXButton fxModiferArticle;
+    @FXML
+    private Label fxPrixArticle;
 
     /**
      * Initializes the controller class.
@@ -74,7 +78,12 @@ public class ArticleItemController implements Initializable {
         int idArticle = article.getId();
         String idA= Integer.toString(idArticle);
         fxArticleId.setText(idA);
-       
+        float prix = article.getPrixArticle();
+        String prixArticle = Float.toString(prix);
+        fxPrixArticle.setText(prixArticle);
+        int idCateg = article.getIdCategorie();
+        String idC= Integer.toString(idCateg);
+        fxIdCategorie.setText(idC);
    }
 
     @FXML
@@ -104,13 +113,25 @@ public class ArticleItemController implements Initializable {
     @FXML
     private void fxModiferArticle(ActionEvent event) {
            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ModiferCategorie.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ModiferArticle.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 
+                int idCateg = Integer.parseInt(fxIdCategorie.getText());
+                ServiceCategorie Sc = new ServiceCategorie();
+                Categorie Categ = Sc.FindOne(idCateg);
+                System.out.println(Categ);
                 
-                
+                ModiferArticleController Ma = loader.getController();
+                Ma.setNomArticle(fxNomArticle.getText());
+                Ma.setDescriptionArticle(fxDiscriptionArticle.getText());
+                Ma.setPrixArticle(fxPrixArticle.getText());
+                Ma.setQuantiteArticle(fxQuantiteArticle.getText());
+                Ma.setImage(fxImageArticle.getImage());
+                Ma.setRemiseArticle(fxRemiseArticle.getText());
+                Ma.setIdArticle(fxArticleId.getText());
+                Ma.setCategorie(Categ.getNomCategorie());
                 
                 
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node

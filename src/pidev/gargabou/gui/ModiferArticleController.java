@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +21,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Article;
@@ -57,6 +61,10 @@ public class ModiferArticleController implements Initializable {
     private ComboBox<String> fxIdCategorieArticle;
     @FXML
     private JFXButton fxModiferArticle;
+    @FXML
+    private ImageView fxidImageViewArticle;
+    @FXML
+    private Label fxIdArticle;
     /**
      * Initializes the controller class.
      */
@@ -79,14 +87,15 @@ public class ModiferArticleController implements Initializable {
                Float resmise = Float.parseFloat(fxRemiseArticle.getText());
                Categorie Catego = sp.FindCategorieByName(CateogireSelected);
                int IdCateg = Catego.getId();
+               String idA = fxIdArticle.getText();
+               int idArticle = Integer.parseInt(idA);
                
-               Article Arc = new Article(IdCateg,NomArticle,Prix,Quantite,ImageArticle,DescriptionArticle,resmise,0);
+               Article Arc = new Article(idArticle,IdCateg,NomArticle,Prix,Quantite,ImageArticle,DescriptionArticle,resmise,0);
                ServiceArticles Sa = new ServiceArticles();
-               Sa.ajouter(Arc);
+               System.out.println(Arc);
+               Sa.modifier(Arc);
                
-               /*ArrayList<Article> Article = Catego.getArticles();
-               Article.add(Arc);
-               Catego.setArticles(Article);*/
+              
                
                
                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeArticle.fxml"));
@@ -100,6 +109,20 @@ public class ModiferArticleController implements Initializable {
                System.out.println(ex.getMessage());
            }
         });
+        
+        fxAnnulerArticle.setOnAction( event -> {
+             try {
+                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeArticle.fxml"));
+                 Parent root = loader.load(); // load the new FXML file
+                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                 stage.setScene(scene); // set the new scene as the content of the stage
+             } catch (IOException ex) {
+               System.out.println(ex.getMessage());
+             }
+        });
     }    
 
     @FXML
@@ -111,16 +134,25 @@ public class ModiferArticleController implements Initializable {
     public void setNomArticle(String message){
     fxNomArticle.setText(message);
 }
-   public void QuantiteArticle(String message){
+   public void setQuantiteArticle(String message){
     fxQuantiteArticle.setText(message);
    }
-   public void PrixArticle(String message){
+   public void setPrixArticle(String message){
     fxPrixArticle.setText(message);
    }
-   public void DescriptionArticle(String message){
+   public void setDescriptionArticle(String message){
     fxDescriptionArticle.setText(message);
    }
-   public void RemiseArticle(String message){
+   public void setRemiseArticle(String message){
        fxRemiseArticle.setText(message);
+   }
+   public void setImage(Image img){
+       fxidImageViewArticle.setImage(img);
+   }
+   public void setCategorie(String message){
+       fxIdCategorieArticle.setValue(message);
+   }
+   public void setIdArticle(String message){
+      fxIdArticle.setText(message);
    }
 }

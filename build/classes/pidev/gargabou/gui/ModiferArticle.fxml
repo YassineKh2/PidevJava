@@ -211,6 +211,7 @@
          </font>
       </JFXButton>
       <ComboBox fx:id="fxIdCategorieArticle" layoutX="483.0" layoutY="321.0" prefWidth="150.0" />
-      <ImageView fx:id="fxidImageViewArticle" fitHeight="150.0" fitWidth="200.0" layoutX="1028.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="fxidImageViewArticle" fitHeight="150.0" fitWidth="200.0" layoutX="1028.0" layoutY="353.0" pickOnBounds="true" />
+      <Label fx:id="fxIdArticle" layoutX="713.0" layoutY="196.0" textFill="TRANSPARENT" />
    </children>
 </AnchorPane>
