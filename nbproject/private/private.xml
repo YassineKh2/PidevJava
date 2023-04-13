@@ -4,7 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieItemController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/services/ServiceCategorie.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/AddCategorieController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieHomeController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ShowCategorieController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ModiferCategorieController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/services/ServiceArticles.java</file>
         </group>
     </open-files>
 </project-private>

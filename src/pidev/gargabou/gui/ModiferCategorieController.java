@@ -4,6 +4,7 @@
  */
 package pidev.gargabou.gui;
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,8 +38,6 @@ public class ModiferCategorieController implements Initializable {
     @FXML
     private Label lbl_pending;
     @FXML
-    private Label lbl_completed;
-    @FXML
     private TextField fxNomCateogrie;
     @FXML
     private Button fxModiferCategorieButton;
@@ -46,6 +45,8 @@ public class ModiferCategorieController implements Initializable {
     private Label fxIdCategorie;
     @FXML
     private ImageView fxImageCategorie;
+    @FXML
+    private JFXButton fxAnunulerCategorieButton1;
 
     /**
      * Initializes the controller class.
@@ -74,10 +75,21 @@ public class ModiferCategorieController implements Initializable {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-        
-            
-            
         });
+       fxAnunulerCategorieButton1.setOnAction( event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                 System.out.println(ex.getMessage());
+            }
+       });
+        
     }    
 
     @FXML
