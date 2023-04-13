@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/services/EvenementCRUD.java</file>
+            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/tools/MyConnection.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/entites/Evenement.java</file>
-            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/entites/Organisateur.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/tests/MainClass.java</file>
+            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/FirstWindow.java</file>
         </group>
     </open-files>
 </project-private>

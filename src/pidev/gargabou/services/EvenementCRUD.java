@@ -31,7 +31,7 @@ public class EvenementCRUD {
         try {
             java.util.Date javaDate = new java.util.Date();
             java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
-            String requete = "INSERT INTO Evenement( organisateur_id, nom_evenement, date_evenement, nombre_participant_evenement, prix_evenement, type_evenement, adresse_id, imageevenement, numberoflikes, description, places_restantes)"
+            String requete = "INSERT INTO evenement( organisateur_id, nom_evenement, date_evenement, nombre_participant_evenement, prix_evenement, type_evenement, adresse_id, imageevenement, numberoflikes, description, places_restantes)"
                     + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx2.prepareStatement(requete);
             pst.setString(1,Integer.toString(E.getIdOrganisateur()));
@@ -51,8 +51,37 @@ public class EvenementCRUD {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public void updateEvenement(int id,Evenement E){
+     public List<Evenement> afficherEvenements(){
+        List<Evenement> myList =new ArrayList<>();
+        try {
+            
+            String requete2 = "SELECT *FROM evenement";
+            Statement st = cnx2.createStatement();
+            ResultSet rs = st.executeQuery(requete2);
+            
+            while (rs.next()){
+                Evenement E = new Evenement();
+                E.setId(rs.getInt(1));
+                E.setNomEvenement(rs.getString("nom_evenement"));
+                E.setDateEvenement(rs.getDate("date_evenement"));
+                E.setNombreParticipantEvenement(rs.getInt("nombre_participant_evenement"));
+                E.setPrixEvenement(rs.getInt("prix_evenement"));
+                E.setTypeEvenement(rs.getString("type_evenement"));
+                E.setIdAdresse(rs.getInt("adresse_id"));
+                E.setIdOrganisateur(rs.getInt("organisateur_id"));
+                E.setImageevenement(rs.getString("imageevenement"));
+                E.setNumberoflikes(rs.getInt("numberoflikes"));
+                E.setDescription(rs.getString("description"));
+                E.setPlacesRestantes(rs.getInt("places_restantes"));
+                 myList.add(E);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList ;
+    }
+
+    public void modifierEvenement(int id,Evenement E){
         try {
             java.util.Date javaDate = new java.util.Date();
             java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
@@ -91,35 +120,6 @@ public class EvenementCRUD {
     
     
     
-    public List<Evenement> afficherEvenements(){
-        List<Evenement> myList =new ArrayList<>();
-        try {
-            
-            String requete2 = "SELECT *FROM Evenement";
-            Statement st = cnx2.createStatement();
-            ResultSet rs = st.executeQuery(requete2);
-            
-            while (rs.next()){
-                Evenement E = new Evenement();
-                E.setId(rs.getInt(1));
-                E.setNomEvenement(rs.getString("nom_evenement"));
-                E.setDateEvenement(rs.getDate("date_evenement"));
-                E.setNombreParticipantEvenement(rs.getInt("nombre_participant_evenement"));
-                E.setPrixEvenement(rs.getInt("prix_evenement"));
-                E.setTypeEvenement(rs.getString("type_evenement"));
-                E.setIdAdresse(rs.getInt("adresse_id"));
-                E.setIdOrganisateur(rs.getInt("organisateur_id"));
-                E.setImageevenement(rs.getString("imageevenement"));
-                E.setNumberoflikes(rs.getInt("numberoflikes"));
-                E.setDescription(rs.getString("description"));
-                E.setPlacesRestantes(rs.getInt("places_restantes"));
-                 myList.add(E);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return myList ;
-    }
-
+   
 
 }
