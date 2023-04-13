@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import pidev.gargabou.entites.Evenement;
 import pidev.gargabou.tools.MyConnection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class EvenementCRUD {
     
     public void ajouterEvenement(Evenement E){
         try {
-            java.util.Date javaDate = new java.util.Date();
+            java.util.Date javaDate =  E.getDateEvenement();
             java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
             String requete = "INSERT INTO evenement( organisateur_id, nom_evenement, date_evenement, nombre_participant_evenement, prix_evenement, type_evenement, adresse_id, imageevenement, numberoflikes, description, places_restantes)"
                     + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -38,7 +38,7 @@ public class EvenementCRUD {
             pst.setString(2, E.getNomEvenement());
             pst.setDate(3,mySQLDate);
             pst.setString(4, Integer.toString(E.getNombreParticipantEvenement()));
-            pst.setString(5, Integer.toString(E.getPrixEvenement()));
+            pst.setInt(5,E.getPrixEvenement());      
             pst.setString(6, E.getTypeEvenement());
             pst.setString(7, Integer.toString(E.getIdAdresse()));
             pst.setString(8, E.getImageevenement());
