@@ -7,6 +7,7 @@ package pidev.gargabou.gui;
  */
 
 
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,9 +20,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import pidev.gargabou.entites.Categorie;
 import pidev.gargabou.services.ServiceCategorie;
 
@@ -31,11 +35,15 @@ import pidev.gargabou.services.ServiceCategorie;
  */
 public class CategorieHomeController implements Initializable {
     
-    @FXML
-    private Label label;
     
-      @FXML
+    @FXML
     private VBox pnl_scroll;
+    @FXML
+    private JFXButton fxAjouterCategorie;
+    @FXML
+    private Label lbl_currentprojects;
+    @FXML
+    private Label lbl_pending;
     
     @FXML
     private void handleButtonAction(MouseEvent event) {        
@@ -44,7 +52,20 @@ public class CategorieHomeController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        fxAjouterCategorie.setOnAction( event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+               
+        });
         
          refreshNodes();
     }    
