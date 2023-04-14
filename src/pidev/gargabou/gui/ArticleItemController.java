@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,6 +52,8 @@ public class ArticleItemController implements Initializable {
     private JFXButton fxModiferArticle;
     @FXML
     private Label fxPrixArticle;
+    @FXML
+    private Label fxPathImageArticle;
 
     /**
      * Initializes the controller class.
@@ -84,6 +87,7 @@ public class ArticleItemController implements Initializable {
         int idCateg = article.getIdCategorie();
         String idC= Integer.toString(idCateg);
         fxIdCategorie.setText(idC);
+        fxPathImageArticle.setText(article.getImageArticle());
    }
 
     @FXML
@@ -132,7 +136,8 @@ public class ArticleItemController implements Initializable {
                 Ma.setRemiseArticle(fxRemiseArticle.getText());
                 Ma.setIdArticle(fxArticleId.getText());
                 Ma.setCategorie(Categ.getNomCategorie());
-                
+                Ma.setPathImage(fxPathImageArticle.getText());
+               
                 
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage

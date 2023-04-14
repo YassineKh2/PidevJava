@@ -50,6 +50,8 @@ public class CategorieItemController implements Initializable {
     private JFXButton fxSupprimerCategorie;
     @FXML
     private JFXButton fxModiferCategorie;
+    @FXML
+    private Label fxPathImage;
 
     /**
      * Initializes the controller class.
@@ -66,6 +68,7 @@ public class CategorieItemController implements Initializable {
                 ShowCateg.setNomCategorie(fxNomCategorie.getText());
                 ShowCateg.setIdCategorie(fxCategorieId.getText());
                 ShowCateg.setImageCategorie(fxImageCateogire.getImage());
+                ShowCateg.setImagePath(fxPathImage.getText());
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
                 stage.setScene(scene); // set the new scene as the content of the stage
@@ -94,7 +97,7 @@ public class CategorieItemController implements Initializable {
         int idCateg = categ.getId();
         String idC= Integer.toString(idCateg);
         fxCategorieId.setText(idC);
-        
+        fxPathImage.setText(categ.getImageCategorie());
     }
 
     @FXML

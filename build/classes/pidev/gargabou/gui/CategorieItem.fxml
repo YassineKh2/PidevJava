@@ -83,6 +83,7 @@
             <JFXButton fx:id="fxSupprimerCategorie" layoutX="49.0" layoutY="219.0" onAction="#fxSupprimerCategorie" text="Supprimer" />
             <JFXButton fx:id="fxModiferCategorie" layoutX="279.0" layoutY="219.0" text="Modifer" />
             <Label fx:id="fxCategorieId" layoutX="360.0" layoutY="63.0" textFill="TRANSPARENT" />
+            <Label fx:id="fxPathImage" layoutX="391.0" layoutY="10.0" textFill="TRANSPARENT" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

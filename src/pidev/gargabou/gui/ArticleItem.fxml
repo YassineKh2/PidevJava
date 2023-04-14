@@ -88,6 +88,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
+            <Label fx:id="fxPathImageArticle" layoutX="479.0" layoutY="10.0" textFill="TRANSPARENT" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

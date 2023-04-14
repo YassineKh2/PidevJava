@@ -5,18 +5,23 @@
 package pidev.gargabou.gui;
 
 import com.jfoenix.controls.JFXButton;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -24,7 +29,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import pidev.gargabou.entites.Article;
 import pidev.gargabou.entites.Categorie;
 import pidev.gargabou.services.ServiceArticles;
@@ -51,8 +58,7 @@ public class ModiferArticleController implements Initializable {
     private TextField fxPrixArticle;
     @FXML
     private TextArea fxDescriptionArticle;
-    @FXML
-    private TextField fxImageArticle;
+    private Button fxImageArticle;
     @FXML
     private TextField fxRemiseArticle;
     @FXML
@@ -65,6 +71,12 @@ public class ModiferArticleController implements Initializable {
     private ImageView fxidImageViewArticle;
     @FXML
     private Label fxIdArticle;
+    @FXML
+    private ImageView fxImageArtcleImageView;
+    @FXML
+    private Label fxPathImageArticle;
+    @FXML
+    private Button fxImageArticleButton;
     /**
      * Initializes the controller class.
      */
@@ -83,7 +95,7 @@ public class ModiferArticleController implements Initializable {
                Float Prix = Float.parseFloat(fxPrixArticle.getText());
                String CateogireSelected = fxIdCategorieArticle.getValue();
                String DescriptionArticle = fxDescriptionArticle.getText();
-               String ImageArticle = fxImageArticle.getText();
+               String ImageArticle = fxPathImageArticle.getText();
                Float resmise = Float.parseFloat(fxRemiseArticle.getText());
                Categorie Catego = sp.FindCategorieByName(CateogireSelected);
                int IdCateg = Catego.getId();
@@ -123,6 +135,59 @@ public class ModiferArticleController implements Initializable {
                System.out.println(ex.getMessage());
              }
         });
+       
+        fxImageArticleButton.setOnAction( event -> {
+             try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                
+                
+                // Create a FileChooser object
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Select an Image");
+                
+// Set the initial directory to the user's home directory
+fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+// Add a filter to show only image files
+fileChooser.getExtensionFilters().addAll(
+        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+);
+
+// Show the file chooser dialog and wait for the user to select a file
+File selectedFile = fileChooser.showOpenDialog(stage);
+if (selectedFile != null) {
+    try {
+        // Read the selected image file into a BufferedImage object
+        BufferedImage image = ImageIO.read(selectedFile);
+       
+        
+        
+        // Convert the BufferedImage to a JavaFX Image object
+        Image fxImage = SwingFXUtils.toFXImage(image, null);
+        
+        // Display the image in an ImageView
+        fxImageArtcleImageView.setImage(fxImage);
+        
+        // Save the image to a file
+        String randomString = UUID.randomUUID().toString();
+        String outputPath = "C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/Back/images/CategorieImages/"+randomString+".jpg";
+        File outputFile = new File(outputPath);
+        fxPathImageArticle.setText("Back/images/CategorieImages/"+randomString+".jpg");
+        ImageIO.write(image, "jpg", outputFile);
+    } catch (IOException ex) {
+        ex.getMessage();
+    }
+}
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
+        });
+        
     }    
 
     @FXML
@@ -147,12 +212,15 @@ public class ModiferArticleController implements Initializable {
        fxRemiseArticle.setText(message);
    }
    public void setImage(Image img){
-       fxidImageViewArticle.setImage(img);
+       fxImageArtcleImageView.setImage(img);
    }
    public void setCategorie(String message){
        fxIdCategorieArticle.setValue(message);
    }
    public void setIdArticle(String message){
       fxIdArticle.setText(message);
+   }
+   public void setPathImage(String message){
+       fxPathImageArticle.setText(message);
    }
 }
