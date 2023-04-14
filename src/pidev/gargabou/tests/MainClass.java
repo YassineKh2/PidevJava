@@ -42,9 +42,10 @@ public class MainClass {
        // System.out.println(acd.afficherAdresse());
      //acd.modifierAdresse(27, A1);
        // acd.supprimerAdresse(25);
+     //   System.out.println(acd.afficherseulAdresse(28));
        ////////////////////////
-       Organisateur O1 = new Organisateur(7,"javaorgupdate",98931,50);
-      ocd.ajouterOrganisateur(O1);
+       //Organisateur O1 = new Organisateur(7,"javaorgupdate",98931,50);
+     // ocd.ajouterOrganisateur(O1);
      //  System.out.println(ocd.afficherAdresse()); 
     // ocd.modifierorganisateur(11, O1);
  //ocd.supprimerOrganisateur(15);

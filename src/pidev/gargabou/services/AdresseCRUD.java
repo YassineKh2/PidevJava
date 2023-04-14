@@ -59,14 +59,38 @@ public class AdresseCRUD {
                  A.setGouvernorat(rs.getString("gouvernorat"));
                  myList.add(A);
              }
-             
+             System.out.println("adresses lit");
             
          } catch (SQLException ex) {
              System.out.println(ex.getMessage());
          } 
          return myList;
     }
-    
+    public Adresse afficherseulAdresse(int id){
+        
+         Adresse A = new Adresse();
+        String requete = "SELECT * FROM adresse WHERE id="+id;
+           try {   
+              
+              Statement st = cnx2.createStatement();
+            
+             ResultSet rs = st.executeQuery(requete);
+              while (rs.next()){
+                  
+             A.setId(rs.getInt("id"));
+             A.setNomRue(rs.getString("nom_rue"));
+             A.setNumRue(rs.getInt("num_rue"));
+             A.setCodePostal(rs.getInt("code_postal"));
+             A.setGouvernorat(rs.getString("gouvernorat"));
+                
+              }
+              
+         } catch (SQLException ex) {
+               System.out.println(ex.getMessage());
+         }
+        return A;
+    }
+       
     public void modifierAdresse(int id ,Adresse A){
          try {
              String requete ="UPDATE adresse SET `nom_rue`=?, `num_rue`=?, `code_postal`=?, `gouvernorat`=? WHERE id=? ";
