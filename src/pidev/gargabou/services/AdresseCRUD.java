@@ -59,7 +59,7 @@ public class AdresseCRUD {
                  A.setGouvernorat(rs.getString("gouvernorat"));
                  myList.add(A);
              }
-             System.out.println("adresses lit");
+             System.out.println("adresses lu !");
             
          } catch (SQLException ex) {
              System.out.println(ex.getMessage());

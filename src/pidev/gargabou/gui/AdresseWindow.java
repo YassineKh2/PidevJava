@@ -27,7 +27,7 @@ public class AdresseWindow extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("AfficherAdresse.fxml"));
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Ajouter Evenement");
+            primaryStage.setTitle("Afficher adresse");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.gargabou.dashboard;
+package pidev.gargabou.gui;
 
+import com.jfoenix.controls.JFXButton;
 import com.sun.javafx.geom.BaseBounds;
 import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.jmx.MXNodeAlgorithm;
@@ -23,14 +24,17 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import pidev.gargabou.entites.Adresse;
-import pidev.gargabou.gui.AfficherAdresseController;
+import pidev.gargabou.gui.adresse.ItemAdresseController;
 import pidev.gargabou.services.AdresseCRUD;
 
 /**
@@ -53,6 +57,12 @@ public class HomeController implements Initializable {
     
     private List<Adresse> adresses;
     AdresseCRUD acd = new AdresseCRUD();
+    @FXML
+    private JFXButton btevenement;
+    @FXML
+    private JFXButton btadresse;
+    @FXML
+    private JFXButton btorganisateur;
     
     @FXML
     private void handleButtonAction(MouseEvent event) {        
@@ -61,8 +71,20 @@ public class HomeController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+       btadresse.setOnAction( event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("adresse/HomeAdresse.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+               
+        });
         
     }    
     
@@ -85,43 +107,42 @@ public class HomeController implements Initializable {
         }  
     }
     
-    @FXML
-    private void ajoutAdresse(){
-        pnl_scroll.getChildren().clear();
-        try {
-            Node[] nodes = new Node[1] ;
-            nodes[0] = (Node)FXMLLoader.load(getClass().getResource("../gui/NewAdresse.fxml"));
-             pnl_scroll.getChildren().add(nodes[0]);
-        } catch (IOException ex) {
-            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        } 
+//    @FXML
+//    private void ajoutAdresse(){
+//        pnl_scroll.getChildren().clear();
+//        try {
+//            Node[] nodes = new Node[1] ;
+//            nodes[0] = (Node)FXMLLoader.load(getClass().getResource("NewAdresse.fxml"));
+//             pnl_scroll.getChildren().add(nodes[0]);
+//        } catch (IOException ex) {
+//            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        } 
         
-      @FXML
-     private void AfficherAdresse()
-    {
-        pnl_scroll.getChildren().clear();
-        List<Adresse> adresses =acd.afficherAdresse();
-         Node[] nodes = new Node[adresses.size()] ;
-         try {
-         for (int i = 0; i < adresses.size(); i++) {
-             Adresse adresse = adresses.get(i);  
-            
-        System.out.println(adresse);
-             FXMLLoader fxmlLoader=new FXMLLoader(); 
-             fxmlLoader.setLocation(getClass().getResource("../gui/AfficherAdresse.fxml"));              
-             VBox adresseBox = fxmlLoader.load();
-      //  System.out.println(adresse);
-             AfficherAdresseController afficheradressecontroller = fxmlLoader.getController();
-             afficheradressecontroller.afficheradresses(adresse);
-             gridcontainer.add(adresseBox, 0, i);
-             GridPane.setMargin(adresseBox, new Insets(20));
-         }
-        
-         } catch (IOException ex) {
-             System.out.println(ex.getMessage());      
-         }
-        
+//     private void AfficherAdresse(){
+//    
+//        pnl_scroll.getChildren().clear();
+//        List<Adresse> adresses =acd.afficherAdresse();
+//         Node[] nodes = new Node[adresses.size()] ;
+//         try {
+//         for (int i = 0; i < adresses.size(); i++) {
+//             Adresse adresse = adresses.get(i);  
+//            
+//      
+//             FXMLLoader fxmlLoader=new FXMLLoader(); 
+//             fxmlLoader.setLocation(getClass().getResource("AfficherAdresse.fxml"));              
+//             VBox adresseBox = fxmlLoader.load();
+//     
+//             ItemAdresseController afficheradressecontroller = fxmlLoader.getController();
+//             afficheradressecontroller.afficheradresses(adresse);
+//             gridcontainer.add(adresseBox, 0, i);
+//             GridPane.setMargin(adresseBox, new Insets(20));
+//         }
+//        
+//         } catch (IOException ex) {
+//             System.out.println(ex.getMessage());      
+//         }
+//        
         
         
 //        Node [] nodes = new  Node[1];
@@ -137,6 +158,11 @@ public class HomeController implements Initializable {
 //            }
 //           
 //        }  
+//    }
+
+    @FXML
+    private void ajoutAdresse(ActionEvent event) {
     }
+     
     
 }
