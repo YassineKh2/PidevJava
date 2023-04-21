@@ -14,7 +14,7 @@ import java.util.Objects;
 public class User {
     private int id;
     private String email;
-    //private array $roles = []; ?? idk how to do this
+    private String roles ; 
     private String password;
     private String nom;
     private String prenom;
@@ -40,6 +40,52 @@ public class User {
     
 
     public User() {
+    }
+
+    public User(String email, String nom, String prenom, String PseudoUtilisateur) {
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
+    public User(String email, String password, String nom, String prenom, String PseudoUtilisateur) {
+        this.email = email;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
+    public User(String email, String roles, String password, String nom, String prenom, int numero, String image, String PseudoUtilisateur) {
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.image = image;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
+    public User(int id, String email, String roles, String password, String nom, String prenom, int numero, String image, String PseudoUtilisateur) {
+        this.id = id;
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.image = image;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     public User(String email, String password, String nom, String prenom, int numero, String image, Boolean status, String reset_token, String PseudoUtilisateur) {
