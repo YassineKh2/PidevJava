@@ -1,0 +1,15 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 21 avr. 2023, 05:18:01
+    Author     : alisl
+*/
+
+.head-background
+{
+    -fx-background-color: linear-gradient(to left,#4daea7
+ ,#56E0E0
+);
+}
