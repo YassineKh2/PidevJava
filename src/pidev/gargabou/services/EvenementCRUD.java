@@ -31,20 +31,18 @@ public class EvenementCRUD {
         try {
             java.util.Date javaDate =  E.getDateEvenement();
             java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
-            String requete = "INSERT INTO evenement( organisateur_id, nom_evenement, date_evenement, nombre_participant_evenement, prix_evenement, type_evenement, adresse_id, imageevenement, numberoflikes, description, places_restantes)"
-                    + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO evenement( organisateur_id, nom_evenement, date_evenement, nombre_participant_evenement, prix_evenement, type_evenement, imageevenement, description,places_restantes)"
+                    + " VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx2.prepareStatement(requete);
             pst.setString(1,Integer.toString(E.getIdOrganisateur()));
             pst.setString(2, E.getNomEvenement());
             pst.setDate(3,mySQLDate);
             pst.setString(4, Integer.toString(E.getNombreParticipantEvenement()));
             pst.setInt(5,E.getPrixEvenement());      
-            pst.setString(6, E.getTypeEvenement());
-            pst.setString(7, Integer.toString(E.getIdAdresse()));
-            pst.setString(8, E.getImageevenement());
-            pst.setString(9, Integer.toString(E.getNumberoflikes()));
-            pst.setString(10, E.getDescription());
-            pst.setString(11, Integer.toString(E.getPlacesRestantes()));
+            pst.setString(6, E.getTypeEvenement());       
+            pst.setString(7, E.getImageevenement());
+            pst.setString(8, E.getDescription());
+            pst.setString(9,Integer.toString(E.getNombreParticipantEvenement()));
             pst.executeUpdate();
             System.out.println("votre evenement est ajouté");        
         } catch (SQLException ex) {
@@ -75,6 +73,7 @@ public class EvenementCRUD {
                 E.setPlacesRestantes(rs.getInt("places_restantes"));
                  myList.add(E);
             }
+            System.out.println("evenement lu !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -83,9 +82,9 @@ public class EvenementCRUD {
 
     public void modifierEvenement(int id,Evenement E){
         try {
-            java.util.Date javaDate = new java.util.Date();
+            java.util.Date javaDate =  E.getDateEvenement();
             java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
-            String requete = "UPDATE `evenement` SET `organisateur_id`=?,`nom_evenement`=?,`date_evenement`=?,`nombre_participant_evenement`=?,`prix_evenement`=?,`type_evenement`=?,`imageevenement`=?,`numberoflikes`=?,`description`=?,`places_restantes`=? WHERE id=?";
+            String requete = "UPDATE `evenement` SET `organisateur_id`=?,`nom_evenement`=?,`date_evenement`=?,`nombre_participant_evenement`=?,`prix_evenement`=?,`type_evenement`=?,`imageevenement`=?,`description`=? WHERE id=?";
             PreparedStatement pst = cnx2.prepareStatement(requete);
             pst.setString(1,Integer.toString(E.getIdOrganisateur()));
             pst.setString(2, E.getNomEvenement());
@@ -95,10 +94,10 @@ public class EvenementCRUD {
             pst.setString(6, E.getTypeEvenement());
             
             pst.setString(7, E.getImageevenement());
-            pst.setString(8, Integer.toString(E.getNumberoflikes()));
-            pst.setString(9, E.getDescription());
-            pst.setString(10, Integer.toString(E.getPlacesRestantes()));
-            pst.setString(11, Integer.toString(id));
+           
+            pst.setString(8, E.getDescription());
+         
+            pst.setString(9, Integer.toString(id));
             pst.executeUpdate();
             System.out.println("votre evenement est mis a jour");        
         } catch (SQLException ex) {

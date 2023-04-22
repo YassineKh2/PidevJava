@@ -39,9 +39,53 @@ public class OrganisateurCRUD {
                 System.out.println(ex.getMessage());
         }
     }
-         
+    
+    public Organisateur findorganisateurbyid(int id){
+        Organisateur O = new Organisateur();
+        try {
+        String requete = "SELECT * FROM `organisateur` WHERE id = '" + id + "'";
+        Statement st = cnx2.createStatement();
+        ResultSet rs = st.executeQuery(requete);
+        
+        while (rs.next()) {
+            
+                 O.setId(rs.getInt("id"));
+                 O.setIdAdresse(rs.getInt("adresse_id"));
+                 O.setNomOrganisateur(rs.getString("nom_organisateur"));
+                 O.setNumTelOrganisateur(rs.getInt("num_tel_organisateur"));
+                 O.setPourcentageRevenuOrganisateur(rs.getFloat("pourcentage_revenu_organisateur"));
+                
+            
+        } 
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+         return O;
+    }
+     public Organisateur findorganisateurbyname(String orgname){
+         Organisateur O = new Organisateur();
+         try {
+        String requete = "SELECT * FROM `organisateur` WHERE nom_organisateur = '" + orgname + "'";
+        Statement st = cnx2.createStatement();
+        ResultSet rs = st.executeQuery(requete);
+        
+        while (rs.next()) {
+            
+                 O.setId(rs.getInt("id"));
+                 O.setIdAdresse(rs.getInt("adresse_id"));
+                 O.setNomOrganisateur(rs.getString("nom_organisateur"));
+                 O.setNumTelOrganisateur(rs.getInt("num_tel_organisateur"));
+                 O.setPourcentageRevenuOrganisateur(rs.getFloat("pourcentage_revenu_organisateur"));
+                
+            
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+         return O;
+     }    
        
-    public List<Organisateur> afficherAdresse(){
+    public List<Organisateur> afficherOrganisateur(){
          List<Organisateur> myList =new ArrayList<>();
          try {
            

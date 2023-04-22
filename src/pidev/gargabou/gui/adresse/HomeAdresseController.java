@@ -46,16 +46,32 @@ public class HomeAdresseController implements Initializable {
     private JFXButton btretour;
     @FXML
     private GridPane gridcontainer;
+    @FXML
+    private JFXButton btadresse;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btadresse.setOnAction( event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+               
+        });
         
         btevenement.setOnAction( event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../evenement/HomeEvenement.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -69,7 +85,7 @@ public class HomeAdresseController implements Initializable {
         });
         btorganisateur.setOnAction( event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOrganisateur.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -98,7 +114,7 @@ public class HomeAdresseController implements Initializable {
             }
                
         });
-        btretour.setOnAction( event -> {
+        btretour.setOnAction( event -> { 
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../Home.fxml"));
                 Parent root = loader.load(); // load the new FXML file
@@ -116,17 +132,17 @@ public class HomeAdresseController implements Initializable {
     }    
 private void refreshNodes()
     {
-        pnl_scroll.getChildren().clear();
+        
         AdresseCRUD acd = new AdresseCRUD();
         
         ArrayList<Adresse> Adresses = (ArrayList) acd.afficherAdresse();
-        
-        System.out.println();
-        Node [] nodes = new  Node[Adresses.size()];
-        
+                
+      //  Node [] nodes = new  Node[Adresses.size()];
+        pnl_scroll.getChildren().clear();
         for(int i = 0; i<Adresses.size(); i++)
         {
             try {
+               
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ItemAdresse.fxml"));
                 Node node = (Node) loader.load();
                 ItemAdresseController controller = loader.getController();

@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.evenement.NewEventController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="623.0" prefWidth="1271.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.evenement.ModifierEvenementController">
    <children>
       <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -175,7 +175,7 @@
       </Pane>
       <HBox alignment="CENTER" layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
          <children>
-            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="36.0" prefWidth="260.0" text="Ajouter Evenement">
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="36.0" prefWidth="278.0" text="Modifier Evenement">
                <font>
                   <Font name="Bell MT Bold" size="30.0" />
                </font>
@@ -204,7 +204,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="ajouterevenement" defaultButton="true" layoutX="580.0" layoutY="550.0" mnemonicParsing="false" text="Ajouter Evenement">
+      <Button fx:id="modifierevenement" defaultButton="true" layoutX="580.0" layoutY="550.0" mnemonicParsing="false" text="Modifer Evenement" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="470.0" AnchorPane.topAnchor="550.0">
          <font>
             <Font size="22.0" />
          </font>
@@ -217,27 +217,27 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="tfimageevent" editable="false" layoutX="684.0" layoutY="379.0" prefHeight="31.0" prefWidth="260.0" />
+      <TextField fx:id="tfimageevent" editable="false" layoutX="684.0" layoutY="379.0" prefHeight="31.0" prefWidth="259.0" />
       <Label layoutX="343.0" layoutY="348.0" text="Type Evenement">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <TextField fx:id="typeevenement" layoutX="684.0" layoutY="348.0" prefHeight="31.0" prefWidth="331.0" />
-      <Label layoutX="343.0" layoutY="441.0" text="Description">
+      <Label layoutX="341.0" layoutY="439.0" text="Description">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <DatePicker fx:id="tfdateevenement" layoutX="684.0" layoutY="256.0" prefHeight="31.0" prefWidth="331.0" />
       <ImageView fx:id="IVimage" fitHeight="246.0" fitWidth="235.0" layoutX="1028.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="tfdescriptionevent" layoutX="684.0" layoutY="441.0" prefHeight="79.0" prefWidth="331.0" />
+      <TextArea fx:id="tfdescriptionevent" layoutX="684.0" layoutY="440.0" prefHeight="79.0" prefWidth="331.0" />
       <Button fx:id="importimageevent" layoutX="937.0" layoutY="379.0" mnemonicParsing="false" text="importer" />
-      <Label layoutX="344.0" layoutY="411.0" text="Organisateur">
+      <Label layoutX="341.0" layoutY="409.0" text="Organisateur">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="fxidorganisateur" layoutX="684.0" layoutY="410.0" prefHeight="31.0" prefWidth="331.0" />
+      <ComboBox fx:id="fxidorganisateur" layoutX="684.0" layoutY="409.0" prefHeight="31.0" prefWidth="331.0" />
    </children>
 </AnchorPane>

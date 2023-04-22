@@ -49,6 +49,8 @@ public class NewAdresseController implements Initializable {
     private TextField tfcodepostal;
     @FXML
     private Button ajouterAdresse;
+    @FXML
+    private JFXButton btadresse;
 
     /**
      * Initializes the controller class.
@@ -68,7 +70,48 @@ public class NewAdresseController implements Initializable {
                  System.out.println(ex.getMessage());
             }
        });
-       
+        btorganisateur.setOnAction( event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+               
+        });
+        btevenement.setOnAction( event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../evenement/HomeEvenement.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+               
+        });
+       btadresse.setOnAction( event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+               
+        });
        ajouterAdresse.setOnAction(event -> {
             try {
             String nomrue = tfnomrue.getText();

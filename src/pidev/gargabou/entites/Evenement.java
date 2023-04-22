@@ -45,7 +45,16 @@ public class Evenement {
         this.description = description;
         this.PlacesRestantes = PlacesRestantes;
     }
-
+ public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement,int idOrganisateur, String Imageevenement, String description) {
+        this.NomEvenement = NomEvenement;
+        this.DateEvenement = DateEvenement;
+        this.NombreParticipantEvenement = NombreParticipantEvenement;
+        this.PrixEvenement = PrixEvenement;
+        this.TypeEvenement = TypeEvenement;
+         this.idOrganisateur = idOrganisateur;
+        this.Imageevenement = Imageevenement;      
+        this.description = description;
+    }
     public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement, int idAdresse, int idOrganisateur, String Imageevenement, int numberoflikes, String description, int PlacesRestantes) {
         this.NomEvenement = NomEvenement;
         this.DateEvenement = DateEvenement;
