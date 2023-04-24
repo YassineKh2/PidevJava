@@ -24,6 +24,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.gargabou.utils.DataSource;
+import pidev.gargabou.utils.passwordHasher;
 
 /**
  * FXML Controller class
@@ -67,8 +68,8 @@ public class AuthentificationController implements Initializable {
     private Alert alert;
     private ResultSet result;
   @FXML
-    private void loginUser(ActionEvent event) throws SQLException {
-          String selectData = "SELECT * FROM user WHERE email = ?and password = ? ";
+    private void loginUser(ActionEvent event) throws SQLException, IOException {
+          String selectData = "SELECT * FROM user WHERE email = ? ";
         try {
             if (tf_Email.getText().isEmpty() || tf_Password.getText().isEmpty()) {
                 alert = new Alert(Alert.AlertType.ERROR);
@@ -80,36 +81,37 @@ public class AuthentificationController implements Initializable {
              else{
                 PreparedStatement ps = connect.getCnx().prepareStatement(selectData);
                 ps.setString(1, tf_Email.getText());
-                ps.setString(2, tf_Password.getText());
+              
                 ResultSet result = ps.executeQuery();
-                if(result.next()){
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully Login");
-                    alert.showAndWait();
-                    
-                   buttom_login.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("homeF.fxml"));
-                    Stage stage = new Stage();
-                    Scene scene = new Scene(root);
-                    
+                if (result.next()) {
+                    String hashedPassword = result.getString("password");
+                    if (hashedPassword != null && passwordHasher.verifyPassword(tf_Password.getText(), hashedPassword)) {
 
-                    stage.setScene(scene);
-                    stage.show();
-                    
-                 
-                }else{
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("fausse email/Password");
-                    alert.showAndWait();
-                }
-            }
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Successfully Login");
+                        alert.showAndWait();
+
+                        buttom_login.getScene().getWindow().hide();
+                        Parent root = FXMLLoader.load(getClass().getResource("homeF.fxml"));
+                        Stage stage = new Stage();
+                        Scene scene = new Scene(root);
+
+                        stage.setScene(scene);
+                        stage.show();
+
+                    } else {
+                        alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("fausse email/Password");
+                        alert.showAndWait();
+                    }
+                }}
             }catch(IOException | SQLException e){}
-        
-    }
+
+        }
     }
 
     

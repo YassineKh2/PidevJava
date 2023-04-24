@@ -25,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
+import pidev.gargabou.utils.passwordHasher;
 
 /**
  * FXML Controller class
@@ -101,6 +102,7 @@ public class InscriTController implements Initializable {
         String Licence = tf_numlic.getText();
         String role = "[\"ROLE_THERAPIST\"]";
         String cpass = tf_mdp1.getText();
+        String hashedPassword = passwordHasher.hashPassword(password);
         
          if (nom.isEmpty()||prenom.isEmpty()||email.isEmpty()||specialite.isEmpty()||password.isEmpty()||cpass.isEmpty()||numero.isEmpty()||Licence.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -188,7 +190,7 @@ public class InscriTController implements Initializable {
         
         
         
-        User u = new User(email,role, password, nom, prenom, numero, Licence, specialite);
+        User u = new User(email,role, hashedPassword, nom, prenom, numero, Licence, specialite);
           userCRUD ucd =new userCRUD() ;
         ucd.ajouterT(u);
          FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));

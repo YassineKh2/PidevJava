@@ -30,6 +30,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
+import pidev.gargabou.utils.passwordHasher;
 
 
 /**
@@ -114,6 +115,7 @@ public class InscriPController implements Initializable {
         String numero = tf_num.getText();
         String role = "[\"ROLE_PATIENT\"]";
         String cpass = tf_mdp1.getText();
+        String hashedPassword = passwordHasher.hashPassword(password);
         
     
             if (nom.isEmpty()||prenom.isEmpty()||email.isEmpty()||PseudoUtilisateur.isEmpty()||password.isEmpty()||cpass.isEmpty()||numero.isEmpty()) {
@@ -190,7 +192,7 @@ public class InscriPController implements Initializable {
             }
  
              
-        User u =new User(email,role,password,nom,prenom,numero,PseudoUtilisateur);
+        User u =new User(email,role,hashedPassword,nom,prenom,numero,PseudoUtilisateur);
         userCRUD ucd =new userCRUD() ;
         ucd.ajouter(u);
          FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
