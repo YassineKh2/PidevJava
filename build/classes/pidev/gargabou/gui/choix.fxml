@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="534.0" styleClass="right-form" stylesheets="@logindesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.ChoixController">
+   <children>
+      <ImageView fitHeight="401.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../img/pexels-cottonbro-studio-4100670.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="426.0" fitWidth="267.0" layoutX="400.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-25.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../img/therapist%20pic.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="172.0" layoutY="26.0" text="JE SUIS UN" textFill="#007299">
+         <font>
+            <Font name="Tahoma Bold" size="33.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="77.0" layoutY="349.0" onAction="#switchtoPatient" text="PATIENT">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink layoutX="329.0" layoutY="349.0" onAction="#switchtoT" text="THERAPIST">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Hyperlink>
+   </children>
+</AnchorPane>

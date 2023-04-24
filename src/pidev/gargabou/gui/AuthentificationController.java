@@ -18,35 +18,30 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import pidev.gargabou.utils.DataSource;
-import pidev.gargabou.utils.changeScene;
-
 
 /**
  * FXML Controller class
  *
  * @author alisl
  */
-public class LoginAdminController implements Initializable {
+public class AuthentificationController implements Initializable {
 
     @FXML
-    private AnchorPane main_form;
+    private TextField tf_Email;
     @FXML
-    private TextField username;
+    private PasswordField tf_Password;
     @FXML
-    private PasswordField password;
+    private Button buttom_login;
     @FXML
-    private Button lognBtn;
-private DataSource connect= DataSource.getInstance();
-    private Alert alert;
-    private ResultSet result;
-
+    private Hyperlink li_oubliee;
+    @FXML
+    private Hyperlink li_register;
 
     /**
      * Initializes the controller class.
@@ -56,31 +51,46 @@ private DataSource connect= DataSource.getInstance();
         // TODO
     }    
 
+     private Stage stage;
+    private Scene scene;
+    private Parent root;
+    
     @FXML
-    private void loginAdmin(ActionEvent event) throws SQLException {
-          String selectData = "SELECT * FROM admin WHERE nom_admin = ? and password_admin = ?";
+    private void switchtosignin(ActionEvent event) throws IOException {
+        root=FXMLLoader.load(getClass().getResource("choix.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene= new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    private DataSource connect= DataSource.getInstance();
+    private Alert alert;
+    private ResultSet result;
+  @FXML
+    private void loginUser(ActionEvent event) throws SQLException {
+          String selectData = "SELECT * FROM user WHERE email = ?and password = ? ";
         try {
-            if (username.getText().isEmpty() || password.getText().isEmpty()) {
-                alert = new Alert(AlertType.ERROR);
+            if (tf_Email.getText().isEmpty() || tf_Password.getText().isEmpty()) {
+                alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setHeaderText(null);
-                alert.setContentText("entrer votre nom et mot de pass");
+                alert.setContentText("entrer votre email et mot de pass");
                 alert.showAndWait();
             } 
              else{
                 PreparedStatement ps = connect.getCnx().prepareStatement(selectData);
-                ps.setString(1, username.getText());
-                ps.setString(2, password.getText());
+                ps.setString(1, tf_Email.getText());
+                ps.setString(2, tf_Password.getText());
                 ResultSet result = ps.executeQuery();
                 if(result.next()){
-                    alert = new Alert(AlertType.INFORMATION);
+                    alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Message");
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Login");
                     alert.showAndWait();
                     
-                   lognBtn.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("homeB.fxml"));
+                   buttom_login.getScene().getWindow().hide();
+                    Parent root = FXMLLoader.load(getClass().getResource("homeF.fxml"));
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
                     
@@ -90,10 +100,10 @@ private DataSource connect= DataSource.getInstance();
                     
                  
                 }else{
-                    alert = new Alert(AlertType.ERROR);
+                    alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setHeaderText(null);
-                    alert.setContentText("Wrong Username/Password");
+                    alert.setContentText("fausse email/Password");
                     alert.showAndWait();
                 }
             }

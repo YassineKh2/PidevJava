@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.AuthentificationController">
+    <children>
+      <BorderPane prefHeight="400.0" prefWidth="599.0">
+         <right>
+            <AnchorPane prefHeight="404.0" prefWidth="313.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="#4daea7" layoutX="89.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'authentifier" textAlignment="CENTER" underline="true">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="tf_Email" layoutX="82.0" layoutY="149.0" onAction="#loginUser" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+                  <PasswordField fx:id="tf_Password" layoutX="82.0" layoutY="201.0" onAction="#loginUser" promptText="Mot De Passe" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+                  
+                                          <Button fx:id="buttom_login" alignment="CENTER" layoutX="95.0" layoutY="281.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="40.0" prefWidth="122.0" style="-fx-background-color: #4daea7; -fx-background-radius: 11;" text="Authentifier">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        
+                     </cursor>
+                  </Button>
+                  <Hyperlink fx:id="li_oubliee" layoutX="43.0" layoutY="332.0" text="Mot de passe oubliée" />
+                  <Hyperlink fx:id="li_register" layoutX="43.0" layoutY="356.0" onAction="#switchtosignin" text="S'Inscrire" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="214.60000000000002" />
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+            <AnchorPane prefHeight="405.0" prefWidth="286.0" style="-fx-background-color: #56E0E0;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="370.0" fitWidth="286.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/logo-no-background2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+    
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.InscriTController">
+    <children>
+      <AnchorPane fx:id="mdp1" layoutX="398.0" prefHeight="500.0" prefWidth="402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#4daea7" layoutX="133.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire" underline="true" wrappingWidth="112.5921630859375">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tf_nom" layoutX="30.0" layoutY="76.0" onAction="#ajouterTherapist" promptText="nom" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextField>
+            <TextField fx:id="tf_prenom" layoutX="201.0" layoutY="76.0" onAction="#ajouterTherapist" promptText="prenom" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="tf_email" layoutX="30.0" layoutY="130.0" onAction="#ajouterTherapist" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="tf_mdp" layoutX="201.0" layoutY="130.0" onAction="#ajouterTherapist" promptText="Mot De Passe" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="tf_mdp1" layoutX="30.0" layoutY="183.0" onAction="#ajouterTherapist" promptText="Confirmer Mot De Passe" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="tf_spetialite" layoutX="201.0" layoutY="183.0" onAction="#ajouterTherapist" promptText="spécialité" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="tf_num" layoutX="30.0" layoutY="236.0" onAction="#ajouterTherapist" promptText="Numero" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="tf_numlic" layoutX="201.0" layoutY="236.0" onAction="#ajouterTherapist" promptText="Numero License" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="sinscri" alignment="CENTER" layoutX="135.0" layoutY="409.0" mnemonicParsing="false" onAction="#ajouterTherapist" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #4daea7; -fx-background-radius: 11;" text="S'Inscire">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Hyperlink fx:id="blogin" layoutX="14.0" layoutY="452.0" onAction="#switchtologin" text="S'Authentifier" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="500.0" prefWidth="402.0" style="-fx-background-color: #56E0E0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="303.0" fitWidth="260.0" layoutX="71.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="117.57998657226562" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="71.39999999999998" AnchorPane.topAnchor="118.0">
+               <image>
+                  <Image url="@../../../img/logo-no-background2.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="bchoix" alignment="BOTTOM_LEFT" layoutY="443.0" onAction="#switchtochoix" prefHeight="42.0" prefWidth="150.0" text=" Return" AnchorPane.bottomAnchor="14.600000000000001" AnchorPane.leftAnchor="0.0">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

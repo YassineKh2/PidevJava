@@ -5,7 +5,7 @@
 package pidev.gargabou.gui;
 
 import com.jfoenix.controls.JFXButton;
-import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -15,7 +15,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -25,21 +24,25 @@ import javafx.stage.Stage;
  *
  * @author alisl
  */
-public class HomeBController implements Initializable {
+public class HomeFController implements Initializable {
 
     @FXML
     private VBox pnl_scroll;
 
     /**
      * Initializes the controller class.
-     */private double x = 0;
-    private double y = 0;
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+
     @FXML
     private JFXButton logout;
     
     public void lbara() {
 
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Message");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want to logout?");
@@ -48,7 +51,7 @@ public class HomeBController implements Initializable {
             if (option.get().equals(ButtonType.OK)) {
 
                 logout.getScene().getWindow().hide();
-                Parent root = FXMLLoader.load(getClass().getResource("loginAdmin.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("authentification.fxml"));
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
 
@@ -60,14 +63,9 @@ public class HomeBController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
 
     }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
     
 }

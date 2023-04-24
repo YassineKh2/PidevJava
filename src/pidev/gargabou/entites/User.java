@@ -18,8 +18,13 @@ public class User {
     private String password;
     private String nom;
     private String prenom;
-    private int numero;
+    private String numero;
+    private int numerolicente;
+    public String licence;
     private String image;
+     private String specialite;
+     private String photolicence ;
+     
     private Boolean status;
     private String reset_token;
     private String PseudoUtilisateur;
@@ -37,9 +42,81 @@ public class User {
     private ArrayList<CommantairePublication> CommantairePublications;
     //Relation reactionPublications // Many to 1
     private ArrayList<ReactionPublication> ReactionPublications;
+
+    public String getLicence() {
+        return licence;
+    }
+
+    public void setLicence(String licence) {
+        this.licence = licence;
+    }
+
+    public String getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
+ 
+    public int getNumerolicente() {
+        return numerolicente;
+    }
+
+    public void setNumerolicente(int numerolicente) {
+        this.numerolicente = numerolicente;
+    }
+
+    public String getPhotolicence() {
+        return photolicence;
+    }
+
+    public void setPhotolicence(String photolicence) {
+        this.photolicence = photolicence;
+    }
+
+    public User(String email, String password, String nom, String prenom, String numero, int numerolicente, String specialite) {
+        this.email = email;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.numerolicente = numerolicente;
+        this.specialite = specialite;
+    }
+
+    public User(String email, String roles, String password, String nom, String prenom, String numero, int numerolicente, String specialite) {
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.numerolicente = numerolicente;
+        this.specialite = specialite;
+    }
     
 
     public User() {
+    }
+
+    public User(String email, String password, String nom, String prenom, String numero, String PseudoUtilisateur) {
+        this.email = email;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
+    public User(String email, String roles, String password, String nom, String prenom, String numero, String PseudoUtilisateur) {
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.PseudoUtilisateur = PseudoUtilisateur;
     }
 
     public User(String email, String nom, String prenom, String PseudoUtilisateur) {
@@ -56,19 +133,20 @@ public class User {
         this.prenom = prenom;
         this.PseudoUtilisateur = PseudoUtilisateur;
     }
+    
 
-    public User(String email, String roles, String password, String nom, String prenom, int numero, String image, String PseudoUtilisateur) {
+    public User(String email, String roles, String password, String nom, String prenom, String numero, String Licence, String specialite) {
         this.email = email;
         this.roles = roles;
         this.password = password;
         this.nom = nom;
         this.prenom = prenom;
         this.numero = numero;
-        this.image = image;
-        this.PseudoUtilisateur = PseudoUtilisateur;
+        this.licence = Licence;
+        this.specialite = specialite;
     }
 
-    public User(int id, String email, String roles, String password, String nom, String prenom, int numero, String image, String PseudoUtilisateur) {
+    public User(int id, String email, String roles, String password, String nom, String prenom, String numero, String image, String PseudoUtilisateur) {
         this.id = id;
         this.email = email;
         this.roles = roles;
@@ -88,7 +166,7 @@ public class User {
         this.roles = roles;
     }
 
-    public User(String email, String password, String nom, String prenom, int numero, String image, Boolean status, String reset_token, String PseudoUtilisateur) {
+    public User(String email, String password, String nom, String prenom, String numero, String image, Boolean status, String reset_token, String PseudoUtilisateur) {
         this.email = email;
         this.password = password;
         this.nom = nom;
@@ -100,7 +178,7 @@ public class User {
         this.PseudoUtilisateur = PseudoUtilisateur;
     }
 
-    public User(int id, String email, String password, String nom, String prenom, int numero, String image, Boolean status, String reset_token, String PseudoUtilisateur) {
+    public User(int id, String email, String password, String nom, String prenom, String numero, String image, Boolean status, String reset_token, String PseudoUtilisateur) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -113,7 +191,7 @@ public class User {
         this.PseudoUtilisateur = PseudoUtilisateur;
     }
 
-    public User(int id, String email, String password, String nom, String prenom, int numero, String image, Boolean status, String reset_token, String PseudoUtilisateur, int idFormation, int Session, ArrayList<Payment> Payments, ArrayList<Rating> Ratings, ArrayList<Publication> Publications, ArrayList<CommantairePublication> CommantairePublications, ArrayList<ReactionPublication> ReactionPublications) {
+    public User(int id, String email, String password, String nom, String prenom, String numero, String image, Boolean status, String reset_token, String PseudoUtilisateur, int idFormation, int Session, ArrayList<Payment> Payments, ArrayList<Rating> Ratings, ArrayList<Publication> Publications, ArrayList<CommantairePublication> CommantairePublications, ArrayList<ReactionPublication> ReactionPublications) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -174,11 +252,11 @@ public class User {
         this.prenom = prenom;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -278,7 +356,7 @@ public class User {
         hash = 71 * hash + Objects.hashCode(this.password);
         hash = 71 * hash + Objects.hashCode(this.nom);
         hash = 71 * hash + Objects.hashCode(this.prenom);
-        hash = 71 * hash + this.numero;
+        hash = 71 * hash + Objects.hashCode(this.numero);
         hash = 71 * hash + Objects.hashCode(this.image);
         hash = 71 * hash + Objects.hashCode(this.status);
         hash = 71 * hash + Objects.hashCode(this.reset_token);

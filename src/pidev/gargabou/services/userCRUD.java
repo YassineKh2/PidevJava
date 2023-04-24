@@ -23,8 +23,20 @@ public class userCRUD implements IServices<User> {
     @Override
     public void ajouter(User u) {
          try {
-            String req = "INSERT INTO `user` (`nom`, `prenom`,`email`,`password`,`PseudoUtilisateur`)"
-                    + " VALUES ('" + u.getNom() + "', '" + u.getPrenom() + "','" + u.getEmail()+ "','" + u.getPassword()+ "','" + u.getPseudoUtilisateur()+ "')";
+            String req = "INSERT INTO `user` (`nom`, `prenom`,`email`,`password`,`numero`,`PseudoUtilisateur`,`roles`)"
+                    + " VALUES ('" + u.getNom() + "', '" + u.getPrenom() + "','" + u.getEmail()+ "','" + u.getPassword()+ "','" + u.getNumero()+ "','" + u.getPseudoUtilisateur()+ "','" + u.getRoles() + "')";
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user created !");
+             } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+       
+    }
+    public void ajouterT(User u) {
+         try {
+            String req = "INSERT INTO `user` (`nom`, `prenom`,`email`,`password`,`numero`,`licence`,`spetialite`,`roles`)"
+                    + " VALUES ('" + u.getNom() + "', '" + u.getPrenom() + "','" + u.getEmail()+ "','" + u.getPassword()+ "','" + u.getNumero()+ "','" + u.getLicence()+ "','" + u.getSpecialite()+ "','" + u.getRoles()+ "')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("user created !");
@@ -41,7 +53,7 @@ public class userCRUD implements IServices<User> {
             ps.setString(1, u.getNom());
              ps.setString(3, u.getEmail());
               ps.setString(4, u.getPassword());
-               ps.setString(5, u.getPseudoUtilisateur());
+             ps.setString(5, u.getPseudoUtilisateur());
             ps.executeUpdate();
                System.out.println("user created !");
         } catch (SQLException ex) {
