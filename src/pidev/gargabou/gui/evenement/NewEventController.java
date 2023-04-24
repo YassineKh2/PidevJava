@@ -36,6 +36,7 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import pidev.gargabou.entites.Evenement;
 import pidev.gargabou.entites.Organisateur;
+import pidev.gargabou.gui.adresse.NewAdresseController;
 import pidev.gargabou.services.EvenementCRUD;
 import pidev.gargabou.services.OrganisateurCRUD;
 
@@ -76,6 +77,10 @@ public class NewEventController implements Initializable {
     private Button importimageevent;
     @FXML
     private ComboBox<String> fxidorganisateur;
+    String outputPath;
+    BufferedImage image;
+    int idevent;
+    String entity="event";
 
     /**
      * Initializes the controller class.
@@ -91,7 +96,7 @@ public class NewEventController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -105,7 +110,7 @@ public class NewEventController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEvenement.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -119,7 +124,7 @@ public class NewEventController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/HomeAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -134,7 +139,7 @@ public class NewEventController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEvenement.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -157,11 +162,20 @@ public class NewEventController implements Initializable {
                 Organisateur org =ocd.findorganisateurbyname(fxidorganisateur.getValue());
                 int idorg = org.getId();
                 Evenement EVT = new Evenement(nom,date,nbrdeparticipant,prixevent,typevent,idorg,pathimag,desc);
-                ecd.ajouterEvenement(EVT);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEvenement.fxml"));
+                idevent =ecd.ajouterEvenement(EVT);
+                File outputFile = new File(outputPath);
+                ImageIO.write(image, "png", outputFile);
+                
+                
+                
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/NewAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                NewAdresseController sendidevent =loader.getController();
+                
+                sendidevent.setidevent(idevent);
+               sendidevent.setentity(entity);
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
                 stage.setScene(scene); // set the new scene as the content of the stage
@@ -176,7 +190,7 @@ public class NewEventController implements Initializable {
               try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("NewEvent.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -199,7 +213,7 @@ File selectedFile = fileChooser.showOpenDialog(stage);
 if (selectedFile != null) {
     try {
         // Read the selected image file into a BufferedImage object
-        BufferedImage image = ImageIO.read(selectedFile);
+         image = ImageIO.read(selectedFile);
        
         
         
@@ -211,10 +225,10 @@ if (selectedFile != null) {
         
         // Save the image to a file
         String randomString = UUID.randomUUID().toString();
-        String outputPath = "C:/Users/omran/Documents/GitHub/3a39-gargabou/public/Back/images/events/"+randomString+".png";
-        File outputFile = new File(outputPath);
+         outputPath = "C:/Users/omran/Documents/GitHub/3a39-gargabou/public/Back/images/events/"+randomString+".png";
+        
         tfimageevent.setText("Back/images/events/"+randomString+".png");
-        ImageIO.write(image, "png", outputFile);
+        
     } catch (IOException ex) {
         ex.getMessage();
     }

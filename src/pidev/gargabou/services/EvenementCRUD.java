@@ -22,12 +22,13 @@ import java.util.ArrayList;
  * @author omran
  */
 public class EvenementCRUD {
+    int ide;
     Connection cnx2 ;
     public EvenementCRUD(){
         cnx2 = MyConnection.getInstance().getCnx();
     }
     
-    public void ajouterEvenement(Evenement E){
+    public int ajouterEvenement(Evenement E){
         try {
             java.util.Date javaDate =  E.getDateEvenement();
             java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
@@ -44,10 +45,17 @@ public class EvenementCRUD {
             pst.setString(8, E.getDescription());
             pst.setString(9,Integer.toString(E.getNombreParticipantEvenement()));
             pst.executeUpdate();
-            System.out.println("votre evenement est ajouté");        
+            Statement st = cnx2.createStatement();
+            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
+             while (rs.next()){
+                 ide=rs.getInt("LAST_INSERT_ID()");
+             }
+            System.out.println("votre evenement est ajouté");   
+           
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        return ide;
     }
      public List<Evenement> afficherEvenements(){
         List<Evenement> myList =new ArrayList<>();
@@ -79,6 +87,19 @@ public class EvenementCRUD {
         }
         return myList ;
     }
+     public void updateadresse(int ide,int ida){
+          try {
+           
+            String requete = "UPDATE `evenement` SET `adresse_id`=? WHERE id=?";
+            PreparedStatement pst = cnx2.prepareStatement(requete);
+            pst.setString(1,Integer.toString(ida));
+            pst.setString(2, Integer.toString(ide));
+             pst.executeUpdate();
+             System.out.println("votre adresse evenement est mis a jour");        
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+     }
 
     public void modifierEvenement(int id,Evenement E){
         try {

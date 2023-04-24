@@ -42,8 +42,7 @@ public class HomeEvenementController implements Initializable {
     private JFXButton btadresse;
     @FXML
     private JFXButton btorganisateur;
-//    @FXML
-//    private VBox pnl_scroll;
+
     @FXML
     private GridPane pnl_scroll;
 
@@ -56,7 +55,7 @@ public class HomeEvenementController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEvenement.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -70,7 +69,7 @@ public class HomeEvenementController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/HomeAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -84,7 +83,7 @@ public class HomeEvenementController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -99,7 +98,7 @@ public class HomeEvenementController implements Initializable {
                 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("NewEvent.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content               
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content               
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node                
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -115,7 +114,7 @@ public class HomeEvenementController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../Home.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -125,6 +124,7 @@ public class HomeEvenementController implements Initializable {
             }
                
         });
+        
         refreshNodes();
     }    
     private void refreshNodes()

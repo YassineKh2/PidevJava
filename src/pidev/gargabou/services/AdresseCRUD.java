@@ -21,11 +21,12 @@ import pidev.gargabou.tools.MyConnection;
  * @author omran
  */
 public class AdresseCRUD {
+    int ida;
      Connection cnx2 ;
     public AdresseCRUD(){
         cnx2 = MyConnection.getInstance().getCnx();
     }
-    public void ajouteradresse(Adresse A){
+    public int ajouteradresse(Adresse A){
          try {
              String requete = "INSERT INTO adresse (`nom_rue`, `num_rue`, `code_postal`, `gouvernorat`)VALUES(?,?,?,?)";
              PreparedStatement pst = cnx2.prepareStatement(requete);
@@ -34,12 +35,18 @@ public class AdresseCRUD {
              pst.setInt(3, A.getCodePostal());
              pst.setString(4, A.getGouvernorat());
              pst.executeUpdate();
+             Statement st = cnx2.createStatement();
+            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
+             while (rs.next()){
+                 ida=rs.getInt("LAST_INSERT_ID()");
+             }
              System.out.println("votre adresse est ajoutée");
+            
          } catch (SQLException ex) {
              System.out.println(ex.getMessage());
          }
         
-         
+      return ida;   
     }
     
     public List<Adresse> afficherAdresse(){

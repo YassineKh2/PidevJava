@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Adresse;
 import pidev.gargabou.services.AdresseCRUD;
+import pidev.gargabou.services.EvenementCRUD;
 
 /**
  * FXML Controller class
@@ -51,6 +52,9 @@ public class NewAdresseController implements Initializable {
     private Button ajouterAdresse;
     @FXML
     private JFXButton btadresse;
+    int ide;
+    int ida;
+    String entity="";
 
     /**
      * Initializes the controller class.
@@ -61,7 +65,7 @@ public class NewAdresseController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -74,7 +78,7 @@ public class NewAdresseController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -88,7 +92,7 @@ public class NewAdresseController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../evenement/HomeEvenement.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -102,7 +106,7 @@ public class NewAdresseController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -120,10 +124,17 @@ public class NewAdresseController implements Initializable {
             String gouvernorat =tfgouvernorat.getText();
             Adresse A =new Adresse(nomrue, numrue, codepostal, gouvernorat);
             AdresseCRUD acd = new AdresseCRUD();
-            acd.ajouteradresse(A);
+            ida=acd.ajouteradresse(A);
+            if(entity == "event"){
+                 EvenementCRUD ecd = new EvenementCRUD();
+                 ecd.updateadresse(ide, ida);
+            }
+           
+                
+            
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -134,7 +145,12 @@ public class NewAdresseController implements Initializable {
 
         });
     }    
-  
+  public void setidevent(int id){
+      this.ide=id;
+  }
+  public void setentity(String msg){
+      this.entity=msg;
+  }
    
     public void reset(){
         tfNomRue.setText("");

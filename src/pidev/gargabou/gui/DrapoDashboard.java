@@ -21,7 +21,7 @@ public class DrapoDashboard extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
         
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,1800,850);
         
         stage.setScene(scene);
         stage.show();

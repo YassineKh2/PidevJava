@@ -7,21 +7,18 @@
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/services/EvenementCRUD.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/evenement/ModifierEvenementController.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/adresse/HomeAdresseController.java</file>
+            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/adresse/ItemAdresseController.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/HomeController.java</file>
-            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/adresse/HomeAdresse.fxml</file>
-            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/entites/Evenement.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/style.css</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/tests/MainClass.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/evenement/ItemEvenementController.java</file>
-            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/evenement/ModifierEvenement.fxml</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/evenement/NewEventController.java</file>
+            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/evenement/ShowEvenementController.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/entites/Adresse.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/evenement/HomeEvenementController.java</file>
-            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/services/OrganisateurCRUD.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/DrapoDashboard.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/adresse/NewAdresseController.java</file>
             <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/FirstWindow.java</file>
-            <file>file:/C:/Users/omran/Documents/GitHub/PidevJava/src/pidev/gargabou/gui/evenement/item-background.css</file>
         </group>
     </open-files>
 </project-private>

@@ -65,7 +65,7 @@ public class ItemAdresseController implements Initializable {
           
           FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
             Parent root = loader.load(); // load the new FXML file
-            Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+            Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
             Node sourceNode = (Node) event.getSource(); // get the source node of the current event
             Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
             Stage stage = (Stage) currentScene.getWindow(); // get the current stage
@@ -82,7 +82,7 @@ public class ItemAdresseController implements Initializable {
         try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
                 ModifierAdresseController Showadresse = loader.getController();
                 Showadresse.setnomadresse(Alnomrue.getText());
