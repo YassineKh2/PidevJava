@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -81,6 +82,7 @@ public class NewEventController implements Initializable {
     BufferedImage image;
     int idevent;
     String entity="event";
+    String pathimag;
 
     /**
      * Initializes the controller class.
@@ -149,6 +151,69 @@ public class NewEventController implements Initializable {
             }
        });
             ajouterevenement.setOnAction(event -> {
+                 if (tfnomevenement.getText().length() < 1 || tfnomevenement.getText().length() > 50) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer un nom valide inferieur a 50 charactere");
+                alert.showAndWait();
+                return;
+            }
+                 try{
+            int Prix = Integer.parseInt(prixevenement.getText());
+              if (Prix < 0 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Prix Invalide");
+                alert.setContentText("Le prix doit etre positive !!");
+                alert.showAndWait();
+                return;
+            } }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("Le prix est invalide !!");
+                alert.showAndWait();
+                return;
+            }
+                try{
+            int nbpart = Integer.parseInt(tfnombreparticipant.getText());
+              if (nbpart < 0 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Le nombre de participant doit etre positive !!");
+                alert.showAndWait();
+                return;
+            } }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("Le nombre est invalide !!");
+                alert.showAndWait();
+                return;
+            }  
+               
+                if (typeevenement.getText().length() < 1 || typeevenement.getText().length() > 20) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer le type d'evenement");
+                alert.showAndWait();
+                return;
+            }
+                LocalDate today=LocalDate.now();
+                 if (tfdateevenement.getValue().isBefore(today) ){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Date");
+                alert.setContentText("La date doit etre supérieur a aujourd'hui");
+                alert.showAndWait();
+                return;
+            }
+                 
+                 if (tfdescriptionevent.getText().length() < 1 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer une description pour l'evenement");
+                alert.showAndWait();
+                return;
+            }
+             
+                
             try {
                 EvenementCRUD ecd = new EvenementCRUD();
                 String nom =tfnomevenement.getText();
@@ -157,16 +222,22 @@ public class NewEventController implements Initializable {
                 int nbrdeparticipant=Integer.parseInt(tfnombreparticipant.getText());
                 int prixevent =Integer.parseInt(prixevenement.getText());
                 String typevent =typeevenement.getText();
-                String pathimag = tfimageevent.getText();
+                if(tfimageevent.getText()!=null){
+                 pathimag = tfimageevent.getText();
+                
+                }else{
+                    pathimag="Back/images/events/NoImageFound.png";
+                }
                 String desc = tfdescriptionevent.getText();
                 Organisateur org =ocd.findorganisateurbyname(fxidorganisateur.getValue());
                 int idorg = org.getId();
                 Evenement EVT = new Evenement(nom,date,nbrdeparticipant,prixevent,typevent,idorg,pathimag,desc);
                 idevent =ecd.ajouterEvenement(EVT);
+                if (outputPath!=null){
                 File outputFile = new File(outputPath);
                 ImageIO.write(image, "png", outputFile);
-                
-                
+                }
+               
                 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/NewAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
@@ -211,7 +282,7 @@ fileChooser.getExtensionFilters().addAll(
 // Show the file chooser dialog and wait for the user to select a file
 File selectedFile = fileChooser.showOpenDialog(stage);
 if (selectedFile != null) {
-    try {
+    
         // Read the selected image file into a BufferedImage object
          image = ImageIO.read(selectedFile);
        
@@ -229,9 +300,7 @@ if (selectedFile != null) {
         
         tfimageevent.setText("Back/images/events/"+randomString+".png");
         
-    } catch (IOException ex) {
-        ex.getMessage();
-    }
+    
 }
             } catch (IOException ex) {
                 ex.getMessage();

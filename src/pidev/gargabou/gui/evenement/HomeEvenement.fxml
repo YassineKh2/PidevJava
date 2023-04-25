@@ -179,7 +179,7 @@
       </Pane>
       <ScrollPane layoutX="251.0" layoutY="182.0" prefHeight="406.0" prefWidth="810.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="182.0">
          <content>
-            <GridPane fx:id="pnl_scroll" prefHeight="93.0" prefWidth="110.0">
+            <GridPane fx:id="pnl_scroll" prefHeight="41.0" prefWidth="40.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
