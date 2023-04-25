@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -89,6 +90,55 @@ public class ModiferArticleController implements Initializable {
          fxIdCategorieArticle.getItems().add(Cat.getNomCategorie());
          }
         fxModiferArticle.setOnAction( event -> {
+             if (fxDescriptionArticle.getText().length() < 20 || fxDescriptionArticle.getText().length() > 1000) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("La discription doit etre entre 20 et 100 !!");
+                alert.showAndWait();
+                return;
+            }
+            
+         try{
+            Float Prix = Float.parseFloat(fxPrixArticle.getText());
+              if (Prix < 0 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Le prix doit etre positive !!");
+                alert.showAndWait();
+                return;
+            }
+         }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("Le prix est invalide !!");
+                alert.showAndWait();
+                return;
+            }
+        try{
+             int Quantite = Integer.parseInt(fxQuantiteArticle.getText());
+              if (Quantite < 0 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("La Quantite doit etre positive !!");
+                alert.showAndWait();
+                return;
+            }
+         }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("La Quantite est invalide !!");
+                alert.showAndWait();
+                return;
+            }
+        
+         if (fxNomArticle.getText().length() < 3 || fxNomArticle.getText().length() > 100) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Le nom doit etre entre 3 et 100 !!");
+                alert.showAndWait();
+                return;
+            }
+        
             try{
                String NomArticle = fxNomArticle.getText();
                int Quantite = Integer.parseInt(fxQuantiteArticle.getText());

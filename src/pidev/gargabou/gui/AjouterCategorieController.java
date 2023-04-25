@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -69,6 +70,21 @@ public class AjouterCategorieController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         fxAjouterCategorieButton.setOnAction(event -> {
+            if (fxNomCateogrie.getText().length() < 3 || fxNomCateogrie.getText().length() > 100) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Nom doit etre entre 10 et 100 !!");
+                alert.showAndWait();
+                return;
+            }
+            if ("".equals(fxNomCateogrie.getText().length()) ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Nom non valide !!");
+                alert.showAndWait();
+                return;
+            }
+            
             try {
                 String nom = fxNomCateogrie.getText();
                 ServiceCategorie sp = new ServiceCategorie();

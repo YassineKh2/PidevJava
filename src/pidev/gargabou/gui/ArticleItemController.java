@@ -16,10 +16,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import pidev.gargabou.entites.Article;
 import pidev.gargabou.entites.Categorie;
 import pidev.gargabou.services.ServiceArticles;
@@ -92,8 +94,9 @@ public class ArticleItemController implements Initializable {
 
     @FXML
     private void fxSupprimerArticle(ActionEvent event) {
-        
-        try {
+        int choice = JOptionPane.showConfirmDialog(null, "Do you want to continue?");
+        if (choice == JOptionPane.YES_OPTION) {
+             try {
             String idA = fxArticleId.getText();
             int idArticle  = Integer.parseInt(idA);
             System.out.println(idArticle);
@@ -112,6 +115,12 @@ public class ArticleItemController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        } else if (choice == JOptionPane.NO_OPTION) {
+            System.out.println("User clicked No button");
+        } else {
+            System.out.println("User clicked Cancel button");
+        }
+       
     }
 
     @FXML

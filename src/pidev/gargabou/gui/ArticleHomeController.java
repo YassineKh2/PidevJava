@@ -91,7 +91,7 @@ public class ArticleHomeController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ArticleItem.fxml"));
                 Node node = (Node) loader.load();
                 ArticleItemController controller = loader.getController();
-                controller.setArticle(Articles.get(i));
+               controller.setArticle(Articles.get(i));
                 
                pnl_scroll.getChildren().add(node);
                 

@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import pidev.gargabou.entites.Categorie;
 import pidev.gargabou.services.ServiceCategorie;
 import pidev.gargabou.utils.DataSource;
@@ -102,8 +103,9 @@ public class CategorieItemController implements Initializable {
 
     @FXML
     private void fxSupprimerCategorie(ActionEvent event) {
-        
-        try {
+        int choice = JOptionPane.showConfirmDialog(null, "Do you want to continue?");
+        if (choice == JOptionPane.YES_OPTION) {
+              try {
             String idC = fxCategorieId.getText();
             int idCateg  = Integer.parseInt(idC);
             System.out.println(idCateg);
@@ -122,6 +124,10 @@ public class CategorieItemController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        } else if (choice == JOptionPane.NO_OPTION) {
+            System.out.println("User clicked No button");
+        }
+      
 
     }
    

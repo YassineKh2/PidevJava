@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -66,7 +67,22 @@ public class ModiferCategorieController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         fxModiferCategorieButton.setOnAction( event -> {
             
+            if (fxNomCateogrie.getText().length() < 3 || fxNomCateogrie.getText().length() > 100) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Nom doit etre entre 10 et 100 !!");
+                alert.showAndWait();
+                return;
+            }
+            if ("".equals(fxNomCateogrie.getText().length()) ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Nom non valide !!");
+                alert.showAndWait();
+                return;
+            }
             try {
+                
                 String NomCateg = fxNomCateogrie.getText();
                 String id = fxIdCategorie.getText();
                 int IdCateg = Integer.parseInt(id);
@@ -105,12 +121,13 @@ public class ModiferCategorieController implements Initializable {
        fxImpoterImageCategorieModify.setOnAction( event -> {
            
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
-                Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
-                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
-                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = loader.load(); // load the new FXML file
+            Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+            Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+            Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+            Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+            stage.setScene(scene); // set the new scene as the content of the stage
                 
                 
                 // Create a FileChooser object
