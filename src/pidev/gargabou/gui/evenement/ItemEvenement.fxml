@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="itembox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="290.0" styleClass="item-background" stylesheets="@item-background.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.evenement.ItemEvenementController">
+<VBox fx:id="itembox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="362.0" styleClass="item-background" stylesheets="@item-background.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.evenement.ItemEvenementController">
    <children>
-      <ImageView fx:id="itemimage" fitHeight="147.0" fitWidth="270.0" pickOnBounds="true" smooth="false" VBox.vgrow="NEVER">
+      <ImageView fx:id="itemimage" fitHeight="147.0" fitWidth="340.0" pickOnBounds="true" smooth="false" VBox.vgrow="NEVER">
          <effect>
             <Blend />
          </effect>

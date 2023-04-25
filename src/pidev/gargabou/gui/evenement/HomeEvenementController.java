@@ -81,7 +81,7 @@ public class HomeEvenementController implements Initializable {
         });
         btorganisateur.setOnAction( event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterCategorie.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -135,7 +135,7 @@ public class HomeEvenementController implements Initializable {
         ArrayList<Evenement> Evenements = (ArrayList) ecd.afficherEvenements();
         
         
-        Node [] nodes = new  Node[Evenements.size()];
+       // Node [] nodes = new  Node[Evenements.size()];
         int column =1;
         int row=1;
         for(int i = 0; i<Evenements.size(); i++)
@@ -145,7 +145,7 @@ public class HomeEvenementController implements Initializable {
                 Node node = (Node) loader.load();
                 ItemEvenementController controller = loader.getController();
                 controller.afficherevenment(Evenements.get(i));
-                if(column ==6){
+                if(column ==5){
                     column=1;
                     ++row;
                 }
