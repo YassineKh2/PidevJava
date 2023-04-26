@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import pidev.gargabou.entites.Evenement;
 import pidev.gargabou.entites.Organisateur;
 import pidev.gargabou.services.EvenementCRUD;
+import pidev.gargabou.services.ServiceMetier;
 
 /**
  * FXML Controller class
@@ -75,14 +76,28 @@ public class ShowEvenementController implements Initializable {
     private Label fxorganisateur;
     @FXML
     private Label fxnumberoflikes;
-  
-    
+    int ide;
+    int idu=1;
+    boolean isliked;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btlike.setOnAction( event -> {
+            ServiceMetier sm = new ServiceMetier();
+            isliked=sm.isLiked(idu, ide);
+            if(!isliked){
+                sm.addlike(idu, ide); 
+            }else{
+                sm.deleteLike(idu, ide);
+            }
+            int nblkes = sm.countLikes(ide);
+            String Snblkes= String.valueOf(nblkes);
+            setnumberoflikes(Snblkes);
+           
+        });
         btorganisateur.setOnAction( event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
@@ -144,6 +159,9 @@ public class ShowEvenementController implements Initializable {
          
 
     }    
+    public void setidevent(int id){
+        this.ide=id;
+    }
     public void setnomevenement(String msg){
         this.fxnomevenement.setText(msg);      
     }  

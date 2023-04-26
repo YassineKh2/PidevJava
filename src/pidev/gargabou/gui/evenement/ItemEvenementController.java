@@ -93,6 +93,7 @@ public class ItemEvenementController implements Initializable {
                 showevenement.setnumrue(String.valueOf(A.getNumRue()));
                 showevenement.setcodepostal(String.valueOf(A.getCodePostal()));
                 showevenement.setgovernorat(A.getGouvernorat());
+                showevenement.setidevent(ide);
                 showevenement.setnomevenement(nomevenement);
                 showevenement.setorganisateur(nomorganisateur);
                 showevenement.setdescription(description);

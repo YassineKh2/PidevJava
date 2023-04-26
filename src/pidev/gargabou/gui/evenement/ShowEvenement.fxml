@@ -174,12 +174,12 @@
          <content>
             <VBox prefHeight="629.0" prefWidth="1019.0">
                <children>
-                  <ImageView fx:id="bigimageevenement" fitHeight="228.0" fitWidth="1018.0" pickOnBounds="true" smooth="false">
+                  <ImageView fx:id="bigimageevenement" fitHeight="244.0" fitWidth="1018.0" pickOnBounds="true" smooth="false">
                      <image>
                         <Image url="@../../../../../../3a39-gargabou/public/Back/images/events/63f83a07a2824.png" />
                      </image>
                      <viewport>
-                        <Rectangle2D height="600.0" minY="300.0" width="1018.0" />
+                        <Rectangle2D height="600.0" minY="200.0" width="1018.0" />
                      </viewport>
                   </ImageView>
                   <HBox prefHeight="59.0" prefWidth="1019.0">
