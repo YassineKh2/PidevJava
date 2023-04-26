@@ -36,7 +36,7 @@ import pidev.gargabou.utils.passwordHasher;
 public class InscriTController implements Initializable {
 
     @FXML
-    private JFXButton bchoix;
+    private Button bchoix;
     @FXML
     private Button sinscri;
     @FXML

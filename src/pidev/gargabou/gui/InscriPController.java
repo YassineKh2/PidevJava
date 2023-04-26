@@ -42,7 +42,7 @@ import pidev.gargabou.utils.passwordHasher;
 public class InscriPController implements Initializable {
     
    @FXML
-    private JFXButton bchoix;
+    private Button bchoix;
 
     @FXML
     private Hyperlink blogin;
