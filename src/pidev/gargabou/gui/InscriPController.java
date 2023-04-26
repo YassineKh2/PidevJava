@@ -27,6 +27,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
@@ -93,6 +94,17 @@ public class InscriPController implements Initializable {
     private Scene scene1;
     private Parent root1;
 
+        @FXML
+    void showpass(MouseEvent event) {
+  tf_mdp.setPromptText(tf_mdp.getText());
+                tf_mdp.setText("");
+    }
+
+         @FXML
+    void hidepass(MouseEvent event) {
+ tf_mdp.setText(tf_mdp.getPromptText());
+                tf_mdp.setPromptText("");
+    }
      @FXML
     private void switchtochoix(ActionEvent event) throws IOException {
         root1=FXMLLoader.load(getClass().getResource("choix.fxml"));
@@ -105,7 +117,7 @@ public class InscriPController implements Initializable {
 
     
     @FXML
-    private void ajouterpatient(ActionEvent event) {
+    private void ajouterpatient(ActionEvent event) throws IOException {
         
         String nom = tf_nom.getText();
         String prenom = tf_prenom.getText();
@@ -164,6 +176,14 @@ public class InscriPController implements Initializable {
                 alert.showAndWait();
                 return;
             }
+               if (password.length()<6){
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Password Invalid");
+                alert.setContentText("Utiliser un Passwordsde 6 charachtere");
+                 alert.setHeaderText(null);
+                alert.showAndWait();
+                return;
+            }
                if (!password.matches("^(?=.*[0-9])(?=.*[A-Z]).+$")) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle(" Password Invalid");
@@ -195,19 +215,11 @@ public class InscriPController implements Initializable {
         User u =new User(email,role,hashedPassword,nom,prenom,numero,PseudoUtilisateur);
         userCRUD ucd =new userCRUD() ;
         ucd.ajouter(u);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
-        try {
-            Parent root = loader.load();
-            DetailController dc=loader.getController();
-            dc.setNom(""+u.getNom());
-            dc.setPrenom(""+u.getPrenom());
-            dc.setPsuedo(""+u.getPseudoUtilisateur());
-            dc.setemail(""+ u.getEmail());
-            
-            tf_nom.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(InscriController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         root1=FXMLLoader.load(getClass().getResource("authentification.fxml"));
+        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene1= new Scene(root1);
+        stage1.setScene(scene1);
+        stage1.show();
          
     }
     

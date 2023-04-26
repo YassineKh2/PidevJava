@@ -36,6 +36,14 @@
                   </Button>
                   <Hyperlink fx:id="li_oubliee" layoutX="43.0" layoutY="332.0" text="Mot de passe oubliée" />
                   <Hyperlink fx:id="li_register" layoutX="43.0" layoutY="356.0" onAction="#switchtosignin" text="S'Inscrire" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="214.60000000000002" />
+                  <Button layoutX="247.0" layoutY="202.0" mnemonicParsing="false" onMousePressed="#showpass" onMouseReleased="#hidepass" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/eye%20(2)_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </AnchorPane>
          </right>

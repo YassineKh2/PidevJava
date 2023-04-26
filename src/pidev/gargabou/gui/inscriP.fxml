@@ -50,6 +50,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Hyperlink fx:id="blogin" layoutX="14.0" layoutY="462.0" onAction="#switchtologin" text="S'Authentifier" />
+            <Button layoutX="350.0" layoutY="155.0" mnemonicParsing="false" onMousePressed="#showpass" onMouseReleased="#hidepass" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="95.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/eye%20(2)_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </AnchorPane>
    </children>

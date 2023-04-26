@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
@@ -71,6 +72,18 @@ public class InscriTController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    
+        @FXML
+    void showpass(MouseEvent event) {
+  tf_mdp.setPromptText(tf_mdp.getText());
+                tf_mdp.setText("");
+    }
+
+         @FXML
+    void hidepass(MouseEvent event) {
+ tf_mdp.setText(tf_mdp.getPromptText());
+                tf_mdp.setPromptText("");
+    }
     @FXML
     private void switchtologin(ActionEvent event) throws IOException {
         root=FXMLLoader.load(getClass().getResource("authentification.fxml"));
@@ -92,7 +105,7 @@ public class InscriTController implements Initializable {
         stage1.show();
     }
     @FXML
-    private void ajouterTherapist(ActionEvent event) {
+    private void ajouterTherapist(ActionEvent event) throws IOException {
         String nom = tf_nom.getText();
         String prenom = tf_prenom.getText();
         String email = tf_email.getText();
@@ -151,7 +164,15 @@ public class InscriTController implements Initializable {
                  alert.setHeaderText(null);
                 alert.showAndWait();
                 return;
+            }   if (password.length()<6){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Password Invalid");
+                alert.setContentText("Utiliser un Passwordsde 6 charachtere");
+                 alert.setHeaderText(null);
+                alert.showAndWait();
+                return;
             }
+               
                if (!password.matches("^(?=.*[0-9])(?=.*[A-Z]).+$")) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle(" Password Invalid");
@@ -185,6 +206,7 @@ public class InscriTController implements Initializable {
                 alert.showAndWait();
           
          }
+             
             
          }
         
@@ -193,19 +215,11 @@ public class InscriTController implements Initializable {
         User u = new User(email,role, hashedPassword, nom, prenom, numero, Licence, specialite);
           userCRUD ucd =new userCRUD() ;
         ucd.ajouterT(u);
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("detail.fxml"));
-           try {
-            Parent root = loader.load();
-            DetailController dc=loader.getController();
-            dc.setNom(""+u.getNom());
-            dc.setPrenom(""+u.getPrenom());
-            dc.setPsuedo(""+u.getPseudoUtilisateur());
-            dc.setemail(""+ u.getEmail());
-            
-            tf_nom.getScene().setRoot(root);
-        } catch (IOException ex) {
-            Logger.getLogger(InscriController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+           root1=FXMLLoader.load(getClass().getResource("authentification.fxml"));
+        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene1= new Scene(root1);
+        stage1.setScene(scene1);
+        stage1.show();
     }
 
    

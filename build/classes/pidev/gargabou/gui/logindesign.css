@@ -44,3 +44,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .login-btn:hover{
     -fx-background-color:linear-gradient(to bottom, #4daea7,#007299);
 }
+.edit-btn{
+    -fx-background-color: #56E0E0;
+    -fx-background-radius:5px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-cursor:hand;
+}
+.edit-btn:hover{
+    -fx-background-color:linear-gradient(to bottom, #4daea7,#56E0E0);
+}

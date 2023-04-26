@@ -18,13 +18,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import pidev.gargabou.entites.User;
 import pidev.gargabou.utils.DataSource;
+import pidev.gargabou.utils.changeScene;
 import pidev.gargabou.utils.passwordHasher;
+import pidev.gargabou.utils.userNow;
 
 /**
  * FXML Controller class
@@ -52,6 +57,18 @@ public class AuthentificationController implements Initializable {
         // TODO
     }    
 
+        @FXML
+    void showpass(MouseEvent event) {
+  tf_Password.setPromptText(tf_Password.getText());
+                tf_Password.setText("");
+    }
+
+         @FXML
+    void hidepass(MouseEvent event) {
+ tf_Password.setText(tf_Password.getPromptText());
+                tf_Password.setPromptText("");
+    }
+    
      private Stage stage;
     private Scene scene;
     private Parent root;
@@ -86,34 +103,36 @@ public class AuthentificationController implements Initializable {
                 if (result.next()) {
                     String hashedPassword = result.getString("password");
                     if (hashedPassword != null && passwordHasher.verifyPassword(tf_Password.getText(), hashedPassword)) {
-
+                           
+                        int id = result.getInt("id");
+                        
+                        userNow.setid(id);
+                        
                         alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Information Message");
                         alert.setHeaderText(null);
                         alert.setContentText("Successfully Login");
                         alert.showAndWait();
 
-                        buttom_login.getScene().getWindow().hide();
-                        Parent root = FXMLLoader.load(getClass().getResource("homeF.fxml"));
-                        Stage stage = new Stage();
-                        Scene scene = new Scene(root);
-
-                        stage.setScene(scene);
-                        stage.show();
-
+                       changeScene.changeScene(event, "/pidev/gargabou/gui/HomeF.fxml", "home");
                     } else {
                         alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Error Message");
                         alert.setHeaderText(null);
-                        alert.setContentText("fausse email/Password");
+                        alert.setContentText("mot de passe incorrect");
                         alert.showAndWait();
-                    }
-                }}
-            }catch(IOException | SQLException e){}
-
+                    }} else {
+                    alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText(" Email Incorrect ");
+                    alert.showAndWait();
+                }
+                 }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-    }
-
     
+    }}
     
 

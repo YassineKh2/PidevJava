@@ -42,6 +42,20 @@ public class User {
     private ArrayList<CommantairePublication> CommantairePublications;
     //Relation reactionPublications // Many to 1
     private ArrayList<ReactionPublication> ReactionPublications;
+   
+
+    public User(int id, String email, String roles, String password, String nom, String prenom, String numero, String licence, String specialite, String PseudoUtilisateur) {
+        this.id = id;
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.licence = licence;
+        this.specialite = specialite;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
 
     public String getLicence() {
         return licence;
