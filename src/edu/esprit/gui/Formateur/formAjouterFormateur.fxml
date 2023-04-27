@@ -68,5 +68,7 @@
       <JFXRadioButton fx:id="tx_female" layoutX="384.0" layoutY="460.0" text="Feminin" />
       <Label layoutX="99.0" layoutY="522.0" prefHeight="18.0" prefWidth="85.0" text="Num Telephone" />
       <JFXTextArea fx:id="tx_num" layoutX="234.0" layoutY="512.0" prefHeight="37.0" prefWidth="208.0" />
+      <Label fx:id="label_error" layoutX="14.0" layoutY="165.0" />
+      <Label fx:id="ct_num" layoutX="234.0" layoutY="560.0" prefHeight="18.0" prefWidth="227.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

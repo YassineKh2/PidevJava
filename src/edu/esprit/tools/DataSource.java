@@ -20,7 +20,7 @@ public class DataSource {
     private Connection cnx;
     private static DataSource instance;
     
-    public DataSource(){
+    private DataSource(){
         try{
             cnx = DriverManager.getConnection(URL, USER, PWD);
             System.out.println("Connected To DB");

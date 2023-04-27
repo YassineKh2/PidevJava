@@ -7,3 +7,27 @@
     -fx-background-color: linear-gradient(to left,#a69bd0 ,#8479ff);
     border-radius: 1px;
 }
+.error {
+    -fx-font-size: 8pt;
+    -fx-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -fx-text-fill: #333333;
+       
+    -fx-padding: 7px;
+    -fx-border-color: #333333;
+    -fx-background-color:#FF4136;
+    
+    -fx-alignment: center;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+    -fx-text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+     -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-transition: scale 0.5s;
+    
+}
+
+.error:hover {
+-fx-background-color: linear-gradient(to bottom, #FFA07A, #C0392B);
+}
+
+

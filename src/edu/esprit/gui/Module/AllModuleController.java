@@ -59,7 +59,8 @@ public class AllModuleController implements Initializable {
         ArrayList<ModuleFormation> module = (ArrayList) sm.getAll();
         
         for(ModuleFormation m:module){
-            list_module.getItems().addAll(m);
+            list_module.setCellFactory(p -> new ModuleCell());
+            list_module.getItems().add(m);
         }
         handle_form_ajout.setOnAction(e -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("formAjouterModule.fxml"));

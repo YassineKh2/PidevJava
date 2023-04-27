@@ -49,7 +49,7 @@
       <Label layoutX="100.0" layoutY="317.0" text="Formateur" />
       <Label layoutX="97.0" layoutY="379.0" text="Image" />
       <Label layoutX="95.0" layoutY="448.0" text="Description" />
-      <TextField fx:id="tx_nom_formation" layoutX="234.0" layoutY="215.0" prefHeight="26.0" prefWidth="227.0" />
+      <TextField fx:id="tx_nom_formation" layoutX="234.0" layoutY="215.0" onKeyTyped="#ControleNumbers" prefHeight="26.0" prefWidth="227.0" />
       <JFXTextArea fx:id="tx_description" layoutX="200.0" layoutY="438.0" prefHeight="154.0" prefWidth="367.0" unFocusColor="#8aeacb" />
       <JFXButton fx:id="btn_ajout_formation" layoutX="484.0" layoutY="173.0" prefHeight="26.0" prefWidth="118.0" text="Ajouter">
          <graphic>
@@ -68,6 +68,7 @@
       </MenuButton>
       <Spinner fx:id="values_niveau" layoutX="234.0" layoutY="272.0" />
       <TextField fx:id="tx_image_fm" layoutX="234.0" layoutY="375.0" prefHeight="26.0" prefWidth="227.0" />
-      <Label fx:id="label_error" layoutX="492.0" layoutY="212.0" prefHeight="26.0" prefWidth="90.0" />
+      <Label fx:id="label_error" layoutX="492.0" layoutY="212.0" prefHeight="26.0" prefWidth="0.0" stylesheets="@style.css" />
+      <Label fx:id="ct_nom" layoutX="234.0" layoutY="250.0" prefHeight="18.0" prefWidth="227.0" textAlignment="CENTER" textFill="#e70606" />
    </children>
 </AnchorPane>

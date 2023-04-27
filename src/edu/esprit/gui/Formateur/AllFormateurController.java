@@ -54,7 +54,8 @@ public class AllFormateurController implements Initializable {
         ArrayList<Formateur> formateur = (ArrayList) sfm.getAll();
         
         for(Formateur f:formateur){
-            list_formateur.getItems().addAll(f);
+            list_formateur.setCellFactory(p -> new FormateurCell());
+            list_formateur.getItems().add(f);
         }
         handle_form_ajout.setOnAction(e -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("formAjouterFormateur.fxml"));

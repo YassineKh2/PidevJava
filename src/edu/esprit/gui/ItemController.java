@@ -4,6 +4,7 @@
  */
 package edu.esprit.gui;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import edu.esprit.entities.Formateur;
 import edu.esprit.entities.Formation;
@@ -11,6 +12,8 @@ import edu.esprit.entities.ModuleFormation;
 import edu.esprit.services.ServicesFormateur;
 import edu.esprit.services.ServicesModule;
 import edu.esprit.tools.DataSource;
+import java.awt.Rectangle;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,10 +24,15 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -53,6 +61,12 @@ public class ItemController implements Initializable {
     private Label label_pre_module;
     @FXML
     private Pane pane_mod;
+    @FXML
+    private ImageView image_fm;
+    @FXML
+    public JFXButton cns_detail;
+    
+    
     //
     public void setId(Formation formation) {
     this.id = formation.getId();
@@ -71,8 +85,12 @@ public class ItemController implements Initializable {
             int value_niveau = rs.getInt("niveau_formation");
             String value_description = rs.getString("description_formation");
             int value_formateur = rs.getInt("formateur_id");
+            String value_img = rs.getString("image_formation");
             for(Formateur f:formateur){
                 if(f.getId()==value_formateur){
+                    Image img_f = new Image("file:/C:/Users/MsiAs/Desktop/ProjIng/public/"+f.getImageFormateur(), true);
+                    image_fm.setImage(img_f);
+                    
                     String nom_fm=f.getNomFormateur() +" " +f.getPrenomFormateur();
                     tx_nom_formateur.setText(nom_fm);
                 }
@@ -89,6 +107,8 @@ public class ItemController implements Initializable {
                     
                 }
             }
+            Image img = new Image("file:/C:/Users/MsiAs/Desktop/ProjIng/public/"+value_img, true);
+            image_formation.setImage(img);
             tx_description.setText(value_description);
             tx_niveau.setText(Integer.toString(value_niveau));
             label_nom.setText(value);
@@ -105,7 +125,17 @@ public class ItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        cns_detail.setOnAction(e ->{
+            int idf = Integer.parseInt(label_id.getText());
+            Formation.setChamp_id(idf);
+            /*FXMLLoader loader1 = new FXMLLoader(getClass().getResource("IAFormation.fxml"));
+            
+            IAFormationController cntr= loader1.getController();*/
+            
+            
+            //Node node = (Node) loader.load();
+            //cntr.clearPnlScroll(node);
+        });
         
     }    
     

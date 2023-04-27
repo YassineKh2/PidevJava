@@ -5,6 +5,7 @@
 package edu.esprit.gui;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListCell;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import edu.esprit.entities.Formateur;
@@ -56,9 +57,8 @@ public class AllFormationController implements Initializable {
     @FXML
     private JFXListView<Formation> list_formation;
     @FXML
-    public JFXListView<Formation> getListView() {
-        return this.list_formation;
-}
+    private JFXListCell<String> cell_nom;
+    
     
     
     
@@ -78,7 +78,9 @@ public class AllFormationController implements Initializable {
         ArrayList<ModuleFormation> module = (ArrayList) sm.getAll();
         
         for(Formation f:formation){
-            list_formation.getItems().addAll(f);
+            
+            list_formation.setCellFactory(p -> new FormationCell());
+            list_formation.getItems().add(f);
         }
         handle_form_ajout.setOnAction(e -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("formAjouter.fxml"));

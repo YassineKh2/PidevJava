@@ -49,7 +49,7 @@ public class IAFormationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+         
          refreshNodes();
          handle_ajout.setOnAction(e ->{
              FXMLLoader loader = new FXMLLoader(getClass().getResource("AllFormation.fxml"));
@@ -102,10 +102,24 @@ public class IAFormationController implements Initializable {
         for(int i = 0; i<formation.size(); i++)
         {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
             Node node = (Node) loader.load();
             ItemController controller = loader.getController();
             controller.setId(formation.get(i));
+            
+            controller.cns_detail.setOnMouseClicked(e->{
+                try {
+                    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("detailFormation.fxml"));
+                    
+                    IAFormationController cntr= loader1.getController();
+                    Node n = (Node) loader1.load();
+                    pnl_scroll.getChildren().clear();
+                    pnl_scroll.getChildren().add(n);
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
             pnl_scroll.getChildren().add(node);
                 
             } catch (IOException ex) {
@@ -114,4 +128,5 @@ public class IAFormationController implements Initializable {
            
         }  
     }
+    
 }
