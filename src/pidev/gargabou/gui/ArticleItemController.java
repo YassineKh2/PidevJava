@@ -117,9 +117,7 @@ public class ArticleItemController implements Initializable {
         }
         } else if (choice == JOptionPane.NO_OPTION) {
             System.out.println("User clicked No button");
-        } else {
-            System.out.println("User clicked Cancel button");
-        }
+        } 
        
     }
 

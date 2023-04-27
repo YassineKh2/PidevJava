@@ -44,16 +44,18 @@ public class AfficherCategorieUserController implements Initializable {
         fxsShowArticleButton.setOnAction( event -> {
             try {
                 
+            int idc = Integer.parseInt(fxIdCateg.getText());
+            Categorie.setIdc(idc);    
             FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeArticleUser.fxml"));
             Parent root = loader.load(); // load the new FXML file
-           /* ArticleHomeControllerUser controller = loader.getController();
-            controller.setIdCateg(fxIdCateg.getText());*/
+            ArticleHomeControllerUser controller = loader.getController();
+            
+            controller.setIdCateg(fxsShowArticleButton.getText());
+            controller.refreshNodes();
+            
             
             Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
             Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-          
-            
-            
             Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
             Stage stage = (Stage) currentScene.getWindow(); // get the current stage
             stage.setScene(scene); // set the new scene as the content of the stage
@@ -63,10 +65,6 @@ public class AfficherCategorieUserController implements Initializable {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-            
-            
-            
-            
            
         });
 

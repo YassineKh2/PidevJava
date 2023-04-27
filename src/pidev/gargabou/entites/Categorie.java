@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author yassine
  */
 public class Categorie {
+    private static int idc;
     private int id;
     private String NomCategorie;
     //Relation $articles
@@ -69,6 +70,14 @@ public class Categorie {
 
     public void setArticles(ArrayList<Article> Articles) {
         this.Articles = Articles;
+    }
+
+    public static int getIdc() {
+        return idc;
+    }
+
+    public static void setIdc(int idc) {
+        Categorie.idc = idc;
     }
 
     @Override

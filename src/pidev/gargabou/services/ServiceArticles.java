@@ -99,5 +99,27 @@ public class ServiceArticles implements IService<Article>{
 
         return list;
     }
+    public Article findArticleById(int id) {
+    try {
+        String req = "SELECT * FROM article WHERE id = ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            // Create an Article object using data from the result set
+            Article article = new Article(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getFloat(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9));
+
+            return article;
+        } else {
+            // Article not found with the given ID
+            return null;
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+        return null;
+    }
+}
+
     
 }

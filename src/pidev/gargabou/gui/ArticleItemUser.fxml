@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
@@ -18,29 +20,14 @@
                   <Image url="@images/icons8_500px_64px.png" />
                </image>
             </ImageView>
-            <Label fx:id="fxNomArticle" layoutX="123.0" layoutY="18.0" textFill="#3a1c9d">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="51.0" layoutY="113.0" text="Quantite" textFill="#aeacac">
+            <Label layoutX="58.0" layoutY="149.0" text="Quantite" textFill="#aeacac">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="270.0" layoutY="113.0" text="Remise" textFill="#aeacac">
+            <Label fx:id="fxRemiseArticle" layoutX="386.0" layoutY="15.0" prefHeight="23.0" prefWidth="124.0" textFill="#4d4c4c">
                <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="fxQuantiteArticle" layoutX="58.0" layoutY="139.0" textFill="#4d4c4c">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="fxRemiseArticle" layoutX="287.0" layoutY="139.0" textFill="#4d4c4c">
-               <font>
-                  <Font size="13.0" />
+                  <Font name="Century" size="20.0" />
                </font>
             </Label>
             <Label layoutX="654.0" layoutY="35.0" text="Image" textFill="#aeacac">
@@ -63,19 +50,28 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ImageView fx:id="fxImageArticle" fitHeight="138.0" fitWidth="242.0" layoutX="552.0" layoutY="72.0" pickOnBounds="true" />
-            <Label fx:id="fxIdCategorie" layoutX="383.0" layoutY="35.0" prefHeight="20.0" prefWidth="44.0" textFill="#b2b0b0">
+            <ImageView fx:id="fxImageArticle" fitHeight="138.0" fitWidth="242.0" layoutX="552.0" layoutY="64.0" pickOnBounds="true" />
+            <Label fx:id="fxIdCategorie" layoutX="330.0" layoutY="32.0" prefHeight="20.0" prefWidth="44.0" textFill="#b2b0b0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Label fx:id="fxArticleId" layoutX="360.0" layoutY="63.0" textFill="TRANSPARENT" />
-            <Label fx:id="fxPrixArticle" layoutX="164.0" layoutY="54.0" prefHeight="19.0" prefWidth="44.0" textFill="#4d4c4c">
+            <Label fx:id="fxPrixArticle" layoutX="160.0" layoutY="52.0" prefHeight="19.0" prefWidth="44.0" textFill="#4d4c4c">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
             <Label fx:id="fxPathImageArticle" layoutX="479.0" layoutY="10.0" textFill="TRANSPARENT" />
+            <JFXButton fx:id="fxAjouterAuPannier" layoutX="288.0" layoutY="145.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="145.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="Ajouter au pannier" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="fxQuantiteSelected" layoutX="161.0" layoutY="151.0" prefHeight="17.0" prefWidth="21.0" />
+            <Button fx:id="fxplusButton" layoutX="186.0" layoutY="147.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="fxMinusButton" layoutX="123.0" layoutY="146.0" mnemonicParsing="false" text="-" />
+            <JFXButton fx:id="fxNomArticle" layoutX="114.0" layoutY="20.0" text="." textFill="#3a1c9d" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />
