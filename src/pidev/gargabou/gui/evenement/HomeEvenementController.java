@@ -25,6 +25,7 @@ import pidev.gargabou.gui.adresse.ItemAdresseController;
 import pidev.gargabou.services.AdresseCRUD;
 import pidev.gargabou.services.EvenementCRUD;
 
+
 /**
  * FXML Controller class
  *

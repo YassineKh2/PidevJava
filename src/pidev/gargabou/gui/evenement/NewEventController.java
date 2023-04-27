@@ -82,7 +82,7 @@ public class NewEventController implements Initializable {
     BufferedImage image;
     int idevent;
     String entity="event";
-    String pathimag;
+    String pathimag="Back/images/events/NoImageFound.png";
 
     /**
      * Initializes the controller class.
@@ -93,6 +93,7 @@ public class NewEventController implements Initializable {
         ArrayList<Organisateur> organisateur = (ArrayList<Organisateur>) ocd.afficherOrganisateur();
         for(Organisateur org :organisateur){
             fxidorganisateur.getItems().add(org.getNomOrganisateur());
+            tfimageevent.setText(pathimag);
         }                  
         btorganisateur.setOnAction( event -> {
             try {
@@ -222,12 +223,9 @@ public class NewEventController implements Initializable {
                 int nbrdeparticipant=Integer.parseInt(tfnombreparticipant.getText());
                 int prixevent =Integer.parseInt(prixevenement.getText());
                 String typevent =typeevenement.getText();
-                if(tfimageevent.getText()!=null){
-                 pathimag = tfimageevent.getText();
                 
-                }else{
-                    pathimag="Back/images/events/NoImageFound.png";
-                }
+                pathimag = tfimageevent.getText();
+              
                 String desc = tfdescriptionevent.getText();
                 Organisateur org =ocd.findorganisateurbyname(fxidorganisateur.getValue());
                 int idorg = org.getId();
@@ -271,13 +269,13 @@ public class NewEventController implements Initializable {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Select an Image");
                 
-// Set the initial directory to the user's home directory
-fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+                // Set the initial directory to the user's home directory
+                fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 
-// Add a filter to show only image files
-fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-);
+                // Add a filter to show only image files
+                fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+                );
 
 // Show the file chooser dialog and wait for the user to select a file
 File selectedFile = fileChooser.showOpenDialog(stage);

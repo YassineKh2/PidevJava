@@ -32,8 +32,8 @@ public class EvenementCRUD {
         try {
             java.util.Date javaDate =  E.getDateEvenement();
             java.sql.Date mySQLDate = new java.sql.Date(javaDate.getTime());
-            String requete = "INSERT INTO evenement( organisateur_id, nom_evenement, date_evenement, nombre_participant_evenement, prix_evenement, type_evenement, imageevenement, description,places_restantes)"
-                    + " VALUES (?,?,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO evenement( organisateur_id, nom_evenement, date_evenement, nombre_participant_evenement, prix_evenement, type_evenement, imageevenement,numberoflikes, description,places_restantes)"
+                    + " VALUES (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cnx2.prepareStatement(requete);
             pst.setString(1,Integer.toString(E.getIdOrganisateur()));
             pst.setString(2, E.getNomEvenement());
@@ -42,8 +42,9 @@ public class EvenementCRUD {
             pst.setInt(5,E.getPrixEvenement());      
             pst.setString(6, E.getTypeEvenement());       
             pst.setString(7, E.getImageevenement());
-            pst.setString(8, E.getDescription());
-            pst.setString(9,Integer.toString(E.getNombreParticipantEvenement()));
+             pst.setString(8,Integer.toString(0));
+            pst.setString(9, E.getDescription());
+            pst.setString(10,Integer.toString(E.getNombreParticipantEvenement()));
             pst.executeUpdate();
             Statement st = cnx2.createStatement();
             ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
@@ -86,6 +87,36 @@ public class EvenementCRUD {
             System.out.println(ex.getMessage());
         }
         return myList ;
+    }
+     public Evenement afficherseulEvenements(int id){
+       Evenement E = new Evenement();
+        try {
+            
+            String requete2 = "SELECT *FROM evenement where id= "+ id;
+            Statement st = cnx2.createStatement();
+            ResultSet rs = st.executeQuery(requete2);
+            
+            while (rs.next()){
+                
+                E.setId(rs.getInt(1));
+                E.setNomEvenement(rs.getString("nom_evenement"));
+                E.setDateEvenement(rs.getDate("date_evenement"));
+                E.setNombreParticipantEvenement(rs.getInt("nombre_participant_evenement"));
+                E.setPrixEvenement(rs.getInt("prix_evenement"));
+                E.setTypeEvenement(rs.getString("type_evenement"));
+                E.setIdAdresse(rs.getInt("adresse_id"));
+                E.setIdOrganisateur(rs.getInt("organisateur_id"));
+                E.setImageevenement(rs.getString("imageevenement"));
+                E.setNumberoflikes(rs.getInt("numberoflikes"));
+                E.setDescription(rs.getString("description"));
+                E.setPlacesRestantes(rs.getInt("places_restantes"));
+                
+            }
+            System.out.println("seul evenement lu !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return E ;
     }
      public void updateadresse(int ide,int ida){
           try {

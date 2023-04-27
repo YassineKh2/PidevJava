@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import pidev.gargabou.entites.Evenement;
 import pidev.gargabou.tools.MyConnection;
 
 /**
@@ -21,6 +22,7 @@ public class ServiceMetier {
         cnx2=MyConnection.getInstance().getCnx();
     }
     public void addlike(int idu,int ide){
+        
         try{
         String requete ="INSERT INTO evenement_utilisateur (evenement_id,utilisateur_id) VALUES (?,?)";
             PreparedStatement pst = cnx2.prepareStatement(requete);
@@ -48,17 +50,17 @@ public class ServiceMetier {
             }
       public boolean isLiked (int idu, int ide){
         boolean isLiked = false;
-        int nbrLikes = 0;
+        int flag = 0;
         try {
         String requete = "select count(*) from evenement_utilisateur where evenement_id= "+ide+"  and utilisateur_id= "+idu  ;
         Statement st = cnx2.createStatement();
         ResultSet rs = st.executeQuery(requete);
        
         while (rs.next()){
-            nbrLikes = rs.getInt("count(*)");
+            flag = rs.getInt("count(*)");
         }
           
-        if (nbrLikes >= 1){
+        if (flag >= 1){
             isLiked = true;   
            
         }
@@ -87,7 +89,80 @@ public class ServiceMetier {
         }
         return nbrLikes;
     }
+     public void addparticip(int idu,int ide){
+        try{
+        String requete ="INSERT INTO utilisateur_evenement (utilisateur_id , evenement_id) VALUES (?,?)";
+            PreparedStatement pst = cnx2.prepareStatement(requete);
+            pst.setInt(1, idu);
+            pst.setInt(2, ide);
+            pst.executeUpdate();
+            System.out.println("partitipation ajouté");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+     }
+      public void deleteparticip(int idu,int ide){
+        try{
+        String requete ="DELETE FROM utilisateur_evenement WHERE  utilisateur_id = ? AND  evenement_id = ? ";
+            PreparedStatement pst = cnx2.prepareStatement(requete);
+            pst.setInt(1, idu);
+            pst.setInt(2, ide);
+            pst.executeUpdate();
+            System.out.println("participation supprimée");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    
+            }
+       public boolean isparticipated (int idu, int ide){
+        boolean isparticipated = false;
+        int flag = 0;
+        try {
+        String requete = "select count(*) from utilisateur_evenement where utilisateur_id= "+ idu +"  and  evenement_id= "+ide ;
+        Statement st = cnx2.createStatement();
+        ResultSet rs = st.executeQuery(requete);
+       
+        while (rs.next()){
+            flag = rs.getInt("count(*)");
+        }
+          
+        if (flag >= 1){
+            isparticipated = true;   
+           
+        }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+         
+        return isparticipated;
+    }
  
+        public int countparticip (int id) {
+        int nbrdeparticip = 0;
+        int nbrdeplacetot=0;
+        int placerestante=0;
+        try {
+        String requete = "select count(*) from utilisateur_evenement where evenement_id=" + id;
+        Statement st = cnx2.createStatement();
+        ResultSet rs = st.executeQuery(requete);
+        while (rs.next()){
+            nbrdeparticip = rs.getInt("count(*)");
+        }
+        String req = "UPDATE `evenement` SET `places_restantes`=? WHERE id=?";
+        PreparedStatement pst = cnx2.prepareStatement(req);
+        EvenementCRUD ecd = new EvenementCRUD();
+        Evenement E ;
+        E =ecd.afficherseulEvenements(id);
+        nbrdeplacetot=E.getNombreParticipantEvenement();
+        placerestante=nbrdeplacetot - nbrdeparticip;
+        pst.setString(1,Integer.toString(placerestante));
+        pst.setString(2, Integer.toString(id));
+        pst.executeUpdate();                          
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return placerestante;
+    }
 }
  
 

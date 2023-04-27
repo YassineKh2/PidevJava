@@ -191,10 +191,13 @@ public class ItemEvenementController implements Initializable {
     @FXML
     private void supprimerevent(ActionEvent event) {
          try {
-          System.out.println( ide);
-          EvenementCRUD ecd = new EvenementCRUD();
-          ecd.supprimerEvenement(ide);
           
+          EvenementCRUD ecd = new EvenementCRUD();
+        
+          AdresseCRUD acd =new AdresseCRUD();
+          
+           ecd.supprimerEvenement(ide);
+           acd.supprimerAdresse(idadresse);
           FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEvenement.fxml"));
             Parent root = loader.load(); // load the new FXML file
             Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content

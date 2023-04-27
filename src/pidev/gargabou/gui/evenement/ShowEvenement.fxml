@@ -189,9 +189,10 @@
                               <Font size="34.0" />
                            </font>
                         </Label>
-                        <VBox prefHeight="52.0" prefWidth="188.0" HBox.hgrow="ALWAYS">
+                        <Pane prefHeight="52.0" prefWidth="448.0" HBox.hgrow="ALWAYS" />
+                        <VBox prefHeight="52.0" prefWidth="170.0">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="409.0">
                                  <children>
                                     <JFXButton fx:id="btparticiper" text="Participer" textFill="#d00000">
                                        <font>
@@ -205,22 +206,20 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <Label fx:id="fxplacesrestantes" prefHeight="21.0" prefWidth="132.0" text="place restante" />
+                              <Label fx:id="fxplacesrestantes" prefHeight="21.0" prefWidth="157.0" text="place restante" />
                            </children>
-                           <HBox.margin>
-                              <Insets left="550.0" right="5.0" />
-                           </HBox.margin>
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="24.0" prefWidth="1019.0">
+                  <HBox prefHeight="54.0" prefWidth="1000.0">
                      <children>
                         <Label fx:id="fxdateevenement" text="date evenement">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <VBox prefHeight="54.0" prefWidth="174.0" translateX="550.0">
+                        <Pane prefHeight="54.0" prefWidth="126.0" HBox.hgrow="ALWAYS" />
+                        <VBox prefHeight="54.0" prefWidth="174.0">
                            <children>
                               <JFXButton fx:id="btlike" ripplerFill="MAGENTA" text="j'aime" textFill="#1f05ff" translateX="20.0">
                                  <font>
@@ -243,32 +242,44 @@
                      </children>
                   </HBox>
                   <Label fx:id="fxtypeevenement" text="type evenement" />
-                  <Label fx:id="fxadresse" text="Adresse">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <HBox prefHeight="24.0" prefWidth="1019.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="fxnumrue" opacity="0.7" text="num rue">
-                           <padding>
-                              <Insets left="20.0" />
-                           </padding></Label>
-                        <Label fx:id="fxnomrue" opacity="0.7" text="nom rue">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
+                        <Pane prefHeight="98.0" prefWidth="46.0" />
+                        <VBox prefHeight="98.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="fxadresse" text="Adresse">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="24.0" prefWidth="1019.0">
+                                 <children>
+                                    <Label fx:id="fxnumrue" opacity="0.7" text="num rue">
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="fxnomrue" opacity="0.7" text="nom rue">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="fxcodepostal" opacity="0.7" text="code postal">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="fxgovernorat" opacity="0.7" text="gouvernorat">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                   </HBox>
-                  <Label fx:id="fxcodepostal" opacity="0.7" text="code postal">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding></Label>
-                  <Label fx:id="fxgovernorat" opacity="0.7" text="gouvernorat">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding></Label>
                   <Label text="à propos:">
                      <font>
                         <Font name="System Bold" size="15.0" />

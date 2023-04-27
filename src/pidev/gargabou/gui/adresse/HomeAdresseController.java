@@ -83,9 +83,9 @@ public class HomeAdresseController implements Initializable {
             }
                
         });
-        btorganisateur.setOnAction( event -> {
+         btorganisateur.setOnAction( event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOrganisateur.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event

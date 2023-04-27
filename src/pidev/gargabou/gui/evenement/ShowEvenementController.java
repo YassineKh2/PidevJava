@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,7 @@ import pidev.gargabou.entites.Evenement;
 import pidev.gargabou.entites.Organisateur;
 import pidev.gargabou.services.EvenementCRUD;
 import pidev.gargabou.services.ServiceMetier;
+//import com.esri.arcgisruntime.mapping.view.MapView;
 
 /**
  * FXML Controller class
@@ -79,23 +81,53 @@ public class ShowEvenementController implements Initializable {
     int ide;
     int idu=1;
     boolean isliked;
+    boolean isparticipated;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         
+            
+       
         btlike.setOnAction( event -> {
             ServiceMetier sm = new ServiceMetier();
-            isliked=sm.isLiked(idu, ide);
+           isliked=sm.isLiked(idu, ide);
             if(!isliked){
                 sm.addlike(idu, ide); 
+                btlike.setButtonType(JFXButton.ButtonType.FLAT);
             }else{
                 sm.deleteLike(idu, ide);
+                 btlike.setButtonType(JFXButton.ButtonType.RAISED);
             }
             int nblkes = sm.countLikes(ide);
             String Snblkes= String.valueOf(nblkes);
             setnumberoflikes(Snblkes);
+           
+           
+        });
+        
+        btparticiper.setOnAction( event -> {
+               ServiceMetier sm = new ServiceMetier();
+             int nbplce = sm.countparticip(ide);
+             if (nbplce<1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" pas de places restantes");
+                alert.setContentText("pas de places restantes!!");
+                alert.showAndWait();
+                return;
+            }
+           
+            isparticipated=sm.isparticipated(idu, ide);
+            if(!isparticipated){
+                sm.addparticip(idu, ide); 
+            }else{
+                sm.deleteparticip(idu, ide);
+            }
+             nbplce = sm.countparticip(ide);
+            String Snbplce= String.valueOf(nbplce);
+            setplacesrestantes(Snbplce);
            
         });
         btorganisateur.setOnAction( event -> {
