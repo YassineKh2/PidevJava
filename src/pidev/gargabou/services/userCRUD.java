@@ -23,8 +23,8 @@ public class userCRUD implements IServices<User> {
     @Override
     public void ajouter(User u) {
          try {
-            String req = "INSERT INTO `user` (`nom`, `prenom`,`email`,`password`,`numero`,`PseudoUtilisateur`,`roles`)"
-                    + " VALUES ('" + u.getNom() + "', '" + u.getPrenom() + "','" + u.getEmail()+ "','" + u.getPassword()+ "','" + u.getNumero()+ "','" + u.getPseudoUtilisateur()+ "','" + u.getRoles() + "')";
+            String req = "INSERT INTO `user` (`nom`, `prenom`,`email`,`password`,`numero`,`PseudoUtilisateur`,`roles`,`image`)"
+                    + " VALUES ('" + u.getNom() + "', '" + u.getPrenom() + "','" + u.getEmail()+ "','" + u.getPassword()+ "','" + u.getNumero()+ "','" + u.getPseudoUtilisateur()+ "','" + u.getRoles() + "','" + u.getImage()+ "')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("user created !");
@@ -76,7 +76,7 @@ public class userCRUD implements IServices<User> {
     @Override
     public void modifier(User u) {
        try {
-            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `PseudoUtilisateur` = '" + u.getPseudoUtilisateur()+"' WHERE `user`.`id` = " + u.getId();
+            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `PseudoUtilisateur` = '" + u.getPseudoUtilisateur()+"' WHERE `user`.`id` = " + u.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("user updated !");
@@ -84,7 +84,16 @@ public class userCRUD implements IServices<User> {
             System.out.println(ex.getMessage());
         }
     }
-
+ public void modifierTherapist(User u) {
+       try {
+            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `spetialite` = '" + u.getSpecialite()+"' WHERE `user`.`id` = " + u.getId();
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user updated !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     @Override
     public List<User> getAll() {
           List<User> list = new ArrayList<>();

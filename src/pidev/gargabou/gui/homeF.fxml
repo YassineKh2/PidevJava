@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -126,7 +127,7 @@
          <children>
             <AnchorPane layoutX="322.0" layoutY="47.0" prefHeight="356.0" prefWidth="368.0" style="-fx-background-color: #56E0E0; -fx-background-radius: 10px;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Button layoutX="236.0" layoutY="378.0" mnemonicParsing="false" style="-fx-background-radius: 10px; -fx-background-color: #4daea7;" text="edit">
+                  <Button layoutX="236.0" layoutY="378.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-radius: 10px; -fx-background-color: #4daea7;" text="edit">
                      <font>
                         <Font name="Tahoma Bold" size="18.0" />
                      </font>
@@ -174,7 +175,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="profileDETAIL" layoutX="251.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0">
+      <AnchorPane fx:id="profileDETAIL" layoutX="251.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
          <children>
             <Label layoutX="408.0" layoutY="39.0" prefHeight="39.0" prefWidth="271.0" text="DETAIL PROFILE" textFill="#93c572" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="38.0">
                <font>
@@ -224,7 +225,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="profileDETAIL1" layoutX="256.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;">
+      <AnchorPane fx:id="profileDETAIL1" layoutX="256.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
          <children>
             <Label layoutX="408.0" layoutY="39.0" prefHeight="39.0" prefWidth="271.0" text="DETAIL PROFILE" textFill="#93c572" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="38.0">
                <font>
@@ -278,6 +279,104 @@
                   <Font name="Arial Italic" size="14.0" />
                </font>
             </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profileedit" layoutX="294.0" layoutY="144.0" prefHeight="454.0" prefWidth="1012.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+         <children>
+            <Label layoutX="403.0" layoutY="37.0" prefHeight="39.0" prefWidth="209.0" text="EDIT PROFILE" textFill="#93c572" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="37.0">
+               <font>
+                  <Font name="Arial Black" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="122.0" layoutY="210.0" text="PRENOM:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="210.0" />
+            <Label layoutX="122.0" layoutY="260.0" text="EMAIL:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="260.0" />
+            <Label layoutX="122.0" layoutY="310.0" text="NUMERO:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="310.0" />
+            <Label layoutX="122.0" layoutY="160.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="160.0" />
+            <Label layoutX="123.0" layoutY="355.0" text="SPECIALITE:" textFill="#4daea7" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="355.0" />
+            <TextField fx:id="enom" layoutX="229.0" layoutY="141.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="141.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eprenom" layoutX="229.0" layoutY="191.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="191.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eemail" layoutX="229.0" layoutY="241.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="241.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="enumuro" layoutX="229.0" layoutY="291.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="291.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="espec" layoutX="230.0" layoutY="336.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="336.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="editBTN" layoutX="774.0" layoutY="356.0" mnemonicParsing="false" onAction="#edittherapist" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #4daea7; -fx-border-radius: 100px;" text="EDIT">
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="742.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="145.0">
+               <image>
+                  <Image url="@../../../img/5907.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profileedit1" layoutX="301.0" layoutY="144.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+         <children>
+            <Label layoutX="403.0" layoutY="37.0" prefHeight="39.0" prefWidth="209.0" text="EDIT PROFILE" textFill="#93c572" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="37.0">
+               <font>
+                  <Font name="Arial Black" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="214.0" text="PRENOM:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="214.0" />
+            <Label layoutX="81.0" layoutY="264.0" text="EMAIL:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="264.0" />
+            <Label layoutX="81.0" layoutY="314.0" text="NUMERO:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="314.0" />
+            <Label layoutX="82.0" layoutY="367.0" text="PSUEDO:" textFill="#4daea7" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="367.0" />
+            <Label layoutX="81.0" layoutY="164.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="164.0" />
+            <TextField fx:id="enom1" layoutX="188.0" layoutY="145.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="145.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eprenom1" layoutX="188.0" layoutY="195.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="195.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eemail1" layoutX="188.0" layoutY="245.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="245.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="enumuro1" layoutX="188.0" layoutY="295.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="295.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="epsudo1" layoutX="189.0" layoutY="348.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="189.0" AnchorPane.topAnchor="348.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="editBTN1" layoutX="774.0" layoutY="360.0" mnemonicParsing="false" onAction="#editpatient" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #4daea7; -fx-border-radius: 100px;" text="EDIT">
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="742.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/5907.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

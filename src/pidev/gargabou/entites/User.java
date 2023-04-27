@@ -160,6 +160,15 @@ public class User {
         this.specialite = specialite;
     }
 
+    public User(int id, String email, String nom, String prenom, String numero, String PseudoUtilisateur) {
+        this.id = id;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
     public User(int id, String email, String roles, String password, String nom, String prenom, String numero, String image, String PseudoUtilisateur) {
         this.id = id;
         this.email = email;
@@ -223,6 +232,16 @@ public class User {
         this.Publications = Publications;
         this.CommantairePublications = CommantairePublications;
         this.ReactionPublications = ReactionPublications;
+    }
+
+    public User(int id, String email, String nom, String prenom, String numero, String image, String specialite) {
+        this.id = id;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.image = image;
+        this.specialite = specialite;
     }
 
     

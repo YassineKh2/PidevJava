@@ -222,5 +222,6 @@ public class InscriPController implements Initializable {
         stage1.show();
          
     }
-    
 }
+
+    
