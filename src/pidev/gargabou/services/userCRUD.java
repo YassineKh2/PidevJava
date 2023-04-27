@@ -35,8 +35,9 @@ public class userCRUD implements IServices<User> {
     }
     public void ajouterT(User u) {
          try {
-            String req = "INSERT INTO `user` (`nom`, `prenom`,`email`,`password`,`numero`,`licence`,`spetialite`,`roles`)"
-                    + " VALUES ('" + u.getNom() + "', '" + u.getPrenom() + "','" + u.getEmail()+ "','" + u.getPassword()+ "','" + u.getNumero()+ "','" + u.getLicence()+ "','" + u.getSpecialite()+ "','" + u.getRoles()+ "')";
+            String req = "INSERT INTO `user` (`nom`, `prenom`,`email`,`password`,`numero`,`licence`,`spetialite`,`roles`,`photo licence`,`image`)"
+                    + " VALUES ('" + u.getNom() + "', '" + u.getPrenom() + "','" + u.getEmail()+ "','" + u.getPassword()+ "','" + u.getNumero()+ "','" + u.getLicence()+ "',"
+                    + "'" + u.getSpecialite()+ "','" + u.getRoles()+ "','" + u.getPhotolicence()+ "','" + u.getImage()+ "')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("user created !");

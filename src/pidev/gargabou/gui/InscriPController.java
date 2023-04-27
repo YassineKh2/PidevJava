@@ -7,11 +7,15 @@ package pidev.gargabou.gui;
 
 
 import com.jfoenix.controls.JFXButton;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,12 +27,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
 import pidev.gargabou.utils.passwordHasher;
@@ -70,6 +78,12 @@ public class InscriPController implements Initializable {
 
     @FXML
     private TextField tf_psuedo;
+    
+    @FXML
+    private ImageView addEmployee_image;
+    
+    @FXML
+    private Label fxPathImage;
 
     /**
      * Initializes the controller class.
@@ -128,7 +142,8 @@ public class InscriPController implements Initializable {
         String role = "[\"ROLE_PATIENT\"]";
         String cpass = tf_mdp1.getText();
         String hashedPassword = passwordHasher.hashPassword(password);
-        
+        String image = fxPathImage.getText();
+        int fill= 0;
     
             if (nom.isEmpty()||prenom.isEmpty()||email.isEmpty()||PseudoUtilisateur.isEmpty()||password.isEmpty()||cpass.isEmpty()||numero.isEmpty()) {
                 Alert alert = new Alert(AlertType.ERROR);
@@ -212,7 +227,7 @@ public class InscriPController implements Initializable {
             }
  
              
-        User u =new User(email,role,hashedPassword,nom,prenom,numero,PseudoUtilisateur);
+        User u =new User(email,hashedPassword,role,nom,prenom,numero,PseudoUtilisateur,image,fill);
         userCRUD ucd =new userCRUD() ;
         ucd.ajouter(u);
          root1=FXMLLoader.load(getClass().getResource("authentification.fxml"));
@@ -222,6 +237,44 @@ public class InscriPController implements Initializable {
         stage1.show();
          
     }
+    
+   @FXML
+    void importimg(ActionEvent event){
+        // Create a FileChooser object
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an Image");
+        // Set the initial directory to the user's home directory
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        // Add a filter to show only image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        // Show the file chooser dialog and wait for the user to select a file
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            try {
+                // Read the selected image file into a BufferedImage object
+                BufferedImage image = ImageIO.read(selectedFile);
+                
+                
+                
+                // Convert the BufferedImage to a JavaFX Image object
+                Image fxImage = SwingFXUtils.toFXImage(image, null);
+                
+                // Display the image in an ImageView
+                addEmployee_image.setImage(fxImage);
+                
+                // Save the image to a file
+                String randomString = UUID.randomUUID().toString();
+                String outputPath = "C:/Users/alisl/Desktop/pics/"+randomString+".jpg";
+                File outputFile = new File(outputPath);
+                fxPathImage.setText(randomString+".jpg");
+                ImageIO.write(image, "jpg", outputFile);
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
+        }
+        }
 }
 
     

@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="534.0" styleClass="right-form" stylesheets="@logindesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.ChoixController">
    <children>
-      <ImageView fitHeight="401.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="401.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="267.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../../img/pexels-cottonbro-studio-4100670.jpg" />
          </image>
@@ -19,17 +19,17 @@
             <Image url="@../../../img/therapist%20pic.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="172.0" layoutY="26.0" text="JE SUIS UN" textFill="#007299">
+      <Label layoutX="172.0" layoutY="26.0" text="JE SUIS UN" textFill="#007299" AnchorPane.bottomAnchor="332.46380615234375" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="173.2" AnchorPane.topAnchor="26.0">
          <font>
             <Font name="Tahoma Bold" size="33.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="77.0" layoutY="349.0" onAction="#switchtoPatient" text="PATIENT">
+      <Hyperlink layoutX="77.0" layoutY="349.0" onAction="#switchtoPatient" prefHeight="50.0" prefWidth="164.0" text="PATIENT" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="349.0">
          <font>
             <Font size="26.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="329.0" layoutY="349.0" onAction="#switchtoT" text="THERAPIST">
+      <Hyperlink layoutX="329.0" layoutY="349.0" onAction="#switchtoT" text="THERAPIST" AnchorPane.bottomAnchor="2.663806152343703" AnchorPane.leftAnchor="328.6" AnchorPane.rightAnchor="63.400000000000006" AnchorPane.topAnchor="348.6">
          <font>
             <Font size="26.0" />
          </font>

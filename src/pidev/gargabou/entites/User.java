@@ -19,7 +19,8 @@ public class User {
     private String nom;
     private String prenom;
     private String numero;
-    private int numerolicente;
+    private int fill;
+
     public String licence;
     private String image;
      private String specialite;
@@ -42,6 +43,20 @@ public class User {
     private ArrayList<CommantairePublication> CommantairePublications;
     //Relation reactionPublications // Many to 1
     private ArrayList<ReactionPublication> ReactionPublications;
+
+    public User(String email, String roles, String password, String nom, String prenom, String numero, String licence, String image, String specialite, String photolicence) {
+        this.email = email;
+        this.roles = roles;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.licence = licence;
+        this.image = image;
+        this.specialite = specialite;
+        this.photolicence = photolicence;
+    }
+
    
 
     public User(int id, String email, String roles, String password, String nom, String prenom, String numero, String licence, String specialite, String PseudoUtilisateur) {
@@ -55,6 +70,7 @@ public class User {
         this.licence = licence;
         this.specialite = specialite;
         this.PseudoUtilisateur = PseudoUtilisateur;
+        
     }
 
     public String getLicence() {
@@ -73,13 +89,7 @@ public class User {
         this.specialite = specialite;
     }
  
-    public int getNumerolicente() {
-        return numerolicente;
-    }
-
-    public void setNumerolicente(int numerolicente) {
-        this.numerolicente = numerolicente;
-    }
+  
 
     public String getPhotolicence() {
         return photolicence;
@@ -89,31 +99,22 @@ public class User {
         this.photolicence = photolicence;
     }
 
-    public User(String email, String password, String nom, String prenom, String numero, int numerolicente, String specialite) {
-        this.email = email;
-        this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.numero = numero;
-        this.numerolicente = numerolicente;
-        this.specialite = specialite;
-    }
-
-    public User(String email, String roles, String password, String nom, String prenom, String numero, int numerolicente, String specialite) {
-        this.email = email;
-        this.roles = roles;
-        this.password = password;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.numero = numero;
-        this.numerolicente = numerolicente;
-        this.specialite = specialite;
-    }
+   
     
 
     public User() {
     }
-
+public User(String email, String password,String roles , String nom, String prenom, String numero, String PseudoUtilisateur,String image,int fill ){
+  this.email = email;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+        this.roles = roles;
+        this.fill=fill;
+        this.image=image;
+}
     public User(String email, String password, String nom, String prenom, String numero, String PseudoUtilisateur) {
         this.email = email;
         this.password = password;

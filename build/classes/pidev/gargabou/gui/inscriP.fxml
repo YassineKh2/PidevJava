@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.InscriPController">
      <children>
-      <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #56E0E0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #56E0E0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="303.0" fitWidth="260.0" layoutX="70.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="117.57998657226562" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="117.62001342773436">
                <image>
@@ -32,29 +32,29 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="400.0" prefHeight="500.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="400.0" prefHeight="500.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#4daea7" layoutX="150.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire" underline="true" wrappingWidth="112.5921630859375" AnchorPane.bottomAnchor="428.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="137.4078369140625" AnchorPane.topAnchor="37.6">
+            <Text fill="#4daea7" layoutX="150.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire" underline="true" wrappingWidth="112.5921630859375" AnchorPane.bottomAnchor="428.0" AnchorPane.rightAnchor="137.4078369140625" AnchorPane.topAnchor="37.6">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
             </Text>
-            <TextField fx:id="tf_nom" layoutX="40.0" layoutY="99.0" onAction="#ajouterpatient" promptText="nom" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;">
+            <TextField fx:id="tf_nom" layoutX="40.0" layoutY="99.0" onAction="#ajouterpatient" promptText="nom" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="373.0" AnchorPane.rightAnchor="210.4" AnchorPane.topAnchor="99.0">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></TextField>
-            <TextField fx:id="tf_prenom" layoutX="226.0" layoutY="99.0" onAction="#ajouterpatient" promptText="prenom" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="tf_email" layoutX="40.0" layoutY="153.0" onAction="#ajouterpatient" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="tf_mdp" layoutX="226.0" layoutY="153.0" onAction="#ajouterpatient" promptText="Mot De Passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #4daea7;" />
-            <PasswordField fx:id="tf_mdp1" layoutX="40.0" layoutY="212.0" onAction="#ajouterpatient" promptText="Confirm Mot De Passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #4daea7;" />
-            <TextField fx:id="tf_num" layoutX="226.0" layoutY="212.0" promptText="Numero" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="tf_psuedo" layoutX="40.0" layoutY="268.0" onAction="#ajouterpatient" promptText="Psuedo" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="sinscri" alignment="CENTER" layoutX="144.0" layoutY="431.0" mnemonicParsing="false" onAction="#ajouterpatient" prefHeight="42.0" prefWidth="123.0" style="-fx-background-color: #4daea7; -fx-background-radius: 11;" text="S'Inscire">
+            <TextField fx:id="tf_prenom" layoutX="226.0" layoutY="99.0" onAction="#ajouterpatient" promptText="prenom" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="373.0" AnchorPane.rightAnchor="24.400000000000006" AnchorPane.topAnchor="99.0" />
+            <TextField fx:id="tf_email" layoutX="40.0" layoutY="153.0" onAction="#ajouterpatient" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="319.0" AnchorPane.rightAnchor="210.4" AnchorPane.topAnchor="153.0" />
+            <PasswordField fx:id="tf_mdp" layoutX="226.0" layoutY="153.0" onAction="#ajouterpatient" promptText="Mot De Passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #4daea7;" AnchorPane.bottomAnchor="319.0" AnchorPane.rightAnchor="24.400000000000006" AnchorPane.topAnchor="153.0" />
+            <PasswordField fx:id="tf_mdp1" layoutX="40.0" layoutY="212.0" onAction="#ajouterpatient" promptText="Confirm Mot De Passe" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #4daea7;" AnchorPane.bottomAnchor="260.0" AnchorPane.rightAnchor="210.4" AnchorPane.topAnchor="212.0" />
+            <TextField fx:id="tf_num" layoutX="226.0" layoutY="212.0" promptText="Numero" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="260.0" AnchorPane.rightAnchor="24.400000000000006" AnchorPane.topAnchor="212.0" />
+            <TextField fx:id="tf_psuedo" layoutX="40.0" layoutY="270.0" onAction="#ajouterpatient" promptText="Psuedo" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="202.0" AnchorPane.rightAnchor="210.4" AnchorPane.topAnchor="270.0" />
+            <Button fx:id="sinscri" alignment="CENTER" layoutX="144.0" layoutY="431.0" mnemonicParsing="false" onAction="#ajouterpatient" prefHeight="42.0" prefWidth="123.0" style="-fx-background-color: #4daea7; -fx-background-radius: 11;" text="S'Inscire" AnchorPane.bottomAnchor="26.6" AnchorPane.rightAnchor="132.8" AnchorPane.topAnchor="431.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Hyperlink fx:id="blogin" layoutX="14.0" layoutY="462.0" onAction="#switchtologin" text="S'Authentifier" />
-            <Button layoutX="350.0" layoutY="155.0" mnemonicParsing="false" onMousePressed="#showpass" onMouseReleased="#hidepass" style="-fx-background-color: transparent;">
+            <Hyperlink fx:id="blogin" layoutX="14.0" layoutY="462.0" onAction="#switchtologin" text="S'Authentifier" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="306.0" />
+            <Button layoutX="350.0" layoutY="155.0" mnemonicParsing="false" onMousePressed="#showpass" onMouseReleased="#hidepass" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="317.8" AnchorPane.rightAnchor="14.799999999999997" AnchorPane.topAnchor="155.0">
                <graphic>
                   <ImageView fitHeight="95.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -62,13 +62,14 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <AnchorPane layoutX="222.0" layoutY="260.0" prefHeight="122.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #4daea7;">
+            <AnchorPane layoutX="234.0" layoutY="270.0" prefHeight="122.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #4daea7;" AnchorPane.bottomAnchor="101.19999999999999" AnchorPane.rightAnchor="38.8" AnchorPane.topAnchor="270.0">
                <children>
                   <Label layoutX="43.0" layoutY="6.0" text="Avatar" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fx:id="addEmployee_image" fitHeight="150.0" fitWidth="123.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="addEmployee_importBtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <ImageView fx:id="addEmployee_image" fitHeight="123.0" fitWidth="86.0" layoutX="20.0" layoutY="16.0" pickOnBounds="true" AnchorPane.bottomAnchor="2.5999999999999943" AnchorPane.rightAnchor="21.200000000000003" AnchorPane.topAnchor="1.2000000000000028" />
+                  <Button fx:id="addEmployee_importBtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#importimg" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
+            <Label fx:id="fxPathImage" layoutX="94.0" layoutY="347.0" style="-fx-text-fill: transparent;" />
          </children>
       </AnchorPane>
    </children>

@@ -26,6 +26,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -149,6 +151,13 @@ public class HomeFController implements Initializable {
 
     @FXML
     private AnchorPane profileedit1;
+@FXML
+    private ImageView imageuser;
+   @FXML
+    private ImageView detailpatpic;
+
+    @FXML
+    private ImageView detailtherpic;
 
     /**
      * Initializes the controller class.
@@ -183,13 +192,15 @@ public class HomeFController implements Initializable {
             String name = rs.getString("nom"); // retrieve the name from the result set
             String prenom = rs.getString(6); // retrieve the name from the result set
             String role = rs.getString("roles");
+            
             if (role.contains("ROLE_PATIENT")) {
                 lblRole.setText("Patient");
 
             } else {
                 lblRole.setText("Therapist");
             }
-
+            Image img = new Image("file:C:/Users/alisl/Desktop/pics/"+rs.getString("image"), true);
+            imageuser.setImage(img);
             lblNom.setText(name); // set the label text to the retrieved name
             lblPreom.setText(prenom); // set the label text to the retrieved name
 
@@ -216,6 +227,7 @@ public class HomeFController implements Initializable {
             String email = rs.getString("email");
             String num = rs.getString("numero");
             String psudo = rs.getString("PseudoUtilisateur");
+            Image img = new Image("file:C:/Users/alisl/Desktop/pics/"+rs.getString("image"), true);
             if (role.contains("ROLE_PATIENT")) {
                 profileDETAIL.setVisible(true);
                 profileDETAIL1.setVisible(false);
@@ -226,6 +238,7 @@ public class HomeFController implements Initializable {
                 GETPRENOM.setText(prenom);
                 GETPSUDO.setText(psudo);
 
+detailtherpic.setImage(img);
             } else {
                 String spec = rs.getString("spetialite");
                 String lic = rs.getString("licence");
@@ -239,11 +252,14 @@ public class HomeFController implements Initializable {
                 getlicT.setText(lic);
                 getspecialiteT.setText(spec);
 
+   detailpatpic.setImage(img);
             }
-
+ 
+          
+            
             lblNom.setText(name); // set the label text to the retrieved name
             lblPreom.setText(prenom); // set the label text to the retrieved name
-
+            
         }
 
         rs.close(); // close the result set
