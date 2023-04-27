@@ -17,6 +17,7 @@ import edu.esprit.services.ServicesModule;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -123,10 +126,17 @@ public class AllFormationController implements Initializable {
         handle_supprimer.setOnAction(e -> {
             Formation selectedFormation = list_formation.getSelectionModel().getSelectedItem();
             if (selectedFormation != null) {
-                
-                sf.supprimer(selectedFormation.getId());
-                list_formation.getItems().remove(selectedFormation);
-    }
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("est tu sure que tu veut supprimer cette formation?");
+                alert.setContentText("cette operation peut etre annulé.");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    sf.supprimer(selectedFormation.getId());
+                    list_formation.getItems().remove(selectedFormation);
+                }
+            }
         });
         
     

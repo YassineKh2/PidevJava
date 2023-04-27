@@ -17,12 +17,14 @@ import edu.esprit.services.ServicesModule;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.AnchorPane;
@@ -104,9 +106,16 @@ public class AllModuleController implements Initializable {
             ModuleFormation selectedModule = list_module.getSelectionModel().getSelectedItem();
             if (selectedModule != null) {
                 
-                sf.supprimer(selectedModule.getId());
-            list_module.getItems().remove(selectedModule);
-    }
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("est tu sure que tu veut supprimer ce Module?");
+                alert.setContentText("cette operation peut etre annulé.");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    sm.supprimer(selectedModule.getId());
+                    list_module.getItems().remove(selectedModule);
+                }}
         });
     }    
     

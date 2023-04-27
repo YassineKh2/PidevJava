@@ -16,12 +16,14 @@ import edu.esprit.services.ServicesModule;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.AnchorPane;
@@ -99,9 +101,16 @@ public class AllFormateurController implements Initializable {
             Formateur selectedFormateur = list_formateur.getSelectionModel().getSelectedItem();
             if (selectedFormateur != null) {
                 
-                sfm.supprimer(selectedFormateur.getId());
-                list_formateur.getItems().remove(selectedFormateur);
-    }
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("est tu sure que tu veut supprimer ce Formateur?");
+                alert.setContentText("cette operation peut etre annulé.");
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    sfm.supprimer(selectedFormateur.getId());
+                    list_formateur.getItems().remove(selectedFormateur);
+                }}
         });
         
     

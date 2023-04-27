@@ -15,6 +15,7 @@ import java.awt.Insets;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -23,6 +24,8 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -95,7 +98,7 @@ public class FormAjouterController implements Initializable {
             String fmr = values_formateur.getText();
             int nv=values_niveau.getValue();
             check_fields();
-            
+            if(check_fields()==true){
             for(Formateur fm:formateur){
                 if(fmr.equals(fm.getNomFormateur()+ " " + fm.getPrenomFormateur())){
                     Formation f_aj= new Formation(nom,nv,fm.getId(),img,desc);
@@ -110,12 +113,12 @@ public class FormAjouterController implements Initializable {
                     conf.setStyle("-fx-background-color: green; -fx-font-weight: bold;");
                     whole_form_scene.getChildren().add(conf);
                     
-                }}
+                }}}
                 
         });
      
     }
-    public void check_fields(){
+    public boolean check_fields(){
         String nom = tx_nom_formation.getText();
         String img= tx_image_fm.getText();
         String desc = tx_description.getText();
@@ -123,40 +126,26 @@ public class FormAjouterController implements Initializable {
         int nv=values_niveau.getValue();
         
         if(nom.isEmpty()|| img.isEmpty() || desc.isEmpty()|| fmr.isEmpty()){
-           label_error.getStyleClass().add("error");
-
-
-        
-            label_error.setText("tous les champs sont obligatoires");
-            label_error.setLayoutX(174);
-            label_error.setLayoutY(609);
-            label_error.setPrefWidth(250);
-            /*KeyFrame kf = new KeyFrame(javafx.util.Duration.seconds(5));
-            Timeline timeline = new Timeline(kf);
-            timeline.setCycleCount(1);
-            
-            timeline.setOnFinished(event -> {
-                label_error.setVisible(false);
-            });
-            timeline.play();*/
-            
-            
-            whole_form_scene.getChildren().add(label_error);
-            
-            
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("tu dois remplir tous les champs");
+                Optional<ButtonType> result = alert.showAndWait();
+                return false;
+                
         }
         
-        if(desc.length()<20){
+        else if(desc.length()<20){
             label_error.setStyle("-fx-background-color: red; -fx-font-weight: bold;");
             label_error.setText("la description doit contient 20 caracteres au min");
             label_error.setLayoutX(174);
             label_error.setLayoutY(609);
             label_error.setPrefWidth(350);
             whole_form_scene.getChildren().add(label_error);
+            return false;
         }
-        
-        
-       
+        else{
+            return true;
+        }
     }
 
     @FXML

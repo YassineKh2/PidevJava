@@ -12,15 +12,24 @@ import edu.esprit.entities.ModuleFormation;
 import edu.esprit.services.ServicesFormateur;
 import edu.esprit.services.ServicesFormation;
 import edu.esprit.services.ServicesModule;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -45,6 +54,8 @@ public class DetailFormationController implements Initializable {
     private JFXTextArea tx_description;
     @FXML
     private ImageView image_fm;
+    @FXML
+    private JFXButton btn_join;
 
     /**
      * Initializes the controller class.
@@ -79,6 +90,34 @@ public class DetailFormationController implements Initializable {
                 
             }
         }
+        btn_email_formateur.setOnAction(e->{
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ContactFormateur.fxml"));
+                Parent root=loader.load();
+                
+                
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Consulter Formateur");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(DetailFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        btn_join.setOnAction(e->{
+            try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("formJoin.fxml"));
+                Parent root=loader.load();
+                
+                
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Joindre Formation");
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(DetailFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }    
     
 }

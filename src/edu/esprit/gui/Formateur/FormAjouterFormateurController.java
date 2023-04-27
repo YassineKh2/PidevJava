@@ -13,11 +13,16 @@ import edu.esprit.services.ServicesFormateur;
 import edu.esprit.services.ServicesFormation;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SpinnerValueFactory;
@@ -53,6 +58,12 @@ public class FormAjouterFormateurController implements Initializable {
     private Label label_error;
     @FXML
     private Label ct_num;
+    @FXML
+    private Label ct_nom;
+    @FXML
+    private Label ct_prenom;
+    @FXML
+    private Label ct_mail;
 
     /**
      * Initializes the controller class.
@@ -66,7 +77,7 @@ public class FormAjouterFormateurController implements Initializable {
         ArrayList<Formateur> formateur = (ArrayList) sfm.getAll();
         
         tx_num.setOnKeyTyped(ec->{
-                if(ec.getCharacter().matches("[a-zA-Z]")){
+                if(ec.getCharacter().matches("[a-zA-Z]") && tx_num.getText().length()!=8){
                     
                     ec.consume();
                     ct_num.getStyleClass().add("error");
@@ -75,7 +86,59 @@ public class FormAjouterFormateurController implements Initializable {
                     
                     
                 }
+                else{
+                    ct_num.setText("");
+                }
+                
             });    
+        
+        tx_nom_formateur.setOnKeyTyped(ec->{
+                if(ec.getCharacter().matches("^[0-9]+$")){
+                    
+                    ec.consume();
+                    ct_nom.getStyleClass().add("error");
+                    ct_nom.setText("veiller entrer des caracteres");
+                    
+                    
+                    
+                }
+                else{
+                    ct_nom.setText("");
+                }
+            });
+        tx_pn_formateur.setOnKeyTyped(ec->{
+                if(ec.getCharacter().matches("^[0-9]+$")){
+                    
+                    ec.consume();
+                    ct_prenom.getStyleClass().add("error");
+                    ct_prenom.setText("veiller entrer des caracteres");
+                    
+                    
+                    
+                }
+                else{
+                    ct_prenom.setText("");
+                }
+            });
+        
+        tx_email.setOnKeyPressed(ec->{
+            String regex = "^[a-zA-Z0-9_!#$%&amp;'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(tx_email.getText());
+                if(!matcher.matches()){
+                    
+                    ec.consume();
+                    ct_mail.getStyleClass().add("error");
+                    ct_mail.setText("veillez un email de la form example@gmail.com");
+                      
+                }
+                else{
+                    ct_mail.setText("");
+                }
+            });
+        
+        
         
 
         btn_ajout_formateur.setOnMouseClicked(e ->{
@@ -84,21 +147,22 @@ public class FormAjouterFormateurController implements Initializable {
             String img= tx_image_fm.getText();
             String prenom = tx_pn_formateur.getText();
             String email =tx_email.getText();
-            int num=Integer.parseInt(tx_num.getText());
+            
             String sexe = null;
             
             if (tx_male.isSelected()) {
                     sexe = tx_male.getText();
                     
                     // Do something with the selected value...
-                };
+                }
             
             if (tx_female.isSelected()) {
                     sexe = tx_female.getText();
             }
-            check_fields();
-            
-            Formateur f_aj = new Formateur(nom, prenom, sexe, email, num, img);
+            if(check_fields()==true){
+                int num=Integer.parseInt(tx_num.getText());
+                Formateur f_aj = new Formateur(nom, prenom, sexe, email, num, img);
+                    label_error.setVisible(false);
                     sfm.ajouter(f_aj);
                     Label conf=new Label();
                     conf.setText("Formateur bien ajouté");
@@ -108,47 +172,40 @@ public class FormAjouterFormateurController implements Initializable {
                     conf.setPrefWidth(192);
                     conf.setStyle("-fx-background-color: green; -fx-font-weight: bold;");
                     whole_form_scene.getChildren().add(conf);
-                });
+            }
+            
+            });
     }
-        public void check_fields(){
+        public boolean check_fields(){
             String nom = tx_nom_formateur.getText();
             String img= tx_image_fm.getText();
             String prenom = tx_pn_formateur.getText();
             String email =tx_email.getText();
-            int num=Integer.parseInt(tx_num.getText());
-            String sexe = null;
+            
+            String sexe;
             
             if (tx_male.isSelected()) {
                     sexe = tx_male.getText();
                     
                     // Do something with the selected value...
-                };
+                }
             
             if (tx_female.isSelected()) {
                     sexe = tx_female.getText();
             }
+            
         
-        if(nom.isEmpty()|| img.isEmpty() || prenom.isEmpty()|| email.isEmpty()  || (!tx_male.isSelected() && !tx_female.isSelected())){
-            
-            label_error.setText("tous les champs sont obligatoires");
-            
-            /*KeyFrame kf = new KeyFrame(javafx.util.Duration.seconds(5));
-            Timeline timeline = new Timeline(kf);
-            timeline.setCycleCount(1);
-            
-            timeline.setOnFinished(event -> {
-                label_error.setVisible(false);
-            });
-            timeline.play();*/
-            
-            whole_form_scene.getChildren().add(label_error);
-            
-            
+        if(nom.isEmpty()|| img.isEmpty() || prenom.isEmpty()|| email.isEmpty() || tx_num.getText().isEmpty() || (!tx_male.isSelected() && !tx_female.isSelected())){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Confirmation");
+                alert.setHeaderText("tu dois remplir tous les champs");
+                Optional<ButtonType> result = alert.showAndWait();
+                return false;
         }
-        
-        
-        
-       
+ 
+        else{
+            return true;
+        } 
     }    
     
 }
