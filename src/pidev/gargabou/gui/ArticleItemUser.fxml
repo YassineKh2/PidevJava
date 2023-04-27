@@ -71,7 +71,7 @@
             <Label fx:id="fxQuantiteSelected" layoutX="161.0" layoutY="151.0" prefHeight="17.0" prefWidth="21.0" />
             <Button fx:id="fxplusButton" layoutX="186.0" layoutY="147.0" mnemonicParsing="false" text="+" />
             <Button fx:id="fxMinusButton" layoutX="123.0" layoutY="146.0" mnemonicParsing="false" text="-" />
-            <JFXButton fx:id="fxNomArticle" layoutX="114.0" layoutY="20.0" text="." textFill="#3a1c9d" />
+            <JFXButton fx:id="fxNomArticle" layoutX="107.0" layoutY="23.0" text="." textFill="#3a1c9d" />
          </children>
          <effect>
             <DropShadow color="#d7d2d2" height="50.0" radius="24.5" width="50.0" />

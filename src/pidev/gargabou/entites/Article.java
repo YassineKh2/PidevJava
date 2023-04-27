@@ -69,7 +69,18 @@ public class Article {
         this.RemisePourcentageArticle = RemisePourcentageArticle;
         this.SaleNumberArticle = SaleNumberArticle;
     }
-
+        public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, int SaleNumberArticle,ArrayList<Rating> RatingArticleTab) {
+        this.id = id;
+        this.idCategorie = idCategorie;
+        this.NomArticle = NomArticle;
+        this.PrixArticle = PrixArticle;
+        this.QuantiteArticle = QuantiteArticle;
+        this.ImageArticle = ImageArticle;
+        this.ArticleDiscription = ArticleDiscription;
+        this.RemisePourcentageArticle = RemisePourcentageArticle;
+        this.SaleNumberArticle = SaleNumberArticle;
+        this.RatingArticleTab = RatingArticleTab;
+    }
    
 
     

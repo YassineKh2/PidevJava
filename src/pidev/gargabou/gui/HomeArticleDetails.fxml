@@ -29,11 +29,6 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXButton fx:id="fxAjouterArticle" layoutX="1041.0" layoutY="95.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="Ajouter un article" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
          </children>
       </Pane>
       <VBox layoutX="-1.0" layoutY="145.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="146.0">
@@ -172,39 +167,31 @@
       </Pane>
       <ScrollPane layoutX="225.0" layoutY="517.0" prefHeight="406.0" prefWidth="810.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="-300.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="517.0">
          <content>
-            <VBox fx:id="pnl_scroll" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
+            <VBox fx:id="pnl_scrollDetails" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
          </content>
       </ScrollPane>
       <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
          <children>
-            <JFXButton fx:id="fxGoToCateogrie" text="Les Categories" />
-            <Label fx:id="lbl_pending" onMouseClicked="#handleButtonAction" prefHeight="30.0" prefWidth="207.0" text="Les articles" textFill="#171717">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-            </Label>
+            <JFXButton fx:id="fxGoToCateogrieDetails" text="Les Categories" />
          </children>
       </HBox>
-      <ImageView fx:id="fxImageArticle" fitHeight="245.0" fitWidth="260.0" layoutX="937.0" layoutY="211.0" pickOnBounds="true" />
-      <Label fx:id="fxNomArticle" layoutX="306.0" layoutY="230.0" text="NomArticle">
+      <ImageView fx:id="fxImageArticleDetails" fitHeight="245.0" fitWidth="260.0" layoutX="937.0" layoutY="211.0" pickOnBounds="true" />
+      <Label fx:id="fxNomArticleDetails" layoutX="306.0" layoutY="230.0" text="NomArticle">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="fxPrixArticle" layoutX="351.0" layoutY="298.0" text="Prix">
+      <Label fx:id="fxPrixArticleDetails" layoutX="351.0" layoutY="298.0" text="Prix">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="fxRemiseArticle" layoutX="412.0" layoutY="298.0" text="remise">
+      <Label fx:id="fxRemiseArticleDetails" layoutX="412.0" layoutY="298.0" text="remise">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextArea fx:id="fxArticleDiscription" layoutX="267.0" layoutY="334.0" />
-      <Label fx:id="fxIdArticle" layoutX="640.0" layoutY="167.0" text="Label" textFill="TRANSPARENT" />
+      <JFXTextArea fx:id="fxArticleDiscriptionDetails" editable="false" layoutX="267.0" layoutY="334.0" prefHeight="175.0" prefWidth="625.0" />
+      <Label fx:id="fxIdArticleDetails" layoutX="640.0" layoutY="167.0" text="Label" textFill="TRANSPARENT" />
    </children>
 </AnchorPane>

@@ -6,15 +6,24 @@ package pidev.gargabou.gui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -24,55 +33,66 @@ import javafx.scene.layout.VBox;
 public class ArticleDetailsHomeController implements Initializable {
 
     @FXML
-    private JFXButton fxAjouterArticle;
+    private ImageView fxImageArticleDetails;
     @FXML
-    private VBox pnl_scroll;
+    private Label fxNomArticleDetails;
     @FXML
-    private JFXButton fxGoToCateogrie;
+    private Label fxPrixArticleDetails;
     @FXML
-    private Label lbl_pending;
+    private Label fxRemiseArticleDetails;
     @FXML
-    private ImageView fxImageArticle;
+    private JFXTextArea fxArticleDiscriptionDetails;
     @FXML
-    private Label fxNomArticle;
+    private Label fxIdArticleDetails;
     @FXML
-    private Label fxPrixArticle;
+    private VBox pnl_scrollDetails;
     @FXML
-    private Label fxRemiseArticle;
-    @FXML
-    private JFXTextArea fxArticleDiscription;
-    @FXML
-    private Label fxIdArticle;
+    private JFXButton fxGoToCateogrieDetails;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        fxGoToCateogrieDetails.setOnAction(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeCategorieUser.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                CategorieHomeUserController controller = loader.getController();
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
+    }
 
-    @FXML
-    private void handleButtonAction(MouseEvent event) {
+
+    public void setNomArticle(String message) {
+        fxNomArticleDetails.setText(message);
     }
-    
-    public void setNomArticle(String message){
-        fxNomArticle.setText(message);
+
+    public void setPrixArticle(String message) {
+        fxPrixArticleDetails.setText(message);
     }
-    public void setPrixArticle(String message){
-        fxPrixArticle.setText(message);
+
+    public void setDiscriptionArticle(String message) {
+        fxArticleDiscriptionDetails.setText(message);
     }
-    public void setDiscriptionArticle(String message){
-        fxArticleDiscription.setText(message);
+
+    public void setIdArticle(String message) {
+        fxIdArticleDetails.setText(message);
     }
-    public void setIdArticle(String message){
-        fxIdArticle.setText(message);
+
+    public void setRemiseArticle(String message) {
+        fxRemiseArticleDetails.setText(message);
     }
-    public void setRemiseArticle(String message){
-        fxRemiseArticle.setText(message);
+
+    public void setImageArticle(Image message) {
+        fxImageArticleDetails.setImage(message);
     }
-    public void setImageArticle(Image message){
-        fxImageArticle.setImage(message);
-    }
-    
+
 }

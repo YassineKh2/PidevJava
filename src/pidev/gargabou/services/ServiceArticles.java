@@ -13,22 +13,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import pidev.gargabou.entites.Rating;
 
 /**
  *
  * @author yassine
  */
-public class ServiceArticles implements IService<Article>{
+public class ServiceArticles implements IService<Article> {
 
     Connection cnx = DataSource.getInstance().getCnx();
 
-    
     @Override
     public void ajouter(Article p) {
-              String req = "INSERT INTO `article` (`categorie_id`, `nom_article`,`prix_article`,`quantite_article`,`image_article`,`article_discription`,`remise_pourcentage_article`,`sale_number_article`) VALUES (?,?,?,?,?,?,?,?)";
-        try{    
+        String req = "INSERT INTO `article` (`categorie_id`, `nom_article`,`prix_article`,`quantite_article`,`image_article`,`article_discription`,`remise_pourcentage_article`,`sale_number_article`) VALUES (?,?,?,?,?,?,?,?)";
+        try {
             PreparedStatement ps = cnx.prepareStatement(req);
-            
+
             ps.setString(1, Integer.toString(p.getIdCategorie()));
             ps.setString(2, p.getNomArticle());
             ps.setString(3, Float.toString(p.getPrixArticle()));
@@ -40,7 +40,7 @@ public class ServiceArticles implements IService<Article>{
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        } 
+        }
 
     }
 
@@ -58,27 +58,27 @@ public class ServiceArticles implements IService<Article>{
 
     @Override
     public void modifier(Article p) {
-      try (PreparedStatement pstmt = cnx.prepareStatement(
-    "UPDATE article SET nom_article=?, categorie_id=?, prix_article=?, quantite_article=?, image_article=?, article_discription=?, remise_pourcentage_article=?, sale_number_article=? WHERE id=?"
-)) {
-    pstmt.setString(1, p.getNomArticle());
-    pstmt.setInt(2, p.getIdCategorie());
-    pstmt.setDouble(3, p.getPrixArticle());
-    pstmt.setInt(4, p.getQuantiteArticle());
-    pstmt.setString(5, p.getImageArticle());
-    pstmt.setString(6, p.getArticleDiscription());
-    pstmt.setDouble(7, p.getRemisePourcentageArticle());
-    pstmt.setInt(8, p.getSaleNumberArticle());
-    pstmt.setInt(9, p.getId());
-    int rowsAffected = pstmt.executeUpdate();
-    if (rowsAffected > 0) {
-        System.out.println("Article updated successfully!");
-    } else {
-        System.out.println("Article with ID " + p.getId() + " not found!");
-    }
-} catch (SQLException ex) {
-    System.out.println("Error updating article: " + ex.getMessage());
-}
+        try (PreparedStatement pstmt = cnx.prepareStatement(
+                "UPDATE article SET nom_article=?, categorie_id=?, prix_article=?, quantite_article=?, image_article=?, article_discription=?, remise_pourcentage_article=?, sale_number_article=? WHERE id=?"
+        )) {
+            pstmt.setString(1, p.getNomArticle());
+            pstmt.setInt(2, p.getIdCategorie());
+            pstmt.setDouble(3, p.getPrixArticle());
+            pstmt.setInt(4, p.getQuantiteArticle());
+            pstmt.setString(5, p.getImageArticle());
+            pstmt.setString(6, p.getArticleDiscription());
+            pstmt.setDouble(7, p.getRemisePourcentageArticle());
+            pstmt.setInt(8, p.getSaleNumberArticle());
+            pstmt.setInt(9, p.getId());
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Article updated successfully!");
+            } else {
+                System.out.println("Article with ID " + p.getId() + " not found!");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error updating article: " + ex.getMessage());
+        }
 
     }
 
@@ -89,9 +89,21 @@ public class ServiceArticles implements IService<Article>{
             String req = "Select * from article";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
-            while(rs.next()){
-            Article c = new Article(rs.getInt(1), rs.getInt(2), rs.getString(3),rs.getFloat(4),rs.getInt(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9));
-            list.add(c);
+            ServiceRating sr = new ServiceRating();
+            ArrayList<Rating> Ratings = (ArrayList<Rating>) sr.getAll();
+
+            while (rs.next()) {
+
+                ArrayList<Rating> NewRatings = new ArrayList<>();
+
+                for (Rating rate : Ratings) {
+                    if (rate.getIdArticle() == rs.getInt(1)) {
+                        NewRatings.add(rate);
+                    }
+                }
+
+                Article c = new Article(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getFloat(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9), NewRatings);
+                list.add(c);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -99,27 +111,36 @@ public class ServiceArticles implements IService<Article>{
 
         return list;
     }
+
     public Article findArticleById(int id) {
-    try {
-        String req = "SELECT * FROM article WHERE id = ?";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
+        try {
+            ServiceRating sr = new ServiceRating();
+            ArrayList<Rating> Ratings = (ArrayList<Rating>) sr.getAll();
+            String req = "SELECT * FROM article WHERE id = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            // Create an Article object using data from the result set
-            Article article = new Article(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getFloat(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9));
+            if (rs.next()) {
+                // Create an Article object using data from the result set
+                ArrayList<Rating> NewRatings = new ArrayList<>();
 
-            return article;
-        } else {
-            // Article not found with the given ID
+                for (Rating rate : Ratings) {
+                    if (rate.getIdArticle() == rs.getInt(1)) {
+                        NewRatings.add(rate);
+                    }
+                }
+                Article article = new Article(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getFloat(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8), rs.getInt(9),NewRatings);
+
+                return article;
+            } else {
+                // Article not found with the given ID
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
             return null;
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-        return null;
     }
-}
 
-    
 }
