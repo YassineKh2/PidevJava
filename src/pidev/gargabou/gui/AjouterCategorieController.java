@@ -91,6 +91,9 @@ public class AjouterCategorieController implements Initializable {
                 String Path = fxPathImageCateg.getText();
                 Categorie Categ = new Categorie(nom, Path);
                 sp.ajouter(Categ);
+                
+                
+                
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content

@@ -5,6 +5,7 @@
 package pidev.gargabou.gui;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,6 +24,19 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Article;
 import pidev.gargabou.services.ServiceArticles;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -39,14 +53,16 @@ public class ArticleHomeController implements Initializable {
     private JFXButton fxAjouterArticle;
     @FXML
     private JFXButton fxGoToCateogrie;
+    @FXML
+    private JFXButton fxArticleExcel;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fxGoToCateogrie.setOnAction( event -> {
-             try {
+        fxGoToCateogrie.setOnAction(event -> {
+            try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
@@ -58,7 +74,7 @@ public class ArticleHomeController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         });
-        fxAjouterArticle.setOnAction( event -> {
+        fxAjouterArticle.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AjouterArticle.fxml"));
                 Parent root = loader.load(); // load the new FXML file
@@ -71,39 +87,82 @@ public class ArticleHomeController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         });
-        
-        refreshNodes();
-    }    
+        fxArticleExcel.setOnAction(event -> {
+            final String[] columns = {"ID", "ID de catégorie", "Nom de l'article", "Prix", "Quantité", "Description", "Réduction (%)", "Nombre de ventes"};
+            ServiceArticles sa = new ServiceArticles();
+            final List<Article> data = sa.getAll(); // List of Article objects with data
 
-    private void refreshNodes()
-    {
+            // Generate Excel file and fill it with data
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            Sheet sheet = (Sheet) workbook.createSheet("Articles");
+
+            // Create header row
+            Row headerRow = sheet.createRow(0);
+            for (int i = 0; i < columns.length; i++) {
+                Cell cell = headerRow.createCell(i);
+                cell.setCellValue(columns[i]);
+            }
+
+            // Create data rows
+            int rowNum = 1;
+            for (Article article : data) {
+                Row row = sheet.createRow(rowNum++);
+
+                row.createCell(0).setCellValue(article.getId());
+                row.createCell(1).setCellValue(article.getIdCategorie());
+                row.createCell(2).setCellValue(article.getNomArticle());
+                row.createCell(3).setCellValue(article.getPrixArticle());
+                row.createCell(4).setCellValue(article.getQuantiteArticle());
+                row.createCell(5).setCellValue(article.getArticleDiscription());
+                row.createCell(6).setCellValue(article.getRemisePourcentageArticle());
+                row.createCell(7).setCellValue(article.getSaleNumberArticle());
+            }
+
+            // Autosize columns
+            for (int i = 0; i < columns.length; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            // Save workbook to file
+            try {
+                FileOutputStream outputStream = new FileOutputStream("Articles.xlsx");
+                workbook.write(outputStream);
+                workbook.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
+        refreshNodes();
+    }
+
+    private void refreshNodes() {
         pnl_scroll.getChildren().clear();
         ServiceArticles Sa = new ServiceArticles();
-        
+
         ArrayList<Article> Articles = (ArrayList) Sa.getAll();
-        
+
         System.out.println();
-        Node [] nodes = new  Node[Articles.size()];
-        
-        for(int i = 0; i<Articles.size(); i++)
-        {
+        Node[] nodes = new Node[Articles.size()];
+
+        for (int i = 0; i < Articles.size(); i++) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ArticleItem.fxml"));
                 Node node = (Node) loader.load();
                 ArticleItemController controller = loader.getController();
-               controller.setArticle(Articles.get(i));
-                
-               pnl_scroll.getChildren().add(node);
-                
+                controller.setArticle(Articles.get(i));
+
+                pnl_scroll.getChildren().add(node);
+
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-           
-        }  
+
+        }
     }
 
     @FXML
     private void handleButtonAction(MouseEvent event) {
     }
-    
+
 }
