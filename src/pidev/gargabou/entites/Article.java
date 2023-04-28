@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author yassine
  */
 public class Article {
+    private static int idArc;
     private int id;
     //Relation categorie // 1 to Many
     private int idCategorie;
@@ -187,6 +188,14 @@ public class Article {
 
     public void setPaymentArticleTab(ArrayList<Payment> PaymentArticleTab) {
         this.PaymentArticleTab = PaymentArticleTab;
+    }
+
+    public static int getIdArc() {
+        return idArc;
+    }
+
+    public static void setIdArc(int idArc) {
+        Article.idArc = idArc;
     }
 
     @Override

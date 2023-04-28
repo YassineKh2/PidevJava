@@ -165,17 +165,12 @@
             <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Pane>
-      <ScrollPane layoutX="225.0" layoutY="517.0" prefHeight="406.0" prefWidth="810.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="-300.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="517.0">
-         <content>
-            <VBox fx:id="pnl_scrollDetails" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
-         </content>
-      </ScrollPane>
       <HBox layoutX="251.0" layoutY="145.0" prefHeight="30.0" prefWidth="810.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="1.0">
          <children>
             <JFXButton fx:id="fxGoToCateogrieDetails" text="Les Categories" />
          </children>
       </HBox>
-      <ImageView fx:id="fxImageArticleDetails" fitHeight="245.0" fitWidth="260.0" layoutX="937.0" layoutY="211.0" pickOnBounds="true" />
+      <ImageView fx:id="fxImageArticleDetails" fitHeight="269.0" fitWidth="291.0" layoutX="906.0" layoutY="211.0" pickOnBounds="true" />
       <Label fx:id="fxNomArticleDetails" layoutX="306.0" layoutY="230.0" text="NomArticle">
          <font>
             <Font size="35.0" />
@@ -192,6 +187,12 @@
          </font>
       </Label>
       <JFXTextArea fx:id="fxArticleDiscriptionDetails" editable="false" layoutX="267.0" layoutY="334.0" prefHeight="175.0" prefWidth="625.0" />
-      <Label fx:id="fxIdArticleDetails" layoutX="640.0" layoutY="167.0" text="Label" textFill="TRANSPARENT" />
+      <ScrollPane layoutX="238.0" layoutY="509.0" prefHeight="406.0" prefWidth="810.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="-292.0" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="509.0">
+         <content>
+            <VBox fx:id="pnl_scrollDetails" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
+         </content>
+      </ScrollPane>
+      <Label fx:id="fxidarc" layoutX="743.0" layoutY="175.0" textFill="TRANSPARENT" />
+      <JFXButton fx:id="fxAjouterAvis" layoutX="779.0" layoutY="230.0" text="Ajouter un avis" />
    </children>
 </AnchorPane>

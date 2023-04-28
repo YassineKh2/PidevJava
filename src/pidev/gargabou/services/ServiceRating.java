@@ -24,14 +24,13 @@ public class ServiceRating implements IService<Rating> {
 
     @Override
     public void ajouter(Rating r) {
-        String req = "INSERT INTO `rating` (`stars`, `comment`, `article_id`, `user_id`, `rating_date`) VALUES (?,?,?,?,?)";
+        String req = "INSERT INTO `rating` (`stars`, `comment`, `article_id`, `user_id`) VALUES (?,?,?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, r.getStars());
             ps.setString(2, r.getComment());
             ps.setInt(3, r.getIdArticle());
             ps.setInt(4, r.getIdUser());
-            ps.setDate(5, new java.sql.Date(r.getRatingDate().getTime()));
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -5,6 +5,7 @@
 package pidev.gargabou.tests;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import pidev.gargabou.entites.Article;
 import pidev.gargabou.entites.Categorie;
@@ -25,13 +26,14 @@ public class MainClass {
     public static void main(String[] args) {
         Categorie p1 = new Categorie(114,"Abdelaziz", "Image");
         Article A = new Article(43,29,"pull baliz",45.5f,50,"IMGTEST","ggwpp",10,0);
-        
+        Date d = new Date();
+        Rating R = new Rating(3,"test",30,d,2);
         
         ServiceCategorie sp = new ServiceCategorie();
         ServiceArticles sa = new ServiceArticles();
         ServiceRating sr = new ServiceRating();
         
-        
+        sr.ajouter(R);
         ArrayList<Rating> Rating = (ArrayList<Rating>) sr.getAll();
         System.out.println(Rating);
         //sp.ajouter(p1);

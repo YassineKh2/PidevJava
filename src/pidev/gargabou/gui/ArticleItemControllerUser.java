@@ -107,12 +107,13 @@ public class ArticleItemControllerUser implements Initializable {
 
         fxNomArticle.setOnAction(event -> {
             try {
+                int arc = Integer.parseInt(fxArticleId.getText());
+                Article.setIdArc(arc);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeArticleDetails.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 ArticleDetailsHomeController controller = loader.getController();
                 
                 controller.setDiscriptionArticle(fxDiscriptionArticle.getText());
-                controller.setIdArticle(fxArticleId.getText());
                 controller.setImageArticle(fxImageArticle.getImage());
                 controller.setNomArticle(fxNomArticle.getText());
                 controller.setRemiseArticle(fxRemiseArticle.getText());
