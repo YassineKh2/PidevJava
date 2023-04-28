@@ -225,7 +225,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="profileDETAIL1" layoutX="256.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+      <AnchorPane fx:id="profileDETAIL1" layoutX="256.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
          <children>
             <Label layoutX="408.0" layoutY="39.0" prefHeight="39.0" prefWidth="271.0" text="DETAIL PROFILE" textFill="#93c572" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="38.0">
                <font>
@@ -281,7 +281,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="profileedit" layoutX="294.0" layoutY="144.0" prefHeight="454.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+      <AnchorPane fx:id="profileedit" layoutX="294.0" layoutY="144.0" prefHeight="454.0" prefWidth="1012.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
          <children>
             <Label layoutX="403.0" layoutY="37.0" prefHeight="39.0" prefWidth="209.0" text="EDIT PROFILE" textFill="#93c572" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="37.0">
                <font>
@@ -323,11 +323,17 @@
                   <Font name="Arial Bold Italic" size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="742.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="145.0">
-               <image>
-                  <Image url="@../../../img/5907.jpg" />
-               </image>
-            </ImageView>
+            <AnchorPane layoutX="753.0" layoutY="169.0" prefHeight="122.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #4daea7;">
+               <children>
+                  <ImageView fx:id="elp" fitHeight="123.0" fitWidth="114.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
+                     <image>
+                        <Image url="@../../../img/5907.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="43.0" layoutY="6.0" text="photo" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="jibelabtn1" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#jibela" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="profileedit1" layoutX="301.0" layoutY="144.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
@@ -342,7 +348,7 @@
             <Label layoutX="81.0" layoutY="314.0" text="NUMERO:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="314.0" />
             <Label layoutX="82.0" layoutY="367.0" text="PSUEDO:" textFill="#4daea7" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="367.0" />
             <Label layoutX="81.0" layoutY="164.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="164.0" />
-            <TextField fx:id="enom1" layoutX="188.0" layoutY="145.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="145.0">
+            <TextField fx:id="enom1" layoutX="188.0" layoutY="145.0" onAction="#editpatient" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="145.0">
                <font>
                   <Font name="System Italic" size="16.0" />
                </font>
@@ -372,11 +378,17 @@
                   <Font name="Arial Bold Italic" size="18.0" />
                </font>
             </Button>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="742.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/5907.jpg" />
-               </image>
-            </ImageView>
+            <AnchorPane layoutX="753.0" layoutY="162.0" prefHeight="122.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #4daea7;">
+               <children>
+                  <ImageView fx:id="ela" fitHeight="123.0" fitWidth="86.0" layoutX="21.0" layoutY="4.0" pickOnBounds="true" AnchorPane.bottomAnchor="4.199999999999989" AnchorPane.rightAnchor="20.200000000000003" AnchorPane.topAnchor="4.0">
+                     <image>
+                        <Image url="@../../../img/5907.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="43.0" layoutY="6.0" text="Avatar" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="jibelabtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#jibela" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

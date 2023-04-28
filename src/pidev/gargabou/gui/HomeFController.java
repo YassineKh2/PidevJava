@@ -158,6 +158,11 @@ public class HomeFController implements Initializable {
 
     @FXML
     private ImageView detailtherpic;
+      @FXML
+    private ImageView ela;
+      @FXML
+    private ImageView elp;
+
 
     /**
      * Initializes the controller class.
@@ -228,6 +233,7 @@ public class HomeFController implements Initializable {
             String num = rs.getString("numero");
             String psudo = rs.getString("PseudoUtilisateur");
             Image img = new Image("file:C:/Users/alisl/Desktop/pics/"+rs.getString("image"), true);
+           
             if (role.contains("ROLE_PATIENT")) {
                 profileDETAIL.setVisible(true);
                 profileDETAIL1.setVisible(false);
@@ -284,6 +290,8 @@ detailtherpic.setImage(img);
             String email = rs.getString("email");
             String num = rs.getString("numero");
             String psudo = rs.getString("PseudoUtilisateur");
+             Image img = new Image("file:C:/Users/alisl/Desktop/pics/"+rs.getString("image"), true);
+             Image img1 = new Image("file:C:/Users/alisl/Desktop/pics/"+rs.getString("photo licence"), true);
             if (role.contains("ROLE_PATIENT")) {
                 profileDETAIL.setVisible(false);
                 profileDETAIL1.setVisible(false);
@@ -295,7 +303,7 @@ detailtherpic.setImage(img);
                 enumuro1.setText(num);
                 eprenom1.setText(prenom);
                 epsudo1.setText(psudo);
-
+                ela.setImage(img);
             } else {
                 String spec = rs.getString("spetialite");
                 String lic = rs.getString("licence");
@@ -303,7 +311,7 @@ detailtherpic.setImage(img);
                 profileDETAIL1.setVisible(false);
                 profileedit1.setVisible(false);
                 profileedit.setVisible(true);
-
+                elp.setImage(img);
                 eemail.setText(email);
                 enom.setText(name);
                 enumuro.setText(num);
@@ -518,5 +526,8 @@ detailtherpic.setImage(img);
         ucd1.modifierTherapist(u);
 
     }
+ @FXML
+    void jibela(ActionEvent event) {
 
+    }
 }

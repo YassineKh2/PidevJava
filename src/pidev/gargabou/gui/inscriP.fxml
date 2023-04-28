@@ -65,8 +65,8 @@
             <AnchorPane layoutX="234.0" layoutY="270.0" prefHeight="122.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #4daea7;" AnchorPane.bottomAnchor="101.19999999999999" AnchorPane.rightAnchor="38.8" AnchorPane.topAnchor="270.0">
                <children>
                   <Label layoutX="43.0" layoutY="6.0" text="Avatar" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
-                  <ImageView fx:id="addEmployee_image" fitHeight="123.0" fitWidth="86.0" layoutX="20.0" layoutY="16.0" pickOnBounds="true" AnchorPane.bottomAnchor="2.5999999999999943" AnchorPane.rightAnchor="21.200000000000003" AnchorPane.topAnchor="1.2000000000000028" />
-                  <Button fx:id="addEmployee_importBtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#importimg" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <ImageView fx:id="ela" fitHeight="123.0" fitWidth="86.0" layoutX="20.0" layoutY="16.0" pickOnBounds="true" AnchorPane.bottomAnchor="2.5999999999999943" AnchorPane.rightAnchor="21.200000000000003" AnchorPane.topAnchor="1.2000000000000028" />
+                  <Button fx:id="addEmployee_importBtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#jibA" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
             <Label fx:id="fxPathImage" layoutX="94.0" layoutY="347.0" style="-fx-text-fill: transparent;" />
