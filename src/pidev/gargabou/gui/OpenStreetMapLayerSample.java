@@ -49,7 +49,7 @@ public class OpenStreetMapLayerSample extends Application {
       stage.show();
 
       // create an open street map layer (a layer that requests images from OpenStreetMap servers)
-      var openStreetMapLayer = new OpenStreetMapLayer();
+      OpenStreetMapLayer openStreetMapLayer = new OpenStreetMapLayer();
 
       // if the layer failed to load, display an alert
       openStreetMapLayer.addDoneLoadingListener(() -> {

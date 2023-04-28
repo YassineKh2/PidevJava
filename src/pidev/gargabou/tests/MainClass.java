@@ -4,14 +4,20 @@
  */
 package pidev.gargabou.tests;
 
+import com.sun.mail.iap.Response;
+import java.net.URI;
 import pidev.gargabou.entites.Evenement;
 import pidev.gargabou.services.EvenementCRUD;
 import pidev.gargabou.tools.MyConnection;
 import java.util.Date;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.core5.http.HttpRequest;
+import org.apache.hc.core5.http.HttpResponse;
 import pidev.gargabou.entites.Adresse;
 import pidev.gargabou.entites.Organisateur;
 import pidev.gargabou.services.AdresseCRUD;
 import pidev.gargabou.services.OrganisateurCRUD;
+import sun.misc.Request;
 /**
  *
  * @author yassine
@@ -27,7 +33,7 @@ public class MainClass {
         OrganisateurCRUD ocd = new OrganisateurCRUD();
       //MyConnection mc = new MyConnection();
         Date aujourdhui = new Date(1681949060000L);
-               
+      
      //   Evenement E1 =new Evenement("testevent",aujourdhui,20,30,"eventtesttype",6,2,"Back/images/events/64063c014cbaf.png",10,"javadescription",10);
      //Evenement E2 =new Evenement("nommmm",aujourdhui,00,99,"mmmmmmmmm",2,"Back/images/events/64063c014cbaf.png",90,"jmmmmm",180);
       // ecd.ajouterEvenement(E1);
