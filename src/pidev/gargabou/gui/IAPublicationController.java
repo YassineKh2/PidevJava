@@ -73,7 +73,7 @@ public class IAPublicationController implements Initializable {
         PublicationService ps = new PublicationService();
         
         
-        ArrayList<Publication> publication = (ArrayList<Publication>) ps.recuperer();
+        ArrayList<Publication> publication = (ArrayList<Publication>) ps.recupererNotBannedPubs();
 
         Node[] nodes = new Node[publication.size()];
 

@@ -37,18 +37,19 @@
                </font>
             </Label>
             <ImageView fx:id="fxImagePub" fitHeight="253.0" fitWidth="385.0" layoutX="51.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true" />
-            <MenuButton layoutX="712.0" layoutY="19.0" mnemonicParsing="false">
+            <MenuButton layoutX="712.0" layoutY="19.0" mnemonicParsing="false" styleClass="head-background" stylesheets="@style.css" textFill="#32239a">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#redirectToModifierPub" text="Modifier" />
                 <MenuItem fx:id="btnSupprimerPub" mnemonicParsing="false" onAction="#SupprimerPub" text="Suprimer" />
                   <MenuItem mnemonicParsing="false" onAction="#downloadPdf" text="Download PDF" />
+                  <MenuItem fx:id="btnSignaler" mnemonicParsing="false" onAction="#signalerPub" text="Signaler" />
               </items>
             </MenuButton>
             <Label fx:id="fxIdPub" layoutX="684.0" layoutY="22.0" prefHeight="17.0" prefWidth="0.0" visible="false" />
             <Label fx:id="fxPathImage" layoutX="504.0" layoutY="417.0" visible="false" />
-            <Button layoutX="153.0" layoutY="437.0" mnemonicParsing="false" onAction="#AfficherCommentaires" text="Afficher les commentaires" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="351.0" layoutY="437.0" mnemonicParsing="false" onAction="#redirectToAddComment" prefHeight="25.0" prefWidth="153.0" text="Ajouter un commentaire" />
-            <Button layoutX="51.0" layoutY="426.0" mnemonicParsing="false" onAction="#addLike">
+            <Button layoutX="153.0" layoutY="437.0" mnemonicParsing="false" onAction="#AfficherCommentaires" styleClass="head-background" stylesheets="@style.css" text="Afficher les commentaires" textFill="WHITE" />
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="351.0" layoutY="437.0" mnemonicParsing="false" onAction="#redirectToAddComment" prefHeight="25.0" prefWidth="153.0" styleClass="head-background" stylesheets="@style.css" text="Ajouter un commentaire" textFill="WHITE" />
+            <Button layoutX="51.0" layoutY="426.0" mnemonicParsing="false" onAction="#addLike" styleClass="head-background" stylesheets="@style.css" textFill="#483e7f9e">
                <graphic>
                   <ImageView fx:id="imgLike" fitHeight="39.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>

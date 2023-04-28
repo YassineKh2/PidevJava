@@ -54,7 +54,7 @@ public class AddPublicationController implements Initializable {
     private ImageView fxImgPub;
     @FXML
     private Label fxPathImgPub;
-    private String emailUser = "mohamedanas.atallah@esprit.tn";
+    //
     /**
      * Initializes the controller class.
      */
@@ -82,7 +82,7 @@ public class AddPublicationController implements Initializable {
                 Publication pub = new Publication(3,datePup,contenuPub, Path);
                 ps.ajouter(pub);
                 /////mailing
-                sendEmail(emailUser, contenuPub );
+                //sendEmail(emailUser, contenuPub );
                 
                 ///////
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IAPublication.fxml"));
@@ -154,18 +154,18 @@ public class AddPublicationController implements Initializable {
     }
 
     
-   public void sendEmail( String email, String contenu) throws MessagingException {
-    
-            
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Congrats");
-            alert.setHeaderText("we just send u an email");
-            alert.setContentText("Please check your e-mail box");
-            alert.show();
-            
-            
-            EnvoyerEmail.envoyer(email,contenu);
-            
-        
-    }
+//   public void sendEmail( String email, String contenu) throws MessagingException {
+//    
+//            
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Congrats");
+//            alert.setHeaderText("we just send u an email");
+//            alert.setContentText("Please check your e-mail box");
+//            alert.show();
+//            
+//            
+//            EnvoyerEmail.envoyer(email,contenu);
+//            
+//        
+//    }
 }

@@ -90,12 +90,85 @@ public class PublicationService implements IService<Publication> {
             p.setIdUser(rs.getInt("utilisateur_id"));
             p.setDatePublication(rs.getDate("date_publication"));
             p.setId(rs.getInt("id"));
+            p.setNbrSignalers(rs.getInt("nbr_signalers"));
+            p.setIsBanned(rs.getBoolean("is_banned"));
 
             Publications.add(p);
 
         }
         return Publications;
     }
+    public List<Publication> recupererBannedPubs() throws SQLException {
+        List<Publication> Publications = new ArrayList<>();
+        String s = "SELECT * FROM publication WHERE is_banned  = 1";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(s);
+        while (rs.next()) {
+            Publication p = new Publication();
+            p.setIsApproved(rs.getBoolean("is_approved"));
+            p.setImageForum(rs.getString("image_forum"));
+            p.setContenuPublication(rs.getString("contenu_publication"));
+            p.setIdUser(rs.getInt("utilisateur_id"));
+            p.setDatePublication(rs.getDate("date_publication"));
+            p.setId(rs.getInt("id"));
+            p.setNbrSignalers(rs.getInt("nbr_signalers"));
+            p.setIsBanned(rs.getBoolean("is_banned"));
+
+            Publications.add(p);
+
+        }
+        return Publications;
+    }
+    
+    public List<Publication> recupererNotBannedPubs() throws SQLException {
+        List<Publication> Publications = new ArrayList<>();
+        String s = "SELECT * FROM publication WHERE is_banned  = 0";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(s);
+        while (rs.next()) {
+            Publication p = new Publication();
+            p.setIsApproved(rs.getBoolean("is_approved"));
+            p.setImageForum(rs.getString("image_forum"));
+            p.setContenuPublication(rs.getString("contenu_publication"));
+            p.setIdUser(rs.getInt("utilisateur_id"));
+            p.setDatePublication(rs.getDate("date_publication"));
+            p.setId(rs.getInt("id"));
+            p.setNbrSignalers(rs.getInt("nbr_signalers"));
+            p.setIsBanned(rs.getBoolean("is_banned"));
+
+            Publications.add(p);
+
+        }
+        return Publications;
+    }
+    
+    public void banPub(Publication t) throws SQLException {
+        try {
+            
+            String req = "UPDATE publication SET is_banned = 1 where id = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, t.getId());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void signalerPub(Publication t) throws SQLException {
+        try {
+            String req = "UPDATE publication SET nbr_signalers = ? where id = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            int nbrs = t.getNbrSignalers()+1;
+            System.out.println(nbrs);
+            ps.setInt(1, nbrs);
+            ps.setInt(2, t.getId());
+            
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     public Publication recupererParId(int id) throws SQLException {
      List<Publication> publication = new ArrayList<>();
      String req = "SELECT * FROM publication WHERE id  = "+ id;
@@ -112,6 +185,8 @@ public class PublicationService implements IService<Publication> {
             p.setIdUser(rs.getInt("utilisateur_id"));
             p.setDatePublication(rs.getDate("date_publication"));
             p.setId(rs.getInt("id"));
+            p.setNbrSignalers(rs.getInt("nbr_signalers"));
+            p.setIsBanned(rs.getBoolean("is_banned"));
         //ajout    
         publication.add(p);
         

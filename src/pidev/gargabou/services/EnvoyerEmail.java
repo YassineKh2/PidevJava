@@ -54,9 +54,9 @@ public class EnvoyerEmail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(destinataire));
-            message.setSubject("Publication Publier");
+            message.setSubject("Commentaire notification");
             
-            message.setText("Votre publication de contenu: \n "+contenu+"\na été publiée.");
+            message.setText("Un commentaire reçue de contenu: \n '"+contenu+"' \na été publiée dans votre publication.");
             return message;
         } catch (AddressException ex) {
             Logger.getLogger(EnvoyerEmail.class.getName()).log(Level.SEVERE, null, ex);

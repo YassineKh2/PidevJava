@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author yassine
  */
 public class Publication {
+
     private int id;
     //Relation User // 1 to many
     private int idUser;
@@ -19,6 +20,8 @@ public class Publication {
     private String ContenuPublication;
     private String ImageForum;
     private Boolean isApproved;
+    private int nbrSignalers;
+    private boolean isBanned;
 
     public Publication() {
     }
@@ -27,7 +30,17 @@ public class Publication {
         this.id = id;
     }
 
-    
+    public Publication(int id, int idUser, Date DatePublication, String ContenuPublication, String ImageForum, Boolean isApproved, int nbrSignalers, boolean isBanned) {
+        this.id = id;
+        this.idUser = idUser;
+        this.DatePublication = DatePublication;
+        this.ContenuPublication = ContenuPublication;
+        this.ImageForum = ImageForum;
+        this.isApproved = isApproved;
+        this.nbrSignalers = nbrSignalers;
+        this.isBanned = isBanned;
+    }
+
     public Publication(int idUser, Date DatePublication, String ContenuPublication, String ImageForum) {
         this.idUser = idUser;
         this.DatePublication = DatePublication;
@@ -35,8 +48,6 @@ public class Publication {
         this.ImageForum = ImageForum;
         this.isApproved = false;
     }
-
-    
 
     public Publication(int id, int idUser, Date DatePublication, String ContenuPublication, String ImageForum) {
         this.id = id;
@@ -47,7 +58,7 @@ public class Publication {
         this.isApproved = false;
     }
 
-    public Publication( Date DatePublication, String ContenuPublication, String ImageForum, Boolean isApproved,int id) {
+    public Publication(Date DatePublication, String ContenuPublication, String ImageForum, Boolean isApproved, int id) {
         this.id = id;
         this.DatePublication = DatePublication;
         this.ContenuPublication = ContenuPublication;
@@ -60,8 +71,17 @@ public class Publication {
         this.ImageForum = ImageForum;
         this.id = id;
     }
-    
-    
+
+    public Publication(int id, int nbrSignalers) {
+        this.id = id;
+        this.nbrSignalers = nbrSignalers;
+    }
+
+    public Publication(int id, boolean isBanned) {
+        this.id = id;
+        this.isBanned = isBanned;
+    }
+
     public int getId() {
         return id;
     }
@@ -108,6 +128,22 @@ public class Publication {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public int getNbrSignalers() {
+        return nbrSignalers;
+    }
+
+    public void setNbrSignalers(int nbrSignalers) {
+        this.nbrSignalers = nbrSignalers;
+    }
+
+    public boolean isIsBanned() {
+        return isBanned;
+    }
+
+    public void setIsBanned(boolean isBanned) {
+        this.isBanned = isBanned;
     }
 
     @Override
@@ -157,6 +193,4 @@ public class Publication {
         return "Publication{" + "id=" + id + ", idUser=" + idUser + ", DatePublication=" + DatePublication + ", ContenuPublication=" + ContenuPublication + ", ImageForum=" + ImageForum + ", isApproved=" + isApproved + '}';
     }
 
-    
-    
 }

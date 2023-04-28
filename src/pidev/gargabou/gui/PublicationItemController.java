@@ -17,29 +17,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import pidev.gargabou.entities.Publication;
 import pidev.gargabou.services.PublicationService;
-import pidev.gargabou.utils.DataSource;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -47,8 +38,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import static org.apache.commons.io.IOUtils.writer;
 import pidev.gargabou.entities.CommantairePublication;
 import pidev.gargabou.entities.ReactionPublication;
 import pidev.gargabou.services.CommantaireService;
@@ -86,12 +75,13 @@ public class PublicationItemController implements Initializable {
     @FXML
     private Label fxNbrLikes;
 
-    public PublicationItemController() {
-    }
+    
 
     public static PublicationItemController getInstance() {
         return INSTANCE;
     }
+    @FXML
+    private MenuItem btnSignaler;
 
     public String getId() {
         return fxIdPub.getText();
@@ -131,6 +121,10 @@ public class PublicationItemController implements Initializable {
             Image img = new Image(imageURL.toString());
             imgLike.setImage(img);
         }
+        PublicationService ps = new PublicationService();
+        if(pub.getNbrSignalers() > 2 ){
+                ps.banPub(pub);
+            }
     }
 
     @FXML
@@ -193,7 +187,7 @@ public class PublicationItemController implements Initializable {
             dialog.getDialogPane().setContent(root);
             ModifierPublicationController ShowPub = loader.getController();
             ShowPub.setContenuPublication(fxContenuPub.getText());
-            ShowPub.setIdPublication(fxIdPub.getText());
+            ShowPub.setIdPublication(idpub);
             ShowPub.setImagePublication(fxImagePub.getImage());
             ShowPub.setImagePath(fxPathImage.getText());
             dialog.show();
@@ -233,7 +227,7 @@ public class PublicationItemController implements Initializable {
             dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
             dialog.getDialogPane().setContent(root);
             AddCommentaireController acc = loader.getController();
-            acc.setIdPublication(fxIdPub.getText());
+            acc.setIdPublication(idpub);
             dialog.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -271,38 +265,35 @@ public class PublicationItemController implements Initializable {
             PublicationService ps = new PublicationService();
             Publication pub = ps.recupererParId(idpub);
 
-// Create a new PDF document
+            // Create a new PDF document
             com.itextpdf.text.Document document = new com.itextpdf.text.Document();
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(System.getProperty("user.home") + "/Downloads/pdfFiles/Publication_" + idpub + ".pdf"));
 
-// Open the document
+            // Open the document
             document.open();
             // Get the PdfContentByte object from the PdfWriter
             PdfContentByte canvas = writer.getDirectContent();
-// Set the stroke color to #3929E0
+            // Set the stroke color to #3929E0
             canvas.setColorStroke(new BaseColor(57, 41, 224));
-// Draw a rectangle around the entire page
+            // Draw a rectangle around the entire page
             canvas.rectangle(document.left(), document.bottom(), document.right() - document.left(), document.top() - document.bottom());
             canvas.stroke();
-
-// Create a table with four columns
+            //
             com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(new File("C:/Users/Anas/Desktop/ProjIng/public/" + pub.getImageForum()).getAbsolutePath());
             image.scaleAbsolute(200f, 200f);
             image.setAlignment(Element.ALIGN_CENTER);
             Paragraph paragraph = new Paragraph(pub.getContenuPublication());
             paragraph.setAlignment(Element.ALIGN_CENTER);
             document.add(paragraph);
-
             document.add(image);
-
-// Close the document
+            // Close the document
             document.close();
 
-// Show a success message
+            // Show a success message
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information");
-            alert.setHeaderText("Impression réussie");
-            alert.setContentText("pdf de cet publication  avec succès.");
+            alert.setHeaderText("Telechargement réussie");
+            alert.setContentText("pdf de cet publication sauvgargé 'C:/Users/Anas/Downloads/pdfFiles/Publication_" + idpub + ".pdf'");
             alert.showAndWait();
         } catch (Exception e) {
             // Show an error message if an exception occurs
@@ -315,5 +306,33 @@ public class PublicationItemController implements Initializable {
 
         }
 
+    }
+
+    @FXML
+    private void signalerPub(ActionEvent event) throws SQLException {
+        try {
+            int idPub = idpub;
+            PublicationService ps = new PublicationService();
+            Publication pub = ps.recupererParId(idPub);
+            ps.signalerPub(pub);
+            ps.recupererNotBannedPubs();
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Publication signaler!");
+            alert.showAndWait();
+            
+            MenuItem menuItem = (MenuItem) event.getSource();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("IAPublication.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
+            stage.setScene(scene);
+            stage.show();
+            btnSignaler.setDisable(true);
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

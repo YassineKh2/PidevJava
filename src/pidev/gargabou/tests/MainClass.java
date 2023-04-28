@@ -26,9 +26,11 @@ public class MainClass {
         
         //crud publication
         
-//        Publication p = new Publication(2,DatePublication, "aaslmea" , "image/img");
-//        PublicationService ps = new PublicationService();
-//        ps.ajouter(p);
+        Publication p = new Publication(2,DatePublication, "aaslmea" , "image/img");
+
+        PublicationService ps = new PublicationService();
+        ps.ajouter(p);
+        ps.signalerPub(p);
 //        Publication p1 = new Publication();
 //        p1.setId(24);
 //        ps.supprimer(p1);
@@ -36,10 +38,10 @@ public class MainClass {
        // Publication p2 = new Publication("2020/12/12", "bye" , "image2/img",true,24);
         //ps.modifier(p2);
        // System.out.println(ps.recuperer());
-ReactionPublicationService rps = new ReactionPublicationService();
-int nbr = rps.countLikes(12);
-      
-        System.out.println(nbr);
+//ReactionPublicationService rps = new ReactionPublicationService();
+//int nbr = rps.countLikes(12);
+//      
+//        System.out.println(nbr);
       
       //crud commantaire
       /*

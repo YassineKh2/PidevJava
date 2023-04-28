@@ -54,7 +54,7 @@ public class ModifierPublicationController implements Initializable {
     private Label fxIdPub;
     @FXML
     private Label dxDatePub;
-
+    private int idpub;
     /**
      * Initializes the controller class.
      */
@@ -131,9 +131,9 @@ public class ModifierPublicationController implements Initializable {
                 else{
                 String contenuPub = taContenuPup.getText();
                 String Path = fxPathImgPub.getText();
-                int id = Integer.parseInt(fxIdPub.getText());
+
                 PublicationService ps = new PublicationService();
-                Publication newPub = new Publication( contenuPub, Path, id);
+                Publication newPub = new Publication( contenuPub, Path, idpub);
                 ps.modifier(newPub);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("IAPublication.fxml"));
                 Parent root = loader.load(); // load the new FXML file
@@ -158,8 +158,8 @@ public class ModifierPublicationController implements Initializable {
         this.taContenuPup.setText(message);
     }
 
-    public void setIdPublication(String message) {
-        this.fxIdPub.setText(message);
+    public void setIdPublication(int id) {
+        this.idpub =id;
     }
 
     public void setImagePublication(Image img) {
