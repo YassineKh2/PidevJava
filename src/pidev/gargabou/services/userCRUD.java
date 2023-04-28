@@ -77,7 +77,7 @@ public class userCRUD implements IServices<User> {
     @Override
     public void modifier(User u) {
        try {
-            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `PseudoUtilisateur` = '" + u.getPseudoUtilisateur()+"' WHERE `user`.`id` = " + u.getId();
+            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `PseudoUtilisateur` = '" + u.getPseudoUtilisateur()+"',`image` = '" + u.getImage()+ "' WHERE `user`.`id` = " + u.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("user updated !");
@@ -87,7 +87,7 @@ public class userCRUD implements IServices<User> {
     }
  public void modifierTherapist(User u) {
        try {
-            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `spetialite` = '" + u.getSpecialite()+"' WHERE `user`.`id` = " + u.getId();
+            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `spetialite` = '" + u.getSpecialite()+"',`image` = '" + u.getImage()+ "' WHERE `user`.`id` = " + u.getId();
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("user updated !");

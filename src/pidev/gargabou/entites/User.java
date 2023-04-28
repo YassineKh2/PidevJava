@@ -235,6 +235,17 @@ public User(String email, String password,String roles , String nom, String pren
         this.ReactionPublications = ReactionPublications;
     }
 
+    public User(int id, String email, String nom, String prenom, String numero, int fill, String image, String PseudoUtilisateur) {
+        this.id = id;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.fill = fill;
+        this.image = image;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
     public User(int id, String email, String nom, String prenom, String numero, String image, String specialite) {
         this.id = id;
         this.email = email;

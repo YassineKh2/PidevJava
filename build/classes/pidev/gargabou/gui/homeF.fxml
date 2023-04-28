@@ -331,9 +331,11 @@
                      </image>
                   </ImageView>
                   <Label layoutX="43.0" layoutY="6.0" text="photo" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
-                  <Button fx:id="jibelabtn1" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#jibela" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Button fx:id="jibelpbtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#jibelp" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
+            <Label fx:id="path" layoutX="581.0" layoutY="234.0" style="-fx-text-fill: transparent;" />
+            <Label fx:id="path1" layoutX="591.0" layoutY="244.0" style="-fx-text-fill: transparent;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="profileedit1" layoutX="301.0" layoutY="144.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">

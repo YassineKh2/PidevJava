@@ -5,6 +5,8 @@
 package pidev.gargabou.gui;
 
 import com.jfoenix.controls.JFXButton;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -12,8 +14,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +34,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
 import pidev.gargabou.utils.DataSource;
@@ -43,6 +49,12 @@ import pidev.gargabou.utils.userNow;
  * @author alisl
  */
 public class HomeFController implements Initializable {
+      @FXML
+    private Label path;
+      
+    @FXML
+    private Label path1;
+
 
     @FXML
     private AnchorPane profileDETAIL1;
@@ -402,7 +414,7 @@ detailtherpic.setImage(img);
         String PseudoUtilisateur = epsudo1.getText();
         String numero = enumuro1.getText();
         int id = userNow.getid();
-
+        String image = path.getText();
         if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || PseudoUtilisateur.isEmpty() || numero.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(" form pas remply");
@@ -454,8 +466,8 @@ detailtherpic.setImage(img);
             }
 
         }
-
-        User u = new User(id, email, nom, prenom, numero, PseudoUtilisateur);
+        int fill =0;
+        User u = new User(id, email, nom, prenom, numero,fill,image, PseudoUtilisateur);
         userCRUD ucd = new userCRUD();
         ucd.modifier(u);
 
@@ -468,7 +480,7 @@ detailtherpic.setImage(img);
         String numero = enumuro.getText();
         String specialite = espec.getText();
         int id = userNow.getid();
-
+        String image = path1.getText();
         if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty() || numero.isEmpty()|| specialite.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(" form pas remply");
@@ -520,14 +532,85 @@ detailtherpic.setImage(img);
             }
 
         }
-        String image ="NULL";
+  
         User u = new User(id, email, nom, prenom, numero,image,specialite);
         userCRUD ucd1 = new userCRUD();
         ucd1.modifierTherapist(u);
 
     }
+    private Stage stage ; 
  @FXML
     void jibela(ActionEvent event) {
+ // Create a FileChooser object
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an Image");
+        // Set the initial directory to the user's home directory
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        // Add a filter to show only image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        // Show the file chooser dialog and wait for the user to select a file
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            try {
+                // Read the selected image file into a BufferedImage object
+                BufferedImage image = ImageIO.read(selectedFile);
+                
+                
+                
+                // Convert the BufferedImage to a JavaFX Image object
+                Image fxImage = SwingFXUtils.toFXImage(image, null);
+                
+                // Display the image in an ImageView
+                ela.setImage(fxImage);
+                
+                // Save the image to a file
+                String randomString = UUID.randomUUID().toString();
+                String outputPath = "C:/Users/alisl/Desktop/pics/"+randomString+".jpg";
+                File outputFile = new File(outputPath);
+                path.setText(randomString+".jpg");
+                ImageIO.write(image, "jpg", outputFile);
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
+        }
+    }
 
+    @FXML
+    void jibelp(ActionEvent event) {
+  FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an Image");
+        // Set the initial directory to the user's home directory
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        // Add a filter to show only image files
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        // Show the file chooser dialog and wait for the user to select a file
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            try {
+                // Read the selected image file into a BufferedImage object
+                BufferedImage image = ImageIO.read(selectedFile);
+                
+                
+                
+                // Convert the BufferedImage to a JavaFX Image object
+                Image fxImage = SwingFXUtils.toFXImage(image, null);
+                
+                // Display the image in an ImageView
+                elp.setImage(fxImage);
+                
+                // Save the image to a file
+                String randomString = UUID.randomUUID().toString();
+                String outputPath = "C:/Users/alisl/Desktop/pics/"+randomString+".jpg";
+                File outputFile = new File(outputPath);
+                path1.setText(randomString+".jpg");
+                ImageIO.write(image, "jpg", outputFile);
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
+        }
     }
 }
