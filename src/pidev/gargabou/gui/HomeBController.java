@@ -39,6 +39,7 @@ import javafx.stage.Stage;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
 import pidev.gargabou.utils.DataSource;
+import static pidev.gargabou.utils.twilio.sms;
 
 /**
  * FXML Controller class
@@ -118,7 +119,7 @@ public class HomeBController implements Initializable {
         u.setApprove(1);
         userCRUD uc= new userCRUD();
         uc.approve(mail);
-        
+        sms();
     }
     public void ban(){
         String mail = approvein1.getText();
