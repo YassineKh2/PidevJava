@@ -25,7 +25,7 @@ public class User {
     private String image;
      private String specialite;
      private String photolicence ;
-     
+     private int approve;
     private Boolean status;
     private String reset_token;
     private String PseudoUtilisateur;
@@ -43,6 +43,38 @@ public class User {
     private ArrayList<CommantairePublication> CommantairePublications;
     //Relation reactionPublications // Many to 1
     private ArrayList<ReactionPublication> ReactionPublications;
+
+    public User(String email, String roles, String nom, String prenom, String numero, int approve, Boolean status) {
+        this.email = email;
+        this.roles = roles;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.approve = approve;
+        this.status = status;
+    }
+
+    public User(String email, String roles, String nom, String prenom, String numero, String licence, String image, String specialite, String photolicence, Boolean status, String PseudoUtilisateur) {
+        this.email = email;
+        this.roles = roles;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.licence = licence;
+        this.image = image;
+        this.specialite = specialite;
+        this.photolicence = photolicence;
+        this.status = status;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
+    public int getApprove() {
+        return approve;
+    }
+
+    public void setApprove(int approve) {
+        this.approve = approve;
+    }
 
     public User(String email, String roles, String password, String nom, String prenom, String numero, String licence, String image, String specialite, String photolicence) {
         this.email = email;

@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -33,9 +34,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.services.userCRUD;
 import pidev.gargabou.utils.passwordHasher;
+
 
 /**
  * FXML Controller class
@@ -127,8 +138,108 @@ public class InscriTController implements Initializable {
         stage1.setScene(scene1);
         stage1.show();
     }
+      public static void sendemail() throws AddressException, MessagingException {
+                Properties properties = new Properties();
+                properties.put("mail.smtp.host", "smtp.gmail.com");
+                properties.put("mail.smtp.port", "587");
+                properties.put("mail.smtp.auth", "true");
+                properties.put("mail.smtp.starttls.enable", "true");
+
+                String username = "rehabradar123@gmail.com";
+                String password = "kglifegaigjdcdix";
+
+                Session session = Session.getInstance(properties, new Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress("rehabradar123@gmail.com"));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("alislimia01@gmail.com"));
+                message.setSubject("compte creer");
+                String htmlContent = "<!DOCTYPE html>\n"
+                        + "<html>\n"
+                        + "<head>\n"
+                        + "    <title>votre comte a etait creer</title>\n"
+                        + "    <meta charset=\"UTF-8\">\n"
+                        + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                        + "    <style>\n"
+                        + "        body {\n"
+                        + "            font-family: Arial, sans-serif;\n"
+                        + "            font-size: 14px;\n"
+                        + "            line-height: 1.5;\n"
+                        + "            color: #333;\n"
+                        + "            margin: 0;\n"
+                        + "            padding: 0;\n"
+                        + "        }\n"
+                        + "        .container {\n"
+                        + "            max-width: 600px;\n"
+                        + "            margin: 0 auto;\n"
+                        + "            padding: 20px;\n"
+                        + "            background-color: #f7f7f7;\n"
+                        + "            box-shadow: 0 0 10px rgba(0,0,0,0.1);\n"
+                        + "        }\n"
+                        + "        h1 {\n"
+                        + "            font-size: 24px;\n"
+                        + "            margin-bottom: 20px;\n"
+                        + "        }\n"
+                        + "        table {\n"
+                        + "            width: 100%;\n"
+                        + "            border-collapse: collapse;\n"
+                        + "            margin-bottom: 20px;\n"
+                        + "        }\n"
+                        + "        table th {\n"
+                        + "            font-weight: bold;\n"
+                        + "            background-color: #eee;\n"
+                        + "            padding: 10px;\n"
+                        + "            text-align: left;\n"
+                        + "            border-bottom: 2px solid #ccc;\n"
+                        + "        }\n"
+                        + "        table td {\n"
+                        + "            padding: 10px;\n"
+                        + "            border-bottom: 1px solid #ccc;\n"
+                        + "        }\n"
+                        + "        .total {\n"
+                        + "            font-weight: bold;\n"
+                        + "            font-size: 18px;\n"
+                        + "            margin-top: 20px;\n"
+                        + "            text-align: right;\n"
+                        + "        }\n"
+                        + "    </style>\n"
+                        + "</head>\n"
+                        + "<body>\n"
+                        + "<div class=\"container\">\n"
+                        + "    <a>Rehab Radar</a></h1></a>\n"
+                        + "    <h1>votre comte a etait creer</h1>\n"
+                
+                   
+                        + "\n"
+                        + "</div>\n"
+                        + "<div class=\"container\">\n"
+                        + "    <h1>Merci</h1>\n"
+                        + "    <p>Cher(e) Utilisateur,</p>\n"
+                        + "    <p>Je voulais simplement prendre un moment pour vous remercier d'avoir rejoint notre application. Nous sommes ravis de vous avoir parmi nous et nous espérons que vous trouverez notre plateforme utile et agréable à utiliser.\n" +
+"\n" +
+"Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter à tout moment. Nous sommes là pour vous aider et nous apprécions vos commentaires.\n" +
+"\n" +
+"Merci encore pour votre confiance en nous et pour votre soutien. Nous avons hâte de vous aider à atteindre vos objectifs grâce à notre application.\n" +
+"\n" +
+"Cordialement,\n" +
+"[L'équipe de l'application]</p>\n"
+                       
+                        + "    <div class=\"signature\">Cordialement,<br>RehabRadar</div>\n"
+                        + "</div>\n"
+                        + "</body>\n"
+                        + "</html>\n"
+                        + "\n";
+                message.setContent(htmlContent, "text/html");
+                Transport.send(message);
+                System.out.println("HTML email sent successfully");
+            }
     @FXML
-    private void ajouterTherapist(ActionEvent event) throws IOException {
+    private void ajouterTherapist(ActionEvent event) throws IOException, MessagingException {
         String nom = tf_nom.getText();
         String prenom = tf_prenom.getText();
         String email = tf_email.getText();
@@ -228,6 +339,7 @@ public class InscriTController implements Initializable {
                 alert.setContentText("compte creer et entrain d'etre verifier");
                 alert.setHeaderText(null);
                 alert.showAndWait();
+                sendemail();
           
          }
              
@@ -244,6 +356,7 @@ public class InscriTController implements Initializable {
         scene1= new Scene(root1);
         stage1.setScene(scene1);
         stage1.show();
+       
     }
 
    @FXML

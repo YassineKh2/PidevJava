@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -122,7 +123,26 @@
             <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Pane>
-      <ScrollPane layoutX="251.0" layoutY="182.0" prefHeight="406.0" prefWidth="810.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="182.0">
+      <HBox layoutX="216.0" layoutY="146.0" prefHeight="100.0" prefWidth="1046.0">
+         <children>
+            <Label fx:id="usercount" prefHeight="118.0" prefWidth="339.0" text="user number" textFill="#007299">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="usercount1" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="339.0" text="patient number" textFill="#007299">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="usercount11" layoutX="288.0" layoutY="10.0" prefHeight="100.0" prefWidth="280.0" text="therapist number" textFill="#007299">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ScrollPane layoutX="251.0" layoutY="237.0" prefHeight="323.0" prefWidth="1011.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="237.0">
          <content>
             <VBox fx:id="pnl_scroll" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
          </content>

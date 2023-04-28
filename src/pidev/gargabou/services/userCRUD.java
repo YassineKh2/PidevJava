@@ -85,6 +85,16 @@ public class userCRUD implements IServices<User> {
             System.out.println(ex.getMessage());
         }
     }
+    public void approve(User u) {
+       try {
+            String req = "UPDATE `user` SET `approve` = '" + u.getApprove()+ "' WHERE `user`.`id` = " + u.getId();
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user approved !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
  public void modifierTherapist(User u) {
        try {
             String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `spetialite` = '" + u.getSpecialite()+"',`image` = '" + u.getImage()+ "' WHERE `user`.`id` = " + u.getId();
@@ -103,7 +113,7 @@ public class userCRUD implements IServices<User> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                User u = new User(rs.getString("email"), rs.getString("nom"), rs.getString("prenom"), rs.getString("PseudoUtilisateur"));
+                User u = new User(rs.getString("email"), rs.getString("roles"),rs.getString("nom"), rs.getString("prenom"),rs.getString("numero"),rs.getInt(10),rs.getBoolean(9));
                 list.add(u);
             }
         } catch (SQLException ex) {
