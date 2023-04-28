@@ -174,6 +174,8 @@ public class HomeFController implements Initializable {
     private ImageView ela;
       @FXML
     private ImageView elp;
+      @FXML
+      private ImageView virif;
 
 
     /**
@@ -202,6 +204,7 @@ public class HomeFController implements Initializable {
 
         PreparedStatement ps = connect.getCnx().prepareStatement(query);
         int id = userNow.getid();
+        
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
 
@@ -209,12 +212,19 @@ public class HomeFController implements Initializable {
             String name = rs.getString("nom"); // retrieve the name from the result set
             String prenom = rs.getString(6); // retrieve the name from the result set
             String role = rs.getString("roles");
-            
+            int st =rs.getInt("approve");
+            Image img1 = new Image("file:C:/Users/alisl/Documents/aha/pidev/src/img/green_eco_loop_leaf_check_mark.jpg");
+             Image img2 = new Image("file:C:/Users/alisl/Documents/aha/pidev/src/img/eye (1).png");
             if (role.contains("ROLE_PATIENT")) {
                 lblRole.setText("Patient");
 
             } else {
                 lblRole.setText("Therapist");
+            }
+            if(st==1){virif.setImage(img1);
+            
+            }else {
+            virif.setImage(img2);
             }
             Image img = new Image("file:C:/Users/alisl/Desktop/pics/"+rs.getString("image"), true);
             imageuser.setImage(img);

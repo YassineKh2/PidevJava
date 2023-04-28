@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,8 +28,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.User;
@@ -41,15 +46,123 @@ import pidev.gargabou.utils.DataSource;
  * @author alisl
  */
 public class HomeBController implements Initializable {
-       @FXML
-    private Label usercount11;
-@FXML
-    private Label usercount;
-  @FXML
-    private Label usercount1;
+ 
+    @FXML
+    private JFXButton approve;
+
+    @FXML
+    private Button approvebtn;
+
+    @FXML
+    private Button approvebtn1;
+
+    @FXML
+    private Button approvebtn11;
+
+    @FXML
+    private TextField approvein;
+
+    @FXML
+    private TextField approvein1;
+
+    @FXML
+    private AnchorPane haprovexd;
+
+    @FXML
+    private AnchorPane haprovexd1;
+
+    @FXML
+    private HBox hbox;
+
+    @FXML
+    private JFXButton logout;
 
     @FXML
     private VBox pnl_scroll;
+
+
+
+    @FXML
+    private Label usercount;
+
+    @FXML
+    private Label usercount1;
+
+    @FXML
+    private Label usercount11;
+
+    @FXML
+    private Label usercount2;
+
+    @FXML
+    private Label usercount21;
+
+    @FXML
+    private JFXButton util;
+
+    @FXML
+    private AnchorPane utilisateur;
+     @FXML
+    void saha(ActionEvent event) {
+          approve();
+            Alert alert = new Alert(AlertType.INFORMATION);
+             alert.setTitle("Information Message");
+                alert.setContentText("user approved");
+                alert.setHeaderText(null);
+                alert.showAndWait();
+        
+    }
+    public void approve(){
+        String mail = approvein.getText();
+        User u = new User(mail);
+        u.setApprove(1);
+        userCRUD uc= new userCRUD();
+        uc.approve(mail);
+        
+    }
+    public void ban(){
+        String mail = approvein1.getText();
+        User u = new User(mail);
+        u.setStatus(1);
+        userCRUD uc= new userCRUD();
+        uc.ban(mail);
+          Alert alert = new Alert(AlertType.INFORMATION);
+             alert.setTitle("Information Message");
+                alert.setContentText("user banned");
+                alert.setHeaderText(null);
+                alert.showAndWait();
+    } 
+    public void unban(){
+        String mail = approvein1.getText();
+        User u = new User(mail);
+        u.setStatus(0);
+        userCRUD uc= new userCRUD();
+        uc.unban(mail);
+          Alert alert = new Alert(AlertType.INFORMATION);
+             alert.setTitle("Information Message");
+                alert.setContentText("user unbanned");
+                alert.setHeaderText(null);
+                alert.showAndWait();
+    }
+      @FXML
+    void showban(ActionEvent event) {
+  utilisateur.setVisible(false);
+       haprovexd.setVisible(false);
+         haprovexd1.setVisible(true);
+    }
+  @FXML
+    void show(ActionEvent event) {
+       utilisateur.setVisible(true);
+       haprovexd.setVisible(false);
+         haprovexd1.setVisible(false);
+    }
+      @FXML
+    void showapp(ActionEvent event) {
+utilisateur.setVisible(false);
+       haprovexd.setVisible(true);
+        haprovexd1.setVisible(false);
+    }
+
 public void displayNumberOfCustomer() throws SQLException {
         int noc = 0;
 
@@ -116,7 +229,7 @@ Connection cnx = DataSource.getInstance().getCnx();
      */private double x = 0;
     private double y = 0;
     @FXML
-    private JFXButton logout;
+    /*private JFXButton logout;*/
     
     public void lbara() {
 
@@ -148,6 +261,9 @@ Connection cnx = DataSource.getInstance().getCnx();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        utilisateur.setVisible(false);
+        haprovexd.setVisible(false);
+         haprovexd1.setVisible(false);
     try {
         displayNumberOfCustomer();
     } catch (SQLException ex) {

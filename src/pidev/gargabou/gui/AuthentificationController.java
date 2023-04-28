@@ -105,7 +105,8 @@ public class AuthentificationController implements Initializable {
                     if (hashedPassword != null && passwordHasher.verifyPassword(tf_Password.getText(), hashedPassword)) {
                            
                         int id = result.getInt("id");
-                        
+                        int stat = result.getInt(9);
+                        if (stat!=1){ 
                         userNow.setid(id);
                         
                         alert = new Alert(Alert.AlertType.INFORMATION);
@@ -115,6 +116,12 @@ public class AuthentificationController implements Initializable {
                         alert.showAndWait();
 
                        changeScene.changeScene(event, "/pidev/gargabou/gui/HomeF.fxml", "home");
+                       }else{ alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("tu est bannee");
+                        alert.showAndWait();
+                        }
                     } else {
                         alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Error Message");

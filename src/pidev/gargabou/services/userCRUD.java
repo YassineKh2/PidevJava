@@ -85,12 +85,38 @@ public class userCRUD implements IServices<User> {
             System.out.println(ex.getMessage());
         }
     }
-    public void approve(User u) {
+    public void approve(String numero) {
        try {
-            String req = "UPDATE `user` SET `approve` = '" + u.getApprove()+ "' WHERE `user`.`id` = " + u.getId();
+            String req = "UPDATE `user` SET `approve` = 1 WHERE `numero` = "+numero;
             Statement st = cnx.createStatement();
+            
             st.executeUpdate(req);
+            
             System.out.println("user approved !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public void ban(String numero) {
+       try {
+            String req = "UPDATE `user` SET `status` = 1 WHERE `numero` = "+numero;
+            Statement st = cnx.createStatement();
+            
+            st.executeUpdate(req);
+            
+            System.out.println("user banned !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    public void unban(String numero) {
+       try {
+            String req = "UPDATE `user` SET `status` = 0 WHERE `numero` = "+numero;
+            Statement st = cnx.createStatement();
+            
+            st.executeUpdate(req);
+            
+            System.out.println("user unbaned !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -113,7 +139,7 @@ public class userCRUD implements IServices<User> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                User u = new User(rs.getString("email"), rs.getString("roles"),rs.getString("nom"), rs.getString("prenom"),rs.getString("numero"),rs.getInt(10),rs.getBoolean(9));
+                User u = new User(rs.getString("email"), rs.getString("roles"),rs.getString("nom"), rs.getString("prenom"),rs.getString("numero"),rs.getInt(10),rs.getInt(9));
                 list.add(u);
             }
         } catch (SQLException ex) {

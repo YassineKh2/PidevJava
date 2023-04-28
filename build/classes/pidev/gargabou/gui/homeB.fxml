@@ -2,8 +2,10 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -47,7 +49,7 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Patients" textFill="#5b5858">
+            <JFXButton fx:id="util" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#show" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="UTILISATEURS" textFill="#5b5858">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -58,10 +60,18 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Therapist " textFill="#5b5858">
+            <JFXButton fx:id="approve" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#showapp" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="APPROVE" textFill="#5b5858">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#showban" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="BAN" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
@@ -77,14 +87,6 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sponsorships" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Mes Prices" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
@@ -123,29 +125,84 @@
             <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
          </effect>
       </Pane>
-      <HBox layoutX="216.0" layoutY="146.0" prefHeight="100.0" prefWidth="1046.0">
+      <AnchorPane fx:id="haprovexd" layoutX="216.0" layoutY="223.0" prefHeight="449.0" prefWidth="990.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label fx:id="usercount" prefHeight="118.0" prefWidth="339.0" text="user number" textFill="#007299">
+            <Label fx:id="usercount2" layoutX="77.0" layoutY="-6.0" prefHeight="118.0" prefWidth="339.0" text="APPROVE USER" textFill="#007299">
                <font>
                   <Font name="System Bold Italic" size="22.0" />
                </font>
             </Label>
-            <Label fx:id="usercount1" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="339.0" text="patient number" textFill="#007299">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-5.0" layoutY="203.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Numero:" textFill="#5b5858">
                <font>
-                  <Font name="System Bold Italic" size="22.0" />
+                  <Font size="13.0" />
                </font>
-            </Label>
-            <Label fx:id="usercount11" layoutX="288.0" layoutY="10.0" prefHeight="100.0" prefWidth="280.0" text="therapist number" textFill="#007299">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <TextField fx:id="approvein" layoutX="143.0" layoutY="206.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #000000;" />
+            <Button fx:id="approvebtn" layoutX="503.0" layoutY="174.0" mnemonicParsing="false" onAction="#saha" prefHeight="74.0" prefWidth="142.0" style="-fx-background-color: #007299;" text="APPROVE">
                <font>
-                  <Font name="System Bold Italic" size="22.0" />
+                  <Font size="23.0" />
                </font>
-            </Label>
+            </Button>
          </children>
-      </HBox>
-      <ScrollPane layoutX="251.0" layoutY="237.0" prefHeight="323.0" prefWidth="1011.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="237.0">
-         <content>
-            <VBox fx:id="pnl_scroll" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
-         </content>
-      </ScrollPane>
+      </AnchorPane>
+      <AnchorPane fx:id="utilisateur" layoutX="216.0" layoutY="146.0" visible="false">
+         <children>
+            <HBox fx:id="hbox" prefHeight="100.0" prefWidth="1046.0">
+               <children>
+                  <Label fx:id="usercount" prefHeight="118.0" prefWidth="339.0" text="user number" textFill="#007299">
+                     <font>
+                        <Font name="System Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usercount1" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="339.0" text="patient number" textFill="#007299">
+                     <font>
+                        <Font name="System Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usercount11" layoutX="288.0" layoutY="10.0" prefHeight="100.0" prefWidth="280.0" text="therapist number" textFill="#007299">
+                     <font>
+                        <Font name="System Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scroll" layoutX="34.0" layoutY="91.0" prefHeight="323.0" prefWidth="1011.0" style="-fx-background-color: #fff;">
+               <content>
+                  <VBox fx:id="pnl_scroll" prefHeight="372.0" prefWidth="990.0" spacing="20.0" style="-fx-background-color: #fff;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="haprovexd1" layoutX="283.0" layoutY="155.0" prefHeight="449.0" prefWidth="990.0">
+         <children>
+            <Label fx:id="usercount21" layoutX="77.0" layoutY="-6.0" prefHeight="118.0" prefWidth="339.0" text="APPROVE USER" textFill="#007299">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Label>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="-5.0" layoutY="203.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Numero:" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <TextField fx:id="approvein1" layoutX="143.0" layoutY="206.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #000000;" />
+            <Button fx:id="approvebtn1" layoutX="503.0" layoutY="174.0" mnemonicParsing="false" onAction="#ban" prefHeight="74.0" prefWidth="142.0" style="-fx-background-color: red;" text="ban">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <Button fx:id="approvebtn11" layoutX="503.0" layoutY="281.0" mnemonicParsing="false" onAction="#unban" prefHeight="74.0" prefWidth="142.0" style="-fx-background-color: green;" text="unban">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

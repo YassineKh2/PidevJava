@@ -26,7 +26,7 @@ public class User {
      private String specialite;
      private String photolicence ;
      private int approve;
-    private Boolean status;
+    private int status;
     private String reset_token;
     private String PseudoUtilisateur;
     //Relation idFormation // 1 to many
@@ -44,7 +44,7 @@ public class User {
     //Relation reactionPublications // Many to 1
     private ArrayList<ReactionPublication> ReactionPublications;
 
-    public User(String email, String roles, String nom, String prenom, String numero, int approve, Boolean status) {
+    public User(String email, String roles, String nom, String prenom, String numero, int approve, int status) {
         this.email = email;
         this.roles = roles;
         this.nom = nom;
@@ -54,7 +54,7 @@ public class User {
         this.status = status;
     }
 
-    public User(String email, String roles, String nom, String prenom, String numero, String licence, String image, String specialite, String photolicence, Boolean status, String PseudoUtilisateur) {
+    public User(String email, String roles, String nom, String prenom, String numero, String licence, String image, String specialite, String photolicence, int status, String PseudoUtilisateur) {
         this.email = email;
         this.roles = roles;
         this.nom = nom;
@@ -66,6 +66,10 @@ public class User {
         this.photolicence = photolicence;
         this.status = status;
         this.PseudoUtilisateur = PseudoUtilisateur;
+    }
+
+    public User(String numero) {
+        this.numero = numero;
     }
 
     public int getApprove() {
@@ -222,7 +226,7 @@ public User(String email, String password,String roles , String nom, String pren
         this.roles = roles;
     }
 
-    public User(String email, String password, String nom, String prenom, String numero, String image, Boolean status, String reset_token, String PseudoUtilisateur) {
+    public User(String email, String password, String nom, String prenom, String numero, String image, int status, String reset_token, String PseudoUtilisateur) {
         this.email = email;
         this.password = password;
         this.nom = nom;
@@ -234,7 +238,7 @@ public User(String email, String password,String roles , String nom, String pren
         this.PseudoUtilisateur = PseudoUtilisateur;
     }
 
-    public User(int id, String email, String password, String nom, String prenom, String numero, String image, Boolean status, String reset_token, String PseudoUtilisateur) {
+    public User(int id, String email, String password, String nom, String prenom, String numero, String image, int status, String reset_token, String PseudoUtilisateur) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -247,7 +251,7 @@ public User(String email, String password,String roles , String nom, String pren
         this.PseudoUtilisateur = PseudoUtilisateur;
     }
 
-    public User(int id, String email, String password, String nom, String prenom, String numero, String image, Boolean status, String reset_token, String PseudoUtilisateur, int idFormation, int Session, ArrayList<Payment> Payments, ArrayList<Rating> Ratings, ArrayList<Publication> Publications, ArrayList<CommantairePublication> CommantairePublications, ArrayList<ReactionPublication> ReactionPublications) {
+    public User(int id, String email, String password, String nom, String prenom, String numero, String image, int status, String reset_token, String PseudoUtilisateur, int idFormation, int Session, ArrayList<Payment> Payments, ArrayList<Rating> Ratings, ArrayList<Publication> Publications, ArrayList<CommantairePublication> CommantairePublications, ArrayList<ReactionPublication> ReactionPublications) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -345,11 +349,11 @@ public User(String email, String password,String roles , String nom, String pren
         this.image = image;
     }
 
-    public Boolean getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
