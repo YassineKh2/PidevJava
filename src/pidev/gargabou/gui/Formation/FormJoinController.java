@@ -57,7 +57,7 @@ public class FormJoinController implements Initializable {
         ArrayList<Formation> formation = (ArrayList) sf.getAll();
         for(Formation f:formation){
             if(f.getId()==Formation.getChamp_id()){
-                Image img_f = new Image("file:/C:/Users/MsiAs/Desktop/ProjIng/public/"+f.getImageFormation(), true);
+                Image img_f = new Image("file:/C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/"+f.getImageFormation(), true);
                     img_formation.setImage(img_f);
                     img_formation.setFitHeight(276);
                     img_formation.setFitWidth(609);

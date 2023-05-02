@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="553.0" fitWidth="796.0" layoutX="-10.0" layoutY="-1.0">
          <image>
-            <Image url="@images/blurred-abstract-background.jpg" />
+            <Image url="@../images/blurred-abstract-background.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="42.0" layoutY="34.0" prefHeight="494.0" prefWidth="722.0" style="-fx-background-color: white;">

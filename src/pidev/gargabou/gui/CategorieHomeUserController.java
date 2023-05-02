@@ -88,6 +88,7 @@ public class CategorieHomeUserController implements Initializable {
         fxGoToSession.setOnMouseClicked(e -> {
 
             try {
+                Formation.Choose=2;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Formation/IAFormation.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
@@ -95,20 +96,15 @@ public class CategorieHomeUserController implements Initializable {
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
                 stage.setScene(scene); // set the new scene as the content of the stage
-
-                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Session/Card_Session.fxml"));
-                Parent root1 = loader1.load(); // load the new FXML file
-                Scene scene1 = new Scene(root1); // create a new scene with the new FXML file as its content
-                Node sourceNode1 = (Node) e.getSource(); // get the source node of the current event
-                Scene currentScene1 = sourceNode1.getScene(); // get the current scene from the source node
-                Stage stage1 = (Stage) currentScene1.getWindow(); // get the current stage
-                stage1.setScene(scene1); // set the new scene as the content of the stage
+                
+               
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
         });
         fxGoToFormation.setOnMouseClicked(e -> {
             try {
+                 Formation.Choose=1;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Formation/IAFormation.fxml"));
                 refreshSession();
                 Parent root = loader.load(); // load the new FXML file

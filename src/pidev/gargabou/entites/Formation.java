@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author yassine
  */
 public class Formation {
+    public static int Choose=1;
     private int id;
     private String NomFormation;
     private int NiveauFormation;

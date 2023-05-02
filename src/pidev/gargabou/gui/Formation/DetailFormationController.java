@@ -76,11 +76,11 @@ public class DetailFormationController implements Initializable {
                 tx_description.setText(f.getDescriptionFormation());
                 tx_niveau.setText(Integer.toString(f.getNiveauFormation()));
                 String value_img = f.getImageFormation();
-                Image img = new Image("file:/C:/Users/MsiAs/Desktop/ProjIng/public/"+value_img, true);
+                Image img = new Image("file:/C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/"+value_img, true);
                 image_formation.setImage(img);
                 for(Formateur fr:formateur){
                     if(fr.getId()==f.getIdFormateur()){
-                        Image img_f = new Image("file:/C:/Users/MsiAs/Desktop/ProjIng/public/"+fr.getImageFormateur(), true);
+                        Image img_f = new Image("file:/C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/"+fr.getImageFormateur(), true);
                         image_fm.setImage(img_f);
 
                         String nom_fm=fr.getNomFormateur() +" " +fr.getPrenomFormateur();

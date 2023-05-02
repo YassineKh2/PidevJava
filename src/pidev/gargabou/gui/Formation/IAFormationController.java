@@ -84,7 +84,11 @@ public class IAFormationController implements Initializable {
                 Logger.getLogger(HomeUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+          if(Formation.Choose == 1)
          refreshFormation();
+          else{
+              refreshSession();
+          }
          handle_ajout.setOnAction(e ->{
              FXMLLoader loader = new FXMLLoader(getClass().getResource("AllFormation.fxml"));
              Dialog dialog= new Dialog();
@@ -122,10 +126,17 @@ public class IAFormationController implements Initializable {
              dialog.show();
          });
          show_session.setOnMouseClicked(e->{
+                Formation.Choose=2;
                 refreshSession();
          });
          show_formation.setOnMouseClicked(e->{
+             Formation.Choose=1;
+             lbl_currentprojects.setText("Tous les Formations");
              refreshFormation();
+             lbl_currentprojects.setOnMouseClicked(ev->{
+                     refreshFormation();
+                 });
+             
          });
          
          
