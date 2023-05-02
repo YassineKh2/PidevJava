@@ -18,6 +18,15 @@ public class Formateur {
     private String EmailFormateur;
     private int NumTelFormateur;
     private String ImageFormateur;
+    private static int champ_id_formateur;
+
+    public static int getChamp_id_formateur() {
+        return champ_id_formateur;
+    }
+
+    public static void setChamp_id_formateur(int champ_id_formateur) {
+        Formateur.champ_id_formateur = champ_id_formateur;
+    }
 
     public Formateur() {
     }

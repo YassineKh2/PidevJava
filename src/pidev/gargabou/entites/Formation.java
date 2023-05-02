@@ -24,15 +24,43 @@ public class Formation {
     private String ImageFormation;
     private String DescriptionFormation;
     
+    private static int champ_id;
+
+    public static int getChamp_id() {
+        return champ_id;
+    }
+
+    public static void setChamp_id(int champ_id) {
+        Formation.champ_id = champ_id;
+    }
+    
     public Formation() {
     }
 
-    public Formation(String NomFormation, int NiveauFormation, String ImageFormation, String DescriptionFormation) {
+    public Formation(int id, String NomFormation, int NiveauFormation, int idFormateur, String ImageFormation, String DescriptionFormation) {
+        this.id = id;
+        this.NomFormation = NomFormation;
+        this.NiveauFormation = NiveauFormation;
+        this.idFormateur = idFormateur;
+        this.ImageFormation = ImageFormation;
+        this.DescriptionFormation = DescriptionFormation;
+    }
+    
+    public Formation(int id,String NomFormation, int NiveauFormation, String ImageFormation, String DescriptionFormation) {
         this.NomFormation = NomFormation;
         this.NiveauFormation = NiveauFormation;
         this.ImageFormation = ImageFormation;
         this.DescriptionFormation = DescriptionFormation;
     }
+    
+    public Formation(String NomFormation, int NiveauFormation, int idFormateur, String ImageFormation, String DescriptionFormation) {
+        this.NomFormation = NomFormation;
+        this.NiveauFormation = NiveauFormation;
+        this.idFormateur = idFormateur;
+        this.ImageFormation = ImageFormation;
+        this.DescriptionFormation = DescriptionFormation;
+    }
+    
 
     public Formation(String NomFormation, int NiveauFormation, ArrayList<User> Participant, int idFormateur, String ImageFormation, String DescriptionFormation) {
         this.NomFormation = NomFormation;

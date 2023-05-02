@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author yassine
  */
 public class Article {
+    private static int idArc;
     private int id;
     //Relation categorie // 1 to Many
     private int idCategorie;
@@ -20,7 +21,7 @@ public class Article {
     private int QuantiteArticle;
     private String ImageArticle;
     private String ArticleDiscription;
-    private int RemisePourcentageArticle;
+    private float RemisePourcentageArticle;
     //Relation $payments,$ratings,$colorArticles,$sizeArticles // many to many 
     private ArrayList<SizeArticle> SizeArticleTab;
     private ArrayList<ColorArticle> ColorArticleTab;
@@ -31,7 +32,7 @@ public class Article {
     public Article() {
     }
 
-    public Article(int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, int SaleNumberArticle) {
+    public Article(int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, int SaleNumberArticle) {
         this.idCategorie = idCategorie;
         this.NomArticle = NomArticle;
         this.PrixArticle = PrixArticle;
@@ -42,7 +43,7 @@ public class Article {
         this.SaleNumberArticle = SaleNumberArticle;
     }
 
-    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, ArrayList<SizeArticle> SizeArticleTab, ArrayList<ColorArticle> ColorArticleTab, ArrayList<Rating> RatingArticleTab, ArrayList<Payment> PaymentArticleTab, int SaleNumberArticle) {
+    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, ArrayList<SizeArticle> SizeArticleTab, ArrayList<ColorArticle> ColorArticleTab, ArrayList<Rating> RatingArticleTab, ArrayList<Payment> PaymentArticleTab, int SaleNumberArticle) {
         this.id = id;
         this.idCategorie = idCategorie;
         this.NomArticle = NomArticle;
@@ -58,8 +59,9 @@ public class Article {
         this.SaleNumberArticle = SaleNumberArticle;
     }
 
-    public Article(int id, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, int RemisePourcentageArticle, int SaleNumberArticle, String Size, String Color) {
+    public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, int SaleNumberArticle) {
         this.id = id;
+        this.idCategorie = idCategorie;
         this.NomArticle = NomArticle;
         this.PrixArticle = PrixArticle;
         this.QuantiteArticle = QuantiteArticle;
@@ -68,6 +70,21 @@ public class Article {
         this.RemisePourcentageArticle = RemisePourcentageArticle;
         this.SaleNumberArticle = SaleNumberArticle;
     }
+        public Article(int id, int idCategorie, String NomArticle, float PrixArticle, int QuantiteArticle, String ImageArticle, String ArticleDiscription, float RemisePourcentageArticle, int SaleNumberArticle,ArrayList<Rating> RatingArticleTab) {
+        this.id = id;
+        this.idCategorie = idCategorie;
+        this.NomArticle = NomArticle;
+        this.PrixArticle = PrixArticle;
+        this.QuantiteArticle = QuantiteArticle;
+        this.ImageArticle = ImageArticle;
+        this.ArticleDiscription = ArticleDiscription;
+        this.RemisePourcentageArticle = RemisePourcentageArticle;
+        this.SaleNumberArticle = SaleNumberArticle;
+        this.RatingArticleTab = RatingArticleTab;
+    }
+   
+
+    
 
     public int getId() {
         return id;
@@ -117,7 +134,7 @@ public class Article {
         this.ArticleDiscription = ArticleDiscription;
     }
 
-    public int getRemisePourcentageArticle() {
+    public float getRemisePourcentageArticle() {
         return RemisePourcentageArticle;
     }
 
@@ -173,6 +190,14 @@ public class Article {
         this.PaymentArticleTab = PaymentArticleTab;
     }
 
+    public static int getIdArc() {
+        return idArc;
+    }
+
+    public static void setIdArc(int idArc) {
+        Article.idArc = idArc;
+    }
+
     @Override
     public String toString() {
         return "Article{" + "id=" + id + ", idCategorie=" + idCategorie + ", NomArticle=" + NomArticle + ", PrixArticle=" + PrixArticle + ", QuantiteArticle=" + QuantiteArticle + ", ImageArticle=" + ImageArticle + ", ArticleDiscription=" + ArticleDiscription + ", RemisePourcentageArticle=" + RemisePourcentageArticle + ", SizeArticleTab=" + SizeArticleTab + ", ColorArticleTab=" + ColorArticleTab + ", RatingArticleTab=" + RatingArticleTab + ", PaymentArticleTab=" + PaymentArticleTab + ", SaleNumberArticle=" + SaleNumberArticle + '}';
@@ -190,7 +215,7 @@ public class Article {
         hash = 79 * hash + this.QuantiteArticle;
         hash = 79 * hash + Objects.hashCode(this.ImageArticle);
         hash = 79 * hash + Objects.hashCode(this.ArticleDiscription);
-        hash = 79 * hash + this.RemisePourcentageArticle;
+        hash = 79 * hash + Float.floatToIntBits(this.RemisePourcentageArticle);
         hash = 79 * hash + Objects.hashCode(this.SizeArticleTab);
         hash = 79 * hash + Objects.hashCode(this.ColorArticleTab);
         hash = 79 * hash + Objects.hashCode(this.RatingArticleTab);

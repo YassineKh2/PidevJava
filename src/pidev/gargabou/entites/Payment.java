@@ -13,6 +13,8 @@ import java.util.Objects;
  * @author yassine
  */
 public class Payment {
+    private static ArrayList<Article> Pannier = new ArrayList<>();
+    private static ArrayList<Integer> Quntite = new ArrayList<>();
     private int id;
     //Relation Article // Many to Many
     private ArrayList<Article> ArticlesP;
@@ -80,6 +82,22 @@ public class Payment {
 
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public static ArrayList<Article> getPannier() {
+        return Pannier;
+    }
+
+    public static void setPannier(ArrayList<Article> Pannier) {
+        Payment.Pannier = Pannier;
+    }
+
+    public static ArrayList<Integer> getQuntite() {
+        return Quntite;
+    }
+
+    public static void setQuntite(ArrayList<Integer> Quntite) {
+        Payment.Quntite = Quntite;
     }
 
     @Override

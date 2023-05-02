@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author yassine
  */
 public class Categorie {
+    private static int idc;
     private int id;
     private String NomCategorie;
     //Relation $articles
@@ -29,6 +30,13 @@ public class Categorie {
     public Categorie(int id, String NomCategorie, String ImageCategorie) {
         this.id = id;
         this.NomCategorie = NomCategorie;
+        this.ImageCategorie = ImageCategorie;
+    }
+
+    public Categorie(int id, String NomCategorie, String ImageCategorie,ArrayList<Article> Articles) {
+        this.id = id;
+        this.NomCategorie = NomCategorie;
+        this.Articles = Articles;
         this.ImageCategorie = ImageCategorie;
     }
 
@@ -62,6 +70,14 @@ public class Categorie {
 
     public void setArticles(ArrayList<Article> Articles) {
         this.Articles = Articles;
+    }
+
+    public static int getIdc() {
+        return idc;
+    }
+
+    public static void setIdc(int idc) {
+        Categorie.idc = idc;
     }
 
     @Override

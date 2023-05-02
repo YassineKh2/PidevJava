@@ -18,6 +18,15 @@ public class ModuleFormation {
     private String PrerequisModule;
     private String DureeModule;
     private String ContenuModule;
+    private static int champ_id_module;
+
+    public static int getChamp_id_module() {
+        return champ_id_module;
+    }
+
+    public static void setChamp_id_module(int champ_id_module) {
+        ModuleFormation.champ_id_module = champ_id_module;
+    }
 
     public ModuleFormation() {
     }
