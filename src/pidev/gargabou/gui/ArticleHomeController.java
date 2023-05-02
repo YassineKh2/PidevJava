@@ -63,7 +63,7 @@ public class ArticleHomeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         fxGoToCateogrie.setOnAction(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeCategorie.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
