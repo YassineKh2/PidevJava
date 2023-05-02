@@ -62,6 +62,7 @@ public class AllFormateurController implements Initializable {
         handle_form_ajout.setOnAction(e -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("formAjouterFormateur.fxml"));
              Dialog dialog= new Dialog();
+             dialog.setTitle("Ajout Formateur");
              dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
              try {
             dialog.getDialogPane().setContent(loader.load());
@@ -81,7 +82,7 @@ public class AllFormateurController implements Initializable {
                 Dialog dialog= new Dialog();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("formModFormateur.fxml"));
                 FormModController controller = loader.getController();
-                
+                dialog.setTitle("Modification Formateur");
                 loader.setController(controller);
                 dialog.getDialogPane().setContent(loader.load());
                 

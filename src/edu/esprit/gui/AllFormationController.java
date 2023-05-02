@@ -60,7 +60,7 @@ public class AllFormationController implements Initializable {
     @FXML
     private JFXListView<Formation> list_formation;
     @FXML
-    private JFXListCell<String> cell_nom;
+    private JFXButton show_statics;
     
     
     
@@ -88,6 +88,7 @@ public class AllFormationController implements Initializable {
         handle_form_ajout.setOnAction(e -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("formAjouter.fxml"));
              Dialog dialog= new Dialog();
+             dialog.setTitle("Ajout Formation");
              dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
              try {
             dialog.getDialogPane().setContent(loader.load());
@@ -107,7 +108,7 @@ public class AllFormationController implements Initializable {
                 Dialog dialog= new Dialog();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("formMod.fxml"));
                 FormModController controller = loader.getController();
-                
+                dialog.setTitle("Modification Formation");
                 loader.setController(controller);
                 dialog.getDialogPane().setContent(loader.load());
                 
@@ -136,6 +137,21 @@ public class AllFormationController implements Initializable {
                     sf.supprimer(selectedFormation.getId());
                     list_formation.getItems().remove(selectedFormation);
                 }
+            }
+        });
+        show_statics.setOnAction(e ->{
+            try {
+                Dialog dialog= new Dialog();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("statics.fxml"));
+                FormModController controller = loader.getController();
+                dialog.setTitle("Statistiques");
+                loader.setController(controller);
+                dialog.getDialogPane().setContent(loader.load());
+                
+                dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+                dialog.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AllFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         

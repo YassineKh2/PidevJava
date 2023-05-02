@@ -6,7 +6,10 @@ package edu.esprit.gui;
  
 import com.jfoenix.controls.JFXButton;
 import edu.esprit.entities.Formation;
+import edu.esprit.entities.Session;
+import edu.esprit.gui.Session.Card_SessionController;
 import edu.esprit.services.ServicesFormation;
+import edu.esprit.services.ServicesSession;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,6 +43,10 @@ public class IAFormationController implements Initializable {
     private JFXButton handle_ajout1;
     @FXML
     private JFXButton handle_ajout2;
+    @FXML
+    private JFXButton show_formation;
+    @FXML
+    private JFXButton show_session;
     
     @FXML
     private void handleButtonAction(MouseEvent event) {        
@@ -54,6 +61,7 @@ public class IAFormationController implements Initializable {
          handle_ajout.setOnAction(e ->{
              FXMLLoader loader = new FXMLLoader(getClass().getResource("AllFormation.fxml"));
              Dialog dialog= new Dialog();
+             dialog.setTitle("Interface Admin Formation");
              dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
              try {
              dialog.getDialogPane().setContent(loader.load());
@@ -65,6 +73,7 @@ public class IAFormationController implements Initializable {
          handle_ajout1.setOnAction(e ->{
              FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/gui/Module/AllModule.fxml"));
              Dialog dialog= new Dialog();
+             dialog.setTitle("Interface Admin Module Formation");
              dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
              try {
              dialog.getDialogPane().setContent(loader.load());
@@ -76,6 +85,7 @@ public class IAFormationController implements Initializable {
          handle_ajout2.setOnAction(e ->{
              FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/gui/Formateur/AllFormateur.fxml"));
              Dialog dialog= new Dialog();
+             dialog.setTitle("Interface Admin Formateur");
              dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
              try {
              dialog.getDialogPane().setContent(loader.load());
@@ -83,6 +93,12 @@ public class IAFormationController implements Initializable {
         // handle exception
             }
              dialog.show();
+         });
+         show_session.setOnMouseClicked(e->{
+                refreshSession();
+         });
+         show_formation.setOnMouseClicked(e->{
+             refreshNodes();
          });
          
          
@@ -128,5 +144,31 @@ public class IAFormationController implements Initializable {
            
         }  
     }
+    public void refreshSession(){
+        ServicesSession s=new ServicesSession();
+             ArrayList<Session> session = (ArrayList) s.getAll();
+             pnl_scroll.getChildren().clear();
+             for(int i=0;i<session.size();i++){
+             try {
+                 
+                 FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/edu/esprit/gui/Session/Card_Session.fxml"));
+                 
+                 
+                 Node n = (Node) loader1.load();
+                 Card_SessionController cntr= loader1.getController();
+                 cntr.setData(session.get(i));
+                 
+                 pnl_scroll.getChildren().add(n);
+                 lbl_currentprojects.setText("Tous les Sessions");
+                 lbl_currentprojects.setOnMouseClicked(e->{
+                     refreshSession();
+                 });
+             } catch (IOException ex) {
+                 Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             }
+         
+    }
+    
     
 }

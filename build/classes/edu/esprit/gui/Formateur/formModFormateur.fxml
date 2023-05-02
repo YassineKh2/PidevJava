@@ -60,7 +60,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="tx_image_fm" layoutX="234.0" layoutY="396.0" prefHeight="26.0" prefWidth="227.0" />
       <TextField fx:id="tx_pn_formateur" layoutX="234.0" layoutY="271.0" prefHeight="26.0" prefWidth="227.0" />
       <Label layoutX="102.0" layoutY="335.0" text="Email" />
       <JFXTextArea fx:id="tx_email" layoutX="236.0" layoutY="325.0" prefHeight="37.0" prefWidth="259.0" />
@@ -68,5 +67,8 @@
       <JFXRadioButton fx:id="tx_female" layoutX="384.0" layoutY="460.0" text="Feminin" />
       <Label layoutX="99.0" layoutY="522.0" prefHeight="18.0" prefWidth="85.0" text="Num Telephone" />
       <JFXTextArea fx:id="tx_num" layoutX="234.0" layoutY="512.0" prefHeight="37.0" prefWidth="208.0" />
+      <ImageView fx:id="img_frmteur" fitHeight="53.0" fitWidth="75.0" layoutX="235.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="fxPath_img" layoutX="332.0" layoutY="390.0" prefHeight="18.0" prefWidth="98.0" />
+      <JFXButton fx:id="fx_import" layoutX="322.0" layoutY="411.0" prefHeight="26.0" prefWidth="118.0" text="Importer" />
    </children>
 </AnchorPane>

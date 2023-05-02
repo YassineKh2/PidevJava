@@ -12,17 +12,25 @@ import edu.esprit.entities.Formation;
 import edu.esprit.services.ServicesFormateur;
 import edu.esprit.services.ServicesFormation;
 import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -37,7 +45,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -56,8 +66,7 @@ public class FormAjouterController implements Initializable {
     private Spinner<Integer> values_niveau;
     @FXML
     private JFXButton btn_ajout_formation;
-    @FXML
-    private TextField tx_image_fm;
+    
     @FXML
     private AnchorPane whole_form_scene;
     @FXML
@@ -65,6 +74,12 @@ public class FormAjouterController implements Initializable {
     private Label Controle;
     @FXML
     private Label ct_nom;
+    @FXML
+    private ImageView img_frmtion;
+    @FXML
+    private Label fxPath_img;
+    @FXML
+    private JFXButton fx_import;
     
     
     
@@ -89,11 +104,61 @@ public class FormAjouterController implements Initializable {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);
         values_niveau.setValueFactory(valueFactory);
         
+        fx_import.setOnAction(e ->{
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("formAjouter.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) e.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                
+                
+                // Create a FileChooser object
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Select an Image");
+                
+// Set the initial directory to the user's home directory
+                fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 
+                // Add a filter to show only image files
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+                );
+
+                // Show the file chooser dialog and wait for the user to select a file
+                File selectedFile = fileChooser.showOpenDialog(stage);
+                if (selectedFile != null) {
+                    try {
+        // Read the selected image file into a BufferedImage object
+                BufferedImage image = ImageIO.read(selectedFile);
+
+
+
+                // Convert the BufferedImage to a JavaFX Image object
+                Image fxImage = SwingFXUtils.toFXImage(image, null);
+
+                // Display the image in an ImageView
+                img_frmtion.setImage(fxImage);
+                    
+                // Save the image to a file
+                String randomString = UUID.randomUUID().toString();
+                String outputPath = "C:/Users/MsiAs/Desktop/ProjIng/public/Front/formation/images/"+randomString+".jpg";
+                File outputFile = new File(outputPath);
+                fxPath_img.setText("Front/formation/images/"+randomString+".jpg");
+                ImageIO.write(image, "jpg", outputFile);
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
+        }
+                    } catch (IOException ex) {
+                        ex.getMessage();
+                    }
+        });
         btn_ajout_formation.setOnMouseClicked(e ->{
             
             String nom = tx_nom_formation.getText();
-            String img= tx_image_fm.getText();
+            String img= fxPath_img.getText();
             String desc = tx_description.getText();
             String fmr = values_formateur.getText();
             int nv=values_niveau.getValue();
@@ -120,7 +185,7 @@ public class FormAjouterController implements Initializable {
     }
     public boolean check_fields(){
         String nom = tx_nom_formation.getText();
-        String img= tx_image_fm.getText();
+        String img= fxPath_img.getText();
         String desc = tx_description.getText();
         String fmr = values_formateur.getText();
         int nv=values_niveau.getValue();

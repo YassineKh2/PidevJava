@@ -20,6 +20,7 @@ public class Despense {
 
     public Despense() {
     }
+    
 
     public Despense(String LibelleDespense, float MontantDespense, float ReductionDespense) {
         this.LibelleDespense = LibelleDespense;

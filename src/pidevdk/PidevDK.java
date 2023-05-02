@@ -6,9 +6,11 @@ package pidevdk;
 
 import edu.esprit.entities.Formation;
 import edu.esprit.entities.ModuleFormation;
+import edu.esprit.services.ServicesDespense;
 import edu.esprit.services.ServicesFormateur;
 import edu.esprit.services.ServicesFormation;
 import edu.esprit.services.ServicesModule;
+import edu.esprit.services.ServicesSession;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 
@@ -32,16 +34,16 @@ public class PidevDK {
         ServicesFormation sf = new ServicesFormation();
         ServicesModule sm = new ServicesModule();
         ServicesFormateur sfm = new ServicesFormateur();
-
-        
+        ServicesSession s= new ServicesSession();
+        ServicesDespense sd = new ServicesDespense();
         //sm.ajouter2(p2);
         
         ArrayList<Formation> formation = (ArrayList<Formation>) sf.getAll();
         
         //System.out.println(formation.size());
         System.out.println(formation.get(1).getModuleFormation());
-        
-        
+        System.out.println(sd.getAll());
+        System.out.println(s.getAll());
         System.out.println(sm.getAll());
         
     }

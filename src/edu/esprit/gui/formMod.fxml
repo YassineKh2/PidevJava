@@ -59,11 +59,13 @@
          </items>
       </MenuButton>
       <Spinner fx:id="values_niveau" layoutX="234.0" layoutY="272.0" />
-      <TextField fx:id="tx_image_fm" layoutX="234.0" layoutY="375.0" prefHeight="26.0" prefWidth="227.0" />
       <ImageView fitHeight="16.0" fitWidth="21.0" layoutX="496.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/icons8-edit-property-30.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="img_frmtion" fitHeight="80.0" fitWidth="118.0" layoutX="234.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="fxPath_img" layoutX="362.0" layoutY="380.0" prefHeight="18.0" prefWidth="98.0" />
+      <JFXButton fx:id="fx_import" layoutX="377.0" layoutY="402.0" prefHeight="26.0" prefWidth="118.0" text="Importer" />
    </children>
 </AnchorPane>

@@ -67,6 +67,7 @@ public class AllModuleController implements Initializable {
         handle_form_ajout.setOnAction(e -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("formAjouterModule.fxml"));
              Dialog dialog= new Dialog();
+             dialog.setTitle("Ajout Module Formation");
              dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
              try {
             dialog.getDialogPane().setContent(loader.load());
@@ -86,7 +87,7 @@ public class AllModuleController implements Initializable {
                 Dialog dialog= new Dialog();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("formModModule.fxml"));
                 FormModController controller = loader.getController();
-                
+                dialog.setTitle("Modification Module Formation");
                 loader.setController(controller);
                 dialog.getDialogPane().setContent(loader.load());
                 

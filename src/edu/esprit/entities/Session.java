@@ -30,6 +30,18 @@ public class Session {
     public Session() {
     }
 
+    public Session(int id, Date DateDebutSession, Date DateFinSession, int NombreParticipantSession, String Difficulte, String DescriptionSession, String NomSession, String ImageSession, int idDespense) {
+        this.id = id;
+        this.DateDebutSession = DateDebutSession;
+        this.DateFinSession = DateFinSession;
+        this.NombreParticipantSession = NombreParticipantSession;
+        this.Difficulte = Difficulte;
+        this.DescriptionSession = DescriptionSession;
+        this.NomSession = NomSession;
+        this.ImageSession = ImageSession;
+        this.idDespense = idDespense;
+    }
+    
     public Session(Date DateDebutSession, Date DateFinSession, int NombreParticipantSession, String Difficulte, String DescriptionSession, String NomSession, String ImageSession) {
         this.DateDebutSession = DateDebutSession;
         this.DateFinSession = DateFinSession;

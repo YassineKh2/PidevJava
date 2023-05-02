@@ -60,10 +60,9 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="tx_image_fm" layoutX="234.0" layoutY="396.0" prefHeight="26.0" prefWidth="227.0" />
       <TextField fx:id="tx_pn_formateur" layoutX="234.0" layoutY="271.0" prefHeight="26.0" prefWidth="227.0" />
       <Label layoutX="102.0" layoutY="335.0" text="Email" />
-      <JFXTextArea fx:id="tx_email" layoutX="236.0" layoutY="325.0" prefHeight="37.0" prefWidth="259.0" />
+      <JFXTextArea fx:id="tx_email" layoutX="236.0" layoutY="316.0" prefHeight="37.0" prefWidth="259.0" />
       <JFXRadioButton fx:id="tx_male" layoutX="236.0" layoutY="460.0" text="Masculin" />
       <JFXRadioButton fx:id="tx_female" layoutX="384.0" layoutY="460.0" text="Feminin" />
       <Label layoutX="99.0" layoutY="522.0" prefHeight="18.0" prefWidth="85.0" text="Num Telephone" />
@@ -71,6 +70,9 @@
       <Label fx:id="label_error" layoutX="219.0" layoutY="623.0" prefHeight="18.0" prefWidth="237.0" />
       <Label fx:id="ct_num" layoutX="234.0" layoutY="560.0" prefHeight="18.0" prefWidth="227.0" textAlignment="CENTER" />
       <Label fx:id="ct_prenom" layoutX="234.0" layoutY="297.0" prefHeight="18.0" prefWidth="227.0" textAlignment="CENTER" />
-      <Label fx:id="ct_mail" layoutX="236.0" layoutY="369.0" prefHeight="18.0" prefWidth="336.0" textAlignment="CENTER" />
+      <Label fx:id="ct_mail" layoutX="236.0" layoutY="371.0" prefHeight="18.0" prefWidth="336.0" textAlignment="CENTER" />
+      <ImageView fx:id="img_frmteur" fitHeight="53.0" fitWidth="75.0" layoutX="236.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="fxPath_img" layoutX="333.0" layoutY="391.0" prefHeight="18.0" prefWidth="98.0" />
+      <JFXButton fx:id="fx_import" layoutX="323.0" layoutY="412.0" prefHeight="26.0" prefWidth="118.0" text="Importer" />
    </children>
 </AnchorPane>

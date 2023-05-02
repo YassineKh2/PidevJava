@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="900.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.gui.Session.Card_SessionController">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="397.0" prefWidth="874.0" style="-fx-background-color: #fff;">
+         <children>
+            <Pane layoutY="313.0" prefHeight="85.0" prefWidth="874.0" style="-fx-background-color: #F0F0F0;">
+               <children>
+                  <JFXButton fx:id="btn_detail" layoutX="724.0" layoutY="22.0" prefHeight="46.0" prefWidth="120.0" style="-fx-background-color: #21ff90;" text="Voir Details" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Label layoutX="754.0" layoutY="161.0" text="Max Participants" textFill="#898989">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="fx_nbr" layoutX="772.0" layoutY="185.0" prefHeight="72.0" prefWidth="59.0" style="-fx-background-color: #fff;" textFill="#5500ff">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Separator layoutX="729.0" layoutY="161.0" orientation="VERTICAL" prefHeight="120.0" prefWidth="2.0" />
+            <JFXTextArea fx:id="fx_desc" layoutX="262.0" layoutY="180.0" prefHeight="112.0" prefWidth="392.0" />
+            <ImageView fx:id="img_session" fitHeight="145.0" fitWidth="226.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="fx_nom" layoutX="328.0" layoutY="14.0" prefHeight="100.0" prefWidth="377.0" textAlignment="CENTER" textFill="#4daea7">
+               <font>
+                  <Font name="Tahoma Bold" size="36.0" />
+               </font>
+            </Label>
+            <Pane fx:id="pane_style" layoutX="22.0" layoutY="176.0" prefHeight="120.0" prefWidth="210.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Pane layoutX="9.0" layoutY="10.0" prefHeight="100.0" prefWidth="193.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Label layoutY="14.0" prefHeight="18.0" prefWidth="77.0" text="Date début">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fx_date_debut" layoutY="32.0" prefHeight="18.0" prefWidth="113.0" textFill="#21ff90" />
+                        <Label layoutY="59.0" prefHeight="18.0" prefWidth="77.0" text="Date Fin">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fx_date_fin" layoutY="77.0" prefHeight="18.0" prefWidth="113.0" textFill="#21ff90" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.9263157844543457" green="0.8645613789558411" blue="0.8645613789558411" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>
