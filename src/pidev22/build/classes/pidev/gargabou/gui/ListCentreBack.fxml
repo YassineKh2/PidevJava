@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="listCentrePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.ListCentreBackController">
+   <children>
+      <Button layoutX="214.0" layoutY="260.0" mnemonicParsing="false" onAction="#open_addCentre" prefHeight="42.0" prefWidth="197.0" styleClass="btn" stylesheets="@style.css" text="         AJOUTER CENTRE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSupprimerCentre" layoutX="729.0" layoutY="260.0" mnemonicParsing="false" onAction="#supprimerCentre" prefHeight="42.0" prefWidth="174.0" styleClass="btn" stylesheets="@style.css" text="SUPPRIMER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableCentre" editable="true" layoutX="91.0" layoutY="348.0" prefHeight="291.0" prefWidth="828.0" stylesheets="@style.css">
+        <columns>
+          <TableColumn fx:id="nomCellCentre" prefWidth="244.79998779296875" text="NOM DU CENTRE" />
+            <TableColumn fx:id="capaciteCellCentre" prefWidth="160.0" text="CAPACITE" />
+            <TableColumn fx:id="numCellCentre" prefWidth="216.79998779296875" text="NUMERO DU TELEPHONE" />
+            <TableColumn fx:id="localisationCellCentre" prefWidth="214.40008544921875" text="LOCALISATION" />
+        </columns>
+      </TableView>
+      <Button layoutX="1064.0" layoutY="179.0" mnemonicParsing="false" onAction="#open_ListGestion" prefHeight="35.0" prefWidth="65.0" styleClass="btn" stylesheets="@style.css">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/return.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="32.0" fitWidth="37.0" layoutX="230.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/icons8-add-64.png" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="147.0" prefWidth="1175.0" styleClass="head-background" stylesheets="@style.css">
+         <children>
+            <Label layoutX="224.0" layoutY="47.0" text="Rehab Radar" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="100.0" text="Depuis 2022" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="64.0" layoutY="50.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo_1.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </Pane>
+      <TextField fx:id="searchCentre" layoutX="589.0" layoutY="184.0" prefHeight="26.0" prefWidth="250.0" promptText="Recherche" />
+      <Button fx:id="btnStat" layoutX="539.0" layoutY="260.0" mnemonicParsing="false" onAction="#open_Stat" prefHeight="42.0" prefWidth="174.0" styleClass="btn" stylesheets="@style.css" text="STATISTIQUES" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

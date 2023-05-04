@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="gestion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.GestionCentrePlanningController">
+   <children>
+      <Pane prefHeight="147.0" prefWidth="1175.0" styleClass="head-background" stylesheets="@style.css">
+         <children>
+            <Label layoutX="224.0" layoutY="47.0" text="Rehab Radar" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="100.0" text="Depuis 2022" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="BTNgestionPlanning" layoutX="602.0" layoutY="88.0" mnemonicParsing="false" onAction="#open_AjoutPlanning" prefHeight="38.0" prefWidth="141.0" styleClass="btn" stylesheets="@style.css" text="Planning" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="BTNgestionCentre" layoutX="751.0" layoutY="86.0" mnemonicParsing="false" onAction="#open_AjoutCentre" prefHeight="38.0" prefWidth="141.0" styleClass="btn" stylesheets="@style.css" text="Centre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="show_planning" layoutX="681.0" layoutY="36.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" styleClass="btn" stylesheets="@style.css" text="Planning" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="64.0" layoutY="50.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo_1.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </Pane>
+      <ScrollPane fx:id="scroll" layoutX="213.0" layoutY="195.0" prefHeight="438.0" prefWidth="902.0">
+         <content>
+            <VBox fx:id="pan_scroll" prefHeight="422.0" prefWidth="908.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
