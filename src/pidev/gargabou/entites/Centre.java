@@ -14,17 +14,17 @@ import java.util.Objects;
 public class Centre {
     private int id;
     private String NomCentre;
-    private String CapaciteCentre;
+    private int CapaciteCentre;
     private int NombreBlocCentre;
     // Relation $planningCentres // 1 to many
-    private ArrayList<PlanningCentre> PlanningCentre;
+    //private ArrayList<PlanningCentre> PlanningCentre;
     private String img;
     private String localisation;
     
     public Centre() {
     }
 
-    public Centre(String NomCentre, String CapaciteCentre, int NombreBlocCentre, String img, String localisation) {
+    public Centre(String NomCentre, int CapaciteCentre, int NombreBlocCentre, String img, String localisation) {
         this.NomCentre = NomCentre;
         this.CapaciteCentre = CapaciteCentre;
         this.NombreBlocCentre = NombreBlocCentre;
@@ -32,15 +32,17 @@ public class Centre {
         this.localisation = localisation;
     }
 
-    public Centre(int id, String NomCentre, String CapaciteCentre, int NombreBlocCentre, ArrayList<PlanningCentre> PlanningCentre, String img, String localisation) {
+    public Centre(int id, String NomCentre, int CapaciteCentre, int NombreBlocCentre, String img, String localisation) {
         this.id = id;
         this.NomCentre = NomCentre;
         this.CapaciteCentre = CapaciteCentre;
         this.NombreBlocCentre = NombreBlocCentre;
-        this.PlanningCentre = PlanningCentre;
         this.img = img;
         this.localisation = localisation;
     }
+    
+
+    
 
     
 
@@ -62,11 +64,11 @@ public class Centre {
         this.NomCentre = NomCentre;
     }
 
-    public String getCapaciteCentre() {
+    public int getCapaciteCentre() {
         return CapaciteCentre;
     }
 
-    public void setCapaciteCentre(String CapaciteCentre) {
+    public void setCapaciteCentre(int CapaciteCentre) {
         this.CapaciteCentre = CapaciteCentre;
     }
 
@@ -86,13 +88,13 @@ public class Centre {
         this.img = img;
     }
 
-    public ArrayList<PlanningCentre> getPlanningCentre() {
+    /*public ArrayList<PlanningCentre> getPlanningCentre() {
         return PlanningCentre;
     }
 
     public void setPlanningCentre(ArrayList<PlanningCentre> PlanningCentre) {
         this.PlanningCentre = PlanningCentre;
-    }
+    }*/
 
     public String getLocalisation() {
         return localisation;
@@ -109,48 +111,17 @@ public class Centre {
         hash = 67 * hash + Objects.hashCode(this.NomCentre);
         hash = 67 * hash + Objects.hashCode(this.CapaciteCentre);
         hash = 67 * hash + this.NombreBlocCentre;
-        hash = 67 * hash + Objects.hashCode(this.PlanningCentre);
+        //hash = 67 * hash + Objects.hashCode(this.PlanningCentre);
         hash = 67 * hash + Objects.hashCode(this.img);
         hash = 67 * hash + Objects.hashCode(this.localisation);
         return hash;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Centre other = (Centre) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.NombreBlocCentre != other.NombreBlocCentre) {
-            return false;
-        }
-        if (!Objects.equals(this.NomCentre, other.NomCentre)) {
-            return false;
-        }
-        if (!Objects.equals(this.CapaciteCentre, other.CapaciteCentre)) {
-            return false;
-        }
-        if (!Objects.equals(this.img, other.img)) {
-            return false;
-        }
-        if (!Objects.equals(this.localisation, other.localisation)) {
-            return false;
-        }
-        return Objects.equals(this.PlanningCentre, other.PlanningCentre);
-    }
+    
 
     @Override
     public String toString() {
-        return "Centre{" + "id=" + id + ", NomCentre=" + NomCentre + ", CapaciteCentre=" + CapaciteCentre + ", NombreBlocCentre=" + NombreBlocCentre + ", PlanningCentre=" + PlanningCentre + ", img=" + img + ", localisation=" + localisation + '}';
+        return "Centre{" + "id=" + id + ", NomCentre=" + NomCentre + ", CapaciteCentre=" + CapaciteCentre + ", NombreBlocCentre=" + NombreBlocCentre + ", img=" + img + ", localisation=" + localisation + "\n"+ '}';
     }
 
    

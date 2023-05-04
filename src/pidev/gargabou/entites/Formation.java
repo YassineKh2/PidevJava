@@ -26,7 +26,15 @@ public class Formation {
     private String DescriptionFormation;
     
     private static int champ_id;
+    private static int Userid;
 
+    public static int getUserid() {
+        return Userid;
+    }
+
+    public static void setUserid(int Userid) {
+        Formation.Userid = Userid;
+    }
     public static int getChamp_id() {
         return champ_id;
     }

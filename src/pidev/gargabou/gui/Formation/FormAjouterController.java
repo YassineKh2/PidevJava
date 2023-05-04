@@ -143,7 +143,7 @@ public class FormAjouterController implements Initializable {
                     
                 // Save the image to a file
                 String randomString = UUID.randomUUID().toString();
-                String outputPath = "C:/Users/MsiAs/Desktop/ProjIng/public/Front/formation/images/"+randomString+".jpg";
+                String outputPath = "file:/C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/"+randomString+".jpg";
                 File outputFile = new File(outputPath);
                 fxPath_img.setText("Front/formation/images/"+randomString+".jpg");
                 ImageIO.write(image, "jpg", outputFile);

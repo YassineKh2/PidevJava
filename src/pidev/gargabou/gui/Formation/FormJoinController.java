@@ -21,7 +21,9 @@ import javafx.scene.image.ImageView;
 import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 import pidev.gargabou.entites.Formation;
+import pidev.gargabou.entites.User;
 import pidev.gargabou.services.ServicesFormation;
+import pidev.gargabou.utils.userNow;
 
 /**
  * FXML Controller class
@@ -97,9 +99,13 @@ public class FormJoinController implements Initializable {
             });
         btn_join_by_sms.setOnAction(e->{
                 SendSms sms = new SendSms();
+                Formation.setUserid(userNow.getid());
+                System.out.println(Formation.getUserid());
                 sms.send_SMS(Integer.parseInt(tx_num_user.getText()));
                 JOptionPane.showMessageDialog(null,"Votre Code a été Envoyer à votre numéro"); 
                 System.out.println("sent");
+                
+                
             
         });
     

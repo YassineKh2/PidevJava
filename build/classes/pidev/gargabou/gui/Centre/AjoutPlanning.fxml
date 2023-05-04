@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="addPlanningPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="710.0" prefWidth="1175.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.Centre.AjoutPlanningController">
+   <children>
+      <Pane prefHeight="147.0" prefWidth="1175.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="224.0" layoutY="47.0" text="Rehab Radar" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="100.0" text="Depuis 2022" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="64.0" layoutY="50.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="11.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo_1.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </Pane>
+      <Pane layoutX="322.0" layoutY="163.0" prefHeight="512.0" prefWidth="790.0">
+         <children>
+            <TextField fx:id="titrep" layoutX="21.0" layoutY="31.0" prefHeight="49.0" prefWidth="339.0" promptText="TITRE" style="-fx-background-color: #F0F8FF;" />
+            <TextField fx:id="descriptionp" layoutX="19.0" layoutY="113.0" prefHeight="47.0" prefWidth="339.0" promptText="DESCRIPTION " style="-fx-background-color: #F0F8FF;" />
+            <DatePicker fx:id="datef" layoutX="22.0" layoutY="201.0" prefHeight="37.0" prefWidth="339.0" promptText="DATE DE DEBUT" styleClass="datePicker" stylesheets="@style.css" />
+            <DatePicker fx:id="dated" layoutX="26.0" layoutY="277.0" prefHeight="35.0" prefWidth="339.0" promptText="DATE DE FIN" styleClass="datePicker" stylesheets="@style.css" />
+            <ComboBox fx:id="idCentre" layoutX="26.0" layoutY="351.0" prefHeight="37.0" prefWidth="339.0" promptText="CENTRE" styleClass="comboBox" stylesheets="@style.css" />
+            <Button fx:id="btnAjouterPlanning" layoutX="587.0" layoutY="439.0" mnemonicParsing="false" onAction="#AjoutPlanningCentre" prefHeight="37.0" prefWidth="182.0" styleClass="btn" stylesheets="@style.css" text="AJOUTER PLANNING" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnClearPlanning" layoutX="478.0" layoutY="439.0" mnemonicParsing="false" onAction="#clearFieldsPlanningCentre" prefHeight="37.0" prefWidth="88.0" styleClass="btn" stylesheets="@style.css" text="VIDER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="724.0" layoutY="1.0" mnemonicParsing="false" onAction="#open_ListPlanning" prefHeight="35.0" prefWidth="65.0" styleClass="btn" stylesheets="@style.css">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/return.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="numeroSMS" layoutX="26.0" layoutY="416.0" prefHeight="47.0" prefWidth="339.0" promptText="NUMERO" style="-fx-background-color: #F0F8FF;" />
+         </children>
+      </Pane>
+      <Pane layoutY="147.0" prefHeight="566.0" prefWidth="273.0" />
+   </children>
+</AnchorPane>

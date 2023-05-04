@@ -163,7 +163,7 @@ public class FormModController implements Initializable {
                     
                 // Save the image to a file
                 String randomString = UUID.randomUUID().toString();
-                String outputPath = "C:/Users/MsiAs/Desktop/ProjIng/public/Front/formation/images/"+randomString+".jpg";
+                String outputPath = "file:/C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/"+randomString+".jpg";
                 File outputFile = new File(outputPath);
                 fxPath_img.setText("Front/formation/images/"+randomString+".jpg");
                 ImageIO.write(image, "jpg", outputFile);
@@ -192,7 +192,7 @@ public class FormModController implements Initializable {
                         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,100);
                         values_niveau.setValueFactory(valueFactory);
                         values_niveau.getValueFactory().setValue(f.getNiveauFormation());
-                    Image img_f = new Image("file:/C:/Users/MsiAs/Desktop/ProjIng/public/"+f.getImageFormation(), true);
+                    Image img_f = new Image("file:/C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/"+f.getImageFormation(), true);
                     img_frmtion.setImage(img_f);
                 fxPath_img.setText(f.getImageFormation());
                 tx_description.setText(f.getDescriptionFormation());
