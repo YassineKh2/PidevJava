@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -32,8 +33,12 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import pidev.gargabou.entites.Adresse;
 import pidev.gargabou.entites.Evenement;
 import pidev.gargabou.entites.Organisateur;
+import pidev.gargabou.gui.adresse.ModifierAdresseController;
+import pidev.gargabou.gui.adresse.NewAdresseController;
+import pidev.gargabou.services.AdresseCRUD;
 import pidev.gargabou.services.EvenementCRUD;
 import pidev.gargabou.services.OrganisateurCRUD;
 
@@ -75,7 +80,13 @@ public class ModifierEvenementController implements Initializable {
     private Button importimageevent;
     @FXML
     private ComboBox<String> fxidorganisateur;
-    int id;
+//    int id;
+     String outputPath;
+    BufferedImage image;
+    int idevent;
+    String entity="event";
+    String pathimag;
+    int ida;
 
     /**
      * Initializes the controller class.
@@ -147,37 +158,122 @@ public class ModifierEvenementController implements Initializable {
        });
            
            modifierevenement.setOnAction(event -> {
-            try {
+               
+                if (tfnomevenement.getText().length() < 1 || tfnomevenement.getText().length() > 50) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer un nom valide inferieur a 50 charactere");
+                alert.showAndWait();
+                return;
+            }
+                 try{
+            int Prix = Integer.parseInt(prixevenement.getText());
+              if (Prix < 0 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Prix Invalide");
+                alert.setContentText("Le prix doit etre positive !!");
+                alert.showAndWait();
+                return;
+            } }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("Le prix est invalide !!");
+                alert.showAndWait();
+                return;
+            }
+                try{
+            int nbpart = Integer.parseInt(tfnombreparticipant.getText());
+              if (nbpart < 0 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("Le nombre de participant doit etre positive !!");
+                alert.showAndWait();
+                return;
+            } }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("Le nombre est invalide !!");
+                alert.showAndWait();
+                return;
+            }  
+               
+                if (typeevenement.getText().length() < 1 || typeevenement.getText().length() > 20) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer le type d'evenement");
+                alert.showAndWait();
+                return;
+            }
+                LocalDate today=LocalDate.now();
+                 if (tfdateevenement.getValue().isBefore(today) ){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Date");
+                alert.setContentText("La date doit etre supérieur a aujourd'hui");
+                alert.showAndWait();
+                return;
+            }
+                 
+                 if (tfdescriptionevent.getText().length() < 1 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer une description pour l'evenement");
+                alert.showAndWait();
+                return;
+            }
+             
+               
+                try {
                 EvenementCRUD ecd = new EvenementCRUD();
+                 ida=ecd.afficherseulEvenements(idevent).getIdAdresse();
                 String nom =tfnomevenement.getText();
                 LocalDate ldate =tfdateevenement.getValue();
                 Date date = Date.from(ldate.atStartOfDay(systemDefault()).toInstant());
                 int nbrdeparticipant=Integer.parseInt(tfnombreparticipant.getText());
                 int prixevent =Integer.parseInt(prixevenement.getText());
                 String typevent =typeevenement.getText();
-                String pathimag = tfimageevent.getText();
+                
+                pathimag = tfimageevent.getText();
+              
                 String desc = tfdescriptionevent.getText();
                 Organisateur org =ocd.findorganisateurbyname(fxidorganisateur.getValue());
                 int idorg = org.getId();
                 Evenement EVT = new Evenement(nom,date,nbrdeparticipant,prixevent,typevent,idorg,pathimag,desc);
-                ecd.modifierEvenement(id,EVT);
+
+                ecd.modifierEvenement(idevent,EVT);
+                if (outputPath!=null){
+                File outputFile = new File(outputPath);
+                ImageIO.write(image, "png", outputFile);
+                }
+               
                 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEvenement.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/ModifierAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                ModifierAdresseController sendidevent =loader.getController();
+                AdresseCRUD acd =new AdresseCRUD();
+                Adresse A ;//= new Adresse();
+                A=acd.afficherseulAdresse(ida);
+                sendidevent.setnomadresse(A.getNomRue());
+                 sendidevent.setnumadresse(String.valueOf(A.getNumRue()));
+                 sendidevent.setcodepostal(String.valueOf(A.getCodePostal()));
+                  sendidevent.setgouvernorat(A.getGouvernorat());
+                sendidevent.setidadresse(ida);
+                
+               sendidevent.setentity(entity);
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
                 stage.setScene(scene); // set the new scene as the content of the stage
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-                 });
-           importimageevent.setOnAction(event -> {
+
+        });
+        importimageevent.setOnAction(event -> {
             
             
               try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierEvenement.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("NewEvent.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -189,20 +285,20 @@ public class ModifierEvenementController implements Initializable {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Select an Image");
                 
-// Set the initial directory to the user's home directory
-fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+                // Set the initial directory to the user's home directory
+                fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 
-// Add a filter to show only image files
-fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-);
+                // Add a filter to show only image files
+                fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+                );
 
 // Show the file chooser dialog and wait for the user to select a file
 File selectedFile = fileChooser.showOpenDialog(stage);
 if (selectedFile != null) {
-    try {
+    
         // Read the selected image file into a BufferedImage object
-        BufferedImage image = ImageIO.read(selectedFile);
+         image = ImageIO.read(selectedFile);
        
         
         
@@ -214,23 +310,23 @@ if (selectedFile != null) {
         
         // Save the image to a file
         String randomString = UUID.randomUUID().toString();
-        String outputPath = "C:/Users/omran/Documents/GitHub/3a39-gargabou/public/Back/images/events/"+randomString+".png";
-        File outputFile = new File(outputPath);
+         outputPath = "C:/Users/omran/Documents/GitHub/3a39-gargabou/public/Back/images/events/"+randomString+".png";
+        
         tfimageevent.setText("Back/images/events/"+randomString+".png");
-        ImageIO.write(image, "png", outputFile);
-    } catch (IOException ex) {
-        ex.getMessage();
-    }
+        
+    
 }
             } catch (IOException ex) {
                 ex.getMessage();
             }
+               
+
         });
     }    
     
-    
+                 
     public void setid(int id){
-        this.id=id;
+        this.idevent=id;
     }
     public void setnomevenement(String msg){
         this.tfnomevenement.setText(msg);

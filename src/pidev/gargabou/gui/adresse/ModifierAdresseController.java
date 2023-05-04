@@ -15,11 +15,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Adresse;
 import pidev.gargabou.services.AdresseCRUD;
+import pidev.gargabou.services.EvenementCRUD;
 
 /**
  * FXML Controller class
@@ -43,6 +45,7 @@ public class ModifierAdresseController implements Initializable {
     @FXML
     private TextField tfcodepostal;
     private int ida ;
+    String entity="adresse" ;
 
     /**
      * Initializes the controller class.
@@ -97,8 +100,56 @@ public class ModifierAdresseController implements Initializable {
 
     @FXML
     private void ModifierAdresse(ActionEvent event) {
-         try {
-            
+      
+             try{
+            int numrue = Integer.parseInt(tfnumrue.getText());
+              if (numrue < 0 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" numero rue invalide");
+                alert.setContentText("Le numero rue est invalide !!");
+                alert.showAndWait();
+                return;
+            } }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("Le numero rue est invalide !!");
+                alert.showAndWait();
+                return;
+            }
+             
+             
+               try{
+            int codepostal = Integer.parseInt(tfcodepostal.getText());
+              if (codepostal < 1000 ||codepostal >9999 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" code postal invalide");
+                alert.setContentText("Le code postal est invalide !!");
+                alert.showAndWait();
+                return;
+            } }catch(NumberFormatException  ex){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid !");
+                alert.setContentText("Le code postal est invalide !!");
+                alert.showAndWait();
+                return;
+            }
+               
+               
+               
+                if (tfgouvernorat.getText().length() < 1 || tfgouvernorat.getText().length() > 100) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer la gouvernorat");
+                alert.showAndWait();
+                return;
+            }
+                if (tfnomrue.getText().length() < 1 || tfnomrue.getText().length() > 100) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle(" Invalid Length");
+                alert.setContentText("entrer le nomrue");
+                alert.showAndWait();
+                return;
+            }
             String nomrue = tfnomrue.getText();
             int numrue =  Integer.parseInt(tfnumrue.getText());
             int codepostal =  Integer.parseInt(tfcodepostal.getText());
@@ -106,7 +157,23 @@ public class ModifierAdresseController implements Initializable {
             Adresse A =new Adresse(nomrue, numrue, codepostal, gouvernorat);
             AdresseCRUD acd = new AdresseCRUD();
             acd.modifierAdresse(ida, A);
+            
+             if("event".equals(entity)){             
+                  try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../evenement/HomeEvenement.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+            }
            
+                if("adresse".equals(entity)){
+             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
@@ -117,9 +184,13 @@ public class ModifierAdresseController implements Initializable {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
+}
+           
     }
     
-    
+    public void setentity(String entity){
+        this.entity=entity;
+    }
     public void setnomadresse (String msg){
        this.tfnomrue.setText(msg);
     }

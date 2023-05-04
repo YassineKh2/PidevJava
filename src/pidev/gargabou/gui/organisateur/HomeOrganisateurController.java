@@ -7,6 +7,7 @@ package pidev.gargabou.gui.organisateur;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import pidev.gargabou.entites.Organisateur;
+
+import pidev.gargabou.services.OrganisateurCRUD;
 
 /**
  * FXML Controller class
@@ -24,8 +30,7 @@ import javafx.stage.Stage;
  */
 public class HomeOrganisateurController implements Initializable {
 
-    @FXML
-    private JFXButton btajouterevenement;
+    
     @FXML
     private JFXButton btretour;
     @FXML
@@ -35,7 +40,11 @@ public class HomeOrganisateurController implements Initializable {
     @FXML
     private JFXButton btorganisateur;
     @FXML
-    private GridPane pnl_scroll;
+    private VBox pnl_scroll;
+    @FXML
+    private JFXButton btajouterorganisateur;
+    @FXML
+    private GridPane gridcontainer;
 
     /**
      * Initializes the controller class.
@@ -84,10 +93,10 @@ public class HomeOrganisateurController implements Initializable {
             }
                
         });
-        btajouterevenement.setOnAction( event -> {
+        btajouterorganisateur.setOnAction( event -> {
             try {
                 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("NewEvent.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("NewOrganisateur.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content               
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -115,6 +124,32 @@ public class HomeOrganisateurController implements Initializable {
             }
                
         });
+          refreshNodes();
     }    
-    
+    private void refreshNodes()
+    {
+        
+        OrganisateurCRUD ocd = new OrganisateurCRUD();
+        
+        ArrayList<Organisateur> Organisateur = (ArrayList) ocd.afficherOrganisateur();
+                
+      //  Node [] nodes = new  Node[Adresses.size()];
+        pnl_scroll.getChildren().clear();
+        for(int i = 0; i<Organisateur.size(); i++)
+        {
+            try {
+               
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ItemOrganisateur.fxml"));
+                Node node = (Node) loader.load();
+                ItemOrganisateurController controller = loader.getController();
+                controller.afficherorganisateur(Organisateur.get(i));
+                
+               pnl_scroll.getChildren().add(node);
+                
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+           
+        }  
+    }
 }

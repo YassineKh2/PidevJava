@@ -173,7 +173,7 @@ public class ItemEvenementController implements Initializable {
                 showevenement.setpath(imgpath);
                 showevenement.setorganisateur(nomorganisateur);
                 showevenement.setdescription(tfdescription.getText());
-                showevenement.id=ide;
+                showevenement.idevent=ide;
                 
                 
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
