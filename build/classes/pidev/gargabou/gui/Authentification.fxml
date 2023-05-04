@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.AuthentificationController">
+    <children>
+      <BorderPane prefHeight="400.0" prefWidth="599.0">
+         <right>
+            <AnchorPane prefHeight="404.0" prefWidth="313.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="#4daea7" layoutX="89.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'authentifier" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="320.2275390625" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="77.08779296875002" AnchorPane.topAnchor="49.1806640625">
+                     <font>
+                        <Font name="System Bold" size="23.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="tf_Email" layoutX="82.0" layoutY="149.0" onAction="#loginUser" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="223.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="82.00000000000003" AnchorPane.topAnchor="149.0" />
+                  <PasswordField fx:id="tf_Password" layoutX="82.0" layoutY="201.0" onAction="#loginUser" promptText="Mot De Passe" style="-fx-background-color: transparent; -fx-border-color: #4daea7; -fx-border-width: 0px 0px 2px 0px;" AnchorPane.bottomAnchor="171.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="82.00000000000003" AnchorPane.topAnchor="201.0" />
+                  
+                                          <Button fx:id="buttom_login" alignment="CENTER" layoutX="95.0" layoutY="281.0" mnemonicParsing="false" onAction="#loginUser" prefHeight="40.0" prefWidth="122.0" style="-fx-background-color: #4daea7; -fx-background-radius: 11;" text="Authentifier" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="96.20000000000002" AnchorPane.topAnchor="281.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        
+                     </cursor>
+                  </Button>
+                  <Hyperlink fx:id="li_oubliee" layoutX="43.0" layoutY="332.0" prefHeight="25.0" prefWidth="197.0" text="Mot de passe oubliée" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="332.0" />
+                  <Hyperlink fx:id="li_register" layoutX="43.0" layoutY="357.0" onAction="#switchtosignin" prefHeight="24.0" prefWidth="186.0" text="S'Inscrire" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="357.0" />
+                  <Button layoutX="247.0" layoutY="202.0" mnemonicParsing="false" onMousePressed="#showpass" onMouseReleased="#hidepass" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="170.8" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="31.40000000000002" AnchorPane.topAnchor="202.0">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/eye%20(2)_1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </AnchorPane>
+         </right>
+         <left>
+            <AnchorPane prefHeight="405.0" prefWidth="286.0" style="-fx-background-color: #56E0E0;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="370.0" fitWidth="286.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/logo-no-background2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </left>
+      </BorderPane>
+   </children>
+    
+</AnchorPane>
