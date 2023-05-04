@@ -44,6 +44,17 @@ public class User {
     //Relation reactionPublications // Many to 1
     private ArrayList<ReactionPublication> ReactionPublications;
 
+    public User(int id, String email, String roles, String nom, String prenom, String numero, String licence, String image) {
+        this.id = id;
+        this.email = email;
+        this.roles = roles;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.licence = licence;
+        this.image = image;
+    }
+    
     public User(String email, String roles, String nom, String prenom, String numero, int approve, int status) {
         this.email = email;
         this.roles = roles;
@@ -66,11 +77,28 @@ public class User {
         this.photolicence = photolicence;
         this.status = status;
         this.PseudoUtilisateur = PseudoUtilisateur;
+        
     }
 
     public User(String numero) {
         this.numero = numero;
     }
+
+    public User(int id, String email, String roles, String nom, String prenom, String numero, int approve, int status, String PseudoUtilisateur, String image,int idF) {
+        this.id = id;
+        this.email = email;
+        this.roles = roles;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.numero = numero;
+        this.approve = approve;
+        this.status = status;
+        this.PseudoUtilisateur = PseudoUtilisateur;
+        this.image = image;
+        this.idFormation = idF;
+    }
+
+    
 
     public int getApprove() {
         return approve;

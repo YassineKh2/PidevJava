@@ -115,7 +115,7 @@ public class AuthentificationController implements Initializable {
                         alert.setContentText("Successfully Login");
                         alert.showAndWait();
 
-                       changeScene.changeScene(event, "/pidev/gargabou/gui/Home.fxml", "home");
+                       changeScene.changeScene(event, "/pidev/gargabou/gui/Forum/IAPublication.fxml", "home");
                        }else{ alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Error Message");
                         alert.setHeaderText(null);

@@ -4,7 +4,6 @@
  */
 package pidev.gargabou.entites;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,42 +12,76 @@ import java.util.Objects;
  * @author yassine
  */
 public class Publication {
+
     private int id;
     //Relation User // 1 to many
     private int idUser;
     private Date DatePublication;
     private String ContenuPublication;
-    //Relation commantairePublications , reactionPublications // One to many
-    private ArrayList<ReactionPublication> reactionPublications;
-    private ArrayList<CommantairePublication> CommantairePublications;
     private String ImageForum;
     private Boolean isApproved;
+    private int nbrSignalers;
+    private boolean isBanned;
 
     public Publication() {
     }
 
-    public Publication(int idUser, Date DatePublication, String ContenuPublication, String ImageForum, Boolean isApproved) {
-        this.idUser = idUser;
-        this.DatePublication = DatePublication;
-        this.ContenuPublication = ContenuPublication;
-        this.ImageForum = ImageForum;
-        this.isApproved = isApproved;
+    public Publication(int id) {
+        this.id = id;
     }
 
-    
-
-    public Publication(int id, int idUser, Date DatePublication, String ContenuPublication, ArrayList<ReactionPublication> reactionPublications, ArrayList<CommantairePublication> CommantairePublications, String ImageForum, Boolean isApproved) {
+    public Publication(int id, int idUser, Date DatePublication, String ContenuPublication, String ImageForum, Boolean isApproved, int nbrSignalers, boolean isBanned) {
         this.id = id;
         this.idUser = idUser;
         this.DatePublication = DatePublication;
         this.ContenuPublication = ContenuPublication;
-        this.reactionPublications = reactionPublications;
-        this.CommantairePublications = CommantairePublications;
+        this.ImageForum = ImageForum;
+        this.isApproved = isApproved;
+        this.nbrSignalers = nbrSignalers;
+        this.isBanned = isBanned;
+    }
+
+    public Publication(int idUser, Date DatePublication, String ContenuPublication, String ImageForum) {
+        this.idUser = idUser;
+        this.DatePublication = DatePublication;
+        this.ContenuPublication = ContenuPublication;
+        this.ImageForum = ImageForum;
+        this.isApproved = false;
+    }
+
+    public Publication(int id, int idUser, Date DatePublication, String ContenuPublication, String ImageForum) {
+        this.id = id;
+        this.idUser = idUser;
+        this.DatePublication = DatePublication;
+        this.ContenuPublication = ContenuPublication;
+        this.ImageForum = ImageForum;
+        this.isApproved = false;
+    }
+
+    public Publication(Date DatePublication, String ContenuPublication, String ImageForum, Boolean isApproved, int id) {
+        this.id = id;
+        this.DatePublication = DatePublication;
+        this.ContenuPublication = ContenuPublication;
         this.ImageForum = ImageForum;
         this.isApproved = isApproved;
     }
 
-    
+    public Publication(String ContenuPublication, String ImageForum, int id) {
+        this.ContenuPublication = ContenuPublication;
+        this.ImageForum = ImageForum;
+        this.id = id;
+    }
+
+    public Publication(int id, int nbrSignalers) {
+        this.id = id;
+        this.nbrSignalers = nbrSignalers;
+    }
+
+    public Publication(int id, boolean isBanned) {
+        this.id = id;
+        this.isBanned = isBanned;
+    }
+
     public int getId() {
         return id;
     }
@@ -97,20 +130,20 @@ public class Publication {
         this.idUser = idUser;
     }
 
-    public ArrayList<ReactionPublication> getReactionPublications() {
-        return reactionPublications;
+    public int getNbrSignalers() {
+        return nbrSignalers;
     }
 
-    public void setReactionPublications(ArrayList<ReactionPublication> reactionPublications) {
-        this.reactionPublications = reactionPublications;
+    public void setNbrSignalers(int nbrSignalers) {
+        this.nbrSignalers = nbrSignalers;
     }
 
-    public ArrayList<CommantairePublication> getCommantairePublications() {
-        return CommantairePublications;
+    public boolean isIsBanned() {
+        return isBanned;
     }
 
-    public void setCommantairePublications(ArrayList<CommantairePublication> CommantairePublications) {
-        this.CommantairePublications = CommantairePublications;
+    public void setIsBanned(boolean isBanned) {
+        this.isBanned = isBanned;
     }
 
     @Override
@@ -120,8 +153,6 @@ public class Publication {
         hash = 53 * hash + this.idUser;
         hash = 53 * hash + Objects.hashCode(this.DatePublication);
         hash = 53 * hash + Objects.hashCode(this.ContenuPublication);
-        hash = 53 * hash + Objects.hashCode(this.reactionPublications);
-        hash = 53 * hash + Objects.hashCode(this.CommantairePublications);
         hash = 53 * hash + Objects.hashCode(this.ImageForum);
         hash = 53 * hash + Objects.hashCode(this.isApproved);
         return hash;
@@ -154,20 +185,12 @@ public class Publication {
         if (!Objects.equals(this.DatePublication, other.DatePublication)) {
             return false;
         }
-        if (!Objects.equals(this.reactionPublications, other.reactionPublications)) {
-            return false;
-        }
-        if (!Objects.equals(this.CommantairePublications, other.CommantairePublications)) {
-            return false;
-        }
         return Objects.equals(this.isApproved, other.isApproved);
     }
 
     @Override
     public String toString() {
-        return "Publication{" + "id=" + id + ", idUser=" + idUser + ", DatePublication=" + DatePublication + ", ContenuPublication=" + ContenuPublication + ", reactionPublications=" + reactionPublications + ", CommantairePublications=" + CommantairePublications + ", ImageForum=" + ImageForum + ", isApproved=" + isApproved + '}';
+        return "Publication{" + "id=" + id + ", idUser=" + idUser + ", DatePublication=" + DatePublication + ", ContenuPublication=" + ContenuPublication + ", ImageForum=" + ImageForum + ", isApproved=" + isApproved + '}';
     }
 
-    
-    
 }

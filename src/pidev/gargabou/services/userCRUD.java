@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pidev.gargabou.entites.User;
 import pidev.gargabou.utils.DataSource;
+import pidev.gargabou.utils.userNow;
 
 /**
  *
@@ -97,6 +98,18 @@ public class userCRUD implements IServices<User> {
             System.out.println(ex.getMessage());
         }
     }
+       public void setFormation(User u) {
+       try {
+            String req = "UPDATE `user` SET `nom` = '" + u.getNom() + "',`numero` = '" + u.getNumero()+ "', `prenom` = '" + u.getPrenom() +"', `email` = '"  + u.getEmail()+"', `PseudoUtilisateur` = '" + u.getPseudoUtilisateur()+"',`image` = '" + u.getImage()+ "', `formation_id` = '" + u.getIdFormation() +"' WHERE `user`.`id` = " + u.getId();
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            
+            
+            System.out.println("nayek ya ali ya mnayek " );
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     public void ban(String numero) {
        try {
             String req = "UPDATE `user` SET `status` = 1 WHERE `numero` = "+numero;
@@ -139,7 +152,7 @@ public class userCRUD implements IServices<User> {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
-                User u = new User(rs.getString("email"), rs.getString("roles"),rs.getString("nom"), rs.getString("prenom"),rs.getString("numero"),rs.getInt(10),rs.getInt(9));
+                User u = new User(rs.getInt("id"),rs.getString("email"), rs.getString("roles"),rs.getString("nom"), rs.getString("prenom"),rs.getString("numero"),rs.getInt(10),rs.getInt(9),rs.getString("PseudoUtilisateur"),rs.getString("image"),rs.getInt("formation_id"));
                 list.add(u);
             }
         } catch (SQLException ex) {

@@ -4,6 +4,7 @@
  */
 package pidev.gargabou.tests;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,13 +13,17 @@ import pidev.gargabou.entites.Categorie;
 import pidev.gargabou.entites.Formateur;
 import pidev.gargabou.entites.Formation;
 import pidev.gargabou.entites.ModuleFormation;
+import pidev.gargabou.entites.Publication;
 import pidev.gargabou.entites.Rating;
+import pidev.gargabou.entites.User;
+import pidev.gargabou.services.PublicationService;
 import pidev.gargabou.services.ServiceArticles;
 import pidev.gargabou.services.ServiceCategorie;
 import pidev.gargabou.services.ServiceRating;
 import pidev.gargabou.services.ServicesFormateur;
 import pidev.gargabou.services.ServicesFormation;
 import pidev.gargabou.services.ServicesModule;
+import pidev.gargabou.services.userCRUD;
 
 /**
  *
@@ -29,7 +34,7 @@ public class MainClass {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Categorie p1 = new Categorie(114,"Abdelaziz", "Image");
         Article A = new Article(43,29,"pull baliz",45.5f,50,"IMGTEST","ggwpp",10,0);
         Date d = new Date();
@@ -48,8 +53,16 @@ public class MainClass {
         ArrayList<Formation> formation = (ArrayList) sf.getAll();
         ArrayList<Formateur> formateur = (ArrayList) sfm.getAll();
         ArrayList<ModuleFormation> module = (ArrayList) sm.getAll();
-        System.out.println(formation);
+       
+        Date date = new Date();
+        PublicationService ps = new PublicationService();
+        Publication p11 = new Publication(9, date, "heyyy", "img/img");
+        //ps.ajouter(p11);
         
+        
+        //userCRUD uc = new userCRUD();
+        // ArrayList<User> user = (ArrayList) uc.getAll();
+         //System.out.println(user);
         
 //        sr.ajouter(R);
 //        ArrayList<Rating> Rating = (ArrayList<Rating>) sr.getAll();

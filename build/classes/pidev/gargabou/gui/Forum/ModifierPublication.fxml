@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.Forum.ModifierPublicationController">
+   <children>
+      <Pane layoutX="-1.0" prefHeight="78.0" prefWidth="781.0" styleClass="head-background" stylesheets="@../back.css">
+         <children>
+            <Label layoutX="245.0" layoutY="20.0" text="Modifier la publication" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="88.0" layoutY="109.0" text="Contenu du publication" />
+      <JFXTextArea fx:id="taContenuPup" cache="true" cacheHint="SPEED" labelFloat="true" layoutX="88.0" layoutY="141.0" prefHeight="78.0" prefWidth="326.0" wrapText="true" />
+      <Button fx:id="btnImportPubImg" layoutX="88.0" layoutY="238.0" mnemonicParsing="false" onAction="#importPubImage" styleClass="edit-btn" stylesheets="@../logindesign.css" text="Importer une image" />
+      <JFXButton fx:id="btnModifierPub" layoutX="695.0" layoutY="453.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#modifierPub" prefHeight="30.0" prefWidth="72.0" ripplerFill="WHITE" styleClass="edit-btn" stylesheets="@../logindesign.css" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="fxImgPub" fitHeight="204.0" fitWidth="301.0" layoutX="88.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="fxPathImgPub" layoutX="408.0" layoutY="460.0" visible="false" />
+      <Label fx:id="fxIdPub" layoutX="587.0" layoutY="101.0" visible="false" />
+      <Label fx:id="dxDatePub" layoutX="667.0" layoutY="101.0" />
+   </children>
+</AnchorPane>

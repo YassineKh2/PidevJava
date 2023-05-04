@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package pidev.gargabou.gui.Formation;
- 
+
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -23,21 +23,24 @@ import javafx.scene.control.ButtonType;
 import static javafx.scene.control.ButtonType.CLOSE;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Formation;
 import pidev.gargabou.entites.Session;
+import pidev.gargabou.entites.User;
 import pidev.gargabou.gui.CategorieHomeUserController;
 import pidev.gargabou.gui.HomeUserController;
 import pidev.gargabou.gui.Session.Card_SessionController;
 import pidev.gargabou.services.ServicesFormation;
 import pidev.gargabou.services.ServicesSession;
-
+import pidev.gargabou.services.userCRUD;
+import pidev.gargabou.utils.userNow;
 
 public class IAFormationController implements Initializable {
 
-    
     @FXML
     private VBox pnl_scroll;
     @FXML
@@ -63,14 +66,21 @@ public class IAFormationController implements Initializable {
     @FXML
     private JFXButton fxGoToEvent;
     @FXML
-    private void handleButtonAction(MouseEvent event) {        
-       refreshFormation();
+    private ImageView user_img;
+    @FXML
+    private Label user_pseudo;
+
+    @FXML
+    private void handleButtonAction(MouseEvent event) {
+        refreshFormation();
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-          fxGoToShop.setOnAction( event -> {
+        userCRUD uc = new userCRUD();
+        ArrayList<User> user = (ArrayList) uc.getAll();
+        fxGoToShop.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/HomeCategorieUser.fxml"));
                 Parent root = loader.load(); // load the new FXML file
@@ -84,129 +94,171 @@ public class IAFormationController implements Initializable {
                 Logger.getLogger(HomeUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-          if(Formation.Choose == 1)
-         refreshFormation();
-          else{
-              refreshSession();
-          }
-         handle_ajout.setOnAction(e ->{
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("AllFormation.fxml"));
-             Dialog dialog= new Dialog();
-             dialog.setTitle("Interface Admin Formation");
-             dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-             try {
-             dialog.getDialogPane().setContent(loader.load());
+        if (Formation.Choose == 1) {
+            refreshFormation();
+        } else {
+            refreshSession();
+        }
+        handle_ajout.setOnAction(e -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AllFormation.fxml"));
+            Dialog dialog = new Dialog();
+            dialog.setTitle("Interface Admin Formation");
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+            try {
+                dialog.getDialogPane().setContent(loader.load());
             } catch (IOException ex) {
-        // handle exception
+                // handle exception
             }
-             dialog.show();
-         });
-         handle_ajout1.setOnAction(e ->{
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Module/AllModule.fxml"));
-             Dialog dialog= new Dialog();
-             dialog.setTitle("Interface Admin Module Formation");
-             dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-             try {
-             dialog.getDialogPane().setContent(loader.load());
+            dialog.show();
+        });
+        handle_ajout1.setOnAction(e -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Module/AllModule.fxml"));
+            Dialog dialog = new Dialog();
+            dialog.setTitle("Interface Admin Module Formation");
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+            try {
+                dialog.getDialogPane().setContent(loader.load());
             } catch (IOException ex) {
-        // handle exception
+                // handle exception
             }
-             dialog.show();
-         });
-         handle_ajout2.setOnAction(e ->{
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Formateur/AllFormateur.fxml"));
-             Dialog dialog= new Dialog();
-             dialog.setTitle("Interface Admin Formateur");
-             dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-             try {
-             dialog.getDialogPane().setContent(loader.load());
+            dialog.show();
+        });
+        handle_ajout2.setOnAction(e -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Formateur/AllFormateur.fxml"));
+            Dialog dialog = new Dialog();
+            dialog.setTitle("Interface Admin Formateur");
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+            try {
+                dialog.getDialogPane().setContent(loader.load());
             } catch (IOException ex) {
-        // handle exception
+                // handle exception
             }
-             dialog.show();
-         });
-         show_session.setOnMouseClicked(e->{
-                Formation.Choose=2;
-                refreshSession();
-         });
-         show_formation.setOnMouseClicked(e->{
-             Formation.Choose=1;
-             lbl_currentprojects.setText("Tous les Formations");
-             refreshFormation();
-             lbl_currentprojects.setOnMouseClicked(ev->{
-                     refreshFormation();
-                 });
-             
-         });
-         
-         
-         
-    }    
+            dialog.show();
+        });
+        show_session.setOnMouseClicked(e -> {
+            Formation.Choose = 2;
+            handle_ajout.setVisible(false);
+            handle_ajout1.setVisible(false);
+            handle_ajout2.setVisible(false);
+            refreshSession();
+        });
+        show_formation.setOnMouseClicked(e -> {
+            Formation.Choose = 1;
+            lbl_currentprojects.setText("Tous les Formations");
+            handle_ajout.setVisible(true);
+            handle_ajout1.setVisible(true);
+            handle_ajout2.setVisible(true);
+            refreshFormation();
+            
+            lbl_currentprojects.setOnMouseClicked(ev -> {
+                refreshFormation();
+            });
+            
+
+        });
+
+        
+        System.out.println(user);
+        for (User us : user) {
+            if (userNow.getid() == us.getId()) {
+                System.out.println(userNow.getid());
+                Image img_f = new Image("file:C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/uploads/" + us.getImage(), true);
+                user_img.setImage(img_f);
+                user_pseudo.setText(us.getPseudoUtilisateur());
+                if (us.getRoles().equals("[\"ROLE_ADMIN\"]")) {
+                    handle_ajout.setVisible(true);
+                    handle_ajout1.setVisible(true);
+                    handle_ajout2.setVisible(true);
+                } else {
+                    handle_ajout.setVisible(false);
+                    handle_ajout1.setVisible(false);
+                    handle_ajout2.setVisible(false);
+                }
+            }
+
+        }
+
+    }
+
+    private void refreshFormation() {
+        userCRUD uc = new userCRUD();
+        ArrayList<User> user = (ArrayList) uc.getAll();
+        for (User us : user) {
+            if (userNow.getid() == us.getId()) {
+                
+                if (us.getRoles().equals("[\"ROLE_ADMIN\"]")) {
+                    handle_ajout.setVisible(true);
+                    handle_ajout1.setVisible(true);
+                    handle_ajout2.setVisible(true);
+                } else {
+                    handle_ajout.setVisible(false);
+                    handle_ajout1.setVisible(false);
+                    handle_ajout2.setVisible(false);
+                }
+            }
+
+        }
+
     
-    private void refreshFormation()
-    {
         pnl_scroll.getChildren().clear();
         
         ServicesFormation sf = new ServicesFormation();
         ArrayList<Formation> formation = (ArrayList<Formation>) sf.getAll();
-        
-        Node [] nodes = new  Node[formation.size()];
-        
 
-        for(int i = 0; i<formation.size(); i++)
-        {
+        Node[] nodes = new Node[formation.size()];
+
+        for (int i = 0; i < formation.size(); i++) {
             try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
-            Node node = (Node) loader.load();
-            ItemController controller = loader.getController();
-            controller.setId(formation.get(i));
-            
-            controller.cns_detail.setOnMouseClicked(e->{
-                try {
-                    FXMLLoader loader1 = new FXMLLoader(getClass().getResource("detailFormation.fxml"));
-                    
-                    IAFormationController cntr= loader1.getController();
-                    Node n = (Node) loader1.load();
-                    pnl_scroll.getChildren().clear();
-                    pnl_scroll.getChildren().add(n);
-                    
-                } catch (IOException ex) {
-                    Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });
-            pnl_scroll.getChildren().add(node);
-                
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Item.fxml"));
+                Node node = (Node) loader.load();
+                ItemController controller = loader.getController();
+                controller.setId(formation.get(i));
+
+                controller.cns_detail.setOnMouseClicked(e -> {
+                    try {
+                        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("detailFormation.fxml"));
+
+                        IAFormationController cntr = loader1.getController();
+                        Node n = (Node) loader1.load();
+                        pnl_scroll.getChildren().clear();
+                        pnl_scroll.getChildren().add(n);
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                pnl_scroll.getChildren().add(node);
+
             } catch (IOException ex) {
                 Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-        }  
+
+        }
     }
-    public void refreshSession(){
-        ServicesSession s=new ServicesSession();
-             ArrayList<Session> session = (ArrayList) s.getAll();
-             pnl_scroll.getChildren().clear();
-             for(int i=0;i<session.size();i++){
-             try {
-                 
-                 FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Session/Card_Session.fxml"));
-                 
-                 
-                 Node n = (Node) loader1.load();
-                 Card_SessionController cntr= loader1.getController();
-                 cntr.setData(session.get(i));
-                 
-                 pnl_scroll.getChildren().add(n);
-                 lbl_currentprojects.setText("Tous les Sessions");
-                 lbl_currentprojects.setOnMouseClicked(e->{
-                     refreshSession();
-                 });
-             } catch (IOException ex) {
-                 Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-             }
-         
+
+    public void refreshSession() {
+        ServicesSession s = new ServicesSession();
+        ArrayList<Session> session = (ArrayList) s.getAll();
+        pnl_scroll.getChildren().clear();
+        for (int i = 0; i < session.size(); i++) {
+            try {
+
+                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("/pidev/gargabou/gui/Session/Card_Session.fxml"));
+
+                Node n = (Node) loader1.load();
+                Card_SessionController cntr = loader1.getController();
+                cntr.setData(session.get(i));
+
+                pnl_scroll.getChildren().add(n);
+                lbl_currentprojects.setText("Tous les Sessions");
+                lbl_currentprojects.setOnMouseClicked(e -> {
+                    refreshSession();
+                });
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
-    
-    
+
 }

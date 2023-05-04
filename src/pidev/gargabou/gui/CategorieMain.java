@@ -19,7 +19,7 @@ public class CategorieMain extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/pidev/gargabou/gui/Formation/IAFormation.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Authentification.fxml"));
         
         Scene scene = new Scene(root);
         

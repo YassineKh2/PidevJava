@@ -12,15 +12,26 @@ import java.util.Objects;
  * @author yassine
  */
 public class CommantairePublication {
+
     private int id;
     //Relation Publication // 1 to many 
     private int idPublication;
     private Date DateCommantaire;
     private String ContenuCommantaire;
-    // missing relation User
     private int idUser;
-    
+
     public CommantairePublication() {
+    }
+
+    public CommantairePublication(Date DateCommantaire, String ContenuCommantaire, int id) {
+        this.id = id;
+        this.DateCommantaire = DateCommantaire;
+        this.ContenuCommantaire = ContenuCommantaire;
+    }
+
+    public CommantairePublication(String ContenuCommantaire, int id ) {
+        this.id = id;
+        this.ContenuCommantaire = ContenuCommantaire;
     }
 
     public CommantairePublication(int idPublication, Date DateCommantaire, String ContenuCommantaire, int idUser) {
@@ -30,8 +41,6 @@ public class CommantairePublication {
         this.idUser = idUser;
     }
 
-   
-
     public CommantairePublication(int id, int idPublication, Date DateCommantaire, String ContenuCommantaire, int idUser) {
         this.id = id;
         this.idPublication = idPublication;
@@ -39,8 +48,6 @@ public class CommantairePublication {
         this.ContenuCommantaire = ContenuCommantaire;
         this.idUser = idUser;
     }
-
-    
 
     public int getId() {
         return id;
@@ -74,12 +81,12 @@ public class CommantairePublication {
         this.idPublication = idPublication;
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
-
     public void setIdUser(int idUser) {
         this.idUser = idUser;
+    }
+
+    public int getIdUser() {
+        return idUser;
     }
 
     @Override
@@ -89,7 +96,6 @@ public class CommantairePublication {
         hash = 17 * hash + this.idPublication;
         hash = 17 * hash + Objects.hashCode(this.DateCommantaire);
         hash = 17 * hash + Objects.hashCode(this.ContenuCommantaire);
-        hash = 17 * hash + this.idUser;
         return hash;
     }
 
@@ -111,9 +117,6 @@ public class CommantairePublication {
         if (this.idPublication != other.idPublication) {
             return false;
         }
-        if (this.idUser != other.idUser) {
-            return false;
-        }
         if (!Objects.equals(this.ContenuCommantaire, other.ContenuCommantaire)) {
             return false;
         }
@@ -122,9 +125,7 @@ public class CommantairePublication {
 
     @Override
     public String toString() {
-        return "CommantairePublication{" + "id=" + id + ", idPublication=" + idPublication + ", DateCommantaire=" + DateCommantaire + ", ContenuCommantaire=" + ContenuCommantaire + ", idUser=" + idUser + '}';
+        return "CommantairePublication{" + "id=" + id + ", idPublication=" + idPublication + ", DateCommantaire=" + DateCommantaire + ", ContenuCommantaire=" + ContenuCommantaire + '}';
     }
 
-    
-    
 }
