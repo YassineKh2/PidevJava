@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author yassine
+ * @author omran
  */
 public class Evenement {
     private int id;
@@ -33,18 +33,28 @@ public class Evenement {
     public Evenement() {
     }
 
-    public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement, String Imageevenement, int numberoflikes, String description, int PlacesRestantes) {
+    public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement,int idOrganisateur, String Imageevenement, int numberoflikes, String description, int PlacesRestantes) {
         this.NomEvenement = NomEvenement;
         this.DateEvenement = DateEvenement;
         this.NombreParticipantEvenement = NombreParticipantEvenement;
         this.PrixEvenement = PrixEvenement;
         this.TypeEvenement = TypeEvenement;
+         this.idOrganisateur = idOrganisateur;
         this.Imageevenement = Imageevenement;
         this.numberoflikes = numberoflikes;
         this.description = description;
         this.PlacesRestantes = PlacesRestantes;
     }
-
+ public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement,int idOrganisateur, String Imageevenement, String description) {
+        this.NomEvenement = NomEvenement;
+        this.DateEvenement = DateEvenement;
+        this.NombreParticipantEvenement = NombreParticipantEvenement;
+        this.PrixEvenement = PrixEvenement;
+        this.TypeEvenement = TypeEvenement;
+         this.idOrganisateur = idOrganisateur;
+        this.Imageevenement = Imageevenement;      
+        this.description = description;
+    }
     public Evenement(String NomEvenement, Date DateEvenement, int NombreParticipantEvenement, int PrixEvenement, String TypeEvenement, int idAdresse, int idOrganisateur, String Imageevenement, int numberoflikes, String description, int PlacesRestantes) {
         this.NomEvenement = NomEvenement;
         this.DateEvenement = DateEvenement;

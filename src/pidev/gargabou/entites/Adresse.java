@@ -33,6 +33,13 @@ public class Adresse {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+    public Adresse(String NomRue, int NumRue, int CodePostal, String Gouvernorat) {
+        this.NomRue = NomRue;
+        this.NumRue = NumRue;
+        this.CodePostal = CodePostal;
+        this.Gouvernorat = Gouvernorat;
+        
+    }
     
     public Adresse(String NomRue, int NumRue, int CodePostal, String Gouvernorat, float latitude, float longitude,int idOrganisateur) {
         this.NomRue = NomRue;
@@ -74,6 +81,20 @@ public class Adresse {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    public Adresse(int id, String NomRue, int NumRue, int CodePostal, String Gouvernorat, int idOrganisateur, int idEvenement, float latitude, float longitude) {
+        this.id = id;
+        this.NomRue = NomRue;
+        this.NumRue = NumRue;
+        this.CodePostal = CodePostal;
+        this.Gouvernorat = Gouvernorat;
+        this.idOrganisateur = idOrganisateur;
+        this.idEvenement = idEvenement;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+    
+    
 
     public int getId() {
         return id;

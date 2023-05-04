@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="1263.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.HomeFController">
+ <children>
+      <Pane prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@back.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="224.0" layoutY="47.0" text="RehabRadar" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="100.0" text="Since 2022" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+                <JFXButton fx:id="logout" layoutX="1086.0" layoutY="85.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#lbara" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #007299 " text="LOGOUT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <VBox layoutX="-1.0" layoutY="145.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="146.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Utilisateurs" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+            </Label>
+            <JFXButton fx:id="profileshow" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#show" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Votre proflie" textFill="#5b5858">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Therapist " textFill="#5b5858">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <Label prefHeight="30.0" prefWidth="252.0" text="ENTERPRISE" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sponsorships" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Mes Prices" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Team" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Agencies" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+         </children>
+      </VBox>
+      <Pane layoutX="71.0" layoutY="44.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+         <children>
+            <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/logo-no-background2.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+         </effect>
+      </Pane>
+      <AnchorPane fx:id="profile" layoutX="251.0" layoutY="146.0" prefHeight="450.0" prefWidth="1012.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.60000000000002">
+         <children>
+            <AnchorPane layoutX="322.0" layoutY="47.0" prefHeight="356.0" prefWidth="368.0" style="-fx-background-color: #56E0E0; -fx-background-radius: 10px;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Button layoutX="236.0" layoutY="378.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-radius: 10px; -fx-background-color: #4daea7;" text="edit" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="236.00000000000003" AnchorPane.rightAnchor="88.4">
+                     <font>
+                        <Font name="Tahoma Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/edit-interface-symbol.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="imageuser" fitHeight="150.0" fitWidth="200.0" layoutX="130.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0">
+                     <image>
+                        <Image url="@../../../img/5907.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lblNom" layoutX="56.0" layoutY="196.0" style="-fx-text-fill: #fff;" text="nom" AnchorPane.bottomAnchor="92.39999999999998" AnchorPane.leftAnchor="56.0">
+                     <font>
+                        <Font name="Arial Bold Italic" size="31.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblRole" layoutX="58.0" layoutY="214.0" style="-fx-text-fill: #fff;" text="role" AnchorPane.bottomAnchor="194.39999999999998" AnchorPane.leftAnchor="58.0">
+                     <font>
+                        <Font name="Arial Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblPreom" layoutX="56.0" layoutY="249.0" style="-fx-text-fill: #fff;" text="prenom" AnchorPane.bottomAnchor="143.39999999999998" AnchorPane.leftAnchor="56.0">
+                     <font>
+                        <Font name="Arial Bold Italic" size="31.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="detailBTN" layoutX="89.0" layoutY="378.0" mnemonicParsing="false" onAction="#detail" style="-fx-background-radius: 10px; -fx-background-color: #007299;" text="detail" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="236.0">
+                     <font>
+                        <Font name="Tahoma Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/magnifying-glass.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="virif" fitHeight="89.0" fitWidth="150.0" layoutX="301.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/green_eco_loop_leaf_check_mark.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profileDETAIL" layoutX="251.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+         <children>
+            <Label layoutX="408.0" layoutY="39.0" prefHeight="39.0" prefWidth="271.0" text="DETAIL PROFILE" textFill="#93c572" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="38.0">
+               <font>
+                  <Font name="Arial Black" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="151.0" text="PRENOM:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="150.0" />
+            <Label layoutX="78.0" layoutY="216.0" text="EMAIL:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="200.0" />
+            <Label layoutX="69.0" layoutY="293.0" text="NUMERO:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
+            <Label layoutX="73.0" layoutY="348.0" text="PSUEDO" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="300.0" />
+            <Label layoutX="80.0" layoutY="417.0" text="ROLE:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="350.0" />
+            <Label layoutX="80.0" layoutY="99.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="100.0" />
+            <ImageView fx:id="detailtherpic" fitHeight="150.0" fitWidth="200.0" layoutX="767.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/5907.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="GETNOM" layoutX="182.0" layoutY="101.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="100.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="GETPRENOM" layoutX="185.0" layoutY="154.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="150.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="GETMAIL" layoutX="177.0" layoutY="216.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="GETNUM" layoutX="180.0" layoutY="260.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="250.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="GETPSUDO" layoutX="177.0" layoutY="300.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="GETROLE" layoutX="180.0" layoutY="353.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="350.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profileDETAIL1" layoutX="256.0" layoutY="145.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+         <children>
+            <Label layoutX="408.0" layoutY="39.0" prefHeight="39.0" prefWidth="271.0" text="DETAIL PROFILE" textFill="#93c572" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="370.0" AnchorPane.topAnchor="38.0">
+               <font>
+                  <Font name="Arial Black" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="151.0" text="PRENOM:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="150.0" />
+            <Label layoutX="78.0" layoutY="216.0" text="EMAIL:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="200.0" />
+            <Label layoutX="69.0" layoutY="293.0" text="NUMERO:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="250.0" />
+            <Label layoutX="80.0" layoutY="417.0" text="ROLE:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="350.0" />
+            <Label layoutX="80.0" layoutY="99.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="100.0" />
+            <ImageView fx:id="detailpatpic" fitHeight="150.0" fitWidth="200.0" layoutX="767.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/5907.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="getnomT" layoutX="182.0" layoutY="101.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="100.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="getprenomT" layoutX="185.0" layoutY="154.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="150.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="getemailT" layoutX="177.0" layoutY="216.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="getnumt" layoutX="180.0" layoutY="260.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="250.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="getlicT" layoutX="177.0" layoutY="300.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="300.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="getrolet" layoutX="180.0" layoutY="353.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="350.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="83.0" layoutY="385.0" text="SPECIALITE:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="400.0" />
+            <Label layoutX="91.0" layoutY="411.0" text="LICENCE:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="300.0" />
+            <Label fx:id="getspecialiteT" layoutX="161.0" layoutY="401.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="400.0">
+               <font>
+                  <Font name="Arial Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profileedit" layoutX="294.0" layoutY="144.0" prefHeight="454.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+         <children>
+            <Label layoutX="403.0" layoutY="37.0" prefHeight="39.0" prefWidth="209.0" text="EDIT PROFILE" textFill="#93c572" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="37.0">
+               <font>
+                  <Font name="Arial Black" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="122.0" layoutY="210.0" text="PRENOM:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="210.0" />
+            <Label layoutX="122.0" layoutY="260.0" text="EMAIL:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="260.0" />
+            <Label layoutX="122.0" layoutY="310.0" text="NUMERO:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="310.0" />
+            <Label layoutX="122.0" layoutY="160.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="160.0" />
+            <Label layoutX="123.0" layoutY="355.0" text="SPECIALITE:" textFill="#4daea7" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="355.0" />
+            <TextField fx:id="enom" layoutX="229.0" layoutY="141.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="141.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eprenom" layoutX="229.0" layoutY="191.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="191.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eemail" layoutX="229.0" layoutY="241.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="241.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="enumuro" layoutX="229.0" layoutY="291.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="291.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="espec" layoutX="230.0" layoutY="336.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="336.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="editBTN" layoutX="774.0" layoutY="356.0" mnemonicParsing="false" onAction="#edittherapist" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #4daea7; -fx-border-radius: 100px;" text="EDIT">
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutX="753.0" layoutY="169.0" prefHeight="122.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #4daea7;">
+               <children>
+                  <ImageView fx:id="elp" fitHeight="123.0" fitWidth="114.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
+                     <image>
+                        <Image url="@../../../img/5907.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="43.0" layoutY="6.0" text="photo" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="jibelpbtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#jibelp" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="path" layoutX="581.0" layoutY="234.0" style="-fx-text-fill: transparent;" />
+            <Label fx:id="path1" layoutX="591.0" layoutY="244.0" style="-fx-text-fill: transparent;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="profileedit1" layoutX="301.0" layoutY="144.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+         <children>
+            <Label layoutX="403.0" layoutY="37.0" prefHeight="39.0" prefWidth="209.0" text="EDIT PROFILE" textFill="#93c572" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="37.0">
+               <font>
+                  <Font name="Arial Black" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="81.0" layoutY="214.0" text="PRENOM:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="214.0" />
+            <Label layoutX="81.0" layoutY="264.0" text="EMAIL:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="264.0" />
+            <Label layoutX="81.0" layoutY="314.0" text="NUMERO:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="314.0" />
+            <Label layoutX="82.0" layoutY="367.0" text="PSUEDO:" textFill="#4daea7" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="367.0" />
+            <Label layoutX="81.0" layoutY="164.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="164.0" />
+            <TextField fx:id="enom1" layoutX="188.0" layoutY="145.0" onAction="#editpatient" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="145.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eprenom1" layoutX="188.0" layoutY="195.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="195.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="eemail1" layoutX="188.0" layoutY="245.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="245.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="enumuro1" layoutX="188.0" layoutY="295.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="295.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="epsudo1" layoutX="189.0" layoutY="348.0" style="-fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-color: #007299;" AnchorPane.leftAnchor="189.0" AnchorPane.topAnchor="348.0">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="editBTN1" layoutX="774.0" layoutY="360.0" mnemonicParsing="false" onAction="#editpatient" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #4daea7; -fx-border-radius: 100px;" text="EDIT">
+               <font>
+                  <Font name="Arial Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutX="753.0" layoutY="162.0" prefHeight="122.0" prefWidth="127.0" style="-fx-background-color: #fff; -fx-border-color: #4daea7;">
+               <children>
+                  <ImageView fx:id="ela" fitHeight="123.0" fitWidth="86.0" layoutX="21.0" layoutY="4.0" pickOnBounds="true" AnchorPane.bottomAnchor="4.199999999999989" AnchorPane.rightAnchor="20.200000000000003" AnchorPane.topAnchor="4.0">
+                     <image>
+                        <Image url="@../../../img/5907.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="43.0" layoutY="6.0" text="Avatar" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="jibelabtn" layoutX="31.0" layoutY="116.0" mnemonicParsing="false" onAction="#jibela" style="-fx-background-color: transparent;" text="IMPORT" textFill="#4daea7" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
