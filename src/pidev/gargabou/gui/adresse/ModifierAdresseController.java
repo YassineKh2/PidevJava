@@ -171,10 +171,9 @@ public class ModifierAdresseController implements Initializable {
                 System.out.println(ex.getMessage());
             }
             }
-           
-                if("adresse".equals(entity)){
-             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
+            if("organisateur".equals(entity)){             
+                  try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
                 Parent root = loader.load(); // load the new FXML file
                 Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
                 Node sourceNode = (Node) event.getSource(); // get the source node of the current event
@@ -184,7 +183,25 @@ public class ModifierAdresseController implements Initializable {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-}
+            }
+             
+             
+                if("adresse".equals(entity)){
+             try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeAdresse.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+                } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+                }
+            }
+                
+                
+                
            
     }
     

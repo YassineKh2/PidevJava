@@ -16,28 +16,36 @@ import java.util.logging.Logger;
 
 import pidev.gargabou.entites.Organisateur;
 import pidev.gargabou.tools.MyConnection;
+
 /**
  *
  * @author omran
  */
 public class OrganisateurCRUD {
+    int ido;
     Connection cnx2 ;
     public OrganisateurCRUD(){
         cnx2=MyConnection.getInstance().getCnx();
     }
-    public void ajouterOrganisateur(Organisateur O){
+    public int ajouterOrganisateur(Organisateur O){
         try {
-            String requete ="INSERT INTO organisateur(`adresse_id`, `nom_organisateur`, `num_tel_organisateur`, `pourcentage_revenu_organisateur`) VALUES (?,?,?,?)";
+            String requete ="INSERT INTO organisateur( `nom_organisateur`, `num_tel_organisateur`, `pourcentage_revenu_organisateur`) VALUES (?,?,?)";
             PreparedStatement pst =cnx2.prepareStatement(requete);
-            pst.setInt(1, O.getIdAdresse());
-            pst.setString(2, O.getNomOrganisateur());
-            pst.setInt(3, O.getNumTelOrganisateur());
-            pst.setFloat(4, O.getPourcentageRevenuOrganisateur());
+           
+            pst.setString(1, O.getNomOrganisateur());
+            pst.setInt(2, O.getNumTelOrganisateur());
+            pst.setFloat(3, O.getPourcentageRevenuOrganisateur());
             pst.executeUpdate();
+            Statement st = cnx2.createStatement();
+            ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()");
+             while (rs.next()){
+                 ido=rs.getInt("LAST_INSERT_ID()");
+             }
              System.out.println("votre organisateur est ajoutée");
         } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
         }
+        return ido;
     }
     
     public Organisateur findorganisateurbyid(int id){
@@ -126,7 +134,19 @@ public class OrganisateurCRUD {
                System.out.println(ex.getMessage());
         }
     }
-    
+     public void updateadresse(int ido,int ida){
+          try {
+           
+            String requete = "UPDATE `organisateur` SET `adresse_id`=? WHERE id=?";
+            PreparedStatement pst = cnx2.prepareStatement(requete);
+            pst.setString(1,Integer.toString(ida));
+            pst.setString(2, Integer.toString(ido));
+             pst.executeUpdate();
+             System.out.println("votre adresse organisateur est mis a jour");        
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+     }
     
      public void supprimerOrganisateur (int id){
         try {

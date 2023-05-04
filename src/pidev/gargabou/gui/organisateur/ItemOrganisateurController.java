@@ -42,10 +42,10 @@ public class ItemOrganisateurController implements Initializable {
     private Label fxnomorganisateur2;
     @FXML
     private Label fxnumtel;
-    @FXML
-    private Label fxnomorganisateur11;
     int ida;
     int ido;
+    @FXML
+    private Label fxpourcentage;
 
     /**
      * Initializes the controller class.
@@ -59,6 +59,7 @@ public class ItemOrganisateurController implements Initializable {
         fxnomorganisateur1.setText(organisateur.getNomOrganisateur());
         fxnomorganisateur2.setText(organisateur.getNomOrganisateur());
         fxnumtel.setText(String.valueOf(organisateur.getNumTelOrganisateur()));
+        fxpourcentage.setText(String.valueOf(organisateur.getPourcentageRevenuOrganisateur()));
         ida = organisateur.getIdAdresse();
         ido = organisateur.getId();
         AdresseCRUD acd = new AdresseCRUD();
@@ -72,8 +73,27 @@ public class ItemOrganisateurController implements Initializable {
 
     @FXML
     private void modifierOrganisaur(ActionEvent event) {
-        
-        
+                try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierOrganisateur.fxml"));
+                Parent root = loader.load(); // load the new FXML file
+                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
+                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
+                
+                ModifierOrganisateurController showorganisateur = loader.getController();
+                
+                showorganisateur.setnomorg(fxnomorganisateur1.getText());
+                showorganisateur.setnumtel(fxnumtel.getText());
+                showorganisateur.setpourc(fxpourcentage.getText());
+                showorganisateur.ida=ida;
+                
+                
+                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
+                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
+                stage.setScene(scene); // set the new scene as the content of the stage
+          } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+            
     }
 
     @FXML

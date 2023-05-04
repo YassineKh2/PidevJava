@@ -96,9 +96,19 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="fxnomorganisateur11" layoutX="519.0" layoutY="92.0" text="adresse:" textFill="#3a1c9d">
+            <Label layoutX="519.0" layoutY="92.0" text="adresse:" textFill="#3a1c9d">
                <font>
                   <Font size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="fxpourcentage" layoutX="248.0" layoutY="170.0" text="pourcentage" textFill="#4d4c4c">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="235.0" layoutY="143.0" text="Pourcentage revenue" textFill="#aeacac">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Label>
          </children>
