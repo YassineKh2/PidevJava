@@ -12,9 +12,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,8 +38,10 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import pidev.gargabou.entites.Article;
 import pidev.gargabou.entites.Categorie;
+import pidev.gargabou.gui.Formation.IAFormationController;
 import pidev.gargabou.services.ServiceArticles;
 import pidev.gargabou.services.ServiceCategorie;
+import pidev.gargabou.utils.changeScene;
 
 /**
  * FXML Controller class
@@ -73,12 +78,78 @@ public class AjouterArticleController implements Initializable {
     private ImageView fxImagevViewArticle;
     @FXML
     private Label fxPathImage;
+    @FXML
+    private JFXButton util;
+    @FXML
+    private JFXButton approve;
+    @FXML
+    private JFXButton fxGoToForum;
+    @FXML
+    private JFXButton fxGoToCategorie;
+    @FXML
+    private JFXButton fxGoToArticle1;
+    @FXML
+    private JFXButton fxGoToEvenement;
+    @FXML
+    private JFXButton fxGoToOrganisateur;
+    @FXML
+    private JFXButton fxGoToAdresse;
+    @FXML
+    private JFXButton fxGoToCentre;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         fxGoToForum.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Forum/AdminAllPubs.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+           fxGoToArticle.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeArticlefxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+            fxGoToCategorie.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeCategoriefxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToEvenement.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToAdresse.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/adresse/HomeAdresse.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToOrganisateur.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/organisateur/HomeOrganisateur.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToCentre.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Centre/ListCentreBack.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         
         ServiceCategorie sp = new ServiceCategorie();
         ArrayList<Categorie> Categ = (ArrayList<Categorie>) sp.getAll();
         for (Categorie Cat : Categ) {
@@ -220,6 +291,18 @@ public class AjouterArticleController implements Initializable {
 
     @FXML
     private void handleButtonAction(MouseEvent event) {
+    }
+
+    @FXML
+    private void show(ActionEvent event) {
+    }
+
+    @FXML
+    private void showapp(ActionEvent event) {
+    }
+
+    @FXML
+    private void showban(ActionEvent event) {
     }
 
 }

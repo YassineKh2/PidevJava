@@ -8,6 +8,9 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,10 +23,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Adresse;
 import pidev.gargabou.entites.Organisateur;
+import pidev.gargabou.gui.Formation.IAFormationController;
 import pidev.gargabou.gui.adresse.ModifierAdresseController;
-import pidev.gargabou.gui.adresse.NewAdresseController;
 import pidev.gargabou.services.AdresseCRUD;
 import pidev.gargabou.services.OrganisateurCRUD;
+import pidev.gargabou.utils.changeScene;
 
 /**
  * FXML Controller class
@@ -34,11 +38,8 @@ public class ModifierOrganisateurController implements Initializable {
 
     @FXML
     private JFXButton btretourtoorganisateur;
-    @FXML
     private JFXButton btevenement;
-    @FXML
     private JFXButton btadresse;
-    @FXML
     private JFXButton btorganisateur;
     @FXML
     private Button modifierorganisateur;
@@ -51,6 +52,24 @@ public class ModifierOrganisateurController implements Initializable {
     int idorg;
     String entity="organisateur";
     int ida;
+    @FXML
+    private JFXButton util;
+    @FXML
+    private JFXButton approve;
+    @FXML
+    private JFXButton fxGoToForum;
+    @FXML
+    private JFXButton fxGoToCategorie;
+    @FXML
+    private JFXButton fxGoToArticle;
+    @FXML
+    private JFXButton fxGoToEvenement;
+    @FXML
+    private JFXButton fxGoToOrganisateur;
+    @FXML
+    private JFXButton fxGoToAdresse;
+    @FXML
+    private JFXButton fxGoToCentre;
     
 
     /**
@@ -58,47 +77,52 @@ public class ModifierOrganisateurController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       btorganisateur.setOnAction( event -> {
+      fxGoToForum.setOnAction(e->{
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOrganisateur.fxml"));
-                Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
-                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
-                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
-                stage.setScene(scene); // set the new scene as the content of the stage
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Forum/AdminAllPubs.fxml", "");
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-               
         });
-        btevenement.setOnAction( event -> {
+           fxGoToArticle.setOnAction(e->{
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../evenement/HomeEvenement.fxml"));
-                Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
-                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
-                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
-                stage.setScene(scene); // set the new scene as the content of the stage
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeArticle.fxml", "");
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-               
         });
-       btadresse.setOnAction( event -> {
+            fxGoToCategorie.setOnAction(e->{
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/HomeAdresse.fxml"));
-                Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
-                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
-                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
-                stage.setScene(scene); // set the new scene as the content of the stage
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeCategorie.fxml", "");
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-               
+        }); fxGoToEvenement.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToAdresse.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/adresse/HomeAdresse.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToOrganisateur.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/organisateur/HomeOrganisateur.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToCentre.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Centre/ListCentreBack.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
               
            btretourtoorganisateur.setOnAction( event -> {
@@ -138,7 +162,7 @@ public class ModifierOrganisateurController implements Initializable {
                 return;
                 }
                   try{   
-                float pourcentage = Integer.parseInt(fxpourcentage.getText());
+                float pourcentage = Float.parseFloat(fxpourcentage.getText());
               if (pourcentage < 0 || pourcentage > 100) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle(" pourcentage Invalide");
@@ -160,7 +184,7 @@ public class ModifierOrganisateurController implements Initializable {
                 // ida=ocd.findorganisateurbyid(idorg).getIdAdresse();
                  String nomorg =fxnomorganisateur.getText();
                  int numtel= Integer.parseInt(fxnumtel.getText());
-                 float pourc =Integer.parseInt(fxpourcentage.getText());
+                 float pourc =Float.parseFloat(fxpourcentage.getText());
                  Organisateur O = new Organisateur(nomorg, numtel, pourc);
                  ocd.modifierorganisateur(idorg, O);
                  
@@ -206,5 +230,17 @@ public class ModifierOrganisateurController implements Initializable {
     }
      public void setentity(String entity){
         this.entity=entity;
+    }
+
+    @FXML
+    private void show(ActionEvent event) {
+    }
+
+    @FXML
+    private void showapp(ActionEvent event) {
+    }
+
+    @FXML
+    private void showban(ActionEvent event) {
     }
 }

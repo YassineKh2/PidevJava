@@ -3,15 +3,44 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/services/ReactionPublicationService.java</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieMain.java</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/back.css</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/style.css</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/logindesign.css</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/front.css</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/Forum/CommentaireItemController.java</file>
-            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ModiferArticleController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/AjouterCategorieController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/Forum/IAPublicationController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/organisateur/HomeOrganisateurController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/services/OrganisateurCRUD.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/adresse/NewAdresseController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieHomeUserController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieHomeController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/organisateur/ItemOrganisateurController.java</file>
             <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/Forum/PublicationItemController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ArticleItemController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieItemController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/CategorieMain.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ArticleHomeControllerUser.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/tests/Back.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/organisateur/ModifierOrganisateurController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/AjouterArticleController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ArticleHomeController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/HomeFrontController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/adresse/HomeAdresseController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/HomeBackController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/PannierHomeThanksController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/evenement/ModifierEvenementController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/PannierHomeController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/Forum/AdminPubItemController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/evenement/ShowEvenementController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ArticleDetailsHomeController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/Forum/AdminAllPubsController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/organisateur/AjouterOrganisateurController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/adresse/ModifierAdresseController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ModiferCategorieController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/ModiferArticleController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/Forum/CommentaireItemController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/HomeController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/evenement/NewEventController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/utils/changeScene.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/Formation/IAFormationController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/HomeBaController.java</file>
+            <file>file:/C:/Users/yassine/Desktop/9raya/Pidev/PidevJava-Shop/src/pidev/gargabou/gui/AfficherCategorieUserController.java</file>
         </group>
     </open-files>
 </project-private>

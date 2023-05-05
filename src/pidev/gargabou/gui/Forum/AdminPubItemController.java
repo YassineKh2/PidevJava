@@ -80,7 +80,7 @@ public class AdminPubItemController implements Initializable {
     }
 public void setPublication(Publication pub) throws SQLException {
 
-        Image image = new Image("file:C:/Users/Anas/Desktop/ProjIng/public/" + pub.getImageForum(), true);
+        Image image = new Image("file:/C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/" + pub.getImageForum(), true);
 
         fxContenuPub.setText(pub.getContenuPublication());
         fxImagePub.setImage(image);
@@ -110,7 +110,7 @@ public void setPublication(Publication pub) throws SQLException {
             alert.showAndWait();
 
             MenuItem menuItem = (MenuItem) event.getSource();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("IAPublication.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminAllPubs.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) menuItem.getParentPopup().getOwnerWindow();
@@ -131,7 +131,7 @@ public void setPublication(Publication pub) throws SQLException {
 
             // Create a new PDF document
             com.itextpdf.text.Document document = new com.itextpdf.text.Document();
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(System.getProperty("user.home") + "/Downloads/pdfFiles/Publication_" + idpub + ".pdf"));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(System.getProperty("user.home") + "/Downloads/pdf/Publication_" + idpub + ".pdf"));
 
             // Open the document
             document.open();
@@ -143,7 +143,7 @@ public void setPublication(Publication pub) throws SQLException {
             canvas.rectangle(document.left(), document.bottom(), document.right() - document.left(), document.top() - document.bottom());
             canvas.stroke();
             //
-            com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(new File("C:/Users/Anas/Desktop/ProjIng/public/" + pub.getImageForum()).getAbsolutePath());
+            com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance(new File("C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/" + pub.getImageForum()).getAbsolutePath());
             image.scaleAbsolute(200f, 200f);
             image.setAlignment(Element.ALIGN_CENTER);
             Paragraph paragraph = new Paragraph(pub.getContenuPublication());

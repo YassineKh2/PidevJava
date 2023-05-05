@@ -44,8 +44,6 @@ public class CategorieItemController implements Initializable {
     @FXML
     private ImageView fxImageCateogire;
     @FXML
-    private Label fxIdCategorie;
-    @FXML
     private Label fxCategorieId;
     @FXML
     private JFXButton fxSupprimerCategorie;

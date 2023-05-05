@@ -19,7 +19,7 @@
 
 <AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="595.0" prefWidth="1263.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.ArticleHomeControllerUser">
    <children>
-      <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-2.0" prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@Centre/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="224.0" layoutY="47.0" text="RehabRadar" textFill="WHITE">
                <font>
@@ -31,7 +31,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <JFXButton fx:id="fxAjouterArticle" layoutX="1041.0" layoutY="95.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #473E98;" text="Pannier" textFill="WHITE">
+            <JFXButton fx:id="fxAjouterArticle" layoutX="1041.0" layoutY="95.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #007299;" text="Pannier" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -157,6 +157,42 @@
                </padding>
             </JFXButton>
             <JFXButton fx:id="fxGoToSession" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sessions" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="profileshow" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#show" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Profile" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="logoutbtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#lbara" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Logout" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>

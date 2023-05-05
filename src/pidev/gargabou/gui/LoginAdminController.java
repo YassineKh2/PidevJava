@@ -80,7 +80,7 @@ private DataSource connect= DataSource.getInstance();
                     alert.showAndWait();
                     
                    lognBtn.getScene().getWindow().hide();
-                    Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("HomeB.fxml"));
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
                     

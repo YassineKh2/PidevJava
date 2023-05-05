@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -13,44 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="1263.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.HomeFController">
+<AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="1263.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.HomeFrontController">
  <children>
-      <Pane prefHeight="145.0" prefWidth="1062.0" styleClass="head-background" stylesheets="@back.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutY="144.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;">
          <children>
-            <Label layoutX="224.0" layoutY="47.0" text="RehabRadar" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="227.0" layoutY="100.0" text="Since 2022" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-                <JFXButton fx:id="logout" layoutX="1086.0" layoutY="85.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#lbara" prefHeight="30.0" prefWidth="163.0" ripplerFill="WHITE" style="-fx-background-color: #007299 " text="LOGOUT" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </Pane>
-      <VBox layoutX="-1.0" layoutY="145.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="146.0">
-         <children>
-            <Label prefHeight="30.0" prefWidth="252.0" text="Utilisateurs" textFill="#171717">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets top="60.0" />
-               </VBox.margin>
-            </Label>
-            <JFXButton fx:id="profileshow" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#show" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Votre proflie" textFill="#5b5858">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#beadf700" textFill="#59575700">
                <font>
                   <Font size="13.0" />
                </font>
@@ -58,90 +26,182 @@
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Therapist " textFill="#5b5858">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <JFXButton fx:id="fxGoToCentres" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Centres" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <Label prefHeight="30.0" prefWidth="252.0" text="ENTERPRISE" textFill="#171717">
+            <JFXButton fx:id="fxGoToTherapist" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Therapists" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-            </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sponsorships" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Mes Prices" textFill="#5b5858">
-               <font>
-                  <Font size="13.0" />
-               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Team" textFill="#5b5858">
+            <JFXButton fx:id="fxGoToShop" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Shop" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Agencies" textFill="#5b5858">
+            <JFXButton fx:id="fxGoToForum" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Forum" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="fxGoToEvent" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Evenements" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="show_formation" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Formations" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="fxGoToSession" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sessions" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="profileshow" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="312.0" onAction="#show" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Profile" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="logoutbtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="356.0" onAction="#lbara" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Logout" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8_Share_64px.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
          </children>
       </VBox>
-      <Pane layoutX="71.0" layoutY="44.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
-         <children>
-            <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/logo-no-background2.png" />
-               </image>
-            </ImageView>
-         </children>
-         <effect>
-            <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
-         </effect>
-      </Pane>
-      <AnchorPane fx:id="profile" layoutX="251.0" layoutY="146.0" prefHeight="450.0" prefWidth="1012.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.60000000000002">
+      <AnchorPane fx:id="profile" layoutX="251.0" layoutY="146.0" prefHeight="450.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.60000000000002">
          <children>
             <AnchorPane layoutX="322.0" layoutY="47.0" prefHeight="356.0" prefWidth="368.0" style="-fx-background-color: #56E0E0; -fx-background-radius: 10px;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Button layoutX="236.0" layoutY="378.0" mnemonicParsing="false" onAction="#edit" style="-fx-background-radius: 10px; -fx-background-color: #4daea7;" text="edit" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="236.00000000000003" AnchorPane.rightAnchor="88.4">
+                  <Button layoutX="236.0" layoutY="378.0" mnemonicParsing="false" style="-fx-background-radius: 10px; -fx-background-color: #4daea7;" text="edit" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.leftAnchor="236.00000000000003" AnchorPane.rightAnchor="88.4">
                      <font>
                         <Font name="Tahoma Bold" size="18.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../img/edit-interface-symbol.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Button>
                   <ImageView fx:id="imageuser" fitHeight="150.0" fitWidth="200.0" layoutX="130.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0">
                      <image>
-                        <Image url="@../../../img/5907.jpg" />
+                        <Image url="@images/5907.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="lblNom" layoutX="56.0" layoutY="196.0" style="-fx-text-fill: #fff;" text="nom" AnchorPane.bottomAnchor="92.39999999999998" AnchorPane.leftAnchor="56.0">
@@ -159,21 +219,14 @@
                         <Font name="Arial Bold Italic" size="31.0" />
                      </font>
                   </Label>
-                  <Button fx:id="detailBTN" layoutX="89.0" layoutY="378.0" mnemonicParsing="false" onAction="#detail" style="-fx-background-radius: 10px; -fx-background-color: #007299;" text="detail" AnchorPane.bottomAnchor="14.399999999999977" AnchorPane.rightAnchor="236.0">
+                  <Button fx:id="detailBTN" layoutX="89.0" layoutY="378.0" mnemonicParsing="false" onAction="#detail" prefHeight="36.0" prefWidth="114.0" style="-fx-background-radius: 10px; -fx-background-color: #007299;" text="detail" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="236.0">
                      <font>
                         <Font name="Tahoma Bold" size="18.0" />
                      </font>
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../img/magnifying-glass.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                   </Button>
                   <ImageView fx:id="virif" fitHeight="89.0" fitWidth="150.0" layoutX="301.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../img/green_eco_loop_leaf_check_mark.jpg" />
+                        <Image url="@images/reliabilty_1.png" />
                      </image>
                   </ImageView>
                </children>
@@ -195,7 +248,7 @@
             <Label layoutX="80.0" layoutY="99.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="100.0" />
             <ImageView fx:id="detailtherpic" fitHeight="150.0" fitWidth="200.0" layoutX="767.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../img/5907.jpg" />
+                  <Image url="@images/5907.jpg" />
                </image>
             </ImageView>
             <Label fx:id="GETNOM" layoutX="182.0" layoutY="101.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="100.0">
@@ -244,7 +297,7 @@
             <Label layoutX="80.0" layoutY="99.0" text="NOM:" textFill="#4daea7" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="100.0" />
             <ImageView fx:id="detailpatpic" fitHeight="150.0" fitWidth="200.0" layoutX="767.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../img/5907.jpg" />
+                  <Image url="@images/5907.jpg" />
                </image>
             </ImageView>
             <Label fx:id="getnomT" layoutX="182.0" layoutY="101.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="100.0">
@@ -332,7 +385,7 @@
                <children>
                   <ImageView fx:id="elp" fitHeight="123.0" fitWidth="114.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
                      <image>
-                        <Image url="@../../../img/5907.jpg" />
+                        <Image url="@images/5907.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="43.0" layoutY="6.0" text="photo" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
@@ -343,7 +396,7 @@
             <Label fx:id="path1" layoutX="591.0" layoutY="244.0" style="-fx-text-fill: transparent;" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="profileedit1" layoutX="301.0" layoutY="144.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
+      <AnchorPane fx:id="profileedit1" layoutX="301.0" layoutY="144.0" prefHeight="449.0" prefWidth="1012.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="144.0">
          <children>
             <Label layoutX="403.0" layoutY="37.0" prefHeight="39.0" prefWidth="209.0" text="EDIT PROFILE" textFill="#93c572" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="402.0" AnchorPane.topAnchor="37.0">
                <font>
@@ -389,7 +442,7 @@
                <children>
                   <ImageView fx:id="ela" fitHeight="123.0" fitWidth="86.0" layoutX="21.0" layoutY="4.0" pickOnBounds="true" AnchorPane.bottomAnchor="4.199999999999989" AnchorPane.rightAnchor="20.200000000000003" AnchorPane.topAnchor="4.0">
                      <image>
-                        <Image url="@../../../img/5907.jpg" />
+                        <Image url="@images/5907.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="43.0" layoutY="6.0" text="Avatar" textFill="#949494" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="0.0" />
@@ -398,5 +451,31 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <Pane layoutX="-1.0" layoutY="7.0" prefHeight="146.0" prefWidth="1325.0" styleClass="head-background" stylesheets="@Centre/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="224.0" layoutY="47.0" text="RehabRadar" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="100.0" text="Since 2022" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Pane layoutX="73.0" layoutY="54.0" prefHeight="131.0" prefWidth="142.0" style="-fx-background-color: #fff;">
+               <children>
+                  <ImageView fitHeight="120.0" fitWidth="139.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/logo-no-background2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

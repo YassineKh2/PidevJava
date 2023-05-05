@@ -113,7 +113,7 @@ public class PublicationItemController implements Initializable {
             if(us.getId()==pub.getIdUser()){
                 fxUserNom.setText(us.getPseudoUtilisateur());
                 Image img_f = new Image("file:C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/uploads/" + us.getImage(), true);
-                fxUserPic.setImage(img_f);
+               // fxUserPic.setImage(img_f);
             }
             if(userNow.getid()!=pub.getIdUser()){
                 btnSupprimerPub.setVisible(false);

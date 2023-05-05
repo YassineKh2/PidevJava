@@ -32,11 +32,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.event.ActionEvent;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import pidev.gargabou.gui.Formation.IAFormationController;
+import pidev.gargabou.utils.changeScene;
 
 /**
  * FXML Controller class
@@ -55,12 +58,77 @@ public class ArticleHomeController implements Initializable {
     private JFXButton fxGoToCateogrie;
     @FXML
     private JFXButton fxArticleExcel;
+    @FXML
+    private JFXButton util;
+    @FXML
+    private JFXButton approve;
+    @FXML
+    private JFXButton fxGoToForum;
+    @FXML
+    private JFXButton fxGoToCategorie;
+    @FXML
+    private JFXButton fxGoToArticle;
+    @FXML
+    private JFXButton fxGoToEvenement;
+    @FXML
+    private JFXButton fxGoToOrganisateur;
+    @FXML
+    private JFXButton fxGoToAdresse;
+    @FXML
+    private JFXButton fxGoToCentre;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         fxGoToForum.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Forum/AdminAllPubs.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+           fxGoToArticle.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeArticle.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+            fxGoToCategorie.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeCategorie.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToEvenement.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToAdresse.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/adresse/HomeAdresse.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToOrganisateur.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/organisateur/HomeOrganisateur.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToCentre.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Centre/ListCentreBack.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         fxGoToCateogrie.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeCategorie.fxml"));
@@ -163,6 +231,18 @@ public class ArticleHomeController implements Initializable {
 
     @FXML
     private void handleButtonAction(MouseEvent event) {
+    }
+
+    @FXML
+    private void show(ActionEvent event) {
+    }
+
+    @FXML
+    private void showapp(ActionEvent event) {
+    }
+
+    @FXML
+    private void showban(ActionEvent event) {
     }
 
 }

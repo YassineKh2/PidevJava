@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,13 @@ import pidev.gargabou.entites.Payment;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import pidev.gargabou.entites.Formation;
+import pidev.gargabou.gui.Formation.IAFormationController;
+import pidev.gargabou.utils.changeScene;
+import pidev.gargabou.utils.userNow;
 
 /**
  * FXML Controller class
@@ -45,12 +53,81 @@ public class PannierHomeController implements Initializable {
     private Label fxPrixTotal;
     @FXML
     private JFXButton fxPayerButton;
+    @FXML
+    private JFXButton fxGoToCentres;
+    @FXML
+    private JFXButton fxGoToTherapist;
+    @FXML
+    private JFXButton fxGoToShop;
+    @FXML
+    private JFXButton fxGoToForum;
+    @FXML
+    private JFXButton fxGoToEvent;
+    @FXML
+    private JFXButton fxGoToFormation;
+    @FXML
+    private JFXButton fxGoToSession;
+    @FXML
+    private JFXButton profileshow;
+    @FXML
+    private JFXButton logoutbtn;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         fxGoToForum.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Forum/IAPublication.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        fxGoToSession.setOnAction(e -> {
+            Formation.Choose = 2;
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Formation/IAFormation.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(HomeFrontController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        profileshow.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeF.fxml", "Profile");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        fxGoToFormation.setOnAction(e -> {
+            Formation.Choose = 1;
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Formation/IAFormation.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(HomeFrontController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        fxGoToEvent.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        fxGoToShop.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "HomeCategorieUser.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToCentres.setOnAction(e->{
+             try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Centre/gestionCentrePlanning.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         fxGoToCateogrie.setOnAction(event -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeCategorieUser.fxml"));
@@ -239,6 +316,35 @@ public class PannierHomeController implements Initializable {
         }
         String prixtotal = Float.toString(prix);
         fxPrixTotal.setText(prixtotal);
+    }
+
+    @FXML
+    private void show(ActionEvent event) {
+    }
+  public void lbara() {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to logout?");
+        Optional<ButtonType> option = alert.showAndWait();
+        try {
+            if (option.get().equals(ButtonType.OK)) {
+                userNow.kahaw();
+                logoutbtn.getScene().getWindow().hide();
+                Parent root = FXMLLoader.load(getClass().getResource("authentification.fxml"));
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                stage.setScene(scene);
+                stage.show();
+            }
+        } catch (IOException e) {
+        }
+
+    }
+    @FXML
+    private void lbara(ActionEvent event) {
     }
 
 }

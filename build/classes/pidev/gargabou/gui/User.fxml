@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="399.0" prefWidth="949.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.UserController">
+   <children>
+      <ImageView fx:id="imge" fitHeight="150.0" fitWidth="200.0" layoutX="49.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/5907.jpg" />
+         </image>
+      </ImageView>
+      <Separator layoutX="14.0" layoutY="167.0" prefHeight="6.0" prefWidth="922.0" />
+      <Label fx:id="role" layoutX="222.0" layoutY="79.0" text="UTILISATEUR">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="95.0" layoutY="219.0" text="Nom">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="95.0" layoutY="308.0" text="Prenom">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="423.0" layoutY="219.0" text="Email">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="423.0" layoutY="308.0" prefHeight="27.0" prefWidth="140.0" text="numero">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="nom" layoutX="107.0" layoutY="253.0" text="ali">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="prenom" layoutX="107.0" layoutY="345.0" text="slaimia">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="mail" layoutX="421.0" layoutY="253.0" prefHeight="25.0" prefWidth="160.0" text="alislai@gmail.com">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="num" layoutX="430.0" layoutY="341.0" text="28488443">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

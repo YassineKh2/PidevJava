@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,9 +24,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pidev.gargabou.entites.Adresse;
 import pidev.gargabou.entites.Evenement;
+import pidev.gargabou.gui.Formation.IAFormationController;
 import pidev.gargabou.gui.adresse.ItemAdresseController;
 import pidev.gargabou.services.AdresseCRUD;
 import pidev.gargabou.services.EvenementCRUD;
+import pidev.gargabou.utils.changeScene;
 
 
 /**
@@ -37,62 +42,82 @@ public class HomeEvenementController implements Initializable {
     private JFXButton btajouterevenement;
     @FXML
     private JFXButton btretour;
-    @FXML
     private JFXButton btevenement;
-    @FXML
     private JFXButton btadresse;
-    @FXML
     private JFXButton btorganisateur;
 
     @FXML
     private GridPane pnl_scroll;
+    @FXML
+    private JFXButton util;
+    @FXML
+    private JFXButton approve;
+    @FXML
+    private JFXButton fxGoToForum;
+    @FXML
+    private JFXButton fxGoToCategorie;
+    @FXML
+    private JFXButton fxGoToArticle;
+    @FXML
+    private JFXButton fxGoToEvenement;
+    @FXML
+    private JFXButton fxGoToOrganisateur;
+    @FXML
+    private JFXButton fxGoToAdresse;
+    @FXML
+    private JFXButton fxGoToCentre;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btevenement.setOnAction( event -> {
+        fxGoToForum.setOnAction(e->{
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeEvenement.fxml"));
-                Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
-                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
-                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
-                stage.setScene(scene); // set the new scene as the content of the stage
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Forum/AdminAllPubs.fxml", "");
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-               
         });
-        btadresse.setOnAction( event -> {
+           fxGoToArticle.setOnAction(e->{
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/HomeAdresse.fxml"));
-                Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
-                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
-                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
-                stage.setScene(scene); // set the new scene as the content of the stage
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeArticle.fxml", "");
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-               
         });
-        btorganisateur.setOnAction( event -> {
+            fxGoToCategorie.setOnAction(e->{
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../organisateur/HomeOrganisateur.fxml"));
-                Parent root = loader.load(); // load the new FXML file
-                Scene scene = new Scene(root,1800,850); // create a new scene with the new FXML file as its content
-                Node sourceNode = (Node) event.getSource(); // get the source node of the current event
-                Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
-                Stage stage = (Stage) currentScene.getWindow(); // get the current stage
-                stage.setScene(scene); // set the new scene as the content of the stage
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeCategorie.fxml", "");
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
-               
+        }); fxGoToEvenement.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToAdresse.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/adresse/HomeAdresse.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToOrganisateur.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/organisateur/HomeOrganisateur.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToCentre.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Centre/ListCentreBack.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         btajouterevenement.setOnAction( event -> {
             try {
@@ -159,5 +184,17 @@ public class HomeEvenementController implements Initializable {
             }
            
         }  
+    }
+
+    @FXML
+    private void show(ActionEvent event) {
+    }
+
+    @FXML
+    private void showapp(ActionEvent event) {
+    }
+
+    @FXML
+    private void showban(ActionEvent event) {
     }
 }

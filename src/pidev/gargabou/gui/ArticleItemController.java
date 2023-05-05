@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +26,10 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import pidev.gargabou.entites.Article;
 import pidev.gargabou.entites.Categorie;
+import pidev.gargabou.gui.Formation.IAFormationController;
 import pidev.gargabou.services.ServiceArticles;
 import pidev.gargabou.services.ServiceCategorie;
+import pidev.gargabou.utils.changeScene;
 
 /**
  * FXML Controller class
@@ -63,6 +67,7 @@ public class ArticleItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+         
     }    
 
    public void setArticle(Article article){

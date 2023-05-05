@@ -121,13 +121,13 @@ public class OrganisateurCRUD {
     
     public void modifierorganisateur (int id ,Organisateur O){
         try {
-            String requete="UPDATE `organisateur` SET `adresse_id`=?,`nom_organisateur`=?,`num_tel_organisateur`=?,`pourcentage_revenu_organisateur`=? WHERE id =?";
+            String requete="UPDATE `organisateur` SET `nom_organisateur`=?,`num_tel_organisateur`=?,`pourcentage_revenu_organisateur`=? WHERE id =?";
             PreparedStatement pst = cnx2.prepareStatement(requete);
-            pst.setInt(1, O.getIdAdresse());
-            pst.setString(2, O.getNomOrganisateur());
-            pst.setInt(3, O.getNumTelOrganisateur());
-            pst.setFloat(4, O.getPourcentageRevenuOrganisateur());
-            pst.setInt(5, id);
+            
+            pst.setString(1, O.getNomOrganisateur());
+            pst.setInt(2, O.getNumTelOrganisateur());
+            pst.setFloat(3, O.getPourcentageRevenuOrganisateur());
+            pst.setInt(4, id);
             pst.executeUpdate();
             System.out.println("votre organisateur est mis a jour");  
         } catch (SQLException ex) {

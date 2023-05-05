@@ -11,6 +11,7 @@ import pidev.gargabou.services.PublicationService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,11 +24,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pidev.gargabou.entites.User;
+import pidev.gargabou.services.userCRUD;
+import pidev.gargabou.utils.userNow;
 
 /**
  * FXML Controller class
@@ -46,6 +51,14 @@ public class CommentaireItemController implements Initializable {
     private Label fxPubId;
     @FXML
     private Label fxDateComent;
+    @FXML
+    private Label fxUserNom;
+    @FXML
+    private MenuItem btnEditComment;
+    @FXML
+    private MenuItem btnSupComment;
+    @FXML
+    private MenuButton btnMenu;
 
     /**
      * Initializes the controller class.
@@ -56,6 +69,8 @@ public class CommentaireItemController implements Initializable {
     }
 
     public void setCommentaire(CommantairePublication coment) {
+        userCRUD uc = new userCRUD();
+        ArrayList<User> user = (ArrayList) uc.getAll();
         int idcoment = coment.getId();
         String idc = Integer.toString(idcoment);
         fxComentId.setText(idc);
@@ -64,6 +79,17 @@ public class CommentaireItemController implements Initializable {
         fxPubId.setText(idP);
         fxContenuComent.setText(coment.getContenuCommantaire());
         fxDateComent.setText(coment.getDateCommantaire().toString());
+        for(User us:user){
+            if(us.getId()==coment.getIdUser()){
+                fxUserNom.setText(us.getPseudoUtilisateur());
+                Image img_f = new Image("file:C:/Users/yassine/Desktop/9raya/Pidev/ProjIng/public/uploads/" + us.getImage(), true);
+                //fxUserImg.setImage(img_f);
+            }
+            if(userNow.getid()!=coment.getIdUser()){
+                btnMenu.setVisible(false);
+                
+            }
+        }
 
     }
 

@@ -19,7 +19,7 @@
          <children>
             <ImageView fx:id="fxUserImg" fitHeight="43.0" fitWidth="57.0" layoutX="21.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/icons8_500px_64px.png" />
+                  <Image url="@../images/icons8_500px_64px_1.png" />
                </image></ImageView>
             <Label fx:id="fxDateComent" layoutX="419.0" layoutY="7.0" prefHeight="20.0" prefWidth="100.0" textFill="#868181" wrapText="true">
                <font>
@@ -29,10 +29,10 @@
             <Label fx:id="fxContenuComent" alignment="TOP_LEFT" layoutX="91.0" layoutY="53.0" prefHeight="43.0" prefWidth="374.0" />
             <Label fx:id="fxComentId" layoutX="296.0" layoutY="10.0" visible="false" />
             <Label fx:id="fxPubId" layoutX="392.0" layoutY="10.0" visible="false" />
-            <MenuButton layoutX="528.0" layoutY="4.0" mnemonicParsing="false" styleClass="edit-btn" stylesheets="@../logindesign.css">
+            <MenuButton fx:id="btnMenu" layoutX="528.0" layoutY="4.0" mnemonicParsing="false" styleClass="edit-btn" stylesheets="@../logindesign.css">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#redirectToModiferComment" text="Modifier" />
-                <MenuItem mnemonicParsing="false" onAction="#supprimerComment" text="Supprimer" />
+                <MenuItem fx:id="btnEditComment" mnemonicParsing="false" onAction="#redirectToModiferComment" text="Modifier" />
+                <MenuItem fx:id="btnSupComment" mnemonicParsing="false" onAction="#supprimerComment" text="Supprimer" />
               </items>
             </MenuButton>
             <Label fx:id="fxUserNom" layoutX="71.0" layoutY="17.0" text="Mohamed ben Mohamed" textFill="#3a1c9d">

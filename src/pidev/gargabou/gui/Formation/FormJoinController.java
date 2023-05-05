@@ -84,6 +84,7 @@ public class FormJoinController implements Initializable {
             } else {
                 label_mail.setText("");
             }
+
         });
         tx_num_user.setOnKeyTyped(ec -> {
             if (ec.getCharacter().matches("[a-zA-Z]")) {
@@ -109,11 +110,10 @@ public class FormJoinController implements Initializable {
                         alert.setTitle("Erreur Joindre");
                         alert.setHeaderText("tu as deja joindre cette Formation");
                         Optional<ButtonType> result = alert.showAndWait();
-                    }
-                    else{
+                    } else {
                         us.setIdFormation(Formation.getChamp_id());
                         uc.setFormation(us);
-                        
+
                         System.out.println("ok");
                     }
                 }
@@ -124,6 +124,14 @@ public class FormJoinController implements Initializable {
             System.out.println("sent");
 
         });
+        Formation.setUserid(userNow.getid());
+        userCRUD uc = new userCRUD();
+        ArrayList<User> user = (ArrayList) uc.getAll();
+        for (User us : user) {
+            if (userNow.getid() == us.getId()) {
+                tx_mail_user.setText(us.getEmail());
+            }
+        }
 
     }
 }

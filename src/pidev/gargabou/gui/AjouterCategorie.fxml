@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -36,9 +35,9 @@
             </JFXButton>
          </children>
       </Pane>
-      <VBox layoutX="-1.0" layoutY="145.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="146.0">
+      <VBox layoutX="19.0" layoutY="165.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;">
          <children>
-            <Label prefHeight="30.0" prefWidth="252.0" text="SHOP" textFill="#171717">
+            <Label prefHeight="30.0" prefWidth="252.0" text="Utilisateurs" textFill="#171717">
                <font>
                   <Font size="13.0" />
                </font>
@@ -49,43 +48,37 @@
                   <Insets top="60.0" />
                </VBox.margin>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Categorie" textFill="#5b5858">
+            <JFXButton fx:id="util" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#show" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="UTILISATEURS" textFill="#5b5858">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <font>
                   <Font size="13.0" />
                </font>
-               <graphic>
-                  <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/projects.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Articles" textFill="#5b5858">
+            <JFXButton fx:id="approve" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#showapp" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="APPROVE" textFill="#5b5858">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <font>
                   <Font size="13.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/reliabilty.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <Label prefHeight="30.0" prefWidth="252.0" text="ENTERPRISE" textFill="#171717">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#showban" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="BAN" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Forum" textFill="#171717">
                <font>
                   <Font size="13.0" />
                </font>
@@ -93,65 +86,82 @@
                   <Insets left="40.0" />
                </padding>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Sponsorships" textFill="#5b5858">
+            <JFXButton fx:id="fxGoToForum" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Forum" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
-               <graphic>
-                  <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8_Workflow_64px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Mes Prices" textFill="#5b5858">
+            <Label prefHeight="30.0" prefWidth="252.0" text="Shop" textFill="#171717">
                <font>
                   <Font size="13.0" />
                </font>
-               <graphic>
-                  <ImageView accessibleText="Project List" fitHeight="16.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8_US_Dollar_64px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="fxGoToCategorie" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Categories" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Team" textFill="#5b5858">
+            <JFXButton fx:id="fxGoToArticle" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Articles" textFill="#5b5858">
                <font>
                   <Font size="13.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/agencies.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
                <padding>
                   <Insets left="50.0" />
                </padding>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="My Agencies" textFill="#5b5858">
+            <Label prefHeight="30.0" prefWidth="252.0" text="Evenement" textFill="#171717">
                <font>
                   <Font size="13.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8_Share_64px.png" />
-                     </image>
-                     <viewport>
-                        <Rectangle2D />
-                     </viewport>
-                  </ImageView>
-               </graphic>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="fxGoToEvenement" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Evenement" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="fxGoToOrganisateur" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Organisateur" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="fxGoToAdresse" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Adresse" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Centre" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="fxGoToCentre" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Centre" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
                <padding>
                   <Insets left="50.0" />
                </padding>
