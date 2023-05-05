@@ -172,7 +172,7 @@ public class IAFormationController implements Initializable {
         });
         fxGoToEvent.setOnAction(e->{
             try {
-                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "Evenement");
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/FrontHomeEvenement.fxml", "Evenement");
             } catch (IOException ex) {
                 Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }

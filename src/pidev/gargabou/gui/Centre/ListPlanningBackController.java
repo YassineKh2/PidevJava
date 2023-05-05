@@ -12,6 +12,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.jfoenix.controls.JFXButton;
 import com.twilio.rest.preview.sync.service.Document;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,6 +27,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -50,8 +53,10 @@ import javafx.util.StringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import pidev.gargabou.entites.Centre;
 import pidev.gargabou.entites.PlanningCentre;
+import pidev.gargabou.gui.Formation.IAFormationController;
 import pidev.gargabou.services.CentreService;
 import pidev.gargabou.services.PlanningCentreService;
+import pidev.gargabou.utils.changeScene;
 
 /**
  * FXML Controller class
@@ -65,6 +70,26 @@ public class ListPlanningBackController implements Initializable {
      */
     @FXML
     private AnchorPane listPlanningPane;
+    @FXML
+    private JFXButton util;
+    @FXML
+    private JFXButton approve;
+    @FXML
+    private JFXButton fxGoToForum;
+    @FXML
+    private JFXButton fxGoToCategorie;
+    @FXML
+    private JFXButton fxGoToArticle;
+    @FXML
+    private JFXButton fxGoToEvenement;
+    @FXML
+    private JFXButton fxGoToOrganisateur;
+    @FXML
+    private JFXButton fxGoToAdresse;
+    @FXML
+    private JFXButton fxGoToCentre;
+    @FXML
+    private Button btnPdf;
         
     @FXML
     void open_addPlanning(ActionEvent event) throws IOException {
@@ -73,8 +98,7 @@ public class ListPlanningBackController implements Initializable {
         listPlanningPane.getChildren().setAll(fxml);
     }
     
-    @FXML
-     void open_ListGestion() throws IOException{
+    void open_ListGestion() throws IOException{
          Parent fxml = FXMLLoader.load(getClass().getResource("gestionCentrePlanning.fxml"));
          listPlanningPane.getChildren().removeAll();
          listPlanningPane.getChildren().setAll(fxml);
@@ -84,6 +108,53 @@ public class ListPlanningBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         AfficherPlanningCentre();
+         fxGoToForum.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Forum/AdminAllPubs.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+           fxGoToArticle.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeArticle.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+            fxGoToCategorie.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/HomeCategorie.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToEvenement.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToAdresse.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/adresse/HomeAdresse.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); fxGoToOrganisateur.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/organisateur/HomeOrganisateur.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+         fxGoToCentre.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Centre/ListCentreBack.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }    
     
     
@@ -96,8 +167,6 @@ public class ListPlanningBackController implements Initializable {
     private TableColumn<PlanningCentre, Date> datefinCellPlanning;
     @FXML
     private TableColumn<PlanningCentre, String> descriptionCellPlanning;
-    @FXML
-    private TableColumn<PlanningCentre, Integer> idCellPlanning;
     @FXML
     private TableView<PlanningCentre> tablePlanningCentre;
     @FXML
@@ -405,6 +474,18 @@ public class ListPlanningBackController implements Initializable {
         }
 
     
+    }
+
+    @FXML
+    private void show(ActionEvent event) {
+    }
+
+    @FXML
+    private void showapp(ActionEvent event) {
+    }
+
+    @FXML
+    private void showban(ActionEvent event) {
     }
 
 

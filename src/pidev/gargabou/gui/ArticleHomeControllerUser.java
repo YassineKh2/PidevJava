@@ -109,7 +109,7 @@ public class ArticleHomeControllerUser implements Initializable {
         });
         fxGoToEvent.setOnAction(e->{
             try {
-                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/HomeEvenement.fxml", "");
+                changeScene.changeScene(e, "/pidev/gargabou/gui/evenement/FrontHomeEvenement.fxml", "");
             } catch (IOException ex) {
                 Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -122,6 +122,8 @@ public class HomeBaController implements Initializable {
     private JFXButton fxGoToCentre;
     @FXML
     private ScrollPane scroll;
+    @FXML
+    private JFXButton fxGoToFormation;
      @FXML
     void saha(ActionEvent event) {
           approve();
@@ -334,7 +336,13 @@ Connection cnx = DataSource.getInstance().getCnx();
                 Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-         
+        fxGoToFormation.setOnAction(e->{
+            try {
+                changeScene.changeScene(e, "/pidev/gargabou/gui/Formation/IAFormation.fxml", "");
+            } catch (IOException ex) {
+                Logger.getLogger(IAFormationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
          
             
          

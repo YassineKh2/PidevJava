@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,11 +11,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="listPlanningPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.gargabou.gui.Centre.ListPlanningBackController">
    <children>
-      <Button layoutX="217.0" layoutY="279.0" mnemonicParsing="false" onAction="#open_addPlanning" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: #473E98;" styleClass="btn" stylesheets="@style.css" text="  AJOUTER PLANNING" textFill="WHITE">
+      <Button layoutX="599.0" layoutY="279.0" mnemonicParsing="false" onAction="#open_addPlanning" prefHeight="42.0" prefWidth="215.0" style="-fx-background-color: #473E98;" styleClass="btn" stylesheets="@style.css" text="AJOUTER PLANNING" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -25,12 +28,145 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnSupprimerPlanning" layoutX="732.0" layoutY="279.0" mnemonicParsing="false" onAction="#supprimerPlanningCentre" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: #473E98;" styleClass="btn" stylesheets="@style.css" text="SUPPRIMER" textFill="WHITE">
+      <Button fx:id="btnSupprimerPlanning" layoutX="907.0" layoutY="279.0" mnemonicParsing="false" onAction="#supprimerPlanningCentre" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: #473E98;" styleClass="btn" stylesheets="@style.css" text="SUPPRIMER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tablePlanningCentre" editable="true" layoutX="104.0" layoutY="371.0" prefHeight="270.0" prefWidth="834.0" stylesheets="@style.css">
+      <VBox layoutX="29.0" layoutY="175.0" prefHeight="438.0" prefWidth="252.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Utilisateurs" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+            </Label>
+            <JFXButton fx:id="util" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#show" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="UTILISATEURS" textFill="#5b5858">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="approve" alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#showapp" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="APPROVE" textFill="#5b5858">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" onAction="#showban" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="BAN" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Forum" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="fxGoToForum" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Forum" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Shop" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="fxGoToCategorie" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Categories" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="fxGoToArticle" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Articles" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Evenement" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="fxGoToEvenement" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Evenement" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="fxGoToOrganisateur" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Organisateur" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <JFXButton fx:id="fxGoToAdresse" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Adresse" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+            <Label prefHeight="30.0" prefWidth="252.0" text="Centre" textFill="#171717">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="fxGoToCentre" alignment="BASELINE_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="252.0" ripplerFill="#bfadf8" text="Centre" textFill="#5b5858">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXButton>
+         </children>
+      </VBox>
+      <TableView fx:id="tablePlanningCentre" editable="true" layoutX="299.0" layoutY="379.0" prefHeight="270.0" prefWidth="834.0" stylesheets="@style.css">
          <columns>
             <TableColumn fx:id="titreCellPlanning" prefWidth="177.6000213623047" style="-fx: #473E98;" text="TITRE" />
             <TableColumn fx:id="descriptionCellPlanning" prefWidth="315.20001220703125" text="DESCRIPTION" />
@@ -38,15 +174,6 @@
             <TableColumn fx:id="datefinCellPlanning" prefWidth="165.60009765625" text="DATE DE FIN" />
          </columns>
       </TableView>
-      <Button layoutX="1067.0" layoutY="175.0" mnemonicParsing="false" onAction="#open_ListGestion" prefHeight="35.0" prefWidth="65.0" style="-fx-background-color: #473E98;" styleClass="btn" stylesheets="@style.css">
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/return.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Pane prefHeight="147.0" prefWidth="1175.0" styleClass="head-background" stylesheets="@../style.css">
          <children>
             <Label layoutX="224.0" layoutY="47.0" text="Rehab Radar" textFill="WHITE">
@@ -73,7 +200,7 @@
             </Pane>
          </children>
       </Pane>
-      <Button fx:id="btnPdf" layoutX="629.0" layoutY="279.0" mnemonicParsing="false" onMouseClicked="#genererPDF" prefHeight="42.0" prefWidth="66.0" style="-fx-background-color: #473E98;" styleClass="btn" stylesheets="@style.css" text="PDF" textFill="WHITE">
+      <Button fx:id="btnPdf" layoutX="417.0" layoutY="279.0" mnemonicParsing="false" onMouseClicked="#genererPDF" prefHeight="42.0" prefWidth="66.0" style="-fx-background-color: #473E98;" styleClass="btn" stylesheets="@style.css" text="PDF" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
