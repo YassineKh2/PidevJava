@@ -151,7 +151,7 @@ public class AjouterOrganisateurController implements Initializable {
                  OrganisateurCRUD ocd =new OrganisateurCRUD();
                  String nomorg =fxnomorganisateur.getText();
                  int numtel= Integer.parseInt(fxnumtel.getText());
-                 float pourc =Integer.parseInt(fxpourcentage.getText());
+                 float pourc =Float.parseFloat(fxpourcentage.getText());
                  Organisateur O = new Organisateur(nomorg, numtel, pourc);
                  idorg=ocd.ajouterOrganisateur(O);
                  

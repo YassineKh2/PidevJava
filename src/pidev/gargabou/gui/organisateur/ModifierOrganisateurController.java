@@ -137,8 +137,10 @@ public class ModifierOrganisateurController implements Initializable {
                 alert.showAndWait();
                 return;
                 }
-                  try{   
-                float pourcentage = Integer.parseInt(fxpourcentage.getText());
+           
+                    
+                    try{   
+                float pourcentage = Float.parseFloat(fxpourcentage.getText());
               if (pourcentage < 0 || pourcentage > 100) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle(" pourcentage Invalide");
@@ -160,10 +162,10 @@ public class ModifierOrganisateurController implements Initializable {
                 // ida=ocd.findorganisateurbyid(idorg).getIdAdresse();
                  String nomorg =fxnomorganisateur.getText();
                  int numtel= Integer.parseInt(fxnumtel.getText());
-                 float pourc =Integer.parseInt(fxpourcentage.getText());
+                 float pourc =Float.parseFloat(fxpourcentage.getText());
                  Organisateur O = new Organisateur(nomorg, numtel, pourc);
                  ocd.modifierorganisateur(idorg, O);
-                 
+                       System.out.println(idorg);
                  
                  
                  FXMLLoader loader = new FXMLLoader(getClass().getResource("../adresse/ModifierAdresse.fxml"));
@@ -181,6 +183,7 @@ public class ModifierOrganisateurController implements Initializable {
                 sendidevent.setidadresse(ida);
                 
                sendidevent.setentity(entity);
+                       System.out.println(ida);
                 Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
                 stage.setScene(scene); // set the new scene as the content of the stage

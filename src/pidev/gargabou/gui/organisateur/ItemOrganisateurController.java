@@ -85,7 +85,7 @@ public class ItemOrganisateurController implements Initializable {
                 showorganisateur.setnumtel(fxnumtel.getText());
                 showorganisateur.setpourc(fxpourcentage.getText());
                 showorganisateur.ida=ida;
-                
+                showorganisateur.idorg=ido ;
                 
                  Scene currentScene = sourceNode.getScene(); // get the current scene from the source node
                 Stage stage = (Stage) currentScene.getWindow(); // get the current stage
